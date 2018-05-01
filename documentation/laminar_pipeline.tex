@@ -103,7 +103,8 @@ Parts of the analysis run in Bash shell scripts. Those can be called from their 
 \subsection{Retinotopy}
 \begin{itemize}
 \item sh runonqsub.sh 32gb do\_prepareretinotopy.sh 
-\item sh do\_retinotopy.sh 256gb
+\item sh do\_tseriesinterpolation.sh 180gb
+\item sh do\_analyzePRF.sh 180gb
 \end{itemize}
 \subsection{Functional laminar analysis}
 
@@ -131,7 +132,8 @@ script & memory required & time required\\\hline
 	do\_distcorr.sh & 32GB & $\approx 15min$ \\\hline
 	do\_applydistcorr.sh & 64GB & $\approx 30min$ \\\hline
 	do\_prepareretinotopy.sh & 32GB & $\approx 4min$ \\\hline
-	do\_retinotopy.sh & 256GB & $\approx XXXmin$ \\\hline
+	do\_tseriesinterpolation.sh & 180GB & $\approx 7h$ \\\hline
+	do\_analyzePRF.sh & 250GB & $\approx 7h$ \\\hline
 	meanT.sh & 16GB & $\approx 2min$ \\\bottomrule
 \end{tabular}
 \caption[Approximated time and memory requirements when running on qsub]{Approximated time and memory requirements for the respective script to run. Note that everything that is more than 4GB must be run on the cluster. Use runonqsub.sh for that purpose.}
