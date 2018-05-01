@@ -10,7 +10,7 @@ tic;disp('doing boundary registration...')
 configuration = [];
 configuration.i_SubjectDirectory        = [mainpath filesep '..'];
 configuration.i_FreeSurferFolder        = '0_freesurfer';
-configuration.i_RegistrationVolume      = '2_coregistration/MCTemplateThr.nii';
+configuration.i_RegistrationVolume      = ['2_coregistration/' regvol];
 configuration.i_DegreesOfFreedom        = 6;
 configuration.i_Contrast                = 'T1';
 configuration.o_Boundaries              = '2_coregistration/boundaries.mat';
@@ -19,16 +19,16 @@ configuration.o_RegisterDat             = '2_coregistration/bbregister.dat';
 
 tvm_useBbregister(configuration);
 
-load([mainpath filesep '..' filesel '2_coregistration' filesep 'matrix.mat']);
-dlmwrite([mainpath filesep '..' filesel '2_coregistration' filesep 'transmat.txt'],coregistrationMatrix);
-dlmwrite([mainpath filesep '..' filesel '2_coregistration' filesep 'transmatinv.txt'],inv(coregistrationMatrix));
+load([mainpath filesep '..' filesep '2_coregistration' filesep 'matrix.mat']);
+dlmwrite([mainpath filesep '..' filesep '2_coregistration' filesep 'transmat.txt'],coregistrationMatrix,'\t');
+dlmwrite([mainpath filesep '..' filesep '2_coregistration' filesep 'transmatinv.txt'],inv(coregistrationMatrix),'\t');
 
 disp(['done after ' num2str(toc) 's'])
 
 tic;disp('creating boundary movie...')
 configuration = [];
 configuration.i_SubjectDirectory    = [mainpath filesep '..'];
-configuration.i_ReferenceVolume     = '2_coregistration/MCTemplateThr.nii';
+configuration.i_ReferenceVolume     = ['2_coregistration/' regvol];
 configuration.i_Boundaries          = {'2_coregistration/boundaries.mat'};
 configuration.i_Axis                = 'horizontal';
 configuration.i_FramesPerSecond     = 6;
@@ -46,7 +46,7 @@ disp(['done after ' num2str(toc) 's'])
 tic;disp('doing recursive boundary registration...')
 configuration = [];
 configuration.i_SubjectDirectory        = [mainpath filesep '..'];
-configuration.i_ReferenceVolume     = '2_coregistration/MCTemplateThr.nii';
+configuration.i_ReferenceVolume     = ['2_coregistration/' regvol];
 configuration.i_Boundaries          = '2_coregistration/boundaries.mat';
 configuration.i_MinimumVoxels       = 4;
 configuration.i_MinimumVertices     = 100;
@@ -58,7 +58,7 @@ configuration.o_Boundaries          = '2_coregistration/boundaries_rbr.mat';
 configuration.o_DisplacementMap     = '2_coregistration/Displacement.nii';
 
 registrationConfiguration = [];
-registrationConfiguration.ReverseContrast       = true;
+registrationConfiguration.ReverseContrast       = false;
 registrationConfiguration.Clamp                 = [0.4, 3];
 registrationConfiguration.ContrastMethod        = 'average'; %'gradient'
 registrationConfiguration.OptimisationMethod    = 'GreveFischl';
@@ -71,7 +71,7 @@ disp(['done after ' num2str(toc) 's'])
 tic;disp('creating boundary movie...')
 configuration = [];
 configuration.i_SubjectDirectory    = [mainpath filesep '..'];
-configuration.i_ReferenceVolume     = '2_coregistration/MCTemplateThr.nii';
+configuration.i_ReferenceVolume     = ['2_coregistration/' regvol];
 configuration.i_Boundaries          = {'2_coregistration/boundaries_rbr.mat'};
 configuration.i_Axis                = 'horizontal';
 configuration.i_FramesPerSecond     = 6;
@@ -88,7 +88,7 @@ disp(['done after ' num2str(toc) 's'])
 tic;disp('creating boundary movie...')
 configuration = [];
 configuration.i_SubjectDirectory    = [mainpath filesep '..'];
-configuration.i_ReferenceVolume     = '2_coregistration/MCTemplateThr.nii';
+configuration.i_ReferenceVolume     = ['2_coregistration/' regvol];
 configuration.i_Boundaries          = {'2_coregistration/boundaries.mat','2_coregistration/boundaries_rbr.mat'};
 configuration.i_Axis                = 'horizontal';
 configuration.i_FramesPerSecond     = 6;
@@ -101,5 +101,5 @@ catch
     tvm_volumeWithBoundariesToMovie(configuration);
 end
 disp(['done after ' num2str(toc) 's'])
-
+%%
 exit
