@@ -32,7 +32,7 @@ echo $numvols
 fslroi $DIR/functionals $DIR/ret 0 -1 0 -1 0 -1 $startvol $numvols
 
 echo preparing nifti...
-num_uncomp_niftis=$(find $DIR/ -type f -name "*.nii" | wc -l)
+num_uncomp_niftis=$(find / -type f -name "*.nii" | wc -l)
 
 if [ $num_uncomp_niftis -lt 1 ]
 then

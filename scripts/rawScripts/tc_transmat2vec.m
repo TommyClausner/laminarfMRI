@@ -1,4 +1,4 @@
-function [axang,trans] = tc_transmat2vec(R)
+function transvec = tc_transmat2vec(R,varargin)
 % #### hacked by Tommy ####
 % original function is the MATLAB function "rotm2axang.m" from the robotics
 % toolbox
@@ -10,11 +10,19 @@ function [axang,trans] = tc_transmat2vec(R)
 % example: 	[axang,trans] = tc_transmat2vec('my_matrix.txt')
 % example 2:	axang = tc_transmat2vec([1 0 0 0;0 1 0 0;0 0 1 0;0 0 0 1])
 %
-% axang 1 x 3 matrix giving the the respective rotation around x, y, z axis
-% trans 1 x 3 matrix giving the the respective translation along x, y, z axis
+% transvec 1 x 6 "matrix" giving the the respective translation 
+% along x, y, z and rotation around x, y, z axis
+
+inv_=0;
+if size(varargin,2)>0
+inv_=varargin{1};
+end
 
 if ischar(R)
 R = dlmread(R);
+end
+if inv_
+R=inv(R);
 end
 trans=R(1:3,4)';
 R(:,4)=[];
@@ -49,6 +57,16 @@ v = reshape(v,[3, numel(v)/3]).';
 
 axang = cat(2, v, theta);
 
-axang = [axang(1)*axang(4),axang(2)*axang(4),axang(3)*axang(4)];
 
+
+%%% CHANGE ORDER HERE IF NECCESSARY %%%
+X_Trans=trans(1);
+Y_Trans=trans(2);
+Z_Trans=trans(3);
+
+X_Rot=axang(1);
+Y_Rot=axang(2);
+Z_Rot=axang(3);
+
+transvec=[X_Trans,Y_Trans,Z_Trans,X_Rot,Y_Rot,Z_Rot];
 end

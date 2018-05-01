@@ -6,9 +6,9 @@ cd $DIR
 
 nameadd=$(date +"%m%d%Y%H%M%S")
 
-echo "mainpath=" "'$DIR';transmatpath=['$DIR' filesep '$1'];">$DIR/tmp_$nameadd.m
-cat $DIR/transmats2topup.m>>$DIR/tmp_$nameadd.m
-echo 'matlab2017a -nosplash -nodesktop -minimize -r "run('"'"$DIR/tmp_$nameadd.m"'"')"' | qsub -q interactive -l walltime=12:00:00,mem=4gb
+echo "mainpath=" "'$DIR';parts=$2;partnum=$1;avgdata=0;">$DIR/tmp_$nameadd.m
+cat $DIR/do_analyzePRF.m>>$DIR/tmp_$nameadd.m
+echo 'matlab2013a -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q matlab -l walltime=24:00:00,mem=8gb
 
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)

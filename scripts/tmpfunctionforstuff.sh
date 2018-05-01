@@ -1,34 +1,62 @@
 #!/bin/bash
 
-### do not forget to adjust operating folder ###
-
 if [[ $(hostname -s) == *"dccn"* ]]
 then
-DIR=$1
+DIR=$1/..
+FREESURFER_HOME=/opt/freesurfer/5.3
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+export PATH=$FREESURFER_HOME/bin:$PATH
+LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltkt$
 else
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 fi
 
 cd $DIR
 
-### write stuff you wanna test below ###
+unameOut='$(uname -s)'
 
-input=$1
+case '${unameOut}' in
+        Linux*)         machine=Linux;;
+        Darwin*)        machine=Mac
+esac
 
-if [ $# -eq 1 ]
+if [ '${machine}' == 'Mac' ]
 then
-	if [[ ${input:0:1} == '/' ]]
-	then
-	echo path
-	else
-	orient="--out_orientation $input"
-	fi
 
-elif [ $# -eq 2 ]
-then
-orient="--out_orientation $2"
+echo setting freesurfer up for mac ...
+export FREESURFER_HOME=/Applications/freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+
 else
-orient=""
+
+echo setting freesurfer up for linux...
+
+FREESURFER_HOME=/opt/freesurfer/5.3
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+export PATH=$FREESURFER_HOME/bin:$PATH
+LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltkt$
+
 fi
+
+export SUBJECTS_DIR=$DIR
+
+### write stuff you wanna test below ###
+# check out mri_vol2surface or so
+
+whichone=ecc_map
+
+#mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii --reg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.ang.mgh
+mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.ang.mgh --out_type paint 
+mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi rh --surf pial --out $DIR/4_retinotopy/rh.ang.mgh --out_type paint 
+mri_vol2surf --src $DIR/4_retinotopy/ecc_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.ecc.mgh --out_type paint 
+mri_vol2surf --src $DIR/4_retinotopy/ecc_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi rh --surf pial --out $DIR/4_retinotopy/rh.ecc.mgh --out_type paint 
+
+mri_vol2surf --src $DIR/4_retinotopy/xpos_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.xpos.mgh --out_type paint
+mri_vol2surf --src $DIR/4_retinotopy/xpos_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi rh --surf pial --out $DIR/4_retinotopy/rh.xpos.mgh --out_type paint
+mri_vol2surf --src $DIR/4_retinotopy/ypos_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.ypos.mgh --out_type paint
+mri_vol2surf --src $DIR/4_retinotopy/ypos_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi rh --surf pial --out $DIR/4_retinotopy/rh.ypos.mgh --out_type paint
+
+mri_vol2surf --src $DIR/4_retinotopy/r2_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi lh --surf pial --out $DIR/4_retinotopy/lh.r2.mgh --out_type paint
+mri_vol2surf --src $DIR/4_retinotopy/r2_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi rh --surf pial --out $DIR/4_retinotopy/rh.r2.mgh --out_type paint
 

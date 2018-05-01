@@ -3,7 +3,7 @@
 
 
 disp('setting up environment...')
-addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes']))
+addpath(genpath(['mainpath filesep '..' filesep '..' filesep toolboxes']))
 disp('done.')
 TR=2.7;
 numblocks=3;
@@ -42,9 +42,11 @@ datatmp=[]; % to efficiently free system memory
 clear datatmp
 
 disp('resampling functionals...')
-if matlabpool('size')==0
-  matlabpool open;
+poolobj = gcp('nocreate');
+if isempty(poolobj)
+parpool
 end
+
 data = tseriesinterp(data,TR,TR/mult,numel(size(data)));
 disp('done.')
 
