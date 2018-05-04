@@ -53,4 +53,4 @@
 \contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{21}{section.6}
 \contentsline {section}{\numberline {7}How to: Pipelines}{21}{section.7}
 \contentsline {subsection}{\numberline {7.1}Scripts}{21}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}using Tommy's Scriptinator 3000 TM}{21}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.2}Tommy's Scriptinator 3000 TM}{21}{subsection.7.2}
