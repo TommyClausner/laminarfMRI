@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Before starting}{6}{section.1}
 \contentsline {subsection}{\numberline {1.1}Pre- requisites}{6}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Folder structure}{6}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}How things work}{6}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.3}How things work}{7}{subsection.1.3}
 \contentsline {section}{\numberline {2}Suggested order of operations}{7}{section.2}
 \contentsline {subsection}{\numberline {2.1}Pre-processing}{7}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Co-registration and masks}{8}{subsection.2.2}
@@ -14,42 +14,43 @@
 \contentsline {subsection}{\numberline {4.3}params.mat}{12}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}images.mat}{12}{subsection.4.4}
 \contentsline {section}{\numberline {5}Scripts explained (support for runonqsub.sh: Q)}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}runonqsub.sh}{12}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}cleanscriptsfolder.sh}{13}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}liveupdateqsub.sh}{13}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}waitForJobs.sh}{13}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}makenewsubject.sh}{14}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}setupfolders.sh (Q)}{14}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}do\_preparefunctionals.sh (Q)}{14}{subsection.5.7}
-\contentsline {subsection}{\numberline {5.8}do\_realignment.sh (Q)}{14}{subsection.5.8}
-\contentsline {subsection}{\numberline {5.9}do\_distcorr.sh (Q)}{15}{subsection.5.9}
-\contentsline {subsection}{\numberline {5.10}do\_applysimpledistcorr.sh (Q)}{15}{subsection.5.10}
-\contentsline {subsection}{\numberline {5.11}do\_preparecoregistration.sh (Q)}{16}{subsection.5.11}
-\contentsline {subsection}{\numberline {5.12}do\_correctavgdiff.sh (Q)}{16}{subsection.5.12}
-\contentsline {subsection}{\numberline {5.13}do\_fsrecon.sh (Q)}{16}{subsection.5.13}
-\contentsline {subsection}{\numberline {5.14}do\_coregistration.sh}{16}{subsection.5.14}
-\contentsline {subsection}{\numberline {5.15}do\_coregistration.m}{17}{subsection.5.15}
-\contentsline {subsection}{\numberline {5.16}do\_makemasksandlabels.sh (Q)}{17}{subsection.5.16}
-\contentsline {subsection}{\numberline {5.17}do\_movesinglevolume.sh}{17}{subsection.5.17}
-\contentsline {subsection}{\numberline {5.18}do\_tseriesinterpolation.sh}{18}{subsection.5.18}
-\contentsline {subsection}{\numberline {5.19}do\_tseriesinterpolation.m}{18}{subsection.5.19}
-\contentsline {subsection}{\numberline {5.20}do\_split\_analyzePRF.sh}{18}{subsection.5.20}
-\contentsline {subsection}{\numberline {5.21}do\_analyzePRF.sh}{19}{subsection.5.21}
-\contentsline {subsection}{\numberline {5.22}do\_analyzePRF.m}{19}{subsection.5.22}
-\contentsline {subsection}{\numberline {5.23}combine\_split\_PRF\_results.sh}{19}{subsection.5.23}
-\contentsline {subsection}{\numberline {5.24}combine\_split\_PRF\_results.m}{19}{subsection.5.24}
-\contentsline {subsection}{\numberline {5.25}make\_PRF\_overlays.sh}{19}{subsection.5.25}
-\contentsline {subsection}{\numberline {5.26}make\_PRF\_overlays.m}{20}{subsection.5.26}
-\contentsline {subsection}{\numberline {5.27}makeOverlays.sh (Q)}{20}{subsection.5.27}
-\contentsline {subsection}{\numberline {5.28}GUI2ROIs.sh}{20}{subsection.5.28}
-\contentsline {subsection}{\numberline {5.29}labels2masks.sh (Q)}{21}{subsection.5.29}
-\contentsline {subsection}{\numberline {5.30}expandROIs.sh}{21}{subsection.5.30}
-\contentsline {subsection}{\numberline {5.31}expandROIs.m}{21}{subsection.5.31}
-\contentsline {subsection}{\numberline {5.32}tc\_expandVoxelSelection.m}{21}{subsection.5.32}
-\contentsline {subsection}{\numberline {5.33}do\_getLayers.sh}{21}{subsection.5.33}
-\contentsline {subsection}{\numberline {5.34}do\_getLayers.m}{21}{subsection.5.34}
-\contentsline {subsection}{\numberline {5.35}do\_getLayerWeights.sh}{21}{subsection.5.35}
-\contentsline {subsection}{\numberline {5.36}do\_getLayerWeights.m}{21}{subsection.5.36}
+\contentsline {subsection}{\numberline {5.1}getToolboxes.sh}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}runonqsub.sh}{13}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}cleanscriptsfolder.sh}{13}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}liveupdateqsub.sh}{13}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}waitForJobs.sh}{14}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}makenewsubject.sh}{14}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}setupfolders.sh (Q)}{14}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}do\_preparefunctionals.sh (Q)}{14}{subsection.5.8}
+\contentsline {subsection}{\numberline {5.9}do\_realignment.sh (Q)}{14}{subsection.5.9}
+\contentsline {subsection}{\numberline {5.10}do\_distcorr.sh (Q)}{15}{subsection.5.10}
+\contentsline {subsection}{\numberline {5.11}do\_applysimpledistcorr.sh (Q)}{15}{subsection.5.11}
+\contentsline {subsection}{\numberline {5.12}do\_preparecoregistration.sh (Q)}{16}{subsection.5.12}
+\contentsline {subsection}{\numberline {5.13}do\_correctavgdiff.sh (Q)}{16}{subsection.5.13}
+\contentsline {subsection}{\numberline {5.14}do\_fsrecon.sh (Q)}{16}{subsection.5.14}
+\contentsline {subsection}{\numberline {5.15}do\_coregistration.sh}{16}{subsection.5.15}
+\contentsline {subsection}{\numberline {5.16}do\_coregistration.m}{17}{subsection.5.16}
+\contentsline {subsection}{\numberline {5.17}do\_makemasksandlabels.sh (Q)}{17}{subsection.5.17}
+\contentsline {subsection}{\numberline {5.18}do\_movesinglevolume.sh}{17}{subsection.5.18}
+\contentsline {subsection}{\numberline {5.19}do\_tseriesinterpolation.sh}{18}{subsection.5.19}
+\contentsline {subsection}{\numberline {5.20}do\_tseriesinterpolation.m}{18}{subsection.5.20}
+\contentsline {subsection}{\numberline {5.21}do\_split\_analyzePRF.sh}{18}{subsection.5.21}
+\contentsline {subsection}{\numberline {5.22}do\_analyzePRF.sh}{19}{subsection.5.22}
+\contentsline {subsection}{\numberline {5.23}do\_analyzePRF.m}{19}{subsection.5.23}
+\contentsline {subsection}{\numberline {5.24}combine\_split\_PRF\_results.sh}{19}{subsection.5.24}
+\contentsline {subsection}{\numberline {5.25}combine\_split\_PRF\_results.m}{19}{subsection.5.25}
+\contentsline {subsection}{\numberline {5.26}make\_PRF\_overlays.sh}{19}{subsection.5.26}
+\contentsline {subsection}{\numberline {5.27}make\_PRF\_overlays.m}{20}{subsection.5.27}
+\contentsline {subsection}{\numberline {5.28}makeOverlays.sh (Q)}{20}{subsection.5.28}
+\contentsline {subsection}{\numberline {5.29}GUI2ROIs.sh}{20}{subsection.5.29}
+\contentsline {subsection}{\numberline {5.30}labels2masks.sh (Q)}{21}{subsection.5.30}
+\contentsline {subsection}{\numberline {5.31}expandROIs.sh}{21}{subsection.5.31}
+\contentsline {subsection}{\numberline {5.32}expandROIs.m}{21}{subsection.5.32}
+\contentsline {subsection}{\numberline {5.33}tc\_expandVoxelSelection.m}{21}{subsection.5.33}
+\contentsline {subsection}{\numberline {5.34}do\_getLayers.sh}{21}{subsection.5.34}
+\contentsline {subsection}{\numberline {5.35}do\_getLayers.m}{21}{subsection.5.35}
+\contentsline {subsection}{\numberline {5.36}do\_getLayerWeights.sh}{21}{subsection.5.36}
+\contentsline {subsection}{\numberline {5.37}do\_getLayerWeights.m}{21}{subsection.5.37}
 \contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{21}{section.6}
 \contentsline {section}{\numberline {7}How to: Pipelines}{21}{section.7}
 \contentsline {subsection}{\numberline {7.1}Scripts}{21}{subsection.7.1}

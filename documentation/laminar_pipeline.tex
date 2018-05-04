@@ -30,6 +30,7 @@
 \newpage
 \section{Before starting}
 \subsection{Pre- requisites}
+\label{sec:prereq}
 \begin{itemize}
 \item MRIcron (\href{https://www.nitrc.org/projects/mricron}{https://www.nitrc.org/projects/mricron})
 \item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki})
@@ -42,9 +43,12 @@
 \item Tommy's Scriptinator 3000 TM (optional; \href{https://github.com/TommyClausner/Scriptinator}{https://github.com/TommyClausner/Scriptinator})
 \end{itemize}
 
-Use e.g. MRIcron's dicom2nii to convert raw MRI data to NifTi files.\\
+\noindent Use e.g. MRIcron's dicom2nii to convert raw MRI data to NifTi files.\\
+
+\noindent Call the function "getToolboxes.sh" to download (most of) the software automatically into a folder called toolboxes/ located in the folder from where the function was called (see Section~\ref{sec:getTools} and Figure~\ref{tree:folderstruct})\\
 
 \subsection{Folder structure}
+\label{sec:dirstruct}
 The general folder structure is set up by a call to setupfolders.sh (see also Figure \ref{tree:folderstruct})
 \begin{itemize}
 \item Functional data must be located in niftis/\textbf{functionals}/
@@ -60,10 +64,10 @@ Parts of the analysis run in Bash shell scripts. Those can be called from their 
 \noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.
 
 \section{Suggested order of operations}
-This document builds upon the analysis rational used during out own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.
+This document builds upon the analysis rational used during our own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.
 \begin{itemize}
 \item makenewsubject.sh
-\item copy NifTi files to the correct location (see above)
+\item copy NifTi files to the correct location (see Section~\ref{sec:dirstruct})
 \item open terminal (the following are terminal commands)
 \item cd PATH/SUBJECTFOLDER/B\_scripts
 \item sh runonqsub.sh 32gb do\_preparefunctionals.sh
@@ -269,6 +273,7 @@ script & memory required & time required\\\hline
 ]
 ]
 [makenewsubject.sh]
+[getToolboxes.sh]
 ]
 \end{forest}
 
@@ -302,6 +307,10 @@ Parameters used for retinotopy scans as obtained from VistaDisp.
 Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
 
 \section{Scripts explained (support for runonqsub.sh: Q)}
+\subsection{getToolboxes.sh}
+\label{sec:getTools}
+Downloads all necessary toolboxes into a folder called toolboxes/ or displays a URL where the user has to download the software manually (see Section~\ref{sec:prereq}). That is FSL and SPM have to be downloaded manually due to required user registration. Place them in the same directory as the other toolboxes or install as required.
+
 \subsection{runonqsub.sh}
 Initiates a qsub session and sends it to the cluster. This is necessary, since scripts running on the cluster are copied to a different directory, but within scripts all directories are relative. runonqsub.sh must hence be run in a "normal" session not using a non-interactive qsub, giving the respective script that was intended to run as an argument. runonqsub will then set everything up correctly. Further you have to specify the amount of memory needed.\\
 
