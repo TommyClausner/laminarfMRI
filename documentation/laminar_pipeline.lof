@@ -1,8 +1,6 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Overview Pre-processing fMRI}}{8}{figure.1}
-\contentsline {figure}{\numberline {2}{\ignorespaces Coregistration and distortion correction visual depiction}}{8}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces Apply corrections from all steps at once}}{9}{figure.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces Initial folder structure as required for the analysis}}{12}{figure.4}
-\contentsline {figure}{\numberline {5}{\ignorespaces Pre-processing Pipeline}}{23}{figure.5}
-\contentsline {figure}{\numberline {6}{\ignorespaces Segmentation Pipeline}}{24}{figure.6}
-\contentsline {figure}{\numberline {7}{\ignorespaces Retinotopy Pipeline}}{25}{figure.7}
-\contentsline {figure}{\numberline {8}{\ignorespaces Laminar definition Pipeline}}{26}{figure.8}
+\contentsline {figure}{\numberline {1}{\ignorespaces Coregistration and distortion correction visual depiction}}{8}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces Initial folder structure as required for the analysis}}{11}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces Pre-processing Pipeline}}{22}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces Segmentation Pipeline}}{23}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Retinotopy Pipeline}}{24}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Laminar definition Pipeline}}{25}{figure.6}

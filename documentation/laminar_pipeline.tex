@@ -56,9 +56,10 @@ The general folder structure is set up by a call to setupfolders.sh (see also Fi
 \section{How things work}
 Parts of the analysis run in Bash shell scripts. Those can be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the coresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in a individual section.\\
 
-\noindent All functions with the prefix \textit{do\_} will affect the data.
+\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.
 
 \section{Suggested order of operations}
+This document builds upon the analysis rational used during out own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.
 \begin{itemize}
 \item makenewsubject.sh
 \item copy NifTi files to the correct location (see above)
@@ -67,55 +68,82 @@ Parts of the analysis run in Bash shell scripts. Those can be called from their 
 \item sh runonqsub.sh 32gb do\_preparefunctionals.sh
 \end{itemize}
 \subsection{Pre-processing}
+Data will be motion and field distortion corrected. An inplane template for the functional scans to be used for the co-registration  will be created.
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+64GB & $\approx 6h$ \\\bottomrule
+\end{tabular}
+\end{table}
 \begin{itemize}
 \item sh runonqsub.sh 32gb do\_realignment.sh
 \item sh runonqsub.sh 32gb do\_distcorr.sh
 \item sh runonqsub.sh 64gb do\_applysimpledistcorr.sh
 \item sh runonqsub.sh 16gb do\_preparecoregistration.sh
 \item sh do\_correctavgdiff.sh
+\item using pipeline: sh preprocessing.sh
 \end{itemize}
 \subsection{Co-registration and masks}
+Data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries. Furthermore partial and full brain masks will be created, including gray and white matter and brain.
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+16GB & $\approx 6.5h$ \\\bottomrule
+\end{tabular}
+\end{table}
 \begin{itemize}
 \item sh runonqsub.sh 16gb do\_fsrecon.sh
 \item sh do\_coregistration.sh
 \item sh runonqsub.sh 16gb do\_makemasksandlabels.sh
+\item using pipeline: sh CoregistrationAndAnatMasks.sh
 \end{itemize}
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{overviewpreprocmain}
-\caption[Overview Pre-processing fMRI]{Overview Pre-processing fMRI}
-\end{center}
-\end{figure}
-\begin{figure}[h]
+\begin{figure}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{coregdist}
 \caption[Coregistration and distortion correction visual depiction]{Coregistration and distortion correction visual depiction}
 \end{center}
 \end{figure}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{applycorr}
-\caption[Apply corrections from all steps at once]{Apply corrections from all steps at once}
-\end{center}
-\end{figure}
 
-\FloatBarrier
 \subsection{Retinotopy}
+Population receptive field mapping. Estimates retinotopic mapping from screen to cortical locations. This is to be done in order to obtain boundaries for visual areas such as V1, V2 and V3. First the fMRI time series will be interpolated (cubic) to match the numeber of frames presented during the stimulation. Afterwards pRF mapping will be analyzed and paramters will be written to volume files (NiFTI) and surface files for use with FreeSurfer.
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+64GB (480GB) & $\approx 8h$ \\\bottomrule
+\end{tabular}
+\end{table}
 \begin{itemize}
 \item sh do\_tseriesinterpolation.sh
 \item sh do\_split\_analyzePRF.sh
 \item sh combine\_split\_PRF\_results.sh
 \item sh make\_PRF\_overlays.sh
 \item sh runonqsub.sh 16gb makeOverlays.sh
+\item using pipeline: sh retinotopy.sh
 \end{itemize}
 \subsection{laminar separation}
+Gray matter boundaries will be used to compute cortical layer separation. First tksurfer is used to "draw" occipital ROIs based on the retinotopic mapping. Those regions will be transformed into gray matter masks such that an individual masks for V1, V2, V3 for each hemisphere exists. Cortical layer separation yields a probability map for each voxel to lay within a specifcially spaced area between gray matter boundaries. Thus a layer specific ROI specific map is created for each ROI by multiplying the ROI map with each of the layer probability maps. The results are 4D mask volumes separating the layer probabilies in the 4th dimension.
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+16GB & $\approx 0.5h+user$ \\\bottomrule
+\end{tabular}
+\end{table}
 \begin{itemize}
 \item sh GUI2ROIs.sh
 \item sh labels2masks.sh
 \item sh expandROIs.sh
 \item sh do\_getLayers.sh
 \item sh do\_getLayerWeights.sh
+\item using pipeline: sh laminar.sh
 \end{itemize}
 \section{qsub}
 Scripts that are flagged with the (Q) can be run as a qsub job.
@@ -167,7 +195,7 @@ script & memory required & time required\\\hline
     font=\ttfamily,
     grow'=0,
     child anchor=west,
-    text height=0.05cm,
+    text height=0.01cm,
     parent anchor=south,
     anchor=west,
     calign=first,
@@ -308,22 +336,18 @@ Checks all currently running jobs (qstat -u user) and waits until the last scrip
 \subsection{makenewsubject.sh}
 executable script (double click to execute)\\
 
-Creates a new subject (S\#) folder structure in order to get all folder dependencies right. It automatically detects folders called "S\textit{number}" and creates a new folder incrementing \textit{number} by one
+Creates a new subject (S\#) folder structure in order to get all folder dependencies right. It automatically detects folders called "S\textit{number}" and creates a new folder incrementing \textit{number} by one.
 
 \subsection{setupfolders.sh (Q)}
 Sets up the necessary folder structure for the analysis (within a subject folder). This function is automatically called when using makenewsubject.sh\\
 
-\noindent example: sh setupfolders.sh
-
 \subsection{do\_preparefunctionals.sh (Q)}
+\label{sec:prepfct}
 Prepares functional data, i.e. removes the first 4 and the last x volumes of every set of functionals, where x is the number of volumes acquired after the stimulation ended. If files were modified (i.e. if volumes were deleted), the original file will remain in /niftis/functionals/old\\
 
-\noindent example: sh do\_preparefunctionals.sh\\
-
 \subsection{do\_realignment.sh (Q)}
-example: sh do\_realignment.sh\\
-
-\noindent Merges and motion corrects all files in /niftis/functionals using the average volume of all task volumes.\\
+\label{sec:realign}
+Merges and motion corrects all files in /niftis/functionals using the average volume of all task volumes.\\
 
 \noindent numberofvolumes.txt is written to /A\_helperfiles giving information about which sets had how many volumes. The first column is coresponds to dim4 from fslinfo\\
 
@@ -337,9 +361,8 @@ example: sh do\_realignment.sh\\
 \end{itemize}
 
 \subsection{do\_distcorr.sh (Q)}
-example: sh do\_distcorr.sh\\
-
-\noindent Uses the averge volume of the inverted set of images in /niftis/inverted as reference for \textit{inverted}\\
+\label{sec:distcorr}
+Uses the averge volume of the inverted set of images in /niftis/inverted as reference for \textit{inverted}\\
 
 \noindent Uses as many volumes \textit{n} as there were in /niftis/inverted. Respective volumes are selected starting from the last going in \textit{4 x n} steps backward. Hence the resulting average of this set was computed over the 4th volume of each of \textit{n} last sets in the normal images. Simplified (all 1 are selected):\\
 
@@ -358,9 +381,8 @@ example: sh do\_distcorr.sh\\
 \end{itemize}
 
 \subsection{do\_applysimpledistcorr.sh (Q)}
+\label{sec:applydistcorr}
 Applies distortion correction to all functional data.\\
-
-\noindent example: sh do\_applydistcorr.sh\\
 
 \noindent Under the hood:
 \begin{itemize}
@@ -370,18 +392,17 @@ Applies distortion correction to all functional data.\\
 \end{itemize}
 
 \subsection{do\_preparecoregistration.sh (Q)}
+\label{sec:prepcoreg}
 Computes a reference volume (MCTemplate) used as the basis  to co-register with the anatomical image. This image is computed by splitting the entire set of task volumes into chunks of 4. In each chunk the 1st volume is substracted from the 4th. This procedure yields a pseude-T1 contrast. All chunk differences are then averaged to form "MCTemplate"
 
-\noindent example: sh do\_preparecoregistration.sh
-
 \subsection{do\_correctavgdiff.sh (Q)}
+\label{sec:corravg}
 Due to the subtraction of the 1st from the 4th volume the area outside the brain has the highest value. In order to correct this the lowest value will be shifted to zero the a certain part of the higher values are cut (e.g. 0.975).\\
 
-\noindent example: sh do\_correctavgdiff.sh\\
-
-\noindent The result should be checked using "fsleyes ../2\_coregistration/Inplane/MCTemplateThr*.nii.gz" to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later coregistration.
+\noindent The result should be checked using "fsleyes ../2\_coregistration/Inplane/MCTemplateThr*.nii.gz" to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later co-registration.
 
 \subsection{do\_fsrecon.sh (Q)}
+\label{sec:fsrecon}
 Performs segmentation using Freesurfer.\\
 
 \noindent If running on OSX the script assumes:\\
@@ -392,8 +413,6 @@ Performs segmentation using Freesurfer.\\
 
 \noindent The target image that is used for the segmentation must be located in /niftis/t1\\
 
-\noindent example: sh do\_fsrecon.sh\\
-
 \noindent Under the hood:
 \begin{itemize}
 \item calls recon-all -i /niftis/t1/* -subjid  0\_freesurfer -all
@@ -401,11 +420,10 @@ Performs segmentation using Freesurfer.\\
 \end{itemize}
 
 \subsection{do\_coregistration.sh}
+\label{sec:coreg}
 Will submit a qsub session using MATLAB, that in turn will be using FreeSurfer (bbregister) and OpenFmriAnalysis to perform a linear and non-linear boundary registration.  Movie files of the respective co-registration are stored in /C\_miscResults
 
 \noindent The file used to execute MATLAB commands is /B\_scripts/do\_coregistration.m Note that it will be modified using the correct folder settings, which yields tmp.m that will be called and removed after MATLAB was closed.\\
-
-example: do\_coregistration.sh
 
 \subsection{do\_coregistration.m}
 The script doing the actual co-registration. Uses wrapper functions from OpenFmriAnalysis to evoke FreeSurfers bbregister and computes a recursive boundary based registration.\\
@@ -420,13 +438,12 @@ The script doing the actual co-registration. Uses wrapper functions from OpenFmr
 \end{itemize}
 
 \subsection{do\_makemasksandlabels.sh (Q)}
+\label{sec:msklbl}
 example: sh do\_makemasksandlabels.sh\\
 
 \noindent Uses FreeSurfer reconstruction to create masks for CSF, gray matter and white matter and creates labeled volume for use within retinotopy containing left / right + gray / white matter. All masks will be created as full-brain and partial-brain masks.\\
 
 \noindent If the orientation needs to be changed, parse the respective FreeSurfer compatible orientation parameter (\href{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri_convert.help.xml.html}{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri\_convert.help.xml.html})\\
-
-\noindent example: sh do\_makemasksandlabels.sh
 
 \noindent Under the hood:
 \begin{itemize}
@@ -438,8 +455,6 @@ example: sh do\_makemasksandlabels.sh\\
 \subsection{do\_movesinglevolume.sh}
 Simple wrapper function to apply a transformation from one volumetric space to another, given a transformation matrix.\\
 
-\noindent example: sh do\_movesinglevolume.sh
-
 \noindent Under the hood:
 \begin{itemize}
 \item flirt -applyxfm -in \$1 -ref \$1 -init \$2 -out \$3
@@ -448,9 +463,8 @@ Simple wrapper function to apply a transformation from one volumetric space to a
 \end{itemize}
 
 \subsection{do\_tseriesinterpolation.sh}
+\label{sec:tseriesinterp}
 Wrapper function for do\_tseriesinterpolation.m Variables used by do\_tseriesinterpolation.m can be defined in the header section of the script.
-
-\noindent example: do\_tseriesinterpolation.sh
 
 \noindent Under the hood:
 \begin{itemize}
@@ -479,8 +493,6 @@ Interpolates time series for retinotopy scans to match the number of frames duri
 \label{sec:splitanalyzePRF.sh}
 Wrapper function to call do\_analyzePRF.sh The function calls a predefined number of instances of do\_analyzePRF.sh to run on the cluster, submitted using qsub. Per default 80~jobs requesting 6~GB of memory each (see Section~\ref{sec:analyzePRF.sh}), will be spawned. This procedure speeds up the population receptive field estimation significantly and would be otherwise impractical on high resolution functional data.\\
 
-\noindent example: sh do\_split\_analyzePRF.sh
-
 \subsection{do\_analyzePRF.sh}
 \label{sec:analyzePRF.sh}
 Wrapper function to call do\_analyzePRF.m Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.\\
@@ -501,17 +513,15 @@ Computes pRF mapping implemeting "analyzePRF" from the analyzePRF toolbox. It ca
 \end{itemize}
 
 \subsection{combine\_split\_PRF\_results.sh}
+\label{sec:combsplt}
 Wrapper function for combine\_split\_PRF\_results.m Combines split results from do\_split\_analyzePRF.sh (see Section~\ref{sec:splitanalyzePRF.sh}). Note that the exact amount of parts that the data was split into must be defined here (default: 80).\\
-
-\noindent example: sh combine\_split\_PRF\_results.sh
 
 \subsection{combine\_split\_PRF\_results.m}
 Combines split results from do\_split\_analyzePRF.sh (see Section~\ref{sec:splitanalyzePRF.sh}) into a single MATLAB file. Note that given the respective numerical naming of all parts (x\_of\_X) parts will be concatenated along values of x. After this operation split parts will be deleted.
 
 \subsection{make\_PRF\_overlays.sh}
+\label{sec:mkprfO}
 Wrapper function for make\_PRF\_overlays.m
-
-\noindent example: sh make\_PRF\_overlays.sh
 
 \subsection{make\_PRF\_overlays.m}
 Takes result of pRF mapping and creates .nii files for separate parameters (ang, ecc, expt, r2, rfsize, xpos, ypos). The data will be saved in ../4\_retinotopy as parameterName\_map.nii\\
@@ -525,6 +535,7 @@ Takes result of pRF mapping and creates .nii files for separate parameters (ang,
 \end{itemize}
 
 \subsection{makeOverlays.sh (Q)}
+\label{sec:mkOver}
 Makes FreeSurfer compatible overlays from NiFTI files. Calls FreeSurfer's "mri\_vol2surf" in order to transform a volumetric .nii file into a surface file. This will be done for both hemispheres separately. Parameters transformed to surface files are: ang, ecc, xpos, ypos, r2\\
 
 \noindent Under the hood:
@@ -539,20 +550,26 @@ Makes FreeSurfer compatible overlays from NiFTI files. Calls FreeSurfer's "mri\_
 \end{itemize}
 
 \subsection{GUI2ROIs.sh}
+\label{sec:GUI2ROI}
+This script spawns an instance for tksurfer (FreeSurfer)
 
 \subsection{labels2masks.sh (Q)}
+\label{sec:lbl2msk}
 
 \subsection{expandROIs.sh}
+\label{sec:expROI}
 
 \subsection{expandROIs.m}
 
 \subsection{tc\_expandVoxelSelection.m}
 
 \subsection{do\_getLayers.sh}
+\label{sec:getLyr}
 
 \subsection{do\_getLayers.m}
 
 \subsection{do\_getLayerWeights.sh}
+\label{sec:getLyrW}
 
 \subsection{do\_getLayerWeights.m}
 
@@ -563,6 +580,17 @@ Makes FreeSurfer compatible overlays from NiFTI files. Calls FreeSurfer's "mri\_
 \label{sec:pipelines}
 \subsection{Scripts}
 \subsection{using Tommy's Scriptinator 3000 TM}
+\label{sec:scriptinator}
+Tommy's Scriptinator 3000 TM is a graphical user interface that allows drag and drop based arrangements of scripts on a canvas. The code of the script as well as defined variables can directly be viewed by double clicking one of the icons representing a script (examples below). This way analysis pipelines can easily be comprehended and shared. Tommy's Scriptinator 3000 TM can be downloaded from:\\
+
+\href{https://github.com/TommyClausner/Scriptinator/}{https://github.com/TommyClausner/Scriptinator/}\\
+
+\noindent It requires at least JDK9 or newer to be installed:\\
+
+\href{http://www.oracle.com/technetwork/java/javase/downloads/}{http://www.oracle.com/technetwork/java/javase/downloads/}\\
+
+\noindent After downloading the repository from GitHub, one can start the program by double clicking Scriptinator.jar. All further help will be provided from there.
+
 
 \begin{figure}[h]
 \begin{center}
