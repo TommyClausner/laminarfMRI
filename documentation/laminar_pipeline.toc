@@ -1,41 +1,55 @@
 \contentsline {section}{\numberline {1}Pre- requisites}{6}{section.1}
 \contentsline {section}{\numberline {2}Folder structure}{6}{section.2}
-\contentsline {section}{\numberline {3}How things work}{7}{section.3}
+\contentsline {section}{\numberline {3}How things work}{6}{section.3}
 \contentsline {section}{\numberline {4}Suggested order of operations}{7}{section.4}
 \contentsline {subsection}{\numberline {4.1}Pre-processing}{7}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Retinotopy}{10}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Functional laminar analysis}{10}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.2}Co-registration and masks}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Retinotopy}{10}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}laminar separation}{10}{subsection.4.4}
 \contentsline {section}{\numberline {5}qsub}{10}{section.5}
-\contentsline {section}{\numberline {6}Helper files}{12}{section.6}
-\contentsline {subsection}{\numberline {6.1}acquisition\_parameters.txt}{12}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}b02b0.cnf}{12}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}RetStim.mat}{12}{subsection.6.3}
-\contentsline {section}{\numberline {7}Scripts explained (support for runonqsub.sh: Q)}{12}{section.7}
-\contentsline {subsection}{\numberline {7.1}runonqsub.sh}{12}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}cleanscriptsfolder.sh}{13}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}makenewsubject.sh}{13}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}setupfolders.sh (Q)}{13}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}checkhelperfiles.sh (Q)}{13}{subsection.7.5}
-\contentsline {subsection}{\numberline {7.6}do\_preparefunctionals.sh (Q)}{14}{subsection.7.6}
-\contentsline {subsection}{\numberline {7.7}do\_fsrecon.sh (Q)}{14}{subsection.7.7}
-\contentsline {subsection}{\numberline {7.8}do\_makemasksandlabels.sh (Q)}{14}{subsection.7.8}
-\contentsline {subsection}{\numberline {7.9}do\_realignment.sh (Q)}{15}{subsection.7.9}
-\contentsline {subsection}{\numberline {7.10}do\_preparecoregistration.sh (Q)}{15}{subsection.7.10}
-\contentsline {subsection}{\numberline {7.11}do\_correctavgdiff.sh (Q)}{15}{subsection.7.11}
-\contentsline {subsection}{\numberline {7.12}do\_coregistration.sh}{16}{subsection.7.12}
-\contentsline {subsection}{\numberline {7.13}do\_coregistration.m}{16}{subsection.7.13}
-\contentsline {subsection}{\numberline {7.14}do\_distcorr.sh (Q)}{16}{subsection.7.14}
-\contentsline {subsection}{\numberline {7.15}do\_prepareapplytopup.sh (Q)}{17}{subsection.7.15}
-\contentsline {subsection}{\numberline {7.16}transmats2topup.sh}{17}{subsection.7.16}
-\contentsline {subsection}{\numberline {7.17}transmats2topup.m}{18}{subsection.7.17}
-\contentsline {subsection}{\numberline {7.18}tc\_transmat2vec.m}{18}{subsection.7.18}
-\contentsline {subsection}{\numberline {7.19}mergetransforms.sh}{18}{subsection.7.19}
-\contentsline {subsection}{\numberline {7.20}do\_applydistcorr.sh (Q)}{18}{subsection.7.20}
-\contentsline {subsection}{\numberline {7.21}do\_prepareretinotopy.sh (Q)}{18}{subsection.7.21}
-\contentsline {subsection}{\numberline {7.22}do\_retinotopy.sh}{19}{subsection.7.22}
-\contentsline {subsection}{\numberline {7.23}do\_retinotopy.m}{19}{subsection.7.23}
-\contentsline {subsection}{\numberline {7.24}meanT.sh (Q)}{19}{subsection.7.24}
-\contentsline {subsection}{\numberline {7.25}matmul.sh}{19}{subsection.7.25}
-\contentsline {subsection}{\numberline {7.26}multiply\_all\_M\_in\_A\_with\_B.sh}{19}{subsection.7.26}
-\contentsline {subsection}{\numberline {7.27}file2plot.sh}{20}{subsection.7.27}
-\contentsline {subsection}{\numberline {7.28}liveupdateqsub.sh}{20}{subsection.7.28}
+\contentsline {section}{\numberline {6}Helper files}{13}{section.6}
+\contentsline {subsection}{\numberline {6.1}acquisition\_parameters.txt}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}b02b0.cnf}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}params.mat}{13}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}images.mat}{13}{subsection.6.4}
+\contentsline {section}{\numberline {7}Scripts explained (support for runonqsub.sh: Q)}{13}{section.7}
+\contentsline {subsection}{\numberline {7.1}runonqsub.sh}{13}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}cleanscriptsfolder.sh}{14}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}liveupdateqsub.sh}{14}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}waitForJobs.sh}{14}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}makenewsubject.sh}{15}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}setupfolders.sh (Q)}{15}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.7}do\_preparefunctionals.sh (Q)}{15}{subsection.7.7}
+\contentsline {subsection}{\numberline {7.8}do\_realignment.sh (Q)}{15}{subsection.7.8}
+\contentsline {subsection}{\numberline {7.9}do\_distcorr.sh (Q)}{16}{subsection.7.9}
+\contentsline {subsection}{\numberline {7.10}do\_applysimpledistcorr.sh (Q)}{16}{subsection.7.10}
+\contentsline {subsection}{\numberline {7.11}do\_preparecoregistration.sh (Q)}{17}{subsection.7.11}
+\contentsline {subsection}{\numberline {7.12}do\_correctavgdiff.sh (Q)}{17}{subsection.7.12}
+\contentsline {subsection}{\numberline {7.13}do\_fsrecon.sh (Q)}{17}{subsection.7.13}
+\contentsline {subsection}{\numberline {7.14}do\_coregistration.sh}{18}{subsection.7.14}
+\contentsline {subsection}{\numberline {7.15}do\_coregistration.m}{18}{subsection.7.15}
+\contentsline {subsection}{\numberline {7.16}do\_makemasksandlabels.sh (Q)}{18}{subsection.7.16}
+\contentsline {subsection}{\numberline {7.17}do\_movesinglevolume.sh}{19}{subsection.7.17}
+\contentsline {subsection}{\numberline {7.18}do\_tseriesinterpolation.sh}{19}{subsection.7.18}
+\contentsline {subsection}{\numberline {7.19}do\_tseriesinterpolation.m}{19}{subsection.7.19}
+\contentsline {subsection}{\numberline {7.20}do\_split\_analyzePRF.sh}{20}{subsection.7.20}
+\contentsline {subsection}{\numberline {7.21}do\_analyzePRF.sh}{20}{subsection.7.21}
+\contentsline {subsection}{\numberline {7.22}do\_analyzePRF.m}{20}{subsection.7.22}
+\contentsline {subsection}{\numberline {7.23}combine\_split\_PRF\_results.sh}{21}{subsection.7.23}
+\contentsline {subsection}{\numberline {7.24}combine\_split\_PRF\_results.m}{21}{subsection.7.24}
+\contentsline {subsection}{\numberline {7.25}make\_PRF\_overlays.sh}{21}{subsection.7.25}
+\contentsline {subsection}{\numberline {7.26}make\_PRF\_overlays.m}{21}{subsection.7.26}
+\contentsline {subsection}{\numberline {7.27}makeOverlays.sh (Q)}{21}{subsection.7.27}
+\contentsline {subsection}{\numberline {7.28}GUI2ROIs.sh}{22}{subsection.7.28}
+\contentsline {subsection}{\numberline {7.29}labels2masks.sh (Q)}{22}{subsection.7.29}
+\contentsline {subsection}{\numberline {7.30}expandROIs.sh}{22}{subsection.7.30}
+\contentsline {subsection}{\numberline {7.31}expandROIs.m}{22}{subsection.7.31}
+\contentsline {subsection}{\numberline {7.32}tc\_expandVoxelSelection.m}{22}{subsection.7.32}
+\contentsline {subsection}{\numberline {7.33}do\_getLayers.sh}{22}{subsection.7.33}
+\contentsline {subsection}{\numberline {7.34}do\_getLayers.m}{22}{subsection.7.34}
+\contentsline {subsection}{\numberline {7.35}do\_getLayerWeights.sh}{22}{subsection.7.35}
+\contentsline {subsection}{\numberline {7.36}do\_getLayerWeights.m}{22}{subsection.7.36}
+\contentsline {section}{\numberline {8}Selecting visual areas based on pRF mapping}{22}{section.8}
+\contentsline {section}{\numberline {9}Pipelines}{22}{section.9}
+\contentsline {subsection}{\numberline {9.1}Scripts}{22}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}using Tommy's Scriptinator 3000 TM}{22}{subsection.9.2}

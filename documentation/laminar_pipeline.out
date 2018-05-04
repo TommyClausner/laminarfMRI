@@ -3,39 +3,53 @@
 \BOOKMARK [1][-]{section.3}{How things work}{}% 3
 \BOOKMARK [1][-]{section.4}{Suggested order of operations}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{Pre-processing}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Retinotopy}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{Functional laminar analysis}{section.4}% 7
-\BOOKMARK [1][-]{section.5}{qsub}{}% 8
-\BOOKMARK [1][-]{section.6}{Helper files}{}% 9
-\BOOKMARK [2][-]{subsection.6.1}{acquisition\137parameters.txt}{section.6}% 10
-\BOOKMARK [2][-]{subsection.6.2}{b02b0.cnf}{section.6}% 11
-\BOOKMARK [2][-]{subsection.6.3}{RetStim.mat}{section.6}% 12
-\BOOKMARK [1][-]{section.7}{Scripts explained \(support for runonqsub.sh: Q\)}{}% 13
-\BOOKMARK [2][-]{subsection.7.1}{runonqsub.sh}{section.7}% 14
-\BOOKMARK [2][-]{subsection.7.2}{cleanscriptsfolder.sh}{section.7}% 15
-\BOOKMARK [2][-]{subsection.7.3}{makenewsubject.sh}{section.7}% 16
-\BOOKMARK [2][-]{subsection.7.4}{setupfolders.sh \(Q\)}{section.7}% 17
-\BOOKMARK [2][-]{subsection.7.5}{checkhelperfiles.sh \(Q\)}{section.7}% 18
-\BOOKMARK [2][-]{subsection.7.6}{do\137preparefunctionals.sh \(Q\)}{section.7}% 19
-\BOOKMARK [2][-]{subsection.7.7}{do\137fsrecon.sh \(Q\)}{section.7}% 20
-\BOOKMARK [2][-]{subsection.7.8}{do\137makemasksandlabels.sh \(Q\)}{section.7}% 21
-\BOOKMARK [2][-]{subsection.7.9}{do\137realignment.sh \(Q\)}{section.7}% 22
-\BOOKMARK [2][-]{subsection.7.10}{do\137preparecoregistration.sh \(Q\)}{section.7}% 23
-\BOOKMARK [2][-]{subsection.7.11}{do\137correctavgdiff.sh \(Q\)}{section.7}% 24
-\BOOKMARK [2][-]{subsection.7.12}{do\137coregistration.sh}{section.7}% 25
-\BOOKMARK [2][-]{subsection.7.13}{do\137coregistration.m}{section.7}% 26
-\BOOKMARK [2][-]{subsection.7.14}{do\137distcorr.sh \(Q\)}{section.7}% 27
-\BOOKMARK [2][-]{subsection.7.15}{do\137prepareapplytopup.sh \(Q\)}{section.7}% 28
-\BOOKMARK [2][-]{subsection.7.16}{transmats2topup.sh}{section.7}% 29
-\BOOKMARK [2][-]{subsection.7.17}{transmats2topup.m}{section.7}% 30
-\BOOKMARK [2][-]{subsection.7.18}{tc\137transmat2vec.m}{section.7}% 31
-\BOOKMARK [2][-]{subsection.7.19}{mergetransforms.sh}{section.7}% 32
-\BOOKMARK [2][-]{subsection.7.20}{do\137applydistcorr.sh \(Q\)}{section.7}% 33
-\BOOKMARK [2][-]{subsection.7.21}{do\137prepareretinotopy.sh \(Q\)}{section.7}% 34
-\BOOKMARK [2][-]{subsection.7.22}{do\137retinotopy.sh}{section.7}% 35
-\BOOKMARK [2][-]{subsection.7.23}{do\137retinotopy.m}{section.7}% 36
-\BOOKMARK [2][-]{subsection.7.24}{meanT.sh \(Q\)}{section.7}% 37
-\BOOKMARK [2][-]{subsection.7.25}{matmul.sh}{section.7}% 38
-\BOOKMARK [2][-]{subsection.7.26}{multiply\137all\137M\137in\137A\137with\137B.sh}{section.7}% 39
-\BOOKMARK [2][-]{subsection.7.27}{file2plot.sh}{section.7}% 40
-\BOOKMARK [2][-]{subsection.7.28}{liveupdateqsub.sh}{section.7}% 41
+\BOOKMARK [2][-]{subsection.4.2}{Co-registration and masks}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Retinotopy}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{laminar separation}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{qsub}{}% 9
+\BOOKMARK [1][-]{section.6}{Helper files}{}% 10
+\BOOKMARK [2][-]{subsection.6.1}{acquisition\137parameters.txt}{section.6}% 11
+\BOOKMARK [2][-]{subsection.6.2}{b02b0.cnf}{section.6}% 12
+\BOOKMARK [2][-]{subsection.6.3}{params.mat}{section.6}% 13
+\BOOKMARK [2][-]{subsection.6.4}{images.mat}{section.6}% 14
+\BOOKMARK [1][-]{section.7}{Scripts explained \(support for runonqsub.sh: Q\)}{}% 15
+\BOOKMARK [2][-]{subsection.7.1}{runonqsub.sh}{section.7}% 16
+\BOOKMARK [2][-]{subsection.7.2}{cleanscriptsfolder.sh}{section.7}% 17
+\BOOKMARK [2][-]{subsection.7.3}{liveupdateqsub.sh}{section.7}% 18
+\BOOKMARK [2][-]{subsection.7.4}{waitForJobs.sh}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.5}{makenewsubject.sh}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.6}{setupfolders.sh \(Q\)}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.7}{do\137preparefunctionals.sh \(Q\)}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.8}{do\137realignment.sh \(Q\)}{section.7}% 23
+\BOOKMARK [2][-]{subsection.7.9}{do\137distcorr.sh \(Q\)}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.10}{do\137applysimpledistcorr.sh \(Q\)}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.11}{do\137preparecoregistration.sh \(Q\)}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.12}{do\137correctavgdiff.sh \(Q\)}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.13}{do\137fsrecon.sh \(Q\)}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.14}{do\137coregistration.sh}{section.7}% 29
+\BOOKMARK [2][-]{subsection.7.15}{do\137coregistration.m}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.16}{do\137makemasksandlabels.sh \(Q\)}{section.7}% 31
+\BOOKMARK [2][-]{subsection.7.17}{do\137movesinglevolume.sh}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.18}{do\137tseriesinterpolation.sh}{section.7}% 33
+\BOOKMARK [2][-]{subsection.7.19}{do\137tseriesinterpolation.m}{section.7}% 34
+\BOOKMARK [2][-]{subsection.7.20}{do\137split\137analyzePRF.sh}{section.7}% 35
+\BOOKMARK [2][-]{subsection.7.21}{do\137analyzePRF.sh}{section.7}% 36
+\BOOKMARK [2][-]{subsection.7.22}{do\137analyzePRF.m}{section.7}% 37
+\BOOKMARK [2][-]{subsection.7.23}{combine\137split\137PRF\137results.sh}{section.7}% 38
+\BOOKMARK [2][-]{subsection.7.24}{combine\137split\137PRF\137results.m}{section.7}% 39
+\BOOKMARK [2][-]{subsection.7.25}{make\137PRF\137overlays.sh}{section.7}% 40
+\BOOKMARK [2][-]{subsection.7.26}{make\137PRF\137overlays.m}{section.7}% 41
+\BOOKMARK [2][-]{subsection.7.27}{makeOverlays.sh \(Q\)}{section.7}% 42
+\BOOKMARK [2][-]{subsection.7.28}{GUI2ROIs.sh}{section.7}% 43
+\BOOKMARK [2][-]{subsection.7.29}{labels2masks.sh \(Q\)}{section.7}% 44
+\BOOKMARK [2][-]{subsection.7.30}{expandROIs.sh}{section.7}% 45
+\BOOKMARK [2][-]{subsection.7.31}{expandROIs.m}{section.7}% 46
+\BOOKMARK [2][-]{subsection.7.32}{tc\137expandVoxelSelection.m}{section.7}% 47
+\BOOKMARK [2][-]{subsection.7.33}{do\137getLayers.sh}{section.7}% 48
+\BOOKMARK [2][-]{subsection.7.34}{do\137getLayers.m}{section.7}% 49
+\BOOKMARK [2][-]{subsection.7.35}{do\137getLayerWeights.sh}{section.7}% 50
+\BOOKMARK [2][-]{subsection.7.36}{do\137getLayerWeights.m}{section.7}% 51
+\BOOKMARK [1][-]{section.8}{Selecting visual areas based on pRF mapping}{}% 52
+\BOOKMARK [1][-]{section.9}{Pipelines}{}% 53
+\BOOKMARK [2][-]{subsection.9.1}{Scripts}{section.9}% 54
+\BOOKMARK [2][-]{subsection.9.2}{using Tommy's Scriptinator 3000 TM}{section.9}% 55
