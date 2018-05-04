@@ -28,7 +28,8 @@
 \newpage
 \listoftables
 \newpage
-\section{Pre- requisites}
+\section{Before starting}
+\subsection{Pre- requisites}
 \begin{itemize}
 \item MRIcron (\href{https://www.nitrc.org/projects/mricron}{https://www.nitrc.org/projects/mricron})
 \item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki})
@@ -43,7 +44,7 @@
 
 Use e.g. MRIcron's dicom2nii to convert raw MRI data to NifTi files.\\
 
-\section{Folder structure}
+\subsection{Folder structure}
 The general folder structure is set up by a call to setupfolders.sh (see also Figure \ref{tree:folderstruct})
 \begin{itemize}
 \item Functional data must be located in niftis/\textbf{functionals}/
@@ -53,7 +54,7 @@ The general folder structure is set up by a call to setupfolders.sh (see also Fi
 \item Inverted proton density data must be located in niftis/\textbf{pdinverted}/
 \end{itemize}
 
-\section{How things work}
+\subsection{How things work}
 Parts of the analysis run in Bash shell scripts. Those can be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the coresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in a individual section.\\
 
 \noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.
@@ -573,10 +574,10 @@ This script spawns an instance for tksurfer (FreeSurfer)
 
 \subsection{do\_getLayerWeights.m}
 
-\section{Selecting visual areas based on pRF mapping}
+\section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}
 
-\section{Pipelines}
+\section{How to: Pipelines}
 \label{sec:pipelines}
 \subsection{Scripts}
 \subsection{using Tommy's Scriptinator 3000 TM}
