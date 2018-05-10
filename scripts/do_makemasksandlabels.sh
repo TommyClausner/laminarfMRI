@@ -62,10 +62,10 @@ export SUBJECTS_DIR=$DIR
 DIR=$DIR/2_coregistration
 cd $DIR
 #optional --out_orientation PSL or RAS or you name it
-mri_convert $orient -rt nearest --reslice_like $DIR/../niftis/t1/* $DIR/../0_freesurfer/mri/orig.mgz t1.nii.gz
-mri_convert $orient -rt nearest --reslice_like $DIR/../niftis/t1/* $DIR/../0_freesurfer/mri/ribbon.mgz t1ribbon.nii.gz
-mri_convert $orient -rt nearest --reslice_like $DIR/../niftis/t1/* $DIR/../0_freesurfer/mri/brain.mgz t1brain.nii.gz
-mri_convert $orient -rt nearest --reslice_like $DIR/../niftis/t1/* $DIR/../0_freesurfer/mri/aparc+aseg.mgz t1segmented.nii.gz
+mri_convert $orient -rt nearest --reslice_like $DIR/../rawData/niftis/t1/* $DIR/../0_freesurfer/mri/orig.mgz t1.nii.gz
+mri_convert $orient -rt nearest --reslice_like $DIR/../rawData/niftis/t1/* $DIR/../0_freesurfer/mri/ribbon.mgz t1ribbon.nii.gz
+mri_convert $orient -rt nearest --reslice_like $DIR/../rawData/niftis/t1/* $DIR/../0_freesurfer/mri/brain.mgz t1brain.nii.gz
+mri_convert $orient -rt nearest --reslice_like $DIR/../rawData/niftis/t1/* $DIR/../0_freesurfer/mri/aparc+aseg.mgz t1segmented.nii.gz
 # create labeled volume for retinotopy
 fslmaths t1ribbon.nii.gz -thr 2 -uthr 2 -bin -mul 3 lh.wm
 fslmaths t1ribbon.nii.gz -thr 41 -uthr 41 -bin -mul 4 rh.wm

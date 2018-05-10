@@ -5,7 +5,7 @@ tvm_installOpenFmriAnalysisToolbox;
 % numLayers = 3;
 % revol = MCTemplateThrCont
 
-mainpath = [mainpath filesep '..']
+mainpath = [mainpath filesep '..'];
 
 numberOfLayers = numLayers;
 configuration = [];

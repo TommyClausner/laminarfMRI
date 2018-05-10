@@ -28,10 +28,22 @@ mkdir 4_retinotopy
 
 mkdir 5_laminar
 
-mkdir niftis
-mkdir niftis/functionals
-mkdir niftis/functionals/old
-mkdir niftis/t1
-mkdir niftis/inverted
-mkdir niftis/pd
-mkdir niftis/pdinverted
+mkdir 6_EEG
+
+mkdir rawData
+mkdir rawData/eegfiles
+mkdir rawData/eyetrackerfiles
+mkdir rawData/electrodes
+mkdir rawData/electrodes/photogrammetry
+mkdir rawData/electrodes/photogrammetry/photographs
+mkdir rawData/electrodes/photogrammetry/photographs/masks
+mkdir rawData/electrodes/photogrammetry/photoscanfiles
+mkdir rawData/electrodes/photogrammetry/3Dobject
+mkdir rawData/electrodes/polhemus
+mkdir rawData/niftis
+mkdir rawData/niftis/functionals
+mkdir rawData/niftis/functionals/old
+mkdir rawData/niftis/t1
+mkdir rawData/niftis/inverted
+mkdir rawData/niftis/pd
+mkdir rawData/niftis/pdinverted
