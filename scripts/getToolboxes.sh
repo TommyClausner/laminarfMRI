@@ -58,6 +58,35 @@ else
 git clone https://github.com/TommyClausner/$whichOne
 fi
 
+whichOne=tc_functions
+if [ -d $whichOne" ]
+then
+cd $whichOne
+git pull
+cd ..
+else
+git clone https://github.com/TommyClausner/$whichOne
+fi
+
+whichOne=Pipeline
+if [ -d $whichOne" ]
+then
+cd $whichOne
+git pull
+cd ..
+else
+git clone https://github.com/Washington-University/$whichOne
+fi
+
+whichOne=Workbench
+if [ -d $whichOne" ]
+then
+cd $whichOne
+git pull
+cd ..
+else
+git clone https://github.com/Washington-University/$whichOne
+fi
 echo Please goto the following websites and download the software manually:
 echo http://www.fil.ion.ucl.ac.uk/spm/software/download/
 echo https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
