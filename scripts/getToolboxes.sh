@@ -76,7 +76,7 @@ git clone https://github.com/TommyClausner/$whichOne
 fi
 fi
 
-whichOne=Pipeline
+whichOne=Pipelines
 if [ -d "$whichOne" ]
 then
 cd $whichOne
