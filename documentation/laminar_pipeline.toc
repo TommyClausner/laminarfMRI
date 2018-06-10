@@ -7,51 +7,74 @@
 \contentsline {subsection}{\numberline {2.2}Co-registration and masks}{8}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}Retinotopy}{8}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}laminar separation}{9}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}EEG processing}{10}{subsection.2.5}
 \contentsline {section}{\numberline {3}qsub}{10}{section.3}
-\contentsline {section}{\numberline {4}Helper files}{12}{section.4}
-\contentsline {subsection}{\numberline {4.1}acquisition\_parameters.txt}{12}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}b02b0.cnf}{12}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}params.mat}{12}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}images.mat}{12}{subsection.4.4}
-\contentsline {section}{\numberline {5}Scripts explained (support for runonqsub.sh: Q)}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}getToolboxes.sh}{12}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}runonqsub.sh}{13}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}cleanscriptsfolder.sh}{13}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}liveupdateqsub.sh}{13}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}waitForJobs.sh}{14}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}makenewsubject.sh}{14}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}setupfolders.sh (Q)}{14}{subsection.5.7}
-\contentsline {subsection}{\numberline {5.8}do\_preparefunctionals.sh (Q)}{14}{subsection.5.8}
-\contentsline {subsection}{\numberline {5.9}do\_realignment.sh (Q)}{14}{subsection.5.9}
-\contentsline {subsection}{\numberline {5.10}do\_distcorr.sh (Q)}{15}{subsection.5.10}
-\contentsline {subsection}{\numberline {5.11}do\_applysimpledistcorr.sh (Q)}{15}{subsection.5.11}
-\contentsline {subsection}{\numberline {5.12}do\_preparecoregistration.sh (Q)}{16}{subsection.5.12}
-\contentsline {subsection}{\numberline {5.13}do\_correctavgdiff.sh (Q)}{16}{subsection.5.13}
-\contentsline {subsection}{\numberline {5.14}do\_fsrecon.sh (Q)}{16}{subsection.5.14}
-\contentsline {subsection}{\numberline {5.15}do\_coregistration.sh}{16}{subsection.5.15}
-\contentsline {subsection}{\numberline {5.16}do\_coregistration.m}{17}{subsection.5.16}
-\contentsline {subsection}{\numberline {5.17}do\_makemasksandlabels.sh (Q)}{17}{subsection.5.17}
-\contentsline {subsection}{\numberline {5.18}do\_movesinglevolume.sh}{17}{subsection.5.18}
-\contentsline {subsection}{\numberline {5.19}do\_tseriesinterpolation.sh}{18}{subsection.5.19}
-\contentsline {subsection}{\numberline {5.20}do\_tseriesinterpolation.m}{18}{subsection.5.20}
-\contentsline {subsection}{\numberline {5.21}do\_split\_analyzePRF.sh}{18}{subsection.5.21}
-\contentsline {subsection}{\numberline {5.22}do\_analyzePRF.sh}{19}{subsection.5.22}
-\contentsline {subsection}{\numberline {5.23}do\_analyzePRF.m}{19}{subsection.5.23}
-\contentsline {subsection}{\numberline {5.24}combine\_split\_PRF\_results.sh}{19}{subsection.5.24}
-\contentsline {subsection}{\numberline {5.25}combine\_split\_PRF\_results.m}{19}{subsection.5.25}
-\contentsline {subsection}{\numberline {5.26}make\_PRF\_overlays.sh}{19}{subsection.5.26}
-\contentsline {subsection}{\numberline {5.27}make\_PRF\_overlays.m}{20}{subsection.5.27}
-\contentsline {subsection}{\numberline {5.28}makeOverlays.sh (Q)}{20}{subsection.5.28}
-\contentsline {subsection}{\numberline {5.29}GUI2ROIs.sh}{20}{subsection.5.29}
-\contentsline {subsection}{\numberline {5.30}labels2masks.sh (Q)}{21}{subsection.5.30}
-\contentsline {subsection}{\numberline {5.31}expandROIs.sh}{21}{subsection.5.31}
-\contentsline {subsection}{\numberline {5.32}expandROIs.m}{21}{subsection.5.32}
-\contentsline {subsection}{\numberline {5.33}tc\_expandVoxelSelection.m}{21}{subsection.5.33}
-\contentsline {subsection}{\numberline {5.34}do\_getLayers.sh}{21}{subsection.5.34}
-\contentsline {subsection}{\numberline {5.35}do\_getLayers.m}{21}{subsection.5.35}
-\contentsline {subsection}{\numberline {5.36}do\_getLayerWeights.sh}{21}{subsection.5.36}
-\contentsline {subsection}{\numberline {5.37}do\_getLayerWeights.m}{21}{subsection.5.37}
-\contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{21}{section.6}
-\contentsline {section}{\numberline {7}How to: Pipelines}{21}{section.7}
-\contentsline {subsection}{\numberline {7.1}Scripts}{21}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Tommy's Scriptinator 3000 TM}{21}{subsection.7.2}
+\contentsline {section}{\numberline {4}Helper files}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}acquisition\_parameters.txt}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}b02b0.cnf}{14}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}params.mat}{14}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}images.mat}{14}{subsection.4.4}
+\contentsline {section}{\numberline {5}Scripts explained (support for runonqsub.sh: Q)}{14}{section.5}
+\contentsline {subsection}{\numberline {5.1}getToolboxes.sh}{14}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}runonqsub.sh}{15}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}cleanscriptsfolder.sh}{15}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}liveupdateqsub.sh}{15}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}waitForJobs.sh}{16}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}makenewsubject.sh}{16}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}setupfolders.sh (Q)}{16}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}do\_preparefunctionals.sh (Q)}{16}{subsection.5.8}
+\contentsline {subsection}{\numberline {5.9}do\_realignment.sh (Q)}{16}{subsection.5.9}
+\contentsline {subsection}{\numberline {5.10}do\_distcorr.sh (Q)}{17}{subsection.5.10}
+\contentsline {subsection}{\numberline {5.11}do\_applysimpledistcorr.sh (Q)}{17}{subsection.5.11}
+\contentsline {subsection}{\numberline {5.12}do\_preparecoregistration.sh (Q)}{18}{subsection.5.12}
+\contentsline {subsection}{\numberline {5.13}do\_correctavgdiff.sh (Q)}{18}{subsection.5.13}
+\contentsline {subsection}{\numberline {5.14}do\_fsrecon.sh (Q)}{18}{subsection.5.14}
+\contentsline {subsection}{\numberline {5.15}do\_coregistration.sh}{18}{subsection.5.15}
+\contentsline {subsection}{\numberline {5.16}do\_coregistration.m}{19}{subsection.5.16}
+\contentsline {subsection}{\numberline {5.17}do\_makemasksandlabels.sh (Q)}{19}{subsection.5.17}
+\contentsline {subsection}{\numberline {5.18}do\_movesinglevolume.sh}{19}{subsection.5.18}
+\contentsline {subsection}{\numberline {5.19}do\_tseriesinterpolation.sh}{20}{subsection.5.19}
+\contentsline {subsection}{\numberline {5.20}do\_tseriesinterpolation.m}{20}{subsection.5.20}
+\contentsline {subsection}{\numberline {5.21}do\_split\_analyzePRF.sh}{20}{subsection.5.21}
+\contentsline {subsection}{\numberline {5.22}do\_analyzePRF.sh}{21}{subsection.5.22}
+\contentsline {subsection}{\numberline {5.23}do\_analyzePRF.m}{21}{subsection.5.23}
+\contentsline {subsection}{\numberline {5.24}combine\_split\_PRF\_results.sh}{21}{subsection.5.24}
+\contentsline {subsection}{\numberline {5.25}combine\_split\_PRF\_results.m}{21}{subsection.5.25}
+\contentsline {subsection}{\numberline {5.26}make\_PRF\_overlays.sh}{21}{subsection.5.26}
+\contentsline {subsection}{\numberline {5.27}make\_PRF\_overlays.m}{22}{subsection.5.27}
+\contentsline {subsection}{\numberline {5.28}makeOverlays.sh (Q)}{22}{subsection.5.28}
+\contentsline {subsection}{\numberline {5.29}GUI2ROIs.sh}{22}{subsection.5.29}
+\contentsline {subsection}{\numberline {5.30}labels2masks.sh (Q)}{24}{subsection.5.30}
+\contentsline {subsection}{\numberline {5.31}expandROIs.sh}{24}{subsection.5.31}
+\contentsline {subsection}{\numberline {5.32}expandROIs.m}{24}{subsection.5.32}
+\contentsline {subsection}{\numberline {5.33}tc\_expandVoxelSelection.m}{24}{subsection.5.33}
+\contentsline {subsection}{\numberline {5.34}do\_getLayers.sh}{24}{subsection.5.34}
+\contentsline {subsection}{\numberline {5.35}do\_getLayers.m}{24}{subsection.5.35}
+\contentsline {subsection}{\numberline {5.36}do\_getLayerWeights.sh}{24}{subsection.5.36}
+\contentsline {subsection}{\numberline {5.37}do\_getLayerWeights.m}{24}{subsection.5.37}
+\contentsline {subsection}{\numberline {5.38}do\_EEGpreprocessing.sh}{24}{subsection.5.38}
+\contentsline {subsection}{\numberline {5.39}do\_EEGpreprocessing.m}{24}{subsection.5.39}
+\contentsline {subsection}{\numberline {5.40}do\_EEGprepareFS.sh}{24}{subsection.5.40}
+\contentsline {subsection}{\numberline {5.41}do\_EEGprepareHeadmodel.sh}{24}{subsection.5.41}
+\contentsline {subsection}{\numberline {5.42}do\_EEGprepareHeadmodel.m}{24}{subsection.5.42}
+\contentsline {subsection}{\numberline {5.43}do\_EEGelectrodeRegistration.m}{24}{subsection.5.43}
+\contentsline {subsection}{\numberline {5.44}do\_EEGprepareSourcemodel.sh}{24}{subsection.5.44}
+\contentsline {subsection}{\numberline {5.45}do\_EEGprepareSourcemodel.m}{24}{subsection.5.45}
+\contentsline {subsection}{\numberline {5.46}do\_EEGtimelock.sh}{24}{subsection.5.46}
+\contentsline {subsection}{\numberline {5.47}do\_EEGtimelock.m}{24}{subsection.5.47}
+\contentsline {subsection}{\numberline {5.48}do\_EEGsplitBeamformer.sh}{24}{subsection.5.48}
+\contentsline {subsection}{\numberline {5.49}do\_EEGbeamformer.sh}{24}{subsection.5.49}
+\contentsline {subsection}{\numberline {5.50}do\_EEGbeamformer.m}{24}{subsection.5.50}
+\contentsline {subsection}{\numberline {5.51}do\_EEGsplitVirtualChannel.sh}{24}{subsection.5.51}
+\contentsline {subsection}{\numberline {5.52}do\_EEGvirtualChannel.sh}{24}{subsection.5.52}
+\contentsline {subsection}{\numberline {5.53}do\_EEGvirtualChannel.m}{24}{subsection.5.53}
+\contentsline {subsection}{\numberline {5.54}do\_EEGsplitFreqOnVirtChan.sh}{24}{subsection.5.54}
+\contentsline {subsection}{\numberline {5.55}do\_EEGfreqOnVirtChan.sh}{24}{subsection.5.55}
+\contentsline {subsection}{\numberline {5.56}do\_EEGfreqOnVirtChan.m}{24}{subsection.5.56}
+\contentsline {subsection}{\numberline {5.57}do\_EEGfreqChanSelect.sh}{24}{subsection.5.57}
+\contentsline {subsection}{\numberline {5.58}do\_EEGfreqChanSelect.m}{24}{subsection.5.58}
+\contentsline {subsection}{\numberline {5.59}EEGvisualizeVirtualChannel.m}{24}{subsection.5.59}
+\contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{24}{section.6}
+\contentsline {section}{\numberline {7}How to: Pipelines}{24}{section.7}
+\contentsline {subsection}{\numberline {7.1}Scripts}{24}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Tommy's Scriptinator 3000 TM}{24}{subsection.7.2}

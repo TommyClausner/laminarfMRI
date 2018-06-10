@@ -7,51 +7,74 @@
 \BOOKMARK [2][-]{subsection.2.2}{Co-registration and masks}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.3}{Retinotopy}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.4}{laminar separation}{section.2}% 9
-\BOOKMARK [1][-]{section.3}{qsub}{}% 10
-\BOOKMARK [1][-]{section.4}{Helper files}{}% 11
-\BOOKMARK [2][-]{subsection.4.1}{acquisition\137parameters.txt}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.2}{b02b0.cnf}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.3}{params.mat}{section.4}% 14
-\BOOKMARK [2][-]{subsection.4.4}{images.mat}{section.4}% 15
-\BOOKMARK [1][-]{section.5}{Scripts explained \(support for runonqsub.sh: Q\)}{}% 16
-\BOOKMARK [2][-]{subsection.5.1}{getToolboxes.sh}{section.5}% 17
-\BOOKMARK [2][-]{subsection.5.2}{runonqsub.sh}{section.5}% 18
-\BOOKMARK [2][-]{subsection.5.3}{cleanscriptsfolder.sh}{section.5}% 19
-\BOOKMARK [2][-]{subsection.5.4}{liveupdateqsub.sh}{section.5}% 20
-\BOOKMARK [2][-]{subsection.5.5}{waitForJobs.sh}{section.5}% 21
-\BOOKMARK [2][-]{subsection.5.6}{makenewsubject.sh}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.7}{setupfolders.sh \(Q\)}{section.5}% 23
-\BOOKMARK [2][-]{subsection.5.8}{do\137preparefunctionals.sh \(Q\)}{section.5}% 24
-\BOOKMARK [2][-]{subsection.5.9}{do\137realignment.sh \(Q\)}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.10}{do\137distcorr.sh \(Q\)}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.11}{do\137applysimpledistcorr.sh \(Q\)}{section.5}% 27
-\BOOKMARK [2][-]{subsection.5.12}{do\137preparecoregistration.sh \(Q\)}{section.5}% 28
-\BOOKMARK [2][-]{subsection.5.13}{do\137correctavgdiff.sh \(Q\)}{section.5}% 29
-\BOOKMARK [2][-]{subsection.5.14}{do\137fsrecon.sh \(Q\)}{section.5}% 30
-\BOOKMARK [2][-]{subsection.5.15}{do\137coregistration.sh}{section.5}% 31
-\BOOKMARK [2][-]{subsection.5.16}{do\137coregistration.m}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.17}{do\137makemasksandlabels.sh \(Q\)}{section.5}% 33
-\BOOKMARK [2][-]{subsection.5.18}{do\137movesinglevolume.sh}{section.5}% 34
-\BOOKMARK [2][-]{subsection.5.19}{do\137tseriesinterpolation.sh}{section.5}% 35
-\BOOKMARK [2][-]{subsection.5.20}{do\137tseriesinterpolation.m}{section.5}% 36
-\BOOKMARK [2][-]{subsection.5.21}{do\137split\137analyzePRF.sh}{section.5}% 37
-\BOOKMARK [2][-]{subsection.5.22}{do\137analyzePRF.sh}{section.5}% 38
-\BOOKMARK [2][-]{subsection.5.23}{do\137analyzePRF.m}{section.5}% 39
-\BOOKMARK [2][-]{subsection.5.24}{combine\137split\137PRF\137results.sh}{section.5}% 40
-\BOOKMARK [2][-]{subsection.5.25}{combine\137split\137PRF\137results.m}{section.5}% 41
-\BOOKMARK [2][-]{subsection.5.26}{make\137PRF\137overlays.sh}{section.5}% 42
-\BOOKMARK [2][-]{subsection.5.27}{make\137PRF\137overlays.m}{section.5}% 43
-\BOOKMARK [2][-]{subsection.5.28}{makeOverlays.sh \(Q\)}{section.5}% 44
-\BOOKMARK [2][-]{subsection.5.29}{GUI2ROIs.sh}{section.5}% 45
-\BOOKMARK [2][-]{subsection.5.30}{labels2masks.sh \(Q\)}{section.5}% 46
-\BOOKMARK [2][-]{subsection.5.31}{expandROIs.sh}{section.5}% 47
-\BOOKMARK [2][-]{subsection.5.32}{expandROIs.m}{section.5}% 48
-\BOOKMARK [2][-]{subsection.5.33}{tc\137expandVoxelSelection.m}{section.5}% 49
-\BOOKMARK [2][-]{subsection.5.34}{do\137getLayers.sh}{section.5}% 50
-\BOOKMARK [2][-]{subsection.5.35}{do\137getLayers.m}{section.5}% 51
-\BOOKMARK [2][-]{subsection.5.36}{do\137getLayerWeights.sh}{section.5}% 52
-\BOOKMARK [2][-]{subsection.5.37}{do\137getLayerWeights.m}{section.5}% 53
-\BOOKMARK [1][-]{section.6}{How to: Selecting visual areas based on pRF mapping}{}% 54
-\BOOKMARK [1][-]{section.7}{How to: Pipelines}{}% 55
-\BOOKMARK [2][-]{subsection.7.1}{Scripts}{section.7}% 56
-\BOOKMARK [2][-]{subsection.7.2}{Tommy's Scriptinator 3000 TM}{section.7}% 57
+\BOOKMARK [2][-]{subsection.2.5}{EEG processing}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{qsub}{}% 11
+\BOOKMARK [1][-]{section.4}{Helper files}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{acquisition\137parameters.txt}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{b02b0.cnf}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{params.mat}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.4}{images.mat}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Scripts explained \(support for runonqsub.sh: Q\)}{}% 17
+\BOOKMARK [2][-]{subsection.5.1}{getToolboxes.sh}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.2}{runonqsub.sh}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.3}{cleanscriptsfolder.sh}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.4}{liveupdateqsub.sh}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.5}{waitForJobs.sh}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.6}{makenewsubject.sh}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.7}{setupfolders.sh \(Q\)}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.8}{do\137preparefunctionals.sh \(Q\)}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.9}{do\137realignment.sh \(Q\)}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.10}{do\137distcorr.sh \(Q\)}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.11}{do\137applysimpledistcorr.sh \(Q\)}{section.5}% 28
+\BOOKMARK [2][-]{subsection.5.12}{do\137preparecoregistration.sh \(Q\)}{section.5}% 29
+\BOOKMARK [2][-]{subsection.5.13}{do\137correctavgdiff.sh \(Q\)}{section.5}% 30
+\BOOKMARK [2][-]{subsection.5.14}{do\137fsrecon.sh \(Q\)}{section.5}% 31
+\BOOKMARK [2][-]{subsection.5.15}{do\137coregistration.sh}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.16}{do\137coregistration.m}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.17}{do\137makemasksandlabels.sh \(Q\)}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.18}{do\137movesinglevolume.sh}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.19}{do\137tseriesinterpolation.sh}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.20}{do\137tseriesinterpolation.m}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.21}{do\137split\137analyzePRF.sh}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.22}{do\137analyzePRF.sh}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.23}{do\137analyzePRF.m}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.24}{combine\137split\137PRF\137results.sh}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.25}{combine\137split\137PRF\137results.m}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.26}{make\137PRF\137overlays.sh}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.27}{make\137PRF\137overlays.m}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.28}{makeOverlays.sh \(Q\)}{section.5}% 45
+\BOOKMARK [2][-]{subsection.5.29}{GUI2ROIs.sh}{section.5}% 46
+\BOOKMARK [2][-]{subsection.5.30}{labels2masks.sh \(Q\)}{section.5}% 47
+\BOOKMARK [2][-]{subsection.5.31}{expandROIs.sh}{section.5}% 48
+\BOOKMARK [2][-]{subsection.5.32}{expandROIs.m}{section.5}% 49
+\BOOKMARK [2][-]{subsection.5.33}{tc\137expandVoxelSelection.m}{section.5}% 50
+\BOOKMARK [2][-]{subsection.5.34}{do\137getLayers.sh}{section.5}% 51
+\BOOKMARK [2][-]{subsection.5.35}{do\137getLayers.m}{section.5}% 52
+\BOOKMARK [2][-]{subsection.5.36}{do\137getLayerWeights.sh}{section.5}% 53
+\BOOKMARK [2][-]{subsection.5.37}{do\137getLayerWeights.m}{section.5}% 54
+\BOOKMARK [2][-]{subsection.5.38}{do\137EEGpreprocessing.sh}{section.5}% 55
+\BOOKMARK [2][-]{subsection.5.39}{do\137EEGpreprocessing.m}{section.5}% 56
+\BOOKMARK [2][-]{subsection.5.40}{do\137EEGprepareFS.sh}{section.5}% 57
+\BOOKMARK [2][-]{subsection.5.41}{do\137EEGprepareHeadmodel.sh}{section.5}% 58
+\BOOKMARK [2][-]{subsection.5.42}{do\137EEGprepareHeadmodel.m}{section.5}% 59
+\BOOKMARK [2][-]{subsection.5.43}{do\137EEGelectrodeRegistration.m}{section.5}% 60
+\BOOKMARK [2][-]{subsection.5.44}{do\137EEGprepareSourcemodel.sh}{section.5}% 61
+\BOOKMARK [2][-]{subsection.5.45}{do\137EEGprepareSourcemodel.m}{section.5}% 62
+\BOOKMARK [2][-]{subsection.5.46}{do\137EEGtimelock.sh}{section.5}% 63
+\BOOKMARK [2][-]{subsection.5.47}{do\137EEGtimelock.m}{section.5}% 64
+\BOOKMARK [2][-]{subsection.5.48}{do\137EEGsplitBeamformer.sh}{section.5}% 65
+\BOOKMARK [2][-]{subsection.5.49}{do\137EEGbeamformer.sh}{section.5}% 66
+\BOOKMARK [2][-]{subsection.5.50}{do\137EEGbeamformer.m}{section.5}% 67
+\BOOKMARK [2][-]{subsection.5.51}{do\137EEGsplitVirtualChannel.sh}{section.5}% 68
+\BOOKMARK [2][-]{subsection.5.52}{do\137EEGvirtualChannel.sh}{section.5}% 69
+\BOOKMARK [2][-]{subsection.5.53}{do\137EEGvirtualChannel.m}{section.5}% 70
+\BOOKMARK [2][-]{subsection.5.54}{do\137EEGsplitFreqOnVirtChan.sh}{section.5}% 71
+\BOOKMARK [2][-]{subsection.5.55}{do\137EEGfreqOnVirtChan.sh}{section.5}% 72
+\BOOKMARK [2][-]{subsection.5.56}{do\137EEGfreqOnVirtChan.m}{section.5}% 73
+\BOOKMARK [2][-]{subsection.5.57}{do\137EEGfreqChanSelect.sh}{section.5}% 74
+\BOOKMARK [2][-]{subsection.5.58}{do\137EEGfreqChanSelect.m}{section.5}% 75
+\BOOKMARK [2][-]{subsection.5.59}{EEGvisualizeVirtualChannel.m}{section.5}% 76
+\BOOKMARK [1][-]{section.6}{How to: Selecting visual areas based on pRF mapping}{}% 77
+\BOOKMARK [1][-]{section.7}{How to: Pipelines}{}% 78
+\BOOKMARK [2][-]{subsection.7.1}{Scripts}{section.7}% 79
+\BOOKMARK [2][-]{subsection.7.2}{Tommy's Scriptinator 3000 TM}{section.7}% 80

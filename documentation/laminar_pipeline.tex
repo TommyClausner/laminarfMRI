@@ -150,6 +150,33 @@ maximum memory required & approx time required\\\toprule
 \item sh do\_getLayerWeights.sh
 \item using pipeline: sh laminar.sh
 \end{itemize}
+
+\subsection{EEG processing}
+The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $8-32~Hz$ and $40-80~Hz$ respectively.\\
+A FEM forward model will be used as well as a anatomical constraint source model.\\
+
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+$>500~GB$ & $\approx 24h+user$ \\\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
+\item sh do\_EEGpreprocessing.sh
+\item sh do\_EEGprepareFS.sh
+\item sh do\_EEGprepareHeadmodel.sh
+\item sh do\_EEGelectrodeRegistration.m (inside a MATLAB instance)
+\item sh do\_EEGprepareSourcemodel.sh
+\item sh do\_EEGtimelock.sh
+\item sh do\_EEGsplitBeamformer.sh
+\item sh do\_EEGsplitVirtualChannel.sh
+\item sh do\_EEGsplitFreqOnVirtChan.sh
+\item sh do\_EEGfreqChanSelect.sh
+\end{itemize}
+
+
 \section{qsub}
 Scripts that are flagged with the (Q) can be run as a qsub job.
 
@@ -177,6 +204,7 @@ script & memory required & time required\\\hline
 	do\_makemasksandlabels.sh & 16GB & $\approx 1min$ \\\hline
 	do\_tseriesinterpolation.sh & 64GB & $\approx 20min$ \\\hline
 	do\_split\_analyzePRF.sh & 480GB & $\approx 7h$ \\\hline
+  do\_analyzePRF.sh & 6GB & $\approx 7h$ \\\hline
 	combine\_split\_PRF\_results.sh & 64GB & $\approx 10min$ \\\hline
   make\_PRF\_overlays.sh & 16GB & $\approx 10min$ \\\hline
 	makeOverlays.sh & 16GB & $\approx 5min$\\\hline
@@ -184,7 +212,20 @@ script & memory required & time required\\\hline
   labels2masks.sh & 8GB & $\approx 10s$ \\\hline
   expandROIs.sh & 16GB & $\approx 3min$ \\\hline
   do\_getLayers.sh & 16GB & $\approx 20min$ \\\hline
-  do\_getLayerWeights.sh & 16GB & $\approx 5min$ \\\bottomrule
+  do\_getLayerWeights.sh & 16GB & $\approx 5min$ \\\hline
+  do\_EEGpreprocessing.sh & 16GB & $\approx 30min$ \\\hline
+  do\_EEGprepareFS.sh & 8GB & $\approx XXXmin$ \\\hline
+  do\_EEGprepareHeadmodel.sh & 32GB & $\approx XXXmin$ \\\hline
+  do\_EEGelectrodeRegistration.sh & 16GB & user dependent \\\hline
+  do\_EEGprepareSourcemodel.sh & 32GB & $\approx XXXmin$ \\\hline
+  do\_EEGtimelock.sh & 16GB & $\approx XXXmin$ \\\hline
+  do\_EEGsplitBeamformer.sh & 480GB & $\approx 5h$ \\\hline
+  do\_EEGbeamformer.sh & 60GB & $\approx 5h$ \\\hline
+  do\_EEGsplitVirtualChannel.sh & 240GB & $\approx 5h$ \\\hline
+  do\_EEGvirtualChannel.sh & 30GB & $\approx 5h$ \\\hline
+  do\_EEGsplitFreqOnVirtChan.sh & 480GB & $\approx 5h$ \\\hline
+  do\_EEGfreqOnVirtChan.sh & 30GB & $\approx 5h$ \\\hline
+  do\_EEGfreqChanSelect.sh & 128GB & $\approx 30min$ \\\bottomrule
 \end{tabular}
 \caption[Approximated time and memory requirements when running on qsub]{Approximated time and memory requirements for the respective script to run. Note that everything that is more than 4GB should be run on the cluster. Use runonqsub.sh for that purpose.}
 \label{tab:hardwarerequirements}
@@ -582,6 +623,60 @@ This script spawns an instance for tksurfer (FreeSurfer)
 \label{sec:getLyrW}
 
 \subsection{do\_getLayerWeights.m}
+
+\subsection{do\_EEGpreprocessing.sh}
+\label{sec:EEGpreproc}
+
+\subsection{do\_EEGpreprocessing.m}
+
+\subsection{do\_EEGprepareFS.sh}
+\label{sec:prepFS4EEG}
+
+\subsection{do\_EEGprepareHeadmodel.sh}
+\label{sec:prepHM}
+
+\subsection{do\_EEGprepareHeadmodel.m}
+
+\subsection{do\_EEGelectrodeRegistration.m}
+\label{sec:elecReg}
+
+\subsection{do\_EEGprepareSourcemodel.sh}
+\label{sec:prepSM}
+
+\subsection{do\_EEGprepareSourcemodel.m}
+
+\subsection{do\_EEGtimelock.sh}
+\label{sec:timelock}
+
+\subsection{do\_EEGtimelock.m}
+
+\subsection{do\_EEGsplitBeamformer.sh}
+\label{sec:beamf}
+
+\subsection{do\_EEGbeamformer.sh}
+
+\subsection{do\_EEGbeamformer.m}
+
+\subsection{do\_EEGsplitVirtualChannel.sh}
+\label{sec:virtch}
+
+\subsection{do\_EEGvirtualChannel.sh}
+
+\subsection{do\_EEGvirtualChannel.m}
+
+\subsection{do\_EEGsplitFreqOnVirtChan.sh}
+\label{sec:freqVirt}
+
+\subsection{do\_EEGfreqOnVirtChan.sh}
+
+\subsection{do\_EEGfreqOnVirtChan.m}
+
+\subsection{do\_EEGfreqChanSelect.sh}
+\label{sec:selchan}
+
+\subsection{do\_EEGfreqChanSelect.m}
+
+\subsection{EEGvisualizeVirtualChannel.m}
 
 \section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}
