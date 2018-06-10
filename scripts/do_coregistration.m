@@ -1,7 +1,10 @@
+%%
+if ~exist('mainpath','var')
+    mainpath='/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts';
+    cd(mainpath)
+end
 
-
-
-addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes']))
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
 tvm_installOpenFmriAnalysisToolbox;
 
 %%

@@ -5,15 +5,15 @@
 ### Scriptinator ###
 
 # General information #
-# label=do_split_analyzePRF
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_split_analyzePRF.sh
+# label=do_EEGsplitBeamformer
+# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_EEGsplitBeamformer.sh
 # useqsub=false
-# shortLabel=saPRF
+# shortLabel=spBeam
 
 ### Script ###
 
 # Input Variables and Paths #
-splitparts=80
+splitparts=4
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -30,16 +30,22 @@ NewMiscVar0=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
+for k in `seq 1 2`
+do
 for i in `seq 1 $splitparts`
 do
-$DIR/do_analyzePRF.sh $i $splitparts &
+$DIR/do_EEGbeamformer.sh $i $k &
 sleep 2s
 if [[ $i -eq 1 ]]
 then
 PIDstart=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
 fi
 done
+done
 PIDend=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
-sh $DIR/waitForJobs.sh $PIDstart $PIDend
-
-
+while [[ $(qstat -u tomcla | grep -o [R,Q] | wc -l) -gt 2 ]] 
+#because two header lines
+do 
+sleep 2s
+done
+sh $DIR/do_EEGsplitVirtualChannel.sh

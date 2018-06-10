@@ -1,9 +1,18 @@
-
-addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes']))
-tvm_installOpenFmriAnalysisToolbox;
 %%
-% numLayers = 3;
-% revol = MCTemplateThrCont
+if ~exist('mainpath','var')
+    mainpath='/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts';
+    cd(mainpath)
+end
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+tvm_installOpenFmriAnalysisToolbox
+
+%%
+if ~exist('numLayers','var')
+    numLayers=3;
+end
+if ~exist('revol','var')
+    revol='MCTemplateThrCont';
+end
 
 mainpath = [mainpath filesep '..'];
 

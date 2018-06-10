@@ -1,8 +1,11 @@
-% mainpath=['P:' filesep '3018037.01' filesep 'Experiment3.2_ERC' filesep 'tommys_folder' filesep 'fMRI_pipeline' filesep 'P31' filesep 'B_scripts'];
-cd([mainpath filesep '..' filesep '4_retinotopy'])
-disp('setting up environment...')
-addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes']))
-disp('done.')
+%%
+if ~exist('mainpath','var')
+    mainpath='/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts';
+    cd(mainpath)
+end
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+tvm_installOpenFmriAnalysisToolbox
+%%
 
 disp('loading data...')
 filetouse=[mainpath filesep '..' filesep '2_coregistration' filesep 'fctgraymattercoreg.nii'];

@@ -1,6 +1,13 @@
+%%
+if ~exist('mainpath','var')
+    mainpath='/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts';
+    cd(mainpath)
+end
+addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'analyzePRF']))
+addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'knkutils']))
 
-% mainpath=['P:' filesep '3018037.01' filesep 'Experiment3.2_ERC' filesep 'tommys_folder' filesep 'fMRI_pipeline' filesep 'P31' filesep 'B_scripts'];
 
+%%
 %parts=5;
 %partnum=5;
 
