@@ -32,15 +32,20 @@
 \subsection{Pre- requisites}
 \label{sec:prereq}
 \begin{itemize}
-\item MRIcron (\href{https://www.nitrc.org/projects/mricron}{https://www.nitrc.org/projects/mricron})
-\item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki})
-\item FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})
-\item SPM (\href{http://www.fil.ion.ucl.ac.uk/spm/}{http://www.fil.ion.ucl.ac.uk/spm/})
 \item analysePRF (\href{http://kendrickkay.net/analyzePRF/}{http://kendrickkay.net/analyzePRF/})
+\item FieldTrip (\href{https://github.com/fieldtrip/fieldtrip}{https://github.com/fieldtrip/fieldtrip})
+\item FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})
+\item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki})
 \item knkutils (\href {https://github.com/kendrickkay/knkutils/}{https://github.com/kendrickkay/knkutils/})
-\item Open fMRI Analysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{https://github.com/TimVanMourik/OpenFmriAnalysis})
 \item MATLAB R2015a or later (\href{https://nl.mathworks.com/products/matlab.html}{https://nl.mathworks.com/products/matlab.html})
+\item MRIcron (\href{https://www.nitrc.org/projects/mricron}{https://www.nitrc.org/projects/mricron})
+\item Open fMRI Analysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{https://github.com/TimVanMourik/OpenFmriAnalysis})
+\item Pipeline (\href{https://github.com/Washington-University/Pipeline}{https://github.com/Washington-University/Pipeline})
+\item SPM (\href{http://www.fil.ion.ucl.ac.uk/spm/}{http://www.fil.ion.ucl.ac.uk/spm/})
+\item tc\_functions (optional; \href{https://github.com/TommyClausner/tc\_functions}{https://github.com/TommyClausner/tc\_functions})
 \item Tommy's Scriptinator 3000 TM (optional; \href{https://github.com/TommyClausner/Scriptinator}{https://github.com/TommyClausner/Scriptinator})
+\item VistaSoft (\href{https://github.com/vistalab/vistasoft}{https://github.com/vistalab/vistasoft})
+\item Workbench (\href{https://github.com/Washington-University/Workbench}{https://github.com/Washington-University/Workbench})
 \end{itemize}
 
 \noindent Use e.g. MRIcron's dicom2nii to convert raw MRI data to NifTi files.\\
@@ -51,15 +56,15 @@
 \label{sec:dirstruct}
 The general folder structure is set up by a call to setupfolders.sh (see also Figure \ref{tree:folderstruct})
 \begin{itemize}
-\item Functional data must be located in niftis/\textbf{functionals}/
-\item Anatomical data must be located in niftis/\textbf{t1}/
-\item Inverted functional data must be located in niftis/\textbf{inverted}/
-\item Proton density data must be located in niftis/\textbf{pd}/
-\item Inverted proton density data must be located in niftis/\textbf{pdinverted}/
+\item Functional data must be located in rawData/niftis/\textbf{functionals}/
+\item Anatomical data must be located in in rawData/niftis/\textbf{t1}/
+\item Inverted functional data must be located in in rawData/niftis/\textbf{inverted}/
+\item Proton density data must be located in in rawData/niftis/\textbf{pd}/
+\item Inverted proton density data must be located in in rawData/niftis/\textbf{pdinverted}/
 \end{itemize}
 
 \subsection{How things work}
-Parts of the analysis run in Bash shell scripts. Those can be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the coresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in a individual section.\\
+Parts of the analysis run in Bash shell scripts. Those can be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in an individual section.\\
 
 \noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.
 
@@ -160,7 +165,7 @@ A FEM forward model will be used as well as a anatomical constraint source model
 \begin{tabular}{l | r}
 \toprule
 maximum memory required & approx time required\\\toprule
-$>500~GB$ & $\approx 24h+user$ \\\bottomrule
+$>960~GB$ & $\approx 24h+user$ \\\bottomrule
 \end{tabular}
 \end{table}
 \begin{itemize}
@@ -224,8 +229,8 @@ script & memory required & time required\\\hline
   do\_EEGbeamformer.sh & 60GB & $\approx 5h$ \\\hline
   do\_EEGsplitVirtualChannel.sh & 240GB & $\approx 5h$ \\\hline
   do\_EEGvirtualChannel.sh & 30GB & $\approx 5h$ \\\hline
-  do\_EEGsplitFreqOnVirtChan.sh & 480GB & $\approx 5h$ \\\hline
-  do\_EEGfreqOnVirtChan.sh & 30GB & $\approx 5h$ \\\hline
+  do\_EEGsplitFreqOnVirtChan.sh & 960GB & $\approx 5h$ \\\hline
+  do\_EEGfreqOnVirtChan.sh & 60GB & $\approx 5h$ \\\hline
   do\_EEGfreqChanSelect.sh & 128GB & $\approx 30min$ \\\bottomrule
 \end{tabular}
 \caption[Approximated time and memory requirements when running on qsub]{Approximated time and memory requirements for the respective script to run. Note that everything that is more than 4GB should be run on the cluster. Use runonqsub.sh for that purpose.}
@@ -260,10 +265,7 @@ script & memory required & time required\\\hline
   }
   [Analysis folder
 [toolboxes/
-    [analyzePRF-1.1/]
-    [knkutils-master/]
-    [OpenFmriAnalysis-master/]
-    [spm12/]
+    [see Section \ref{sec:prereq}]
   ]
 [S\#/ (set up by setupfolders.sh or when created using makenewsubject.sh)
   [0\_freesurfer/
@@ -317,6 +319,7 @@ script & memory required & time required\\\hline
     ]
 ]
 [template\_session/
+[metascripts/]
 [template\_helperfiles/
 	[acquisition\_parameters.txt]
   [b02b0.cnf]
@@ -643,53 +646,111 @@ This script spawns an instance for tksurfer (FreeSurfer)
 
 \subsection{do\_EEGpreprocessing.sh}
 \label{sec:EEGpreproc}
+Wrapper function for running do\_EEGpreprocessing.m via qsub
 
 \subsection{do\_EEGpreprocessing.m}
+Does a basic preprocessing to the data. First trigger values will be extracted and trials are defined according to the specifications in the script. Further only EEG channels are selected. The Data is downsampled to $1024~Hz$. This in-between step is stored. Afterwards the data is further split into different sets of band pass filtered data. Note, that the noise structure will be different for high and low frequencies and thus this step is highly recommendable. Per default two band pass filters are chosen ($2-32~Hz$ and $30-100~Hz$). The baseline period will be from $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. For the high frequency case a dft filter to filter line noise is applied. Using the default version of this function will store the computed data using the respective filter settings as a prefix. However if desired trials can / should be excluded in this step as well.\\
+
+\noindent Under the hood (uses the following fieldtrip functions):
+\begin{itemize}
+\item ft\_definetrial (sets up trial definition according to predefiend trigger values in the data)
+\item ft\_preprocessing (selects EEG channel)
+\item ft\_redefinetrial (defines channel and creates trials)
+\item ft\_resampledata (downsampling)
+\item ft\_preprocessing (frequency filters)
+\item (ft\_rejectvisual()) (trial rejection)
+\end{itemize}
 
 \subsection{do\_EEGprepareFS.sh}
 \label{sec:prepFS4EEG}
+Prepares FreeSurfer output such that it can be used for the creation of the headmodel / sourcemodel.
 
 \subsection{do\_EEGprepareHeadmodel.sh}
 \label{sec:prepHM}
+Wrapper function for running do\_EEGprepareHeadmodel.m via Qsub
 
 \subsection{do\_EEGprepareHeadmodel.m}
+Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz\\
+
+Models will have the following properties:
+\begin{table}[h]
+\centering
+\begin{tabular}{l | l | l}
+\toprule
+Model & Propertiy & Value\\\hline
+  FEM mesh & cfg.output & \{'gray','white','csf','skull','scalp'\}\\\hline
+   & cfg.scalpsmooth & 10\\\hline
+   & cfg.method & 'hexahedral'\\\hline
+   & cfg.shift & 0.3\\\hline
+  FEM & cfg.method & 'simbio'\\\hline
+   & cfg.conductivity & [0.33 0.14 1.79 0.01 0.43]\\\midrule
+ BEM mesh & cfg.output & \{'brain','skull','scalp'\}\\\hline
+  & cfg.method & 'projectmesh'\\\hline
+  & cfg.numvertices & [1000 2000 3000]\\\hline
+ BEM & cfg.method & 'openmeeg'\\\hline
+  & cfg.conductivity & [0.33 0.01 0.43]\\\bottomrule
+\end{tabular}
+\caption[Specifications for creating headmodel]{Specifications for creating headmodel.}
+\label{tab:BEMFEMprop}
+\end{table}
+Underlying FieldTrip functions are:
+\begin{itemize}
+\item ft\_volumesegment (segments anatomical data into distinct structures (e.g. skull))
+\item ft\_prepare\_mesh (sets up 3D mesh for head model preparation)
+\item ft\_prepare\_headmodel (creates the conductivity model)
+\end{itemize}
 
 \subsection{do\_EEGelectrodeRegistration.m}
 \label{sec:elecReg}
+This function cannot be run using Qsub or a headless MATLAB instance, since it requires user interaction via a graphical user interface. The script will load the respective data, save and exit (after the user is done). Since this script is just a wrapper function for ft\_electroderealign I will refer to the corresponding FieldTrip documentation: \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}
 
 \subsection{do\_EEGprepareSourcemodel.sh}
 \label{sec:prepSM}
+Wrapper function for running do\_EEGprepareSourcemodel.m via Qsub
 
 \subsection{do\_EEGprepareSourcemodel.m}
+Sets up sourcemodel (dipole model) for source analysis using the result of do\_EEGprepareFS.sh
 
 \subsection{do\_EEGtimelock.sh}
 \label{sec:timelock}
+Wrapper function for running do\_EEGtimelock.m via Qsub
 
 \subsection{do\_EEGtimelock.m}
+Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call ft\_timelockanalysis using cfg.keeptrials = 'yes'. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis} for more information.
 
 \subsection{do\_EEGsplitBeamformer.sh}
 \label{sec:beamf}
+Wrapper function to call do\_EEGbeamformer.sh The function calls a predefined number of instances of do\_EEGbeamformer.sh to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGbeamformer.sh}
+Wrapper function for running do\_EEGbeamformer.m via Qsub
 
 \subsection{do\_EEGbeamformer.m}
+Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $10\%$
 
 \subsection{do\_EEGsplitVirtualChannel.sh}
 \label{sec:virtch}
+Wrapper function to call do\_EEGvirtualChannel.sh The function calls a predefined number of instances of do\_EEGvirtualChannel.sh to run on the cluster, submitted using qsub. Per default 8~jobs requesting 30~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGvirtualChannel.sh}
+Wrapper function for running do\_EEGvirtualChannel.m via Qsub
 
 \subsection{do\_EEGvirtualChannel.m}
+Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.
 
 \subsection{do\_EEGsplitFreqOnVirtChan.sh}
 \label{sec:freqVirt}
+Wrapper function to call do\_EEGfreqOnVirtChan.sh The function calls a predefined number of instances of do\_EEGfreqOnVirtChan.sh to run on the cluster, submitted using qsub. Per default 16~jobs requesting 60~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGfreqOnVirtChan.sh}
+Wrapper function for running do\_EEGfreqOnVirtChan.m via Qsub
 
 \subsection{do\_EEGfreqOnVirtChan.m}
+Computes time-frequency analysis for virtual channel data using ft\_freqanalysis. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}.
 
 \subsection{do\_EEGfreqChanSelect.sh}
 \label{sec:selchan}
+Wrapper function for running do\_EEGfreqChanSelect.m via Qsub
 
 \subsection{do\_EEGfreqChanSelect.m}
 
