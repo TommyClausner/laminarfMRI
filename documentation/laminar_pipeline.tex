@@ -152,7 +152,7 @@ maximum memory required & approx time required\\\toprule
 \end{itemize}
 
 \subsection{EEG processing}
-The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $8-32~Hz$ and $40-80~Hz$ respectively.\\
+The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $2-32~Hz$ and $30-100~Hz$ respectively.\\
 A FEM forward model will be used as well as a anatomical constraint source model.\\
 
 \begin{table}[h]
@@ -165,6 +165,7 @@ $>500~GB$ & $\approx 24h+user$ \\\bottomrule
 \end{table}
 \begin{itemize}
 \item sh do\_EEGpreprocessing.sh
+\item (sh runonqsub.sh 16gb do\_fsrecon.sh)
 \item sh do\_EEGprepareFS.sh
 \item sh do\_EEGprepareHeadmodel.sh
 \item sh do\_EEGelectrodeRegistration.m (inside a MATLAB instance)
@@ -218,7 +219,7 @@ script & memory required & time required\\\hline
   do\_EEGprepareHeadmodel.sh & 32GB & $\approx XXXmin$ \\\hline
   do\_EEGelectrodeRegistration.sh & 16GB & user dependent \\\hline
   do\_EEGprepareSourcemodel.sh & 32GB & $\approx XXXmin$ \\\hline
-  do\_EEGtimelock.sh & 16GB & $\approx XXXmin$ \\\hline
+  do\_EEGtimelock.sh & 16GB & $\approx 5min$ \\\hline
   do\_EEGsplitBeamformer.sh & 480GB & $\approx 5h$ \\\hline
   do\_EEGbeamformer.sh & 60GB & $\approx 5h$ \\\hline
   do\_EEGsplitVirtualChannel.sh & 240GB & $\approx 5h$ \\\hline
@@ -235,7 +236,7 @@ script & memory required & time required\\\hline
 \begin{figure}
 \caption{Initial folder structure as required for the analysis}
 \vspace{10pt}
-{\footnotesize
+{\scriptsize
 \begin{forest}
   for tree={
     font=\ttfamily,
@@ -277,6 +278,8 @@ script & memory required & time required\\\hline
   ]
   [5\_laminar/
   ]
+  [6\_EEG/
+  ]
   [A\_helperfiles/
     [acquisition\_parameters.txt]
     [b02b0.cnf]
@@ -291,13 +294,27 @@ script & memory required & time required\\\hline
   ]
   [C\_miscResults/
   ]
-  [niftis/
-  [functionals/]
-  [inverted/]
-  [pd/]
-  [pdinverted/]
-  [t1/]
-  ]
+    [rawData/
+      [niftis/
+      [functionals/]
+      [inverted/]
+      [pd/]
+      [pdinverted/]
+      [t1/]
+      ]
+      [eegfiles/]
+      [electrodes/
+        [photogrammetry/
+          [3Dobject/]
+          [photographs/
+            [masks/]
+          ]
+          [photoscanfiles/]
+        ]
+        [polhemus/]
+      ]
+      [eyetrackerfiles/]
+    ]
 ]
 [template\_session/
 [template\_helperfiles/
