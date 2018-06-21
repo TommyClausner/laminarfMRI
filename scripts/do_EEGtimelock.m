@@ -11,7 +11,7 @@ ft_defaults
 
 noiseEstWin=[-0.5 -0.1];
 
-sel_={'BP40_80','BP8_32'};
+sel_={'BP30_100','BP2_32'};
 
 prefix='TL_';
 

@@ -58,7 +58,7 @@ end
 
 Selprefix='TCsel';
 
-filters2use=[40,80;8,32];
+filters2use=[30,100;2,32];
 for n=1:2
     filterPassBand=filters2use(n,:);
     timeBaseline=[-0.5 -0.1];

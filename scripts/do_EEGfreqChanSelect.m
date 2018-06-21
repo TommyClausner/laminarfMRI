@@ -11,19 +11,18 @@ addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_func
 %% avg over blocks
 Selprefix='TF';
 
-blocks=[1,2,3,4];
-filters={'BP8_32','BP40_80'};
+blocks=[1, 2, 3, 4];
+filters={'BP8_32','BP8_32beta','BP40_80'};
 
 ROIs={'centV1_lhV1','centV1_rhV1'};
 
-timeWinMax = [0.2 1.2]; % in s
-BLwin = [-0.2 0];
+timeWinMax = [0.1 1.39]; % in s
 
-freqROIs={'alphaBeta', 'gamma'};
+freqROIs={'alpha','beta', 'gamma'};
 
 ROIalpha = [8,12];
-ROIbeta  = [18,28];
-ROIgamma = [60,80];
+ROIbeta  = [22.5,27.5];
+ROIgamma = [50,70];
 
 dataTemplate = struct(...
     'ROI',[],...
@@ -31,7 +30,7 @@ dataTemplate = struct(...
     'freqROI','',...
     'freqROIfreq',[],...
     'filterBand',[],...
-    'baselineWin',BLwin,...
+    'baselineWin',[],...
     'tROI',timeWinMax,...
     'ft_freqanalysis',{struct()},...
     'results',...
@@ -48,44 +47,56 @@ VirtChanData=[];
 
 for filter=filters
     
+    filtername=split(filter{1},'beta');
+    
     tmp_band=split(filter{1},'_');
     dataTemplate.filterBand=[str2double(tmp_band{1}(3:end)),str2double(tmp_band{2})];
     
     switch filter{1}
         case 'BP40_80'
-            dataTemplate.freqROI=freqROIs{2};
-            dataTemplate.freqROIfreq=ROIgamma;
+            dataTemplate.freqROI=freqROIs{3};
+            freqInt=ROIgamma;   
+            sorting='descend'; 
+            BLwin = [-0.3 -0.2];
+            
         case 'BP8_32'
             dataTemplate.freqROI=freqROIs{1};
-            dataTemplate.freqROIfreq=[ROIalpha;ROIbeta];
+            freqInt=ROIalpha;  
+            sorting='ascend'; 
+            BLwin = [-0.3 -0.2];
+        case 'BP8_32beta'
+            dataTemplate.freqROI=freqROIs{2};
+             freqInt=ROIbeta; 
+            sorting='ascend'; 
+            BLwin = [-0.3 -0.2];
     end
-    
+    dataTemplate.baselineWin=BLwin;
     for nameROI=ROIs
         
-        avg=[];
+        avg_tmp=[];
         VC=[];
         for block = blocks
             disp(num2str(block))
             
-            TFRDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*' nameROI{1} '*' filter{1} '*' num2str(block) '.mat']);
+            TFRDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*' nameROI{1} '*' filtername{1} '*' num2str(block) '.mat']);
             files=cellfun(@(x) [TFRDataFiles(1).folder filesep x],{TFRDataFiles.name},'unif',0);
             load(files{1})
             
-            TFRDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep 'Beamf' '*' nameROI{1} '*' filter{1} '*' num2str(block) '.mat']);
+            TFRDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep 'Beamf' '*' nameROI{1} '*' filtername{1} '*' num2str(block) '.mat']);
             files=cellfun(@(x) [TFRDataFiles(1).folder filesep x],{TFRDataFiles.name},'unif',0);
             load(files{1})
             
-            VCDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep 'Virt' '*' nameROI{1} '*' filter{1} '*' num2str(block) '.mat']);
+            VCDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep 'Virt' '*' nameROI{1} '*' filtername{1} '*' num2str(block) '.mat']);
             files=cellfun(@(x) [VCDataFiles(1).folder filesep x],{VCDataFiles.name},'unif',0);
             load(files{1})
             
-            avg=cat(ndims(dataTFR.powspctrm)+1,avg, dataTFR.powspctrm);
+            avg_tmp=cat(ndims(dataTFR.powspctrm)+1,avg_tmp, dataTFR.powspctrm);
             VC=cat(ndims(virtChannels)+1,VC, virtChannels);
             
             
         end
         
-        avg=permute(avg, [2,3,4,1,5]);
+        avg=permute(log10(abs(avg_tmp)), [2,3,4,1,5]);
         
         % avg over trials and blocks
         dataTFR.cfg=[];
@@ -96,39 +107,18 @@ for filter=filters
         name_=split(nameROI{1},'_');
         dataTemplate.ROI=name_{2};
         dataTemplate.pos=ROIpos;
+        dataTemplate.freqROIfreq=freqInt;
         
-        dataTemplate.ft_freqanalysis=dataTFR;
+
+        indsFreq=dataTFR.freq>=freqInt(1) & dataTFR.freq <= freqInt(2);
         
-        switch filter{1}
-            case 'BP40_80'
-                indsFreq=dataTFR.freq>=ROIgamma(1) & dataTFR.freq <= ROIgamma(2);
-                
-                sorting='descend';
-                
-                % coordinates for FreqROI indicator lines
-                linecoordsY=[ROIgamma; ROIgamma];
-                
-                linecoordsX=[timeWinMax;timeWinMax];
-                
-                linecoordsY=[reshape(linecoordsY,2,[]),ROIgamma'];
-                
-                linecoordsX=[linecoordsX',[timeWinMax(1);timeWinMax(1)]];
-                
-            case 'BP8_32'
-                indsFreq=(dataTFR.freq>=ROIalpha(1) & dataTFR.freq <= ROIalpha(2)) | ...
-                    (dataTFR.freq>=ROIbeta(1) & dataTFR.freq <= ROIbeta(2));
-                
-                sorting='ascend';
-                
-                % coordinates for FreqROI indicator lines
-                linecoordsY=[ROIalpha; ROIalpha;ROIbeta;ROIbeta];
-                
-                linecoordsX=[timeWinMax;timeWinMax;timeWinMax;timeWinMax];
-                
-                linecoordsY=[reshape(linecoordsY,2,[]),ROIalpha',ROIbeta'];
-                
-                linecoordsX=[linecoordsX',[timeWinMax(1);timeWinMax(1)],[timeWinMax(1);timeWinMax(1)]];
-        end
+        linecoordsY=[freqInt;freqInt];
+        
+        linecoordsX=[timeWinMax;timeWinMax];
+        
+        linecoordsY=[reshape(linecoordsY,2,[]),freqInt'];
+        
+        linecoordsX=[linecoordsX',[timeWinMax(1);timeWinMax(1)]];
         
         % relative change in frequency:
         % only average over time:
@@ -138,7 +128,7 @@ for filter=filters
         indsTime=dataTFR.time>=timeWinMax(1) & dataTFR.time <= timeWinMax(2);
         indsBL=dataTFR.time>=BLwin(1) & dataTFR.time <= BLwin(2);
         baseline = nanmean(reshape(avg(:,indsFreq,indsBL,:,:),size(avg,1),sum(indsFreq),[],size(avg,4),size(avg,5)),3);
-        tmp_avg=nanmean(reshape(avg(:,indsFreq,indsTime,:,:)./repmat(baseline,1,1,sum(indsTime),1,1),size(avg,1),[]),2);
+        tmp_avg=nanmean(reshape(avg(:,indsFreq,indsTime,:,:)-repmat(baseline,1,1,sum(indsTime),1,1),size(avg,1),[]),2);
         
         % relative change
         [~,I]=sort(tmp_avg, sorting);
@@ -158,7 +148,7 @@ for filter=filters
             dataTemplate.results.label=chanSel;
             dataTemplate.results.sortord=sorting;
             dataTemplate.results.sortAll=I;
-
+            
             cfg = [];
             cfg.baseline     = BLwin;
             cfg.colormap     = 'jet';
@@ -200,9 +190,13 @@ for filter=filters
             tmp=split(nameROI{1},'_');
             
             suptitle(['average over top ' num2str(bestNumchan) ' dipole pos (t = [' num2str(cfg.xlim(1)) ' ' num2str(cfg.xlim(2)) ']; t_{selWin} = [' num2str(timeWinMax(1)) ' ' num2str(timeWinMax(2)) '])'])
+            
             saveas(gcf,[mainpath filesep '..' filesep 'C_miscResults' filesep tmp{2} '_' filter{1} '_Bavg_bestNumChan_' num2str(bestNumchan) '.jpg'])
             close all
         end
+        dataTFR.powspctrm=avg_tmp(:,chanSel,:,:,:);
+        dataTFR.dimord='rpt_chan_freq_time_block';
+        dataTemplate.ft_freqanalysis=dataTFR;
         VirtChanData=cat(1,VirtChanData,dataTemplate);
     end
 end

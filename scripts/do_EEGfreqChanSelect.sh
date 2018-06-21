@@ -20,8 +20,8 @@ OutputVarName=none
 
 # Qsub information #
 jobtype=matlab
-walltime="4:59:59"
-memory=120gb
+walltime="11:59:59"
+memory=256gb
 
 # Misc Variables #
 MiscVarName=none
@@ -33,7 +33,7 @@ cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
 echo "mainpath=" "'$DIR';">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGfreqChanSelect.m>>$DIR/tmp_$nameadd.m
-echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
+echo 'matlab2017b -nosplash -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 while [ "$statusqsub" != "C" ]

@@ -70,10 +70,10 @@ for block=BlockSel
                 cfg.method       = 'mtmconvol';
                 cfg.taper        = 'dpss';
                 cfg.foi          = foi;
-                cfg.pad          = 4;
+                cfg.pad          = 3.2;
                 cfg.tapsmofrq    = 10;     % analysis 2 to 30 Hz in steps of 2 Hz
                 cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter);   % length of time window = 0.5 sec
-                cfg.toi          = -0.5:0.01:1.6;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
+                cfg.toi          = -1:0.01:2;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
                 cfg.keeptrials   = 'yes';
                 dataTFR = ft_freqanalysis(cfg, data4TFA);
                 
