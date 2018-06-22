@@ -16,7 +16,7 @@ if ~exist('FiltSel','var')
     FiltSel=[1,2];
 end
 
-possibleFilters={'BP40_80','BP8_32'};
+possibleFilters={'BP30_100','BP2_32'};
 prefix='VirtCh_';
 Selprefix='Beamf_centV1';
 
