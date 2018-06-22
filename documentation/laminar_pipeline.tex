@@ -54,22 +54,44 @@
 
 \subsection{Folder structure}
 \label{sec:dirstruct}
-The general folder structure is set up by a call to setupfolders.sh (see also Figure \ref{tree:folderstruct})
+The general folder structure is set up by a call to setupfolders.sh (see also Figure \ref{tree:folderstruct}). Raw data should be placed in the corresponding subfolder:
 \begin{itemize}
 \item Functional data must be located in rawData/niftis/\textbf{functionals}/
 \item Anatomical data must be located in in rawData/niftis/\textbf{t1}/
 \item Inverted functional data must be located in in rawData/niftis/\textbf{inverted}/
 \item Proton density data must be located in in rawData/niftis/\textbf{pd}/
 \item Inverted proton density data must be located in in rawData/niftis/\textbf{pdinverted}/
+\item EEG data must be located in rawData/\textbf{eegfiles}/
+\item Eye tracking data must be located in rawData/\textbf{eyetrackerfiles}/
+\item EEG sensor position related files must be in rawData/\textbf{electrodes}/
+\item electromagnetic digitizer data must be in rawData/electrodes/\textbf{polhemus}/
+\item photogrammetry data must be in rawData/electrodes/\textbf{photogrammetry}/ (note also the respective sub-structure, set up by setupfolders.sh)
 \end{itemize}
 
 \subsection{How things work}
-Parts of the analysis run in Bash shell scripts. Those can be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in an individual section.\\
+Parts of the analysis run in Bash shell scripts. Those should be called from their root directory using "sh scriptname.sh" (excl. quotation marks). Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines. Those are explained in an individual section.\\
 
-\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.
+\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document for more information.\\
 
-\section{Suggested order of operations}
-This document builds upon the analysis rational used during our own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.
+\noindent Further note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension .sh instead of .m Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
+
+\noindent When using such a MATLAB wrapper some MATLAB language specific details and variables are added to the base-file. In every case the respective absolute folder path is provided. The shell script creates a temporary file tmp.\#\#\#\#\#\#.mat and run it. tmp.\#\#\#\#\#\#.mat will be constructed by adding variables to an empty file and afterwards adding the actual base-file.
+
+\section{Quick Start}
+This document builds upon the analysis rational used during our own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.\\
+Figure~\ref{tree:folderstruct} depicts an overview of how the analysis folder should look like. Individual subject folders are created and have the correct sub-structure by calling makenewsubject.sh\\
+This functions searches for folders starting with \textbf{S} (sor subject) and will create a new subject $S0$ if none was found and otherwise increment the respective maximum value by 1. Hence if 21 subjects are already present, a call to makenewsubject.sh will create subject $S22$.\\
+Once this is done the folder structure should already be in place and the recoreded data can be placed in the subject's rawData folder.\\
+From this point on it's best to operate from the terminal (linux shell command line), navigate to the B\_scripts folder of the subject and run all scripts from there. The first to run would be do\_preparefunctionals.sh wrapped in runonqsub.sh\\
+This functions cuts off the first 4 volumes of the recorded data if it has 4 volumes more than expected. If further volumes were recorded (more than pre-defined) they will also be cut at the end.
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+32GB & $\approx 10min+user$ \\\bottomrule
+\end{tabular}
+\end{table}
 \begin{itemize}
 \item makenewsubject.sh
 \item copy NifTi files to the correct location (see Section~\ref{sec:dirstruct})
@@ -77,8 +99,8 @@ This document builds upon the analysis rational used during our own analyses. It
 \item cd PATH/SUBJECTFOLDER/B\_scripts
 \item sh runonqsub.sh 32gb do\_preparefunctionals.sh
 \end{itemize}
-\subsection{Pre-processing}
-Data will be motion and field distortion corrected. An inplane template for the functional scans to be used for the co-registration  will be created.
+\subsection{fMRI pre-processing}
+Data will be corrected for motion and field distortion. An inplane template for the functional scans to be used for the co-registration  will be created.
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -95,7 +117,7 @@ maximum memory required & approx time required\\\toprule
 \item sh do\_correctavgdiff.sh
 \item using pipeline: sh preprocessing.sh
 \end{itemize}
-\subsection{Co-registration and masks}
+\subsection{fMRI - anatomical co-registration and masks}
 Data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries. Furthermore partial and full brain masks will be created, including gray and white matter and brain.
 \begin{table}[h]
 %\centering
@@ -119,7 +141,7 @@ maximum memory required & approx time required\\\toprule
 \end{center}
 \end{figure}
 
-\subsection{Retinotopy}
+\subsection{Visual area definition using retinotopy}
 Population receptive field mapping. Estimates retinotopic mapping from screen to cortical locations. This is to be done in order to obtain boundaries for visual areas such as V1, V2 and V3. First the fMRI time series will be interpolated (cubic) to match the numeber of frames presented during the stimulation. Afterwards pRF mapping will be analyzed and paramters will be written to volume files (NiFTI) and surface files for use with FreeSurfer.
 \begin{table}[h]
 %\centering
@@ -137,7 +159,7 @@ maximum memory required & approx time required\\\toprule
 \item sh runonqsub.sh 16gb makeOverlays.sh
 \item using pipeline: sh retinotopy.sh
 \end{itemize}
-\subsection{laminar separation}
+\subsection{fMRI layer segmentation}
 Gray matter boundaries will be used to compute cortical layer separation. First tksurfer is used to "draw" occipital ROIs based on the retinotopic mapping. Those regions will be transformed into gray matter masks such that an individual masks for V1, V2, V3 for each hemisphere exists. Cortical layer separation yields a probability map for each voxel to lay within a specifcially spaced area between gray matter boundaries. Thus a layer specific ROI specific map is created for each ROI by multiplying the ROI map with each of the layer probability maps. The results are 4D mask volumes separating the layer probabilies in the 4th dimension.
 \begin{table}[h]
 %\centering
@@ -156,7 +178,7 @@ maximum memory required & approx time required\\\toprule
 \item using pipeline: sh laminar.sh
 \end{itemize}
 
-\subsection{EEG processing}
+\subsection{EEG pre-processing}
 The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $2-32~Hz$ and $30-100~Hz$ respectively.\\
 A FEM forward model will be used as well as a anatomical constraint source model.\\
 
@@ -165,23 +187,48 @@ A FEM forward model will be used as well as a anatomical constraint source model
 \begin{tabular}{l | r}
 \toprule
 maximum memory required & approx time required\\\toprule
-$>960~GB$ & $\approx 24h+user$ \\\bottomrule
+$16~GB$ & $\approx 2h$ \\\bottomrule
 \end{tabular}
 \end{table}
 \begin{itemize}
 \item sh do\_EEGpreprocessing.sh
+\item sh do\_EEGtimelock.sh
 \item (sh runonqsub.sh 16gb do\_fsrecon.sh)
 \item sh do\_EEGprepareFS.sh
+\end{itemize}
+
+\subsection{EEG prepare head and source models}
+
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+$32~GB$ & $\approx 6h+user$ \\\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
 \item sh do\_EEGprepareHeadmodel.sh
 \item sh do\_EEGelectrodeRegistration.m (inside a MATLAB instance)
 \item sh do\_EEGprepareSourcemodel.sh
-\item sh do\_EEGtimelock.sh
+\end{itemize}
+
+\subsection{EEG compute virtual channels}
+
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+$960~GB$ & $\approx 12h$ \\\bottomrule
+\end{tabular}
+\end{table}
+\begin{itemize}
 \item sh do\_EEGsplitBeamformer.sh
 \item sh do\_EEGsplitVirtualChannel.sh
 \item sh do\_EEGsplitFreqOnVirtChan.sh
 \item sh do\_EEGfreqChanSelect.sh
 \end{itemize}
-
 
 \section{qsub}
 Scripts that are flagged with the (Q) can be run as a qsub job.
@@ -231,7 +278,7 @@ script & memory required & time required\\\hline
   do\_EEGvirtualChannel.sh & 30GB & $\approx 5h$ \\\hline
   do\_EEGsplitFreqOnVirtChan.sh & 960GB & $\approx 5h$ \\\hline
   do\_EEGfreqOnVirtChan.sh & 60GB & $\approx 5h$ \\\hline
-  do\_EEGfreqChanSelect.sh & 128GB & $\approx 30min$ \\\bottomrule
+  do\_EEGfreqChanSelect.sh & 256GB & $\approx 30min$ \\\bottomrule
 \end{tabular}
 \caption[Approximated time and memory requirements when running on qsub]{Approximated time and memory requirements for the respective script to run. Note that everything that is more than 4GB should be run on the cluster. Use runonqsub.sh for that purpose.}
 \label{tab:hardwarerequirements}

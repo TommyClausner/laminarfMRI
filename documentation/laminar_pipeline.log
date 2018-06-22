@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 JUN 2018 19:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 JUN 2018 17:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -950,20 +950,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
- [2])
+ [2]
+[3])
 \tf@toc=\write6
 \openout6 = `laminar_pipeline.toc'.
 
-
-[3] (./laminar_pipeline.lof)
+ [4] (./laminar_pipeline.lof)
 \tf@lof=\write7
 \openout7 = `laminar_pipeline.lof'.
 
- [4] (./laminar_pipeline.lot)
+ [5] (./laminar_pipeline.lot)
 \tf@lot=\write8
 \openout8 = `laminar_pipeline.lot'.
 
- [5]
+ [6]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
@@ -987,109 +987,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
-[6] [7] <figures/coregdist.pdf, id=485, 1027.84pt x 770.88pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+[8] [9] <figures/coregdist.pdf, id=506, 1027.84pt x 770.88pt>
 File: figures/coregdist.pdf Graphic file (type pdf)
 
 <use figures/coregdist.pdf>
-Package pdftex.def Info: figures/coregdist.pdf used on input line 117.
+Package pdftex.def Info: figures/coregdist.pdf used on input line 139.
 (pdftex.def)             Requested size: 358.50612pt x 268.8828pt.
- [8] [9 <./figures/coregdist.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 160--162
+ [10] [11 <./figures/coregdist.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
-
- []
-
-[10]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11]
-
-LaTeX Warning: Float too large for page by 73.18121pt on input line 343.
-
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--377
-
- []
-
-[14
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13]
+
+LaTeX Warning: Float too large for page by 73.18121pt on input line 390.
+
+[14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 395--396
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 400--401
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 408--409
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 421--422
+Underfull \hbox (badness 10000) in paragraph at lines 401--403
 
  []
 
@@ -1098,18 +1053,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 423--424
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 436--437
+[16
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 425--426
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 438--439
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--441
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
@@ -1119,44 +1076,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 442--443
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 444--445
+Underfull \hbox (badness 10000) in paragraph at lines 445--446
 
  []
 
 
-Overfull \hbox (14.2659pt too wide) in paragraph at lines 449--450
-[]\OT1/cmr/m/n/12 selected ref-er-ence vol-umes are merged into a sin-gle file 
-(/3[]distcorrection/all[]b0.nii.gz) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 456--457
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 471--472
+Underfull \hbox (badness 10000) in paragraph at lines 455--456
 
  []
 
 
-Overfull \hbox (40.51202pt too wide) in paragraph at lines 473--474
-\OT1/cmr/m/n/12 The re-sult should be checked us-ing "fsleyes ../2[]coregistrat
-ion/Inplane/MCTemplateThr*.nii.gz"
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--478
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 479--481
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--484
+Underfull \hbox (badness 10000) in paragraph at lines 468--469
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 
  []
 
@@ -1166,212 +1121,269 @@ Underfull \hbox (badness 10000) in paragraph at lines 485--486
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 500--501
-
- []
-
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 489--490
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
+Underfull \hbox (badness 10000) in paragraph at lines 491--492
 
  []
 
 
-Overfull \hbox (56.97018pt too wide) in paragraph at lines 517--518
+Overfull \hbox (14.2659pt too wide) in paragraph at lines 496--497
+[]\OT1/cmr/m/n/12 selected ref-er-ence vol-umes are merged into a sin-gle file 
+(/3[]distcorrection/all[]b0.nii.gz) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 518--519
+
+ []
+
+
+Overfull \hbox (40.51202pt too wide) in paragraph at lines 520--521
+\OT1/cmr/m/n/12 The re-sult should be checked us-ing "fsleyes ../2[]coregistrat
+ion/Inplane/MCTemplateThr*.nii.gz"
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 526--528
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 529--531
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--533
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 547--548
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+
+ []
+
+
+Overfull \hbox (56.97018pt too wide) in paragraph at lines 564--565
 \OT1/cmr/m/n/12 ta-tion pa-ram-e-ter ([]https://surfer.nmr.mgh.harvard.edu/pub/
 docs/html/mri[]convert.help.xml.html[]) 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
+Underfull \hbox (badness 10000) in paragraph at lines 564--565
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--528
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
 
  []
 
 
-Overfull \hbox (8.83957pt too wide) in paragraph at lines 538--539
+Overfull \hbox (8.83957pt too wide) in paragraph at lines 585--586
 \OT1/cmr/m/n/12 Wrapper func-tion for do[]tseriesinterpolation.m Vari-ables use
 d by do[]tseriesinterpolation.m
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 550--551
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 552--553
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 565--566
+Underfull \hbox (badness 10000) in paragraph at lines 612--613
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 569--570
+Underfull \hbox (badness 10000) in paragraph at lines 616--617
 
  []
 
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 571--572
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 576--577
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 618--619
 
  []
 
 
-Overfull \hbox (71.00117pt too wide) in paragraph at lines 588--589
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
+
+ []
+
+
+Overfull \hbox (71.00117pt too wide) in paragraph at lines 635--636
 \OT1/cmr/m/n/12 Wrapper func-tion for com-bine[]split[]PRF[]results.m Com-bines
  split re-sults from do[]split[]analyzePRF.sh
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--589
+Underfull \hbox (badness 10000) in paragraph at lines 635--636
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--599
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 610--611
-
- []
-
-
-Overfull \hbox (64.2254pt too wide) in paragraph at lines 614--615
-[]\OT1/cmr/m/n/12 mri[]vol2surf --src $DIR/4[]retinotopy/ang[]map.nii --srcreg 
-$DIR/2[]coregistration/bbregister.dat
- []
-
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 652--653
+Underfull \hbox (badness 10000) in paragraph at lines 645--646
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 673--674
+Underfull \hbox (badness 10000) in paragraph at lines 657--658
 
  []
 
+
+Overfull \hbox (64.2254pt too wide) in paragraph at lines 661--662
+[]\OT1/cmr/m/n/12 mri[]vol2surf --src $DIR/4[]retinotopy/ang[]map.nii --srcreg 
+$DIR/2[]coregistration/bbregister.dat
+ []
+
 [24]
-Overfull \hbox (28.15941pt too wide) in paragraph at lines 712--713
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 720--721
+
+ []
+
+[26]
+Overfull \hbox (28.15941pt too wide) in paragraph at lines 759--760
 \OT1/cmr/m/n/12 Sets up source-model (dipole model) for source anal-y-sis us-in
 g the re-sult of do[]EEGprepareFS.sh 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 723--724
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 780--781
 
  []
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 743--744
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 767--768
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 769--770
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 771--772
+Underfull \hbox (badness 10000) in paragraph at lines 814--815
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 816--817
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 773--774
+Underfull \hbox (badness 10000) in paragraph at lines 818--819
 
  []
 
-<figures/preproc-pipe.pdf, id=604, 1027.84pt x 770.88pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 820--821
+
+ []
+
+<figures/preproc-pipe.pdf, id=623, 1027.84pt x 770.88pt>
 File: figures/preproc-pipe.pdf Graphic file (type pdf)
 
 <use figures/preproc-pipe.pdf>
-Package pdftex.def Info: figures/preproc-pipe.pdf used on input line 780.
+Package pdftex.def Info: figures/preproc-pipe.pdf used on input line 827.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/segment-pipe.pdf, id=605, 1027.84pt x 770.88pt>
+<figures/segment-pipe.pdf, id=624, 1027.84pt x 770.88pt>
 File: figures/segment-pipe.pdf Graphic file (type pdf)
 
 <use figures/segment-pipe.pdf>
-Package pdftex.def Info: figures/segment-pipe.pdf used on input line 787.
+Package pdftex.def Info: figures/segment-pipe.pdf used on input line 834.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/retino-pipe.pdf, id=606, 1027.84pt x 770.88pt>
+<figures/retino-pipe.pdf, id=625, 1027.84pt x 770.88pt>
 File: figures/retino-pipe.pdf Graphic file (type pdf)
 
 <use figures/retino-pipe.pdf>
-Package pdftex.def Info: figures/retino-pipe.pdf used on input line 794.
+Package pdftex.def Info: figures/retino-pipe.pdf used on input line 841.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/laminar-pipe.pdf, id=607, 1027.84pt x 770.88pt>
+<figures/laminar-pipe.pdf, id=626, 1027.84pt x 770.88pt>
 File: figures/laminar-pipe.pdf Graphic file (type pdf)
 
 <use figures/laminar-pipe.pdf>
-Package pdftex.def Info: figures/laminar-pipe.pdf used on input line 801.
+Package pdftex.def Info: figures/laminar-pipe.pdf used on input line 848.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 806.
- [28 <./figures/preproc-pipe.pdf>] [29 <./figures/segment-pipe.pdf>]
-[30 <./figures/retino-pipe.pdf>] [31 <./figures/laminar-pipe.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 806.
+[29]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 853.
+ [30 <./figures/preproc-pipe.pdf>] [31 <./figures/segment-pipe.pdf>]
+[32 <./figures/retino-pipe.pdf>] [33 <./figures/laminar-pipe.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 853.
 
 (./laminar_pipeline.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 806.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 806.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 853.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 853.
 Package rerunfilecheck Info: File `laminar_pipeline.out' has not changed.
-(rerunfilecheck)             Checksum: FB0EA2B975793D82C71CBBD88F8895E7;5765.
+(rerunfilecheck)             Checksum: 480666C05EC640D767ABF03A71A4C55A;5970.
  ) 
 Here is how much of TeX's memory you used:
- 40012 strings out of 492995
- 873523 string characters out of 6132704
- 996186 words of memory out of 5000000
- 43070 multiletter control sequences out of 15000+600000
+ 40018 strings out of 492995
+ 873597 string characters out of 6132704
+ 996183 words of memory out of 5000000
+ 43072 multiletter control sequences out of 15000+600000
  10200 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  175i,10n,206p,10389b,6783s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1389,10 +1401,10 @@ texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texl
 ive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (31 pages, 957913 bytes).
+Output written on laminar_pipeline.pdf (33 pages, 964296 bytes).
 PDF statistics:
- 805 PDF objects out of 1000 (max. 8388607)
- 713 compressed objects within 8 object streams
- 123 named destinations out of 1000 (max. 500000)
- 678 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 825 PDF objects out of 1000 (max. 8388607)
+ 731 compressed objects within 8 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 694 words of extra memory for PDF output out of 10000 (max. 10000000)
 
