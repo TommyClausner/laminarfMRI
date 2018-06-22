@@ -3,7 +3,8 @@
 As long as you can read this statement, the content in this repository is work in 
 progress and and will be updated or changed on a regular basis.
 
-Please find the respective documentation in the documentation folder.
+Please find the respective documentation in the documentation folder 
+(documentation/laminar_pipeline.pdf).
 
 Within the quickStart folder, the getToolboxes.sh function will download most of 
 the required toolboxes for you (please double check with the documentation). 
