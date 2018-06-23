@@ -306,7 +306,17 @@ script & memory required & time required\\\hline
 
 \section{Quick Start}
 This document builds upon the analysis rational used during our own analyses. It is build upon the technically facilities of the DCCN (Radboud University Nijmegen, 2018). Hence a copy-paste workflow will only work on a very similar infrastructure.\\
-Since you are reading this document, it is unlikely that you haven't done already, but the first step would be to download the required scripts by cloning or downloading the GitHub repository:
+\subsection{first steps}
+\begin{table}[h]
+%\centering
+\begin{tabular}{l | r}
+\toprule
+maximum memory required & approx time required\\\toprule
+32GB & $\approx 10min+user$ \\\bottomrule
+\end{tabular}
+\end{table}
+\FloatBarrier
+\noindent Since you are reading this document, it is unlikely that you haven't done already, but the first step would be to download the required scripts by cloning or downloading the GitHub repository:
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -337,21 +347,6 @@ From this point on it's best to navigate to the B\_scripts folder of the subject
     sh runonqsub.sh 32gb do_preparefunctionals.sh
 \end{lstlisting}
 This functions cuts off the first 4 volumes of the recorded data if it has 4 volumes more than expected. If further volumes were recorded (more than pre-defined) they will also be cut at the end.
-\begin{table}[h]
-%\centering
-\begin{tabular}{l | r}
-\toprule
-maximum memory required & approx time required\\\toprule
-32GB & $\approx 10min+user$ \\\bottomrule
-\end{tabular}
-\end{table}
-\begin{itemize}
-\item makenewsubject.sh
-\item copy NifTi files to the correct location (see Section~\ref{sec:dirstruct})
-\item open terminal (the following are terminal commands)
-\item cd PATH/SUBJECTFOLDER/B\_scripts
-\item sh runonqsub.sh 32gb do\_preparefunctionals.sh
-\end{itemize}
 \subsection{fMRI pre-processing}
 Data will be corrected for motion and field distortion. Motion and distortion correction will be done using the average task block volumes (ignoring retinotopy volumes) as reference. Field distortion will be estimated compared to the inverse volumes that were collected. Both, inverse volumes and as many "normal" volumes will be averaged. See figure~\ref{fig:coregdist} bottom for a graphical depiction.
 \begin{table}[h]
@@ -362,7 +357,8 @@ maximum memory required & approx time required\\\toprule
 64GB & $\approx 6h$ \\\bottomrule
 \end{tabular}
 \end{table}
-Motion correction (realignment) will be performed using FSL's mcflirt function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}). Before the data will be split into two parts: \textit{retino} and  \textit{sparse}, based on their raw basename string. As a reference volume the average of all \textit{sparse} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
+\FloatBarrier
+\noindent Motion correction (realignment) will be performed using FSL's mcflirt function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}). Before the data will be split into two parts: \textit{retino} and  \textit{sparse}, based on their raw basename string. As a reference volume the average of all \textit{sparse} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
 Results can be found in 1\_realignment/
 \begin{lstlisting}[
     language=Shell,
@@ -421,7 +417,8 @@ maximum memory required & approx time required\\\toprule
 16GB & $\approx 6.5h$ \\\bottomrule
 \end{tabular}
 \end{table}
-The anatomical T1 weighted image will be transformed into various representations (volumetric, surfaces, etc) and partly segmented (gray / white matter, CSF, etc) using FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})\\
+\FloatBarrier
+\noindent The anatomical T1 weighted image will be transformed into various representations (volumetric, surfaces, etc) and partly segmented (gray / white matter, CSF, etc) using FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})\\
 Results can be found in 0\_freesurfer/
 \begin{lstlisting}[
     language=Shell,
@@ -430,15 +427,15 @@ Results can be found in 0\_freesurfer/
     # do anatomical segmentation and volume reconstruction
     sh runonqsub.sh 16gb do_fsrecon.sh
 \end{lstlisting}
-Gray matter boundaries from the FreeSurfer segmentation will be used to register the partial fMRI volumes to the anatomical space. This is done using FreeSurfer's bbregister function. A wrapper toolbox (OpenFmriAnalysis) is used to perform this step and output a registration movie to C\_miscResults. Furthermore gray and white matter masks are transformed into the functional space.\\
+Gray matter boundaries from the FreeSurfer segmentation will be used to register the partial fMRI volumes to the anatomical space. This is done using FreeSurfer's bbregister function. The toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{https://github.com/TimVanMourik/OpenFmriAnalysis}) is used to perform this step and output a registration movie to C\_miscResults. Furthermore gray and white matter masks are transformed into the functional space.\\
 Results can be found in 2\_coregistration/
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
     # coregistration and mask creation
-    sh do\_coregistration.sh
-    sh runonqsub.sh 16gb do\_makemasksandlabels.sh
+    sh do_coregistration.sh
+    sh runonqsub.sh 16gb do_makemasksandlabels.sh
 \end{lstlisting}
 The full coregistration and creation of functional masks can also be performed in a single step, by calling the pipeline script:
 \begin{lstlisting}[
@@ -457,7 +454,7 @@ The full coregistration and creation of functional masks can also be performed i
 \label{fig:coregdist}
 \end{figure}
 
-\subsection{Visual area definition using retinotopy}
+\subsection{pRF mapping}
 Population receptive field mapping. Estimates retinotopic mapping from screen to cortical locations. This is to be done in order to obtain boundaries for visual areas such as V1, V2 and V3. First the fMRI time series will be interpolated (cubic) to match the numeber of frames presented during the stimulation. Afterwards pRF mapping will be analyzed and paramters will be written to volume files (NiFTI) and surface files for use with FreeSurfer.
 \begin{table}[h]
 %\centering
@@ -467,14 +464,46 @@ maximum memory required & approx time required\\\toprule
 64GB (480GB) & $\approx 8h$ \\\bottomrule
 \end{tabular}
 \end{table}
-\begin{itemize}
-\item sh do\_tseriesinterpolation.sh
-\item sh do\_split\_analyzePRF.sh
-\item sh combine\_split\_PRF\_results.sh
-\item sh make\_PRF\_overlays.sh
-\item sh runonqsub.sh 16gb makeOverlays.sh
-\item using pipeline: sh retinotopy.sh
-\end{itemize}
+\FloatBarrier
+\noindent Interpolate time series of volumes to match the number of presented frames during stimulation, by resampling the TR to match the "stimulation-frame-rate". The function below calls submits the corresponding MATLAB script as a qsub job.\\
+The data will furthermore be transformed into percent change relative to the mean.\\
+Results can be found in 4\_retinotopy/
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # interpolate volume time series
+    sh do_tseriesinterpolation.sh
+\end{lstlisting}
+Once the data is in the right space to estimate voxel activity, based on active screen pixels, population receptive field mapping can be performed. Since using high resolution fMRI leads inevitably to "big data" the analysis has to be split up into multiple parts. In the present case an assumed computation time of $\approx 8h$ is reached by splitting up the analysis into 80 parts. Hence there is a linear relationship between processing time and parts the data can be split up to. In the present case all together $480~GB$ of memory are used to perform the analysis in parallel on 80 different cluster nodes with only $6~GB$ each. Afterwards results are combined into a single results file and temporary results are deleted.\\
+Results can be found in 4\_retinotopy/
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # perform pRF mapping by splitting up the search space of voxels and combining the results.
+    sh do_split_analyzePRF.sh
+    sh combine_split_PRF_results.sh
+\end{lstlisting}
+After for each voxel certain parameters like circular coordinates mapping to screen locations, those have to be transformed into voluems, that can be overlayed with anatomical data in order to define masks for regions of interest based on the pRF mapping.\\
+Results can be found in 4\_retinotopy/
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # transform pRF mapping results into NifTI volume overlays
+    sh make_PRF_overlays.sh
+    sh runonqsub.sh 16gb makeOverlays.sh
+\end{lstlisting}
+The retinotopy can also be performed in a single step, by calling the pipeline script:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # using pipeline
+    sh retinotopy.sh
+\end{lstlisting}
+
 \subsection{fMRI layer segmentation}
 Gray matter boundaries will be used to compute cortical layer separation. First tksurfer is used to "draw" occipital ROIs based on the retinotopic mapping. Those regions will be transformed into gray matter masks such that an individual masks for V1, V2, V3 for each hemisphere exists. Cortical layer separation yields a probability map for each voxel to lay within a specifcially spaced area between gray matter boundaries. Thus a layer specific ROI specific map is created for each ROI by multiplying the ROI map with each of the layer probability maps. The results are 4D mask volumes separating the layer probabilies in the 4th dimension.
 \begin{table}[h]
