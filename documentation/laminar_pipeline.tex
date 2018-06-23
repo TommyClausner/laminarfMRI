@@ -311,9 +311,11 @@ Since you are reading this document, it is unlikely that you haven't done alread
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
-    # download scripts
+    # download scripts and toolboxes
     cd myPath
     git clone https://github.com/TommyClausner/laminarfMRI
+    cd laminarfMRI/quickStart
+    sh getToolboxes.sh
 \end{lstlisting}
 Figure~\ref{tree:folderstruct} depicts an overview of how the analysis folder should look like. Individual subject folders are created and have the correct sub-structure by calling:
 \begin{lstlisting}[
@@ -321,7 +323,6 @@ Figure~\ref{tree:folderstruct} depicts an overview of how the analysis folder sh
     basicstyle=\ttfamily,
     breaklines=true]
     # create new subject folder
-    cd myPath/laminarfMRI/quickStart
     sh makenewsubject.sh
  \end{lstlisting}
 This functions searches for folders starting with \textbf{S} (for subject) within it's root directory and will create a new subject $S0$ if none was found and otherwise increment the respective maximum value by 1. Hence if 21 subjects are already present, a call to makenewsubject.sh will create subject $S22$.\\
