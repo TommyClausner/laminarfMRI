@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {6.5}waitForJobs.sh}{26}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}makenewsubject.sh}{26}{subsection.6.6}
 \contentsline {subsection}{\numberline {6.7}setupfolders.sh (Q)}{26}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}do\_preparefunctionals.sh (Q)}{26}{subsection.6.8}
+\contentsline {subsection}{\numberline {6.8}do\_preparefunctionals.sh (Q)}{27}{subsection.6.8}
 \contentsline {subsection}{\numberline {6.9}do\_realignment.sh (Q)}{27}{subsection.6.9}
 \contentsline {subsection}{\numberline {6.10}do\_distcorr.sh (Q)}{27}{subsection.6.10}
 \contentsline {subsection}{\numberline {6.11}do\_applysimpledistcorr.sh (Q)}{28}{subsection.6.11}
@@ -76,10 +76,10 @@
 \contentsline {subsection}{\numberline {6.55}do\_EEGfreqOnVirtChan.sh}{37}{subsection.6.55}
 \contentsline {subsection}{\numberline {6.56}do\_EEGfreqOnVirtChan.m}{37}{subsection.6.56}
 \contentsline {subsection}{\numberline {6.57}do\_EEGfreqChanSelect.sh}{37}{subsection.6.57}
-\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.m}{38}{subsection.6.58}
-\contentsline {subsection}{\numberline {6.59}EEGvisualizeVirtualChannel.m}{38}{subsection.6.59}
-\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{38}{section.7}
-\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{38}{section.8}
+\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.m}{37}{subsection.6.58}
+\contentsline {subsection}{\numberline {6.59}EEGvisualizeVirtualChannel.m}{37}{subsection.6.59}
+\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{37}{section.7}
+\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{37}{section.8}
 \contentsline {section}{\numberline {9}How to: Pipelines}{38}{section.9}
 \contentsline {subsection}{\numberline {9.1}Scripts}{38}{subsection.9.1}
 \contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{38}{subsection.9.2}
