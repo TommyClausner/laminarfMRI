@@ -13,7 +13,7 @@
     \begin{center}\large#1\end{center}
     \vskip0.5em}%
 }
-\title{Laminar fMRI pipeline}
+\title{Laminar EEG-fMRI pipeline}
 \author{Tommy Clausner}
 \subtitle{\textsc{Documentation}}
 \date{\small{last updated on \today}}
@@ -245,7 +245,6 @@ script & memory required & time required\\\hline
   [A\_helperfiles/
     [acquisition\_parameters.txt]
     [b02b0.cnf]
-    [b02b0\_example\_fsl.cnf]
     [params.mat]
     [images.mat]
   ]
@@ -279,7 +278,6 @@ script & memory required & time required\\\hline
     ]
 ]
 [template\_session/
-[metascripts/]
 [template\_helperfiles/
 	[acquisition\_parameters.txt]
   [b02b0.cnf]
@@ -750,14 +748,23 @@ Stimuli used for retinotopy scans. Stimuli file must be such that each frame is 
 Downloads all necessary toolboxes into a folder called toolboxes/ or displays a URL where the user has to download the software manually (see Section~\ref{sec:prereq}). That is FSL and SPM have to be downloaded manually due to required user registration. Place them in the same directory as the other toolboxes or install as required.
 
 \subsection{runonqsub.sh}
-Initiates a qsub session and sends it to the cluster. This is necessary, since scripts running on the cluster are copied to a different directory, but within scripts all directories are relative. runonqsub.sh must hence be run in a "normal" session not using a non-interactive qsub, giving the respective script that was intended to run as an argument. runonqsub will then set everything up correctly. Further you have to specify the amount of memory needed.\\
-
-example: sh runonqsub.sh 32gb myscript.sh\\
+Initiates a qsub session and sends it to the cluster. This is necessary, since scripts running on the cluster are copied to a different directory, but within scripts all directories are relative. runonqsub.sh must hence be run in a "normal" session not using a non-interactive qsub, giving the respective script that was intended to run as an argument. runonqsub will then set everything up correctly. Further you have to specify the amount of memory needed.
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh runonqsub.sh 32gb myscript.sh
+\end{lstlisting}
 
 \noindent Additional arguments can be passed after the script.\\
-
-example: sh runonqsub.sh 32gb myscript.sh myargument\\
-
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example with argument
+    sh runonqsub.sh 32gb myscript.sh myargument
+\end{lstlisting}
 \noindent Under the hood:
 \begin{itemize}
 \item a qsub session is initiated like so: qsub -l walltime=24:00:00,mem=\$1 -F "\$DIR \$\{@:3\}" \$DIR/\$2
@@ -772,9 +779,14 @@ example: sh runonqsub.sh 32gb myscript.sh myargument\\
 Since qsub puts a output + error log into /B\_ scripts cleanscriptsfolder.sh can be used to move all qsub outputs to /B\_scripts/qsuboutput\\
 
 \subsection{liveupdateqsub.sh}
-Submits a qstat -u user request every second.\\
-
-example: sh liveupdateqsub.sh tomcla\\
+Submits a qstat -u user request every second.
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh liveupdateqsub.sh tomcla
+\end{lstlisting}
 
 \noindent exit command by hitting ctrl+c
 
@@ -943,11 +955,21 @@ Wrapper function to call do\_analyzePRF.sh The function calls a predefined numbe
 
 \subsection{do\_analyzePRF.sh}
 \label{sec:analyzePRF.sh}
-Wrapper function to call do\_analyzePRF.m Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.\\
-
-\noindent example: sh do\_analyzePRF.sh 1 5\\
-
-\noindent example 2: sh do\_analyzePRF.sh 1 1
+Wrapper function to call do\_analyzePRF.m Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh do_analyzePRF.sh 1 5
+\end{lstlisting}
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example 2
+    sh do_analyzePRF.sh 1 1
+\end{lstlisting}
 
 \subsection{do\_analyzePRF.m}
 Computes pRF mapping implemeting "analyzePRF" from the analyzePRF toolbox. It can be decided whether to average across blocks or if the estimates shall be done for each block separately and averaging the results. Note, that running the analysis on separate blocks slows down computation time, but to my experience yields slightly better results.\\
@@ -1103,7 +1125,7 @@ Wrapper function to call do\_EEGbeamformer.sh The function calls a predefined nu
 Wrapper function for running do\_EEGbeamformer.m via Qsub
 
 \subsection{do\_EEGbeamformer.m}
-Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $10\%$
+Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $\lambda=10\%$
 
 \subsection{do\_EEGsplitVirtualChannel.sh}
 \label{sec:virtch}
@@ -1138,6 +1160,7 @@ Wrapper function for running do\_EEGfreqChanSelect.m via Qsub
 
 \section{How to: EEG electrodes from photogrammetry}
 \label{sec:janus3D}
+Please find the respective information within the janus3D documentation (\href{https://github.com/janus3D/janus3D_toolbox/blob/master/janus3D_users_manual.pdf}{\nolinkurl{https://github.com/janus3D/janus3D_toolbox/blob/master/janus3D_users_manual.pdf}})
 
 \section{How to: Pipelines}
 \label{sec:pipelines}
