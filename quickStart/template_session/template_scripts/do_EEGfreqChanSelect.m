@@ -12,7 +12,7 @@ addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_func
 Selprefix='TF';
 
 blocks=[1, 2, 3, 4];
-filters={'BP8_32','BP8_32beta','BP40_80'};
+filters={'BP2_32','BP2_32beta','BP30_100'};
 
 ROIs={'centV1_lhV1','centV1_rhV1'};
 
@@ -53,18 +53,18 @@ for filter=filters
     dataTemplate.filterBand=[str2double(tmp_band{1}(3:end)),str2double(tmp_band{2})];
     
     switch filter{1}
-        case 'BP40_80'
+        case 'BP30_100'
             dataTemplate.freqROI=freqROIs{3};
             freqInt=ROIgamma;   
             sorting='descend'; 
             BLwin = [-0.3 -0.2];
             
-        case 'BP8_32'
+        case 'BP2_32'
             dataTemplate.freqROI=freqROIs{1};
             freqInt=ROIalpha;  
             sorting='ascend'; 
             BLwin = [-0.3 -0.2];
-        case 'BP8_32beta'
+        case 'BP2_32beta'
             dataTemplate.freqROI=freqROIs{2};
              freqInt=ROIbeta; 
             sorting='ascend'; 

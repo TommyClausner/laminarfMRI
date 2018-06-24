@@ -95,7 +95,7 @@ VisInspection=0;
 
 if VisInspection
     Selprefix='BP40_80';
-    prefix=Selprefix;
+    prefix='';
     EEGDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*.mat']);
     for file_ = cellfun(@(x) [EEGDataFiles(1).folder filesep x],{EEGDataFiles.name},'unif',0)
         load(file_{1})
