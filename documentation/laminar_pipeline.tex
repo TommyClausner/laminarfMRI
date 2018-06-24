@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{scrartcl}
 \usepackage{forest}
 \usepackage{booktabs}
-\usepackage{hyperref}
+\usepackage[breaklinks=true]{hyperref}
 \usepackage{placeins}
 \usepackage{titling}
 \usepackage{graphicx}
@@ -50,7 +50,7 @@ Hence all the functionality is tied to our specific experiment. However, most st
 The goal was to create a set of scripts such that it would be highly standardized and with as little human interaction as possible. This way it is guaranteed, that once the analysis and respective parameters are set up, the scripts will run similar for all subjects. However it also means that changing single scripts within this "ecosystem" should be done very carefully to not interfere with relative paths and file I/O all functions rely on.
 \section{Before starting}
 Most of the functionality is optimized for the IT infrastructure provided by the Donders Center for Cognitive Neuroimaging. Since some parts of the analysis require very high amounts of memory, those parts are absolutely infeasible to compute on a local desktop or laptop machine. Given the infrastructure of the DCCN, all scripts were optimized to a reasonable amount for a reduction in computation time but still keeping high spatial accuracy. Hence parts might need to be adjusted to either a different cluster computing system or scaled down massively.\\
-All scripts as we used them can be found at \href{https://github.com/TommyClausner/laminarfMRI}{https://github.com/TommyClausner/laminarfMRI}
+All scripts as we used them can be found at \href{https://github.com/TommyClausner/laminarfMRI}{\nolinkurl{https://github.com/TommyClausner/laminarfMRI}}
 or by cloning the GitHub repository via the command line:
 \begin{lstlisting}[
     language=Shell,
@@ -63,20 +63,20 @@ or by cloning the GitHub repository via the command line:
 \label{sec:prereq}
 The present pipeline makes use of many modern state of the art analysis toolboxes for Shell and or MATLAB scripting:
 \begin{itemize}
-\item analysePRF (\href{http://kendrickkay.net/analyzePRF/}{http://kendrickkay.net/analyzePRF/})
-\item FieldTrip (\href{https://github.com/fieldtrip/fieldtrip}{https://github.com/fieldtrip/fieldtrip})
-\item FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})
-\item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki})
-\item knkutils (\href {https://github.com/kendrickkay/knkutils/}{https://github.com/kendrickkay/knkutils/})
-\item MATLAB R2015a or later (\href{https://nl.mathworks.com/products/matlab.html}{https://nl.mathworks.com/products/matlab.html})
-\item MRIcron (\href{https://www.nitrc.org/projects/mricron}{https://www.nitrc.org/projects/mricron})
-\item Open fMRI Analysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{https://github.com/TimVanMourik/OpenFmriAnalysis})
-\item Pipeline (\href{https://github.com/Washington-University/Pipeline}{https://github.com/Washington-University/Pipeline})
-\item SPM (\href{http://www.fil.ion.ucl.ac.uk/spm/}{http://www.fil.ion.ucl.ac.uk/spm/})
-\item tc\_functions  (\href{https://github.com/TommyClausner/tc\_functions}{https://github.com/TommyClausner/tc\_functions})
-\item Tommy's Scriptinator 3000 TM (optional; \href{https://github.com/TommyClausner/Scriptinator}{https://github.com/TommyClausner/Scriptinator})
-\item VistaSoft (\href{https://github.com/vistalab/vistasoft}{https://github.com/vistalab/vistasoft})
-\item Workbench (\href{https://github.com/Washington-University/Workbench}{https://github.com/Washington-University/Workbench})
+\item analysePRF (\href{http://kendrickkay.net/analyzePRF/}{\nolinkurl{http://kendrickkay.net/analyzePRF/}})
+\item FieldTrip (\href{https://github.com/fieldtrip/fieldtrip}{\nolinkurl{https://github.com/fieldtrip/fieldtrip}})
+\item FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/}})
+\item FSL (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki}})
+\item knkutils (\href {https://github.com/kendrickkay/knkutils/}{\nolinkurl{https://github.com/kendrickkay/knkutils/}})
+\item MATLAB R2015a or later (\href{https://nl.mathworks.com/products/matlab.html}{\nolinkurl{https://nl.mathworks.com/products/matlab.html}})
+\item MRIcron (\href{https://www.nitrc.org/projects/mricron}{\nolinkurl{https://www.nitrc.org/projects/mricron}})
+\item Open fMRI Analysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}})
+\item Pipeline (\href{https://github.com/Washington-University/Pipeline}{\nolinkurl{https://github.com/Washington-University/Pipeline}})
+\item SPM (\href{http://www.fil.ion.ucl.ac.uk/spm/}{\nolinkurl{http://www.fil.ion.ucl.ac.uk/spm/}})
+\item tc\_functions  (\href{https://github.com/TommyClausner/tc\_functions}{\nolinkurl{https://github.com/TommyClausner/tc\_functions}})
+\item Tommy's Scriptinator 3000 TM (optional; \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}})
+\item VistaSoft (\href{https://github.com/vistalab/vistasoft}{\nolinkurl{https://github.com/vistalab/vistasoft}})
+\item Workbench (\href{https://github.com/Washington-University/Workbench}{\nolinkurl{https://github.com/Washington-University/Workbench}})
 \end{itemize}
 
 \noindent Use e.g. MRIcron's dicom2nii to convert raw MRI data to NifTi files.\\
@@ -117,7 +117,7 @@ Parts of the analysis run in Bash scripts. Those should be called from their roo
 \end{lstlisting}
 Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines.\\
 
-\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document of \href{https://github.com/TommyClausner/Scriptinator}{https://github.com/TommyClausner/Scriptinator} for more information.\\
+\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document of \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}} for more information.\\
 
 \noindent Further note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension .sh instead of .m Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
 
@@ -358,8 +358,9 @@ maximum memory required & approx time required\\\toprule
 \end{tabular}
 \end{table}
 \FloatBarrier
-\noindent Motion correction (realignment) will be performed using FSL's mcflirt function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}). Before the data will be split into two parts: \textit{retino} and  \textit{sparse}, based on their raw basename string. As a reference volume the average of all \textit{sparse} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
-Results can be found in 1\_realignment/
+\noindent Motion correction (realignment) will be performed using FSL's mcflirt function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}}). Before the data will be split into two parts: \textit{retino} and  \textit{sparse}, based on their raw basename string. As a reference volume the average of all \textit{sparse} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
+
+\noindent Results can be found in 1\_realignment/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -372,8 +373,9 @@ Field distortion is estimated based on the average inverse volume and an anverag
 \centering
 b0=\frac{\sum_{i=0}^{N_{inv}-1}V_{(N-4i)}}{N_{inv}}
 \end{equation}
-\noindent, where $V$ is the set of all volumes within the last task block, $N_{inv}$ is the number of volumes recorded with reversed phase-encoding blips and $N$ is the number of volumes in $V$. $b0_{inv}$ is the respective time series average of all $N_{inv}$ inverted volumes. A graphical depiction can be found in Figure~\ref{fig:coregdist} bottom. Once those two averages are created, the actual field distortion estimation is performed using FSL's topup (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}) and applies it to the motion corrected data.\\
-Results can be found in 3\_distcorrection/
+\noindent, where $V$ is the set of all volumes within the last task block, $N_{inv}$ is the number of volumes recorded with reversed phase-encoding blips and $N$ is the number of volumes in $V$. $b0_{inv}$ is the respective time series average of all $N_{inv}$ inverted volumes. A graphical depiction can be found in Figure~\ref{fig:coregdist} bottom. Once those two averages are created, the actual field distortion estimation is performed using FSL's topup (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}}) and applies it to the motion corrected data.\\
+
+\noindent Results can be found in 3\_distcorrection/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -387,7 +389,8 @@ After corrections for motion and field distortion, functional space was register
   V_{ref}=4\frac{\sum_{m=1}^{\frac{N}{4}}(V_{4m}-V_{4m-3})}{N}
 \end{equation}
 \noindent, where $V$ is the set of all task volumes across all four blocks and $N$ is the size of $V$. Figure~\ref{fig:coregdist} top illustrates the procedures of volume selection and averaging.\\
-Results can be found in 2\_coregistration/
+
+\noindent Results can be found in 2\_coregistration/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -408,7 +411,8 @@ The full preprocessing can also be performed in a single step, by calling the pi
 \subsection{fMRI - anatomical co-registration and masks}
 fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 4 volumes the scanner stoped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
 \noindent Computing the difference between every 4th and 1st volume and averaging, leads to a T1-like contrast, that was used to otimize functional to anatomical registration. A graphical depiction can be found in Figure~\ref{fig:coregdist} top.\\
-Results can be found in 2\_coregistration/
+
+\noindent Results can be found in 2\_coregistration/\\
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -418,8 +422,9 @@ maximum memory required & approx time required\\\toprule
 \end{tabular}
 \end{table}
 \FloatBarrier
-\noindent The anatomical T1 weighted image will be transformed into various representations (volumetric, surfaces, etc) and partly segmented (gray / white matter, CSF, etc) using FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{https://surfer.nmr.mgh.harvard.edu/})\\
-Results can be found in 0\_freesurfer/
+\noindent The anatomical T1 weighted image will be transformed into various representations (volumetric, surfaces, etc) and partly segmented (gray / white matter, CSF, etc) using FreeSurfer (\href{https://surfer.nmr.mgh.harvard.edu/}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/}})\\
+
+\noindent Results can be found in 0\_freesurfer/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -427,8 +432,9 @@ Results can be found in 0\_freesurfer/
     # do anatomical segmentation and volume reconstruction
     sh runonqsub.sh 16gb do_fsrecon.sh
 \end{lstlisting}
-Gray matter boundaries from the FreeSurfer segmentation will be used to register the partial fMRI volumes to the anatomical space. This is done using FreeSurfer's bbregister function. The toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{https://github.com/TimVanMourik/OpenFmriAnalysis}) is used to perform this step and output a registration movie to C\_miscResults. Furthermore gray and white matter masks are transformed into the functional space.\\
-Results can be found in 2\_coregistration/
+Gray matter boundaries from the FreeSurfer segmentation will be used to register the partial fMRI volumes to the anatomical space. This is done using FreeSurfer's bbregister function. The toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) is used to perform this step and output a registration movie to C\_miscResults. Furthermore gray and white matter masks are transformed into the functional space.\\
+
+\noindent Results can be found in 2\_coregistration/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -467,7 +473,8 @@ maximum memory required & approx time required\\\toprule
 \FloatBarrier
 \noindent Interpolate time series of volumes to match the number of presented frames during stimulation, by resampling the TR to match the "stimulation-frame-rate". The function below calls submits the corresponding MATLAB script as a qsub job.\\
 The data will furthermore be transformed into percent change relative to the mean.\\
-Results can be found in 4\_retinotopy/
+
+\noindent Results can be found in 4\_retinotopy/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -476,7 +483,8 @@ Results can be found in 4\_retinotopy/
     sh do_tseriesinterpolation.sh
 \end{lstlisting}
 Once the data is in the right space to estimate voxel activity, based on active screen pixels, population receptive field mapping can be performed. Since using high resolution fMRI leads inevitably to "big data" the analysis has to be split up into multiple parts. In the present case an assumed computation time of $\approx 8h$ is reached by splitting up the analysis into 80 parts. Hence there is a linear relationship between processing time and parts the data can be split up to. In the present case all together $480~GB$ of memory are used to perform the analysis in parallel on 80 different cluster nodes with only $6~GB$ each. Afterwards results are combined into a single results file and temporary results are deleted.\\
-Results can be found in 4\_retinotopy/
+
+\noindent Results can be found in 4\_retinotopy/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -486,7 +494,8 @@ Results can be found in 4\_retinotopy/
     sh combine_split_PRF_results.sh
 \end{lstlisting}
 After for each voxel certain parameters like circular coordinates mapping to screen locations, those have to be transformed into voluems, that can be overlayed with anatomical data in order to define masks for regions of interest based on the pRF mapping.\\
-Results can be found in 4\_retinotopy/
+
+\noindent Results can be found in 4\_retinotopy/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -514,19 +523,51 @@ maximum memory required & approx time required\\\toprule
 16GB & $\approx 0.5h+user$ \\\bottomrule
 \end{tabular}
 \end{table}
-\begin{itemize}
-\item sh GUI2ROIs.sh
-\item sh labels2masks.sh
-\item sh expandROIs.sh
-\item sh do\_getLayers.sh
-\item sh do\_getLayerWeights.sh
-\item using pipeline: sh laminar.sh
-\end{itemize}
+\FloatBarrier
+FreeSurfer's tksurfer (\href{https://surfer.nmr.mgh.harvard.edu/fswiki/TkSurfer}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/fswiki/TkSurfer}}) is used to obtained visual ROIs from retinotopic mapping. When running GUI2ROIs.sh, an instance of tksurfer is spawned with the correct overlay already set up. In some cases the required file =0\_freesurfer/mri/orig.mgz is not present, but instead it's called orig\_nu.mgz. In that case please make sure that 0\_freesurfer/mri/orig.mgz exists by copy-pasting orig\_nu.mgz to orig.mgz\\
+Afterwards run the commands below again. Once the overlay is displayed correctly, proceed as described in Section~\ref{sec:GUIprf}. Afterwards labels are transformed into masks. Since the selection was done on a surface, the corresponding mask volume is only one voxel thick. Hence voxel have to be expanded to fill the gray matter area.\\
 
+\noindent Results can be found in 5\_laminar/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # making masks for V1,2,3 based on retinotopy
+    sh GUI2ROIs.sh
+    sh labels2masks.sh
+    sh expandROIs.sh
+\end{lstlisting}
+\begin{figure}
+\begin{center}
+\includegraphics[width=1\textwidth]{ROIselpRF}
+\caption[Example for visual ROI definition]{Definition of visual ROIs. Note that along the borders of visual areas a significant shift in color occurs.}
+\end{center}
+\label{fig:ROIpRF}
+\end{figure}
+Note that using FreeSurfer's freeview yields better plotting functionality, however TkSurfer provides an easier way to select vertices.\\
+Once this is done gray matter volumes are split into corical layers. This is implemented in OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}). Based on gray and white matter boundaries and the respective curvature, gray matter is segmented into 3 layers. The result is a probability map for each voxel to belong to a certain layer.\\
+
+\noindent Results can be found in 5\_laminar/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # performing laminar separation
+    sh do_getLayers.sh
+    sh do_getLayerWeights.sh
+\end{lstlisting}
+The layer segmentation process can also be performed in a single step, by calling the pipeline script:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # using pipeline
+    sh laminar.sh
+\end{lstlisting}
+\FloatBarrier
 \subsection{EEG pre-processing}
 The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $2-32~Hz$ and $30-100~Hz$ respectively.\\
-A FEM forward model will be used as well as a anatomical constraint source model.\\
-
+A FEM forward model will be used as well as a anatomical constraint source model (see Figure~\ref{fig:exampleSourcemodel} for a graphical depiction).\\
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -535,15 +576,43 @@ maximum memory required & approx time required\\\toprule
 $16~GB$ & $\approx 2h$ \\\bottomrule
 \end{tabular}
 \end{table}
-\begin{itemize}
-\item sh do\_EEGpreprocessing.sh
-\item sh do\_EEGtimelock.sh
-\item (sh runonqsub.sh 16gb do\_fsrecon.sh)
-\item sh do\_EEGprepareFS.sh
-\end{itemize}
+First data is loaded an segmented into trials. Note that the default trial selection string might vary from experiment to experiment. Target trigger values can be set in do\_EEGpreprocessing.sh\\
+Additionally the data will be band pass filtered at $2-32~Hz$ for $\alpha$ and $\beta$ bands and at $30-100~Hz$ for $\gamma$. Respective changes in the filterband can be made in do\_EEGpreprocessing.sh\\
+If desired, trials should be excluded at this stange as well. To achieve this either use FieldTrip's built in functionality (do\_EEGpreprocessing.sh bottom) or provide a logical array of whether to include a trial to ft\_redefinetrial(cfg, data). See \href{http://www.fieldtriptoolbox.org/reference/ft_redefinetrial}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_redefinetrial}} for more information.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # EEG preprocessing: trial selection, BP filter, (trial selection)
+    sh do_EEGpreprocessing.sh
+\end{lstlisting}
+Once the general preprocessing is done, the function ft\_timelockanalysis (\href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}}) is used to estimate the noise covariance matrix based on baseline data for high and low frequencies separately. This is necessary since the noise structure for those different bands varies significantly. The default noise estimation window is $-0.5$ to $-0.1~s$ realtive to stimulus onset.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # EEG preprocessing: noise estimation
+    sh do_EEGtimelock.sh
+\end{lstlisting}
+As last step the result from fsrecon (do\_fsrecon.sh) must be prepared to be used as source model. For this purpose Workbench (\href{https://github.com/Washington-University/workbench}{\nolinkurl{https://github.com/Washington-University/workbench}}) is used, wrapped into do\_EEGprepareFS.sh\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # EEG preprocessing: source model preparation
+    sh do_EEGprepareFS.sh
+\end{lstlisting}
+
 
 \subsection{EEG prepare head and source models}
-
+Head and Sourcemodel are prepared using FieldTrip. Per default the pipeline is set up to use finite element models (FEM), but can be changed to boundary element model (BEM) as well. As source model, the result from Workbench is used.
+\label{sec:Sourcemodel}
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -552,12 +621,44 @@ maximum memory required & approx time required\\\toprule
 $32~GB$ & $\approx 6h+user$ \\\bottomrule
 \end{tabular}
 \end{table}
-\begin{itemize}
-\item sh do\_EEGprepareHeadmodel.sh
-\item sh do\_EEGelectrodeRegistration.m (inside a MATLAB instance)
-\item sh do\_EEGprepareSourcemodel.sh
-\end{itemize}
+Loading and segmenting anatomical MRI data is done using ft\_volumesegment (\href{http://www.fieldtriptoolbox.org/reference/ft\_volumesegment}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_volumesegment}}) and ft\_prepare\_mesh (\href{http://www.fieldtriptoolbox.org/reference/ft\_prepare\_mesh}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_prepare\_mesh}}). For more details about the settings of this function see Section~\ref{sec:prepHM}.\\
 
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare head model
+    sh do_EEGprepareHeadmodel.sh
+\end{lstlisting}
+Once the headmodel is prepare, sensor locations need to be coregistered. This is achieved by starting an interactive MATLAB session and opening the script B\_scripts/\textbf{do\_EEGelectrodeRegistration.m}. The FieldTrip function ft\_electroderealign is used to interactively coregister sensor locations to anatomical MR data. See \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}} for more information.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # coregister electrode locations to anatomical MR using MATLAB
+    matlab
+\end{lstlisting}
+The previously computed data is now prepared to be finally used and the Workbench sourcemodel is loaded.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare data and load source model
+    sh do_EEGprepareSourcemodel.sh
+\end{lstlisting}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{exampleSourcemodel}
+\caption[Example source model]{Example source model including visual ROIs. Note that for demonstrative purposes all possible ROIs are show, however per default only V1 for both hemispheres will be used. This plot was created using EEGvisualizeVirtualChannel.m}
+\end{center}
+\label{fig:exampleSourcemodel}
+\end{figure}
+\FloatBarrier
 \subsection{EEG compute virtual channels}
 
 \begin{table}[h]
@@ -568,13 +669,57 @@ maximum memory required & approx time required\\\toprule
 $960~GB$ & $\approx 12h$ \\\bottomrule
 \end{tabular}
 \end{table}
-\begin{itemize}
-\item sh do\_EEGsplitBeamformer.sh
-\item sh do\_EEGsplitVirtualChannel.sh
-\item sh do\_EEGsplitFreqOnVirtChan.sh
-\item sh do\_EEGfreqChanSelect.sh
-\end{itemize}
+The first step is to estimate time courses for dipoles at each voxel lcoation. To achieve this LCMV beamformer weights are computed separately for high and low frequencies. To reduce search space and hence computation time, previously computed ROI maps are used. By default left and right V1 are used as two separate ROIs. Volumetric ROIs are translated into cartesian coordinates. Beamformer weights are computed using $\lambda=10\%$ for noise regularization employing ft\_sourceanalysis (\href{http://www.fieldtriptoolbox.org/reference/ft\_sourceanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_sourceanalysis}}). Trial segmented data is then multiplied with beamformer weights, in order to obtain individual time series for all dipole locations.\\
+Note that $480~GB$ of memory are required to estimate the beamformer weights in a parallelized fashion as below.\\
 
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare data and load source model
+    sh do_EEGsplitBeamformer.sh
+    sh do_EEGsplitVirtualChannel.sh
+\end{lstlisting}
+Afterwards a time frequency analysis (\href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}) is run for all virtual channels. Since this operation is performed on a single trial basis for different filter bands and left and right hemisphere separately, $960~GB$ of memory are required to compute this step as implemented.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare data and load source model
+    sh do_EEGsplitFreqOnVirtChan.sh
+\end{lstlisting}
+To relate the data to layer specific fMRI results, a channel selection has to take place, that is optimized for frequency ROIs ($\alpha, \beta, \gamma$). For each of the 3 bands all virtual channels will be searched and the best 100 are selected. Those are defined to have the lowest ($\alpha, \beta$) or highest ($\gamma$) relative power compared to the baseline period ($-0.3$ to $-0.2~s$ relative to simulus onset).\\
+
+\noindent Frequency ROIs are defined as:
+\begin{table}[h]
+%\centering
+\begin{tabular}{c | c | c}
+\toprule
+$\alpha$ & $\beta$ & $\gamma$\\\toprule
+$8-12~Hz$ & $22-28~Hz$ & $50-70~Hz$ \\\bottomrule
+\end{tabular}
+\end{table}\\
+Furthermore, the function produces figures saved in C\_miscResults similar to what is shown in Figure~\ref{fig:exampleGamma}.\\
+
+\noindent Results can be found in 6\_EEG/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare data and load source model
+    sh do_EEGfreqChanSelect.sh
+\end{lstlisting}
+\begin{figure}
+\begin{center}
+\includegraphics[width=1\textwidth]{exampleGamma}
+\caption[Example for $\gamma$ response in virtual channel]{Example for $\gamma$ response in virtual channel}
+\end{center}
+\label{fig:exampleGamma}
+\end{figure}
+\FloatBarrier
 \section{Helper files}
 There are several helper files that are needed in order to perform the analysis:
 
@@ -746,7 +891,7 @@ example: sh do\_makemasksandlabels.sh\\
 
 \noindent Uses FreeSurfer reconstruction to create masks for CSF, gray matter and white matter and creates labeled volume for use within retinotopy containing left / right + gray / white matter. All masks will be created as full-brain and partial-brain masks.\\
 
-\noindent If the orientation needs to be changed, parse the respective FreeSurfer compatible orientation parameter (\href{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri_convert.help.xml.html}{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri\_convert.help.xml.html})\\
+\noindent If the orientation needs to be changed, parse the respective FreeSurfer compatible orientation parameter (\href{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri_convert.help.xml.html}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri\_convert.help.xml.html}})\\
 
 \noindent Under the hood:
 \begin{itemize}
@@ -934,7 +1079,7 @@ Underlying FieldTrip functions are:
 
 \subsection{do\_EEGelectrodeRegistration.m}
 \label{sec:elecReg}
-This function cannot be run using Qsub or a headless MATLAB instance, since it requires user interaction via a graphical user interface. The script will load the respective data, save and exit (after the user is done). Since this script is just a wrapper function for ft\_electroderealign I will refer to the corresponding FieldTrip documentation: \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}
+This function cannot be run using Qsub or a headless MATLAB instance, since it requires user interaction via a graphical user interface. The script will load the respective data, save and exit (after the user is done). Since this script is just a wrapper function for ft\_electroderealign I will refer to the corresponding FieldTrip documentation: \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}}
 
 \subsection{do\_EEGprepareSourcemodel.sh}
 \label{sec:prepSM}
@@ -948,7 +1093,7 @@ Sets up sourcemodel (dipole model) for source analysis using the result of do\_E
 Wrapper function for running do\_EEGtimelock.m via Qsub
 
 \subsection{do\_EEGtimelock.m}
-Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call ft\_timelockanalysis using cfg.keeptrials = 'yes'. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis} for more information.
+Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call ft\_timelockanalysis using cfg.keeptrials = 'yes'. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}} for more information.
 
 \subsection{do\_EEGsplitBeamformer.sh}
 \label{sec:beamf}
@@ -978,7 +1123,7 @@ Wrapper function to call do\_EEGfreqOnVirtChan.sh The function calls a predefine
 Wrapper function for running do\_EEGfreqOnVirtChan.m via Qsub
 
 \subsection{do\_EEGfreqOnVirtChan.m}
-Computes time-frequency analysis for virtual channel data using ft\_freqanalysis. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}.
+Computes time-frequency analysis for virtual channel data using ft\_freqanalysis. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.
 
 \subsection{do\_EEGfreqChanSelect.sh}
 \label{sec:selchan}
@@ -1001,11 +1146,11 @@ Wrapper function for running do\_EEGfreqChanSelect.m via Qsub
 \label{sec:scriptinator}
 Tommy's Scriptinator 3000 TM is a graphical user interface that allows drag and drop based arrangements of scripts on a canvas. The code of the script as well as defined variables can directly be viewed by double clicking one of the icons representing a script (examples below). This way analysis pipelines can easily be comprehended and shared. Tommy's Scriptinator 3000 TM can be downloaded from:\\
 
-\href{https://github.com/TommyClausner/Scriptinator/}{https://github.com/TommyClausner/Scriptinator/}\\
+\href{https://github.com/TommyClausner/Scriptinator/}{\nolinkurl{https://github.com/TommyClausner/Scriptinator/}}\\
 
 \noindent It requires at least JDK9 or newer to be installed:\\
 
-\href{http://www.oracle.com/technetwork/java/javase/downloads/}{http://www.oracle.com/technetwork/java/javase/downloads/}\\
+\href{http://www.oracle.com/technetwork/java/javase/downloads/}{\nolinkurl{http://www.oracle.com/technetwork/java/javase/downloads/}}\\
 
 \noindent After downloading the repository from GitHub, one can start the program by double clicking Scriptinator.jar. All further help will be provided from there.
 
