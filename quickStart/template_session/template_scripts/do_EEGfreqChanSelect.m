@@ -16,6 +16,11 @@ filters={'BP2_32','BP2_32beta','BP30_100'};
 
 ROIs={'centV1_lhV1','centV1_rhV1'};
 
+clean_prefixes={'TCsel', 'BP', 'TL', 'Beamf', 'VirtCh', 'TF'};
+
+if ~exist('clean_EEG_folder','var')
+    clean_EEG_folder=0;
+end
 timeWinMax = [0.1 1.39]; % in s
 
 freqROIs={'alpha','beta', 'gamma'};
@@ -39,7 +44,8 @@ dataTemplate = struct(...
     'dimord','chan_time_rpt_block',...
     'label',[],...
     'sortAll',[],...
-    'sortord',[])});
+    'sortord',[])},...
+    'beamformerWeights',[]);
 
 VirtChanData=[];
 
@@ -93,6 +99,7 @@ for filter=filters
             avg_tmp=cat(ndims(dataTFR.powspctrm)+1,avg_tmp, dataTFR.powspctrm);
             VC=cat(ndims(virtChannels)+1,VC, virtChannels);
             
+            dataTemplate.beamformerWeights=cat(2,dataTemplate.beamformerWeights,{dataSrc.avg});
             
         end
         
@@ -204,6 +211,15 @@ end
 disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'EEGprocessed.mat'])
 save([mainpath filesep '..' filesep '6_EEG' filesep 'EEGprocessed.mat'],'VirtChanData','-v7.3')
 disp('done.')
+
+
+if clean_EEG_folder
+    disp('cleaning old files...')
+    for deleteThis = clean_prefixes
+        delete([mainpath filesep '..' filesep '6_EEG' filesep deleteThis{1} '*'])
+    end
+    disp('done.')
+end
 
 %%
 exit
