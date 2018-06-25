@@ -135,6 +135,30 @@ Each step within the analysis has a different subfolder containing the respectiv
     echo 'matlab2017b -nosplash -r "run('"'"$DIR/tmp_$nameadd.m"'"');"'  | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 \end{lstlisting}
 
+\section{Helper files}
+There are several helper files that are needed in order to perform the analysis:
+
+\subsection{acquisition\_parameters.txt}
+indicating the respective acquisition parameters per volume needed in order to perform the distortion correction. One line indicates the respective parameter setting for the respective volume (1st line corresponds to 1st volume, etc.)\\
+
+\noindent e.g.:
+
+\noindent 0 1 0 0.042\\
+\noindent 0 -1 0 0.042\\
+
+The first 3 columns indicate the respective phase coding direction the last column some weird value, that is only important if it changes. Otherwise it's fine to use any value as long as it is the same.
+
+\subsection{b02b0.cnf}
+Settings for distortion correction.
+
+Needed in order to set the parameters for the distortion correction (example provided by FSL).
+
+\subsection{params.mat}
+Parameters used for retinotopy scans as obtained from VistaDisp.
+
+\subsection{images.mat}
+Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
+
 \section{qsub}
 Scripts that are flagged with the (Q) can be submitted as a qsub job.
 
@@ -718,29 +742,6 @@ Furthermore, the function produces figures saved in C\_miscResults similar to wh
 \label{fig:exampleGamma}
 \end{figure}
 \FloatBarrier
-\section{Helper files}
-There are several helper files that are needed in order to perform the analysis:
-
-\subsection{acquisition\_parameters.txt}
-indicating the respective acquisition parameters per volume needed in order to perform the distortion correction. One line indicates the respective parameter setting for the respective volume (1st line corresponds to 1st volume, etc.)\\
-
-\noindent e.g.:
-
-\noindent 0 1 0 0.042\\
-\noindent 0 -1 0 0.042\\
-
-The first 3 columns indicate the respective phase coding direction the last column some weird value, that is only important if it changes. Otherwise it's fine to use any value as long as it is the same.
-
-\subsection{b02b0.cnf}
-Settings for distortion correction.
-
-Needed in order to set the parameters for the distortion correction (example provided by FSL).
-
-\subsection{params.mat}
-Parameters used for retinotopy scans as obtained from VistaDisp.
-
-\subsection{images.mat}
-Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
 
 \section{Scripts explained (support for runonqsub.sh: Q)}
 \subsection{getToolboxes.sh}

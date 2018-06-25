@@ -3,21 +3,21 @@
 \contentsline {subsection}{\numberline {2.1}Pre- requisites}{8}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Folder structure}{9}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}How things work}{9}{subsection.2.3}
-\contentsline {section}{\numberline {3}qsub}{10}{section.3}
-\contentsline {section}{\numberline {4}Quick Start}{13}{section.4}
-\contentsline {subsection}{\numberline {4.1}first steps}{13}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}fMRI pre-processing}{14}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}fMRI - anatomical co-registration and masks}{15}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}pRF mapping}{16}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}fMRI layer segmentation}{18}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}EEG pre-processing}{20}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}EEG prepare head and source models}{21}{subsection.4.7}
-\contentsline {subsection}{\numberline {4.8}EEG compute virtual channels}{22}{subsection.4.8}
-\contentsline {section}{\numberline {5}Helper files}{24}{section.5}
-\contentsline {subsection}{\numberline {5.1}acquisition\_parameters.txt}{24}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}b02b0.cnf}{24}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}params.mat}{25}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}images.mat}{25}{subsection.5.4}
+\contentsline {section}{\numberline {3}Helper files}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}acquisition\_parameters.txt}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}b02b0.cnf}{11}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}params.mat}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}images.mat}{11}{subsection.3.4}
+\contentsline {section}{\numberline {4}qsub}{11}{section.4}
+\contentsline {section}{\numberline {5}Quick Start}{14}{section.5}
+\contentsline {subsection}{\numberline {5.1}first steps}{14}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}fMRI pre-processing}{15}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}fMRI - anatomical co-registration and masks}{16}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}pRF mapping}{17}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}fMRI layer segmentation}{19}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}EEG pre-processing}{21}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}EEG prepare head and source models}{22}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}EEG compute virtual channels}{23}{subsection.5.8}
 \contentsline {section}{\numberline {6}Scripts explained (support for runonqsub.sh: Q)}{25}{section.6}
 \contentsline {subsection}{\numberline {6.1}getToolboxes.sh}{25}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}runonqsub.sh}{25}{subsection.6.2}
@@ -25,27 +25,27 @@
 \contentsline {subsection}{\numberline {6.4}liveupdateqsub.sh}{26}{subsection.6.4}
 \contentsline {subsection}{\numberline {6.5}waitForJobs.sh}{26}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}makenewsubject.sh}{26}{subsection.6.6}
-\contentsline {subsection}{\numberline {6.7}setupfolders.sh (Q)}{26}{subsection.6.7}
+\contentsline {subsection}{\numberline {6.7}setupfolders.sh (Q)}{27}{subsection.6.7}
 \contentsline {subsection}{\numberline {6.8}do\_preparefunctionals.sh (Q)}{27}{subsection.6.8}
 \contentsline {subsection}{\numberline {6.9}do\_realignment.sh (Q)}{27}{subsection.6.9}
 \contentsline {subsection}{\numberline {6.10}do\_distcorr.sh (Q)}{27}{subsection.6.10}
 \contentsline {subsection}{\numberline {6.11}do\_applysimpledistcorr.sh (Q)}{28}{subsection.6.11}
 \contentsline {subsection}{\numberline {6.12}do\_preparecoregistration.sh (Q)}{28}{subsection.6.12}
-\contentsline {subsection}{\numberline {6.13}do\_correctavgdiff.sh (Q)}{28}{subsection.6.13}
+\contentsline {subsection}{\numberline {6.13}do\_correctavgdiff.sh (Q)}{29}{subsection.6.13}
 \contentsline {subsection}{\numberline {6.14}do\_fsrecon.sh (Q)}{29}{subsection.6.14}
 \contentsline {subsection}{\numberline {6.15}do\_coregistration.sh}{29}{subsection.6.15}
 \contentsline {subsection}{\numberline {6.16}do\_coregistration.m}{29}{subsection.6.16}
 \contentsline {subsection}{\numberline {6.17}do\_makemasksandlabels.sh (Q)}{30}{subsection.6.17}
 \contentsline {subsection}{\numberline {6.18}do\_movesinglevolume.sh}{30}{subsection.6.18}
-\contentsline {subsection}{\numberline {6.19}do\_tseriesinterpolation.sh}{30}{subsection.6.19}
+\contentsline {subsection}{\numberline {6.19}do\_tseriesinterpolation.sh}{31}{subsection.6.19}
 \contentsline {subsection}{\numberline {6.20}do\_tseriesinterpolation.m}{31}{subsection.6.20}
 \contentsline {subsection}{\numberline {6.21}do\_split\_analyzePRF.sh}{31}{subsection.6.21}
-\contentsline {subsection}{\numberline {6.22}do\_analyzePRF.sh}{31}{subsection.6.22}
+\contentsline {subsection}{\numberline {6.22}do\_analyzePRF.sh}{32}{subsection.6.22}
 \contentsline {subsection}{\numberline {6.23}do\_analyzePRF.m}{32}{subsection.6.23}
 \contentsline {subsection}{\numberline {6.24}combine\_split\_PRF\_results.sh}{32}{subsection.6.24}
 \contentsline {subsection}{\numberline {6.25}combine\_split\_PRF\_results.m}{32}{subsection.6.25}
 \contentsline {subsection}{\numberline {6.26}make\_PRF\_overlays.sh}{32}{subsection.6.26}
-\contentsline {subsection}{\numberline {6.27}make\_PRF\_overlays.m}{32}{subsection.6.27}
+\contentsline {subsection}{\numberline {6.27}make\_PRF\_overlays.m}{33}{subsection.6.27}
 \contentsline {subsection}{\numberline {6.28}makeOverlays.sh (Q)}{33}{subsection.6.28}
 \contentsline {subsection}{\numberline {6.29}GUI2ROIs.sh}{33}{subsection.6.29}
 \contentsline {subsection}{\numberline {6.30}labels2masks.sh (Q)}{34}{subsection.6.30}
