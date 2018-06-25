@@ -151,10 +151,10 @@ The first 3 columns indicate the respective phase coding direction the last colu
 \subsection{b02b0.cnf}
 Settings for distortion correction.
 
-Needed in order to set the parameters for the distortion correction (example provided by FSL).
+Needed in order to set the parameters for the distortion correction (example provided by FSL). For more information see \href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}}.
 
 \subsection{params.mat}
-Parameters used for retinotopy scans as obtained from VistaDisp.
+Parameters used for retinotopy scans as obtained from VistaDisp. For more information see \href{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}{\nolinkurl{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}}.
 
 \subsection{images.mat}
 Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
@@ -176,7 +176,7 @@ Scripts that are flagged with the (Q) can be submitted as a qsub job.
 
 \noindent Some scripts are present as scriptnameQsub.sh Those scripts contain an internal Qsub-wrapper and do the same as sh runonqsub.sh XXgb scriptname.sh Those scripts are created when using Pipelines (see Section~\ref{sec:pipelines}).\\
 
-\noindent the following requirements on memory and computation time can be expected:
+\noindent Table~\ref{tab:hardwarerequirements} gives an overview about requirements on memory and computation time can be expected:
 
 \begin{table}[h]
 \centering
@@ -370,7 +370,7 @@ From this point on it's best to navigate to the B\_scripts folder of the subject
 \end{lstlisting}
 This functions cuts off the first 4 volumes of the recorded data if it has 4 volumes more than expected. If further volumes were recorded (more than pre-defined) they will also be cut at the end.
 \subsection{fMRI pre-processing}
-Data will be corrected for motion and field distortion. Motion and distortion correction will be done using the average task block volumes (ignoring retinotopy volumes) as reference. Field distortion will be estimated compared to the inverse volumes that were collected. Both, inverse volumes and as many "normal" volumes will be averaged. See figure~\ref{fig:coregdist} bottom for a graphical depiction.
+Data will be corrected for motion and field distortion. Motion and distortion correction will be done using the average task block volumes (ignoring retinotopy volumes) as reference. Field distortion will be estimated compared to the inverse volumes that were collected. Both, inverse volumes and as many "normal" volumes will be averaged. See Figure~\ref{fig:coregdist} bottom for a graphical depiction.
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -478,8 +478,8 @@ The full coregistration and creation of functional masks can also be performed i
 \begin{center}
 \includegraphics[width=0.8\textwidth]{coregdist}
 \caption[Coregistration and distortion correction visual depiction]{Coregistration and distortion correction visual depiction}
-\end{center}
 \label{fig:coregdist}
+\end{center}
 \end{figure}
 
 \subsection{pRF mapping}
@@ -563,8 +563,8 @@ Afterwards run the commands below again. Once the overlay is displayed correctly
 \begin{center}
 \includegraphics[width=1\textwidth]{ROIselpRF}
 \caption[Example for visual ROI definition]{Definition of visual ROIs. Note that along the borders of visual areas a significant shift in color occurs.}
-\end{center}
 \label{fig:ROIpRF}
+\end{center}
 \end{figure}
 Note that using FreeSurfer's freeview yields better plotting functionality, however TkSurfer provides an easier way to select vertices.\\
 Once this is done gray matter volumes are split into corical layers. This is implemented in OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}). Based on gray and white matter boundaries and the respective curvature, gray matter is segmented into 3 layers. The result is a probability map for each voxel to belong to a certain layer.\\
@@ -677,8 +677,8 @@ The previously computed data is now prepared to be finally used and the Workbenc
 \begin{center}
 \includegraphics[width=0.8\textwidth]{exampleSourcemodel}
 \caption[Example source model]{Example source model including visual ROIs. Note that for demonstrative purposes all possible ROIs are show, however per default only V1 for both hemispheres will be used. This plot was created using EEGvisualizeVirtualChannel.m}
-\end{center}
 \label{fig:exampleSourcemodel}
+\end{center}
 \end{figure}
 \FloatBarrier
 \subsection{EEG compute virtual channels}
@@ -738,8 +738,8 @@ Furthermore, the function produces figures saved in C\_miscResults similar to wh
 \begin{center}
 \includegraphics[width=1\textwidth]{exampleGamma}
 \caption[Example for $\gamma$ response in virtual channel]{Example for $\gamma$ response in virtual channel}
-\end{center}
 \label{fig:exampleGamma}
+\end{center}
 \end{figure}
 \FloatBarrier
 
@@ -866,11 +866,23 @@ Due to the subtraction of the 1st from the 4th volume the area outside the brain
 \label{sec:fsrecon}
 Performs segmentation using Freesurfer.\\
 
-\noindent If running on OSX the script assumes:\\
-\noindent FREESURFER\_HOME=/Applications/freesurfer\\
+\noindent If running on OSX the script assumes:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # FreeSurfer Home Mac
+    FREESURFER_HOME=/Applications/freesurfer
+\end{lstlisting}
 
 \noindent If running on linux the script assumes:\\
-\noindent FREESURFER\_HOME=/opt/freesurfer/version\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # FreeSurfer Home Linux
+    FREESURFER_HOME=/opt/freesurfer/version
+\end{lstlisting}
 
 \noindent The target image that is used for the segmentation must be located in /niftis/t1\\
 
@@ -961,14 +973,14 @@ Wrapper function to call do\_analyzePRF.m Spawns a qsub job using 6GB of memory 
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
-    # example
+    # example split search space into 5 parts an run the first
     sh do_analyzePRF.sh 1 5
 \end{lstlisting}
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
-    # example 2
+    # example not splitting up search space
     sh do_analyzePRF.sh 1 1
 \end{lstlisting}
 

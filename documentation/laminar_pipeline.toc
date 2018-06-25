@@ -44,10 +44,10 @@
 \contentsline {subsection}{\numberline {6.23}do\_analyzePRF.m}{32}{subsection.6.23}
 \contentsline {subsection}{\numberline {6.24}combine\_split\_PRF\_results.sh}{32}{subsection.6.24}
 \contentsline {subsection}{\numberline {6.25}combine\_split\_PRF\_results.m}{32}{subsection.6.25}
-\contentsline {subsection}{\numberline {6.26}make\_PRF\_overlays.sh}{32}{subsection.6.26}
+\contentsline {subsection}{\numberline {6.26}make\_PRF\_overlays.sh}{33}{subsection.6.26}
 \contentsline {subsection}{\numberline {6.27}make\_PRF\_overlays.m}{33}{subsection.6.27}
 \contentsline {subsection}{\numberline {6.28}makeOverlays.sh (Q)}{33}{subsection.6.28}
-\contentsline {subsection}{\numberline {6.29}GUI2ROIs.sh}{33}{subsection.6.29}
+\contentsline {subsection}{\numberline {6.29}GUI2ROIs.sh}{34}{subsection.6.29}
 \contentsline {subsection}{\numberline {6.30}labels2masks.sh (Q)}{34}{subsection.6.30}
 \contentsline {subsection}{\numberline {6.31}expandROIs.sh}{34}{subsection.6.31}
 \contentsline {subsection}{\numberline {6.32}expandROIs.m}{34}{subsection.6.32}
@@ -61,7 +61,7 @@
 \contentsline {subsection}{\numberline {6.40}do\_EEGprepareFS.sh}{35}{subsection.6.40}
 \contentsline {subsection}{\numberline {6.41}do\_EEGprepareHeadmodel.sh}{35}{subsection.6.41}
 \contentsline {subsection}{\numberline {6.42}do\_EEGprepareHeadmodel.m}{35}{subsection.6.42}
-\contentsline {subsection}{\numberline {6.43}do\_EEGelectrodeRegistration.m}{35}{subsection.6.43}
+\contentsline {subsection}{\numberline {6.43}do\_EEGelectrodeRegistration.m}{36}{subsection.6.43}
 \contentsline {subsection}{\numberline {6.44}do\_EEGprepareSourcemodel.sh}{36}{subsection.6.44}
 \contentsline {subsection}{\numberline {6.45}do\_EEGprepareSourcemodel.m}{36}{subsection.6.45}
 \contentsline {subsection}{\numberline {6.46}do\_EEGtimelock.sh}{36}{subsection.6.46}
@@ -69,17 +69,17 @@
 \contentsline {subsection}{\numberline {6.48}do\_EEGsplitBeamformer.sh}{36}{subsection.6.48}
 \contentsline {subsection}{\numberline {6.49}do\_EEGbeamformer.sh}{36}{subsection.6.49}
 \contentsline {subsection}{\numberline {6.50}do\_EEGbeamformer.m}{36}{subsection.6.50}
-\contentsline {subsection}{\numberline {6.51}do\_EEGsplitVirtualChannel.sh}{36}{subsection.6.51}
+\contentsline {subsection}{\numberline {6.51}do\_EEGsplitVirtualChannel.sh}{37}{subsection.6.51}
 \contentsline {subsection}{\numberline {6.52}do\_EEGvirtualChannel.sh}{37}{subsection.6.52}
 \contentsline {subsection}{\numberline {6.53}do\_EEGvirtualChannel.m}{37}{subsection.6.53}
 \contentsline {subsection}{\numberline {6.54}do\_EEGsplitFreqOnVirtChan.sh}{37}{subsection.6.54}
 \contentsline {subsection}{\numberline {6.55}do\_EEGfreqOnVirtChan.sh}{37}{subsection.6.55}
 \contentsline {subsection}{\numberline {6.56}do\_EEGfreqOnVirtChan.m}{37}{subsection.6.56}
 \contentsline {subsection}{\numberline {6.57}do\_EEGfreqChanSelect.sh}{37}{subsection.6.57}
-\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.m}{37}{subsection.6.58}
-\contentsline {subsection}{\numberline {6.59}EEGvisualizeVirtualChannel.m}{37}{subsection.6.59}
-\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{37}{section.7}
-\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{37}{section.8}
+\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.m}{38}{subsection.6.58}
+\contentsline {subsection}{\numberline {6.59}EEGvisualizeVirtualChannel.m}{38}{subsection.6.59}
+\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{38}{section.7}
+\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{38}{section.8}
 \contentsline {section}{\numberline {9}How to: Pipelines}{38}{section.9}
 \contentsline {subsection}{\numberline {9.1}Scripts}{38}{subsection.9.1}
 \contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{38}{subsection.9.2}
