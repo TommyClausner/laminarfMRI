@@ -9,7 +9,7 @@ addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_func
 
 %%
 
-prefix='TF_';
+Addprefix='TF_';
 
 Selprefix='VirtCh';
 
@@ -81,8 +81,8 @@ for block=BlockSel
                 saveFileName=strsplit(saveFileName{1},filesep);
                 saveFileName=saveFileName{end};
                 
-                disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-                save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'dataTFR','-v7.3')
+                disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'dataTFR','-v7.3')
                 disp('done.')
                 
             end

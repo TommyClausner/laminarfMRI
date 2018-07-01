@@ -81,6 +81,7 @@ for filter=filters
         
         avg_tmp=[];
         VC=[];
+	dataTemplate.beamformerWeights=[];
         for block = blocks
             disp(num2str(block))
             
@@ -100,6 +101,11 @@ for filter=filters
             VC=cat(ndims(virtChannels)+1,VC, virtChannels);
             
             dataTemplate.beamformerWeights=cat(2,dataTemplate.beamformerWeights,{dataSrc.avg});
+	    data = [];
+	    dataSrc = [];
+	    dataTL = [];
+	    virtChannels = [];
+	    clearvars data, dataSrc, dataTL, virtChannels
             
         end
         
@@ -137,6 +143,8 @@ for filter=filters
         baseline = nanmean(reshape(avg(:,indsFreq,indsBL,:,:),size(avg,1),sum(indsFreq),[],size(avg,4),size(avg,5)),3);
         tmp_avg=nanmean(reshape(avg(:,indsFreq,indsTime,:,:)-repmat(baseline,1,1,sum(indsTime),1,1),size(avg,1),[]),2);
         
+	avg=[]
+	clearvars avg
         % relative change
         [~,I]=sort(tmp_avg, sorting);
         

@@ -17,7 +17,7 @@ TriggerValues={'S  1','S  2'};
 
 TriggerType='Stimulus';
 
-prefix='TCsel_';
+Addprefix='TCsel_';
 
 for file_ = files
     
@@ -49,8 +49,8 @@ for file_ = files
     cfg.resamplefs = 1024;
     data = ft_resampledata(cfg, data);
     
-    disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-    save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'data','-v7.3')
+    disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+    save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'data','-v7.3')
     disp('done.')
 end
 
@@ -64,7 +64,7 @@ for n=1:2
     timeBaseline=[-0.5 -0.1];
     
     
-    prefix=['BP' num2str(filterPassBand(1)) '_' num2str(filterPassBand(2)) '_'];
+    Addprefix=['BP' num2str(filterPassBand(1)) '_' num2str(filterPassBand(2)) '_'];
     
     EEGDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*.mat']);
     
@@ -84,8 +84,8 @@ for n=1:2
         saveFileName=strsplit(saveFileName{1},filesep);
         saveFileName=saveFileName{end};
         
-        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-        save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'data','-v7.3')
+        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+        save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'data','-v7.3')
         disp('done.')
     end
 end
@@ -95,7 +95,7 @@ VisInspection=0;
 
 if VisInspection
     Selprefix='BP40_80';
-    prefix='';
+    Addprefix='';
     EEGDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*.mat']);
     for file_ = cellfun(@(x) [EEGDataFiles(1).folder filesep x],{EEGDataFiles.name},'unif',0)
         load(file_{1})
@@ -108,8 +108,8 @@ if VisInspection
         saveFileName=strsplit(saveFileName{1},filesep);
         saveFileName=saveFileName{end};
         
-        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-        save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'data','-v7.3')
+        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+        save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'data','-v7.3')
         disp('done.')
     end
 end

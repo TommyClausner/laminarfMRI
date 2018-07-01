@@ -8,7 +8,7 @@
 # label=do_EEGfreqChanSelect
 # file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_EEGfreqChanSelect.sh
 # useqsub=false
-# shortLabel=EEGfrCh
+# shortLabel=EEGfrChS
 
 ### Script ###
 
@@ -24,14 +24,14 @@ walltime="11:59:59"
 memory=256gb
 
 # Misc Variables #
-MiscVarName=none
+deleteOldFiles=1
 
 ### END HEADER ###
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
-echo "mainpath=" "'$DIR';">$DIR/tmp_$nameadd.m
+echo "mainpath=" "'$DIR';clean_EEG_folder=$deleteOldFiles;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGfreqChanSelect.m>>$DIR/tmp_$nameadd.m
 echo 'matlab2017b -nosplash -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)

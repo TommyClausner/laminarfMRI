@@ -16,7 +16,7 @@ plotSource=0;
 
 Selprefix='TL';
 
-prefix='Beamf_centV1_';
+Addprefix='Beamf_centV1_';
 if strcmp(headmodelType,'BEM')
     setenv('PATH', [filesep 'opt' filesep 'openmeeg' filesep '2.2.0' filesep 'bin:' getenv('PATH')]);
     setenv('LD_LIBRARY_PATH', [filesep 'opt' filesep 'openmeeg' filesep '2.2.0' filesep 'lib:' getenv('LD_LIBRARY_PATH')]);
@@ -90,8 +90,8 @@ for block=BlockSel
                 saveFileName=strsplit(saveFileName{1},filesep);
                 saveFileName=saveFileName{end};
                 
-                disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix nameROI '_' headmodelType '_' saveFileName '.mat'])
-                save([mainpath filesep '..' filesep '6_EEG' filesep prefix nameROI '_' headmodelType '_' saveFileName '.mat'],'ROIpos','data','dataTL','dataSrc','-v7.3')
+                disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix nameROI '_' headmodelType '_' saveFileName '.mat'])
+                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix nameROI '_' headmodelType '_' saveFileName '.mat'],'ROIpos','data','dataTL','dataSrc','-v7.3')
                 disp('done.')
             end
         end

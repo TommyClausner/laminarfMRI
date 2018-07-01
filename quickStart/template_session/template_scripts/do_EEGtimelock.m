@@ -13,7 +13,7 @@ noiseEstWin=[-0.5 -0.1];
 
 sel_={'BP30_100','BP2_32'};
 
-prefix='TL_';
+Addprefix='TL_';
 
 for n=1:2
     Selprefix=sel_{n};
@@ -41,8 +41,8 @@ for n=1:2
         saveFileName=strsplit(saveFileName{1},filesep);
         saveFileName=saveFileName{end};
         
-        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-        save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'data','dataTL','-v7.3')
+        disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+        save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'data','dataTL','-v7.3')
         disp('done.')
     end
 end

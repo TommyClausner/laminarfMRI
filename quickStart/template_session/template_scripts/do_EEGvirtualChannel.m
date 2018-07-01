@@ -17,7 +17,7 @@ if ~exist('FiltSel','var')
 end
 
 possibleFilters={'BP30_100','BP2_32'};
-prefix='VirtCh_';
+Addprefix='VirtCh_';
 Selprefix='Beamf_centV1';
 
 for block=BlockSel
@@ -44,8 +44,8 @@ for block=BlockSel
             saveFileName=strsplit(file_{1},'.mat');
             saveFileName=strsplit(saveFileName{1},filesep);
             saveFileName=saveFileName{end};
-            disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'])
-            save([mainpath filesep '..' filesep '6_EEG' filesep prefix saveFileName '.mat'],'virtChannels','-v7.3')
+            disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
+            save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'virtChannels','-v7.3')
             disp('done.')
         end
     end

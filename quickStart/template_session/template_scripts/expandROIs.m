@@ -31,6 +31,15 @@ areas={'lhV1mask',...
 
 disp('loading area masks...')
 ROIvolumes={};
+
+if ~exist('maskthreshold', 'var')
+    maskthreshold = 0.01;
+end
+
+if ~exist('ExpansionFactor', 'var')
+    ExpansionFactor = 4;
+end
+
 for area=areas
     filetouse=[mainpath filesep '..' filesep '4_retinotopy' filesep area{1} '.nii'];
     if exist(filetouse,'file')==0

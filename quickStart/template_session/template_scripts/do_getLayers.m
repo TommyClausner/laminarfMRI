@@ -10,8 +10,8 @@ tvm_installOpenFmriAnalysisToolbox
 if ~exist('numLayers','var')
     numLayers=3;
 end
-if ~exist('revol','var')
-    revol='MCTemplateThrCont';
+if ~exist('regvol','var')
+    regvol='MCTemplateThrCont';
 end
 
 mainpath = [mainpath filesep '..'];
