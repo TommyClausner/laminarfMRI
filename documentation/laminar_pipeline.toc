@@ -59,30 +59,32 @@
 \contentsline {subsection}{\numberline {6.34}do\_getLayers.m}{36}{subsection.6.34}
 \contentsline {subsection}{\numberline {6.35}do\_getLayerWeights.sh}{36}{subsection.6.35}
 \contentsline {subsection}{\numberline {6.36}do\_getLayerWeights.m}{37}{subsection.6.36}
-\contentsline {subsection}{\numberline {6.37}do\_EEGpreprocessing.sh}{37}{subsection.6.37}
-\contentsline {subsection}{\numberline {6.38}do\_EEGpreprocessing.m}{37}{subsection.6.38}
-\contentsline {subsection}{\numberline {6.39}do\_EEGprepareFS.sh}{38}{subsection.6.39}
-\contentsline {subsection}{\numberline {6.40}do\_EEGprepareHeadmodel.sh}{38}{subsection.6.40}
-\contentsline {subsection}{\numberline {6.41}do\_EEGprepareHeadmodel.m}{38}{subsection.6.41}
-\contentsline {subsection}{\numberline {6.42}do\_EEGelectrodeRegistration.m}{39}{subsection.6.42}
-\contentsline {subsection}{\numberline {6.43}do\_EEGprepareSourcemodel.sh}{39}{subsection.6.43}
-\contentsline {subsection}{\numberline {6.44}do\_EEGprepareSourcemodel.m}{39}{subsection.6.44}
-\contentsline {subsection}{\numberline {6.45}do\_EEGtimelock.sh}{39}{subsection.6.45}
-\contentsline {subsection}{\numberline {6.46}do\_EEGtimelock.m}{39}{subsection.6.46}
-\contentsline {subsection}{\numberline {6.47}do\_EEGsplitBeamformer.sh}{39}{subsection.6.47}
-\contentsline {subsection}{\numberline {6.48}do\_EEGbeamformer.sh}{40}{subsection.6.48}
-\contentsline {subsection}{\numberline {6.49}do\_EEGbeamformer.m}{40}{subsection.6.49}
-\contentsline {subsection}{\numberline {6.50}do\_EEGsplitVirtualChannel.sh}{40}{subsection.6.50}
-\contentsline {subsection}{\numberline {6.51}do\_EEGvirtualChannel.sh}{40}{subsection.6.51}
-\contentsline {subsection}{\numberline {6.52}do\_EEGvirtualChannel.m}{40}{subsection.6.52}
-\contentsline {subsection}{\numberline {6.53}do\_EEGsplitFreqOnVirtChan.sh}{40}{subsection.6.53}
-\contentsline {subsection}{\numberline {6.54}do\_EEGfreqOnVirtChan.sh}{41}{subsection.6.54}
-\contentsline {subsection}{\numberline {6.55}do\_EEGfreqOnVirtChan.m}{41}{subsection.6.55}
-\contentsline {subsection}{\numberline {6.56}do\_EEGfreqChanSelect.sh}{41}{subsection.6.56}
-\contentsline {subsection}{\numberline {6.57}do\_EEGfreqChanSelect.m}{41}{subsection.6.57}
-\contentsline {subsection}{\numberline {6.58}EEGvisualizeVirtualChannel.m}{41}{subsection.6.58}
-\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{41}{section.7}
-\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{41}{section.8}
-\contentsline {section}{\numberline {9}How to: Pipelines}{41}{section.9}
-\contentsline {subsection}{\numberline {9.1}Scripts}{41}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{41}{subsection.9.2}
+\contentsline {subsection}{\numberline {6.37}makeLayerMovie.sh}{37}{subsection.6.37}
+\contentsline {subsection}{\numberline {6.38}makeLayerMovie.m}{37}{subsection.6.38}
+\contentsline {subsection}{\numberline {6.39}do\_EEGpreprocessing.sh}{37}{subsection.6.39}
+\contentsline {subsection}{\numberline {6.40}do\_EEGpreprocessing.m}{37}{subsection.6.40}
+\contentsline {subsection}{\numberline {6.41}do\_EEGprepareFS.sh}{38}{subsection.6.41}
+\contentsline {subsection}{\numberline {6.42}do\_EEGprepareHeadmodel.sh}{38}{subsection.6.42}
+\contentsline {subsection}{\numberline {6.43}do\_EEGprepareHeadmodel.m}{38}{subsection.6.43}
+\contentsline {subsection}{\numberline {6.44}do\_EEGelectrodeRegistration.m}{38}{subsection.6.44}
+\contentsline {subsection}{\numberline {6.45}do\_EEGprepareSourcemodel.sh}{39}{subsection.6.45}
+\contentsline {subsection}{\numberline {6.46}do\_EEGprepareSourcemodel.m}{39}{subsection.6.46}
+\contentsline {subsection}{\numberline {6.47}do\_EEGtimelock.sh}{39}{subsection.6.47}
+\contentsline {subsection}{\numberline {6.48}do\_EEGtimelock.m}{39}{subsection.6.48}
+\contentsline {subsection}{\numberline {6.49}do\_EEGsplitBeamformer.sh}{40}{subsection.6.49}
+\contentsline {subsection}{\numberline {6.50}do\_EEGbeamformer.sh}{40}{subsection.6.50}
+\contentsline {subsection}{\numberline {6.51}do\_EEGbeamformer.m}{40}{subsection.6.51}
+\contentsline {subsection}{\numberline {6.52}do\_EEGsplitVirtualChannel.sh}{40}{subsection.6.52}
+\contentsline {subsection}{\numberline {6.53}do\_EEGvirtualChannel.sh}{40}{subsection.6.53}
+\contentsline {subsection}{\numberline {6.54}do\_EEGvirtualChannel.m}{40}{subsection.6.54}
+\contentsline {subsection}{\numberline {6.55}do\_EEGsplitFreqOnVirtChan.sh}{41}{subsection.6.55}
+\contentsline {subsection}{\numberline {6.56}do\_EEGfreqOnVirtChan.sh}{41}{subsection.6.56}
+\contentsline {subsection}{\numberline {6.57}do\_EEGfreqOnVirtChan.m}{41}{subsection.6.57}
+\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.sh}{42}{subsection.6.58}
+\contentsline {subsection}{\numberline {6.59}do\_EEGfreqChanSelect.m}{42}{subsection.6.59}
+\contentsline {subsection}{\numberline {6.60}EEGvisualizeVirtualChannel.m}{42}{subsection.6.60}
+\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{42}{section.7}
+\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{42}{section.8}
+\contentsline {section}{\numberline {9}How to: Pipelines}{43}{section.9}
+\contentsline {subsection}{\numberline {9.1}Scripts}{43}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{43}{subsection.9.2}

@@ -600,6 +600,8 @@ The layer segmentation process can also be performed in a single step, by callin
     # using pipeline
     sh laminar.sh
 \end{lstlisting}
+
+After the data was computed it is optional to call \texttt{sh makeLayerMovie.sh} to create a movie file in C\_miscResults slicing through the volume overlayed with the layer boundaries.
 \FloatBarrier
 \subsection{EEG pre-processing}
 The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $2-32~Hz$ and $30-100~Hz$ respectively.\\
@@ -1145,14 +1147,20 @@ Utilizes the toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/Ope
 
 \subsection{do\_getLayerWeights.sh}
 \label{sec:getLyrW}
-Wrapper function for running \texttt{do\_getLayerWeights.m} via qsub
+Wrapper function for running \texttt{do\_getLayerWeights.m} via qsub.
 
 \subsection{do\_getLayerWeights.m}
 Combines masks obtained from retinotopy with layer masks obtained from laminar segmentation. The respective expanded volumes of the pRF mapping are multiplied with the layer mask and yield a layer specific ROI selection masks. As a result a NIfTI file is create having the same shape, space and orientation as the functional data. Thereby the 4th dimension of the volume represents the respective number of layers.
 
+\subsection{makeLayerMovie.sh}
+Wrapper function for running \texttt{makeLayerMovie.m} via qsub.
+
+\subsection{makeLayerMovie.m}
+Utilizes the OpenFmriAnalysis toolbox (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) to create a movie file from the results of the laminar segmentation. The movie file will be written to C\_miscResults/Layers.avi
+
 \subsection{do\_EEGpreprocessing.sh}
 \label{sec:EEGpreproc}
-Wrapper function for running \texttt{do\_EEGpreprocessing.m} via qsub
+Wrapper function for running \texttt{do\_EEGpreprocessing.m} via qsub.
 
 \subsection{do\_EEGpreprocessing.m}
 \begin{lstlisting}[
@@ -1252,7 +1260,7 @@ Average (re-) referencing, timelock analysis and noise covariance estimation for
 Wrapper function for running \texttt{do\_EEGbeamformer.sh} in multiple instances. The function calls a predefined number of instances of \texttt{do\_EEGbeamformer.sh} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGbeamformer.sh}
-Wrapper function for running \texttt{do\_EEGbeamformer.m} via qsub
+Wrapper function for running \texttt{do\_EEGbeamformer.m} via qsub.
 
 \subsection{do\_EEGbeamformer.m}
 \begin{lstlisting}[
@@ -1279,7 +1287,17 @@ Wrapper function for running \texttt{do\_EEGvirtualChannel.m} via qsub.
     Selprefix='Beamf_centV1';
     Addprefix='VirtCh_';
 \end{lstlisting}
-Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.
+Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.\\
+
+\noindent Under the hood:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    virtual_channels = mean(dataSrc.avg.mom{nonEmptyFilterInd},2)'*currentFilter*squeeze(data.trial{trial}(:,:));
+\end{lstlisting}
+
+The data is multiplied with the respective filter, taking the average dipole moment into account.
 
 \subsection{do\_EEGsplitFreqOnVirtChan.sh}
 \label{sec:freqVirt}
@@ -1296,7 +1314,25 @@ Wrapper function for running \texttt{do\_EEGfreqOnVirtChan.m} via qsub.
     Selprefix='VirtCh';
     Addprefix='TF_';
 \end{lstlisting}
-Computes time-frequency analysis for virtual channel data using \texttt{ft\_freqanalysis}. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.
+Computes time-frequency analysis for virtual channel data using \texttt{ft\_freqanalysis}. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.\\
+\noindent Per default the frequency of interes (FOI) is set to band pass filter width.The resolution is defined by $\frac{1}{slidW}$ where slidW is the respective size of the sliding window used. Default values are 0.4 for high and 0.8 for low filter bands.\\
+
+\noindent All default settings:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    cfg.output       = 'pow'; % power of frequency spectrum
+    cfg.channel      = 'all';
+    cfg.method       = 'mtmconvol'; % multi-taper-method convolution
+    cfg.taper        = 'dpss'; % discrete prolate spheroidal sequences
+    cfg.foi          = foi; % frequencies of interest
+    cfg.pad          = 3.2; % padding at beginning and end of trial
+    cfg.tapsmofrq    = 10; % frequency smoothing
+    cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter); % slidW
+    cfg.toi          = -1:0.01:2; % time window of interest
+    cfg.keeptrials   = 'yes';
+\end{lstlisting}
 
 \subsection{do\_EEGfreqChanSelect.sh}
 \label{sec:selchan}
@@ -1310,8 +1346,24 @@ Wrapper function for running \texttt{do\_EEGfreqChanSelect.m} via qsub.
     Selprefix='TF';
     % Addprefix=''; does not exist
 \end{lstlisting}
+Selects virtual channels of interest. Since utilizing high resolution functional data is leading inevitably to an explosion in file size, only important data will remain after calling this function.\\
+
+\noindent First of all it is specified which are the frequency bands of interest in order to make a choise for a respective channel to maximize or minimize within the defined range. Default settings are:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    ROIalpha = [8,12]; % Hz
+    ROIbeta  = [22.5,27.5]; % Hz
+    ROIgamma = [50,70]; % Hz
+
+    timeWinMax = [0.1 1.39]; % in seconds
+\end{lstlisting}
+
+\texttt{timeWinMax} thereby is the time of interest for which to optimize channel selection. Shortly speeking an area within the time frequncy matrix that is enclosed by \texttt{ROI$<$freq$>$} and \texttt{timeWinMax} will be averaged. The 100 maximum (for $\gamma$) and minimum (for $\alpha$ and $\beta$) channels will be selected. It is important to note, that the data will be $\log$ transformed and expressed as relative change to \texttt{BLwin} which is the respective time window of reference relative to stimulus onset.
 
 \subsection{EEGvisualizeVirtualChannel.m}
+A helper script to visualize ROI selection on the source model. Must be used from within an interactive MATLAB session.
 
 \section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}
@@ -1334,34 +1386,5 @@ Tommy's Scriptinator 3000 TM is a graphical user interface that allows drag and 
 \href{http://www.oracle.com/technetwork/java/javase/downloads/}{\nolinkurl{http://www.oracle.com/technetwork/java/javase/downloads/}}\\
 
 \noindent After downloading the repository from GitHub, one can start the program by double clicking Scriptinator.jar. All further help will be provided from there.
-
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=\textwidth]{preproc-pipe}
-\caption[Pre-processing Pipeline]{Example pipeline for the pre-processing, using Tommy's Scriptinator 3000 TM: preprocessing.pipe}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=\textwidth]{segment-pipe}
-\caption[Segmentation Pipeline]{Example pipeline for the anatomical segmentation, using Tommy's Scriptinator 3000 TM: CoregistrationAndAnatMasks.pipe}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=\textwidth]{retino-pipe}
-\caption[Retinotopy Pipeline]{Example pipeline for the retinotopy, using Tommy's Scriptinator 3000 TM: retinotopy.pipe}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=\textwidth]{laminar-pipe}
-\caption[Laminar definition Pipeline]{Example pipeline for the cortical layer definition, using Tommy's Scriptinator 3000 TM: laminar.pipe}
-\end{center}
-\end{figure}
 
 \end{document}
