@@ -17,150 +17,141 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}About this Document}{7}{section.1}}
-\newlabel{sec:about}{{1}{7}{About this Document}{section.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Before starting}{7}{section.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Pre- requisites}{8}{subsection.2.1}}
-\newlabel{sec:prereq}{{2.1}{8}{Pre- requisites}{subsection.2.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Folder structure}{9}{subsection.2.2}}
-\newlabel{sec:dirstruct}{{2.2}{9}{Folder structure}{subsection.2.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}How things work}{9}{subsection.2.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Bash scripts}{9}{subsubsection.2.3.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}pipelines}{10}{subsubsection.2.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}MATLAB wrapper}{10}{subsubsection.2.3.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.4}a note on EEG}{10}{subsubsection.2.3.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Helper files}{11}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}acquisition\_parameters.txt}{11}{subsection.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}b02b0.cnf}{11}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}params.mat}{11}{subsection.3.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}images.mat}{11}{subsection.3.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}qsub}{12}{section.4}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Approximated time and memory requirements when running on qsub}}{13}{table.1}}
-\newlabel{tab:hardwarerequirements}{{1}{13}{Approximated time and memory requirements when running on qsub}{table.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Initial folder structure as required for the analysis}}{14}{figure.1}}
-\newlabel{tree:folderstruct}{{1}{14}{Initial folder structure as required for the analysis}{figure.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Quick Start}{15}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}first steps}{15}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}fMRI pre-processing}{16}{subsection.5.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}fMRI - anatomical co-registration and masks}{17}{subsection.5.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}pRF mapping}{18}{subsection.5.4}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Coregistration and distortion correction visual depiction}}{19}{figure.2}}
-\newlabel{fig:coregdist}{{2}{19}{Coregistration and distortion correction visual depiction}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}fMRI layer segmentation}{20}{subsection.5.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example for visual ROI definition}}{21}{figure.3}}
-\newlabel{fig:ROIpRF}{{3}{21}{Example for visual ROI definition}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}EEG pre-processing}{22}{subsection.5.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}EEG prepare head and source models}{23}{subsection.5.7}}
-\newlabel{sec:Sourcemodel}{{5.7}{23}{EEG prepare head and source models}{subsection.5.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example source model}}{24}{figure.4}}
-\newlabel{fig:exampleSourcemodel}{{4}{24}{Example source model}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}EEG compute virtual channels}{24}{subsection.5.8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example for $\gamma $ response in virtual channel}}{26}{figure.5}}
-\newlabel{fig:exampleGamma}{{5}{26}{Example for $\gamma $ response in virtual channel}{figure.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Scripts explained (support for runonqsub.sh: Q)}{26}{section.6}}
-\newlabel{sec:scriptsExplained}{{6}{26}{Scripts explained (support for runonqsub.sh: Q)}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}getToolboxes.sh}{26}{subsection.6.1}}
-\newlabel{sec:getTools}{{6.1}{26}{getToolboxes.sh}{subsection.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}runonqsub.sh}{26}{subsection.6.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}cleanscriptsfolder.sh}{27}{subsection.6.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}liveupdateqsub.sh}{27}{subsection.6.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}waitForJobs.sh}{27}{subsection.6.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}makenewsubject.sh}{27}{subsection.6.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}setupfolders.sh (Q)}{28}{subsection.6.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}do\_preparefunctionals.sh (Q)}{28}{subsection.6.8}}
-\newlabel{sec:prepfct}{{6.8}{28}{do\_preparefunctionals.sh (Q)}{subsection.6.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.9}do\_realignment.sh (Q)}{28}{subsection.6.9}}
-\newlabel{sec:realign}{{6.9}{28}{do\_realignment.sh (Q)}{subsection.6.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.10}do\_distcorr.sh (Q)}{28}{subsection.6.10}}
-\newlabel{sec:distcorr}{{6.10}{28}{do\_distcorr.sh (Q)}{subsection.6.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.11}do\_applysimpledistcorr.sh (Q)}{29}{subsection.6.11}}
-\newlabel{sec:applydistcorr}{{6.11}{29}{do\_applysimpledistcorr.sh (Q)}{subsection.6.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.12}do\_preparecoregistration.sh (Q)}{29}{subsection.6.12}}
-\newlabel{sec:prepcoreg}{{6.12}{29}{do\_preparecoregistration.sh (Q)}{subsection.6.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.13}do\_correctavgdiff.sh (Q)}{30}{subsection.6.13}}
-\newlabel{sec:corravg}{{6.13}{30}{do\_correctavgdiff.sh (Q)}{subsection.6.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.14}do\_fsrecon.sh (Q)}{30}{subsection.6.14}}
-\newlabel{sec:fsrecon}{{6.14}{30}{do\_fsrecon.sh (Q)}{subsection.6.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.15}do\_coregistration.sh}{30}{subsection.6.15}}
-\newlabel{sec:coreg}{{6.15}{30}{do\_coregistration.sh}{subsection.6.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.16}do\_coregistration.m}{30}{subsection.6.16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.17}do\_makemasksandlabels.sh (Q)}{31}{subsection.6.17}}
-\newlabel{sec:msklbl}{{6.17}{31}{do\_makemasksandlabels.sh (Q)}{subsection.6.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.18}do\_movesinglevolume.sh}{31}{subsection.6.18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.19}do\_tseriesinterpolation.sh}{32}{subsection.6.19}}
-\newlabel{sec:tseriesinterp}{{6.19}{32}{do\_tseriesinterpolation.sh}{subsection.6.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.20}do\_tseriesinterpolation.m}{32}{subsection.6.20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.21}do\_split\_analyzePRF.sh}{32}{subsection.6.21}}
-\newlabel{sec:splitanalyzePRF.sh}{{6.21}{32}{do\_split\_analyzePRF.sh}{subsection.6.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.22}do\_analyzePRF.sh}{33}{subsection.6.22}}
-\newlabel{sec:analyzePRF.sh}{{6.22}{33}{do\_analyzePRF.sh}{subsection.6.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.23}do\_analyzePRF.m}{33}{subsection.6.23}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.24}combine\_split\_PRF\_results.sh}{33}{subsection.6.24}}
-\newlabel{sec:combsplt}{{6.24}{33}{combine\_split\_PRF\_results.sh}{subsection.6.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.25}combine\_split\_PRF\_results.m}{33}{subsection.6.25}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.26}make\_PRF\_overlays.sh}{34}{subsection.6.26}}
-\newlabel{sec:mkprfO}{{6.26}{34}{make\_PRF\_overlays.sh}{subsection.6.26}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.27}make\_PRF\_overlays.m}{34}{subsection.6.27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.28}makeOverlays.sh (Q)}{34}{subsection.6.28}}
-\newlabel{sec:mkOver}{{6.28}{34}{makeOverlays.sh (Q)}{subsection.6.28}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.29}GUI2ROIs.sh}{35}{subsection.6.29}}
-\newlabel{sec:GUI2ROI}{{6.29}{35}{GUI2ROIs.sh}{subsection.6.29}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.30}labels2masks.sh (Q)}{35}{subsection.6.30}}
-\newlabel{sec:lbl2msk}{{6.30}{35}{labels2masks.sh (Q)}{subsection.6.30}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.31}expandROIs.sh}{35}{subsection.6.31}}
-\newlabel{sec:expROI}{{6.31}{35}{expandROIs.sh}{subsection.6.31}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.32}expandROIs.m}{35}{subsection.6.32}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.33}do\_getLayers.sh}{36}{subsection.6.33}}
-\newlabel{sec:getLyr}{{6.33}{36}{do\_getLayers.sh}{subsection.6.33}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.34}do\_getLayers.m}{36}{subsection.6.34}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.35}do\_getLayerWeights.sh}{36}{subsection.6.35}}
-\newlabel{sec:getLyrW}{{6.35}{36}{do\_getLayerWeights.sh}{subsection.6.35}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.36}do\_getLayerWeights.m}{37}{subsection.6.36}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.37}makeLayerMovie.sh}{37}{subsection.6.37}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.38}makeLayerMovie.m}{37}{subsection.6.38}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.39}do\_EEGpreprocessing.sh}{37}{subsection.6.39}}
-\newlabel{sec:EEGpreproc}{{6.39}{37}{do\_EEGpreprocessing.sh}{subsection.6.39}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.40}do\_EEGpreprocessing.m}{37}{subsection.6.40}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.41}do\_EEGprepareFS.sh}{38}{subsection.6.41}}
-\newlabel{sec:prepFS4EEG}{{6.41}{38}{do\_EEGprepareFS.sh}{subsection.6.41}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.42}do\_EEGprepareHeadmodel.sh}{38}{subsection.6.42}}
-\newlabel{sec:prepHM}{{6.42}{38}{do\_EEGprepareHeadmodel.sh}{subsection.6.42}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.43}do\_EEGprepareHeadmodel.m}{38}{subsection.6.43}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.44}do\_EEGelectrodeRegistration.m}{38}{subsection.6.44}}
-\newlabel{sec:elecReg}{{6.44}{38}{do\_EEGelectrodeRegistration.m}{subsection.6.44}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Specifications for creating headmodel}}{39}{table.2}}
-\newlabel{tab:BEMFEMprop}{{2}{39}{Specifications for creating headmodel}{table.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.45}do\_EEGprepareSourcemodel.sh}{39}{subsection.6.45}}
-\newlabel{sec:prepSM}{{6.45}{39}{do\_EEGprepareSourcemodel.sh}{subsection.6.45}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.46}do\_EEGprepareSourcemodel.m}{39}{subsection.6.46}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.47}do\_EEGtimelock.sh}{39}{subsection.6.47}}
-\newlabel{sec:timelock}{{6.47}{39}{do\_EEGtimelock.sh}{subsection.6.47}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.48}do\_EEGtimelock.m}{39}{subsection.6.48}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.49}do\_EEGsplitBeamformer.sh}{40}{subsection.6.49}}
-\newlabel{sec:beamf}{{6.49}{40}{do\_EEGsplitBeamformer.sh}{subsection.6.49}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.50}do\_EEGbeamformer.sh}{40}{subsection.6.50}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.51}do\_EEGbeamformer.m}{40}{subsection.6.51}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.52}do\_EEGsplitVirtualChannel.sh}{40}{subsection.6.52}}
-\newlabel{sec:virtch}{{6.52}{40}{do\_EEGsplitVirtualChannel.sh}{subsection.6.52}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.53}do\_EEGvirtualChannel.sh}{40}{subsection.6.53}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.54}do\_EEGvirtualChannel.m}{40}{subsection.6.54}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.55}do\_EEGsplitFreqOnVirtChan.sh}{41}{subsection.6.55}}
-\newlabel{sec:freqVirt}{{6.55}{41}{do\_EEGsplitFreqOnVirtChan.sh}{subsection.6.55}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.56}do\_EEGfreqOnVirtChan.sh}{41}{subsection.6.56}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.57}do\_EEGfreqOnVirtChan.m}{41}{subsection.6.57}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.sh}{42}{subsection.6.58}}
-\newlabel{sec:selchan}{{6.58}{42}{do\_EEGfreqChanSelect.sh}{subsection.6.58}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.59}do\_EEGfreqChanSelect.m}{42}{subsection.6.59}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.60}EEGvisualizeVirtualChannel.m}{42}{subsection.6.60}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{42}{section.7}}
-\newlabel{sec:GUIprf}{{7}{42}{How to: Selecting visual areas based on pRF mapping}{section.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{42}{section.8}}
-\newlabel{sec:janus3D}{{8}{42}{How to: EEG electrodes from photogrammetry}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}How to: Pipelines}{43}{section.9}}
-\newlabel{sec:pipelines}{{9}{43}{How to: Pipelines}{section.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Scripts}{43}{subsection.9.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{43}{subsection.9.2}}
-\newlabel{sec:scriptinator}{{9.2}{43}{Tommy's Scriptinator 3000 TM}{subsection.9.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}About this Document}{5}{section.1}}
+\newlabel{sec:about}{{1}{5}{About this Document}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Before starting}{5}{section.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Pre- requisites}{6}{subsection.2.1}}
+\newlabel{sec:prereq}{{2.1}{6}{Pre- requisites}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Folder structure}{7}{subsection.2.2}}
+\newlabel{sec:dirstruct}{{2.2}{7}{Folder structure}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}How things work}{7}{subsection.2.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Helper files}{9}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}qsub}{9}{section.4}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Approximated time and memory requirements when running on qsub}}{11}{table.1}}
+\newlabel{tab:hardwarerequirements}{{1}{11}{Approximated time and memory requirements when running on qsub}{table.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Initial folder structure as required for the analysis}}{12}{figure.1}}
+\newlabel{tree:folderstruct}{{1}{12}{Initial folder structure as required for the analysis}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Quick Start}{13}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}first steps}{13}{subsection.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}fMRI pre-processing}{14}{subsection.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}fMRI - anatomical co-registration and masks}{15}{subsection.5.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}pRF mapping}{16}{subsection.5.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Coregistration and distortion correction visual depiction}}{17}{figure.2}}
+\newlabel{fig:coregdist}{{2}{17}{Coregistration and distortion correction visual depiction}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}fMRI layer segmentation}{18}{subsection.5.5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example for visual ROI definition}}{19}{figure.3}}
+\newlabel{fig:ROIpRF}{{3}{19}{Example for visual ROI definition}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}EEG pre-processing}{20}{subsection.5.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}EEG prepare head and source models}{21}{subsection.5.7}}
+\newlabel{sec:Sourcemodel}{{5.7}{21}{EEG prepare head and source models}{subsection.5.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example source model}}{22}{figure.4}}
+\newlabel{fig:exampleSourcemodel}{{4}{22}{Example source model}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.8}EEG compute virtual channels}{22}{subsection.5.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example for $\gamma $ response in virtual channel}}{24}{figure.5}}
+\newlabel{fig:exampleGamma}{{5}{24}{Example for $\gamma $ response in virtual channel}{figure.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Scripts explained (support for runonqsub.sh: Q)}{24}{section.6}}
+\newlabel{sec:scriptsExplained}{{6}{24}{Scripts explained (support for runonqsub.sh: Q)}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}getToolboxes.sh}{24}{subsection.6.1}}
+\newlabel{sec:getTools}{{6.1}{24}{getToolboxes.sh}{subsection.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}runonqsub.sh}{24}{subsection.6.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}cleanscriptsfolder.sh}{25}{subsection.6.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}liveupdateqsub.sh}{25}{subsection.6.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}waitForJobs.sh}{25}{subsection.6.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}makenewsubject.sh}{25}{subsection.6.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}setupfolders.sh (Q)}{26}{subsection.6.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.8}do\_preparefunctionals.sh (Q)}{26}{subsection.6.8}}
+\newlabel{sec:prepfct}{{6.8}{26}{do\_preparefunctionals.sh (Q)}{subsection.6.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.9}do\_realignment.sh (Q)}{26}{subsection.6.9}}
+\newlabel{sec:realign}{{6.9}{26}{do\_realignment.sh (Q)}{subsection.6.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.10}do\_distcorr.sh (Q)}{26}{subsection.6.10}}
+\newlabel{sec:distcorr}{{6.10}{26}{do\_distcorr.sh (Q)}{subsection.6.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.11}do\_applysimpledistcorr.sh (Q)}{27}{subsection.6.11}}
+\newlabel{sec:applydistcorr}{{6.11}{27}{do\_applysimpledistcorr.sh (Q)}{subsection.6.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.12}do\_preparecoregistration.sh (Q)}{27}{subsection.6.12}}
+\newlabel{sec:prepcoreg}{{6.12}{27}{do\_preparecoregistration.sh (Q)}{subsection.6.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.13}do\_correctavgdiff.sh (Q)}{28}{subsection.6.13}}
+\newlabel{sec:corravg}{{6.13}{28}{do\_correctavgdiff.sh (Q)}{subsection.6.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.14}do\_fsrecon.sh (Q)}{28}{subsection.6.14}}
+\newlabel{sec:fsrecon}{{6.14}{28}{do\_fsrecon.sh (Q)}{subsection.6.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.15}do\_coregistration.sh}{28}{subsection.6.15}}
+\newlabel{sec:coreg}{{6.15}{28}{do\_coregistration.sh}{subsection.6.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.16}do\_coregistration.m}{28}{subsection.6.16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.17}do\_makemasksandlabels.sh (Q)}{29}{subsection.6.17}}
+\newlabel{sec:msklbl}{{6.17}{29}{do\_makemasksandlabels.sh (Q)}{subsection.6.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.18}do\_movesinglevolume.sh}{29}{subsection.6.18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.19}do\_tseriesinterpolation.sh}{30}{subsection.6.19}}
+\newlabel{sec:tseriesinterp}{{6.19}{30}{do\_tseriesinterpolation.sh}{subsection.6.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.20}do\_tseriesinterpolation.m}{30}{subsection.6.20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.21}do\_split\_analyzePRF.sh}{30}{subsection.6.21}}
+\newlabel{sec:splitanalyzePRF.sh}{{6.21}{30}{do\_split\_analyzePRF.sh}{subsection.6.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.22}do\_analyzePRF.sh}{31}{subsection.6.22}}
+\newlabel{sec:analyzePRF.sh}{{6.22}{31}{do\_analyzePRF.sh}{subsection.6.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.23}do\_analyzePRF.m}{31}{subsection.6.23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.24}combine\_split\_PRF\_results.sh}{31}{subsection.6.24}}
+\newlabel{sec:combsplt}{{6.24}{31}{combine\_split\_PRF\_results.sh}{subsection.6.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.25}combine\_split\_PRF\_results.m}{31}{subsection.6.25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.26}make\_PRF\_overlays.sh}{32}{subsection.6.26}}
+\newlabel{sec:mkprfO}{{6.26}{32}{make\_PRF\_overlays.sh}{subsection.6.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.27}make\_PRF\_overlays.m}{32}{subsection.6.27}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.28}makeOverlays.sh (Q)}{32}{subsection.6.28}}
+\newlabel{sec:mkOver}{{6.28}{32}{makeOverlays.sh (Q)}{subsection.6.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.29}GUI2ROIs.sh}{33}{subsection.6.29}}
+\newlabel{sec:GUI2ROI}{{6.29}{33}{GUI2ROIs.sh}{subsection.6.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.30}labels2masks.sh (Q)}{33}{subsection.6.30}}
+\newlabel{sec:lbl2msk}{{6.30}{33}{labels2masks.sh (Q)}{subsection.6.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.31}expandROIs.sh}{33}{subsection.6.31}}
+\newlabel{sec:expROI}{{6.31}{33}{expandROIs.sh}{subsection.6.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.32}expandROIs.m}{33}{subsection.6.32}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.33}do\_getLayers.sh}{34}{subsection.6.33}}
+\newlabel{sec:getLyr}{{6.33}{34}{do\_getLayers.sh}{subsection.6.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.34}do\_getLayers.m}{34}{subsection.6.34}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.35}do\_getLayerWeights.sh}{34}{subsection.6.35}}
+\newlabel{sec:getLyrW}{{6.35}{34}{do\_getLayerWeights.sh}{subsection.6.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.36}do\_getLayerWeights.m}{35}{subsection.6.36}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.37}makeLayerMovie.sh}{35}{subsection.6.37}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.38}makeLayerMovie.m}{35}{subsection.6.38}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.39}do\_EEGpreprocessing.sh}{35}{subsection.6.39}}
+\newlabel{sec:EEGpreproc}{{6.39}{35}{do\_EEGpreprocessing.sh}{subsection.6.39}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.40}do\_EEGpreprocessing.m}{35}{subsection.6.40}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.41}do\_EEGprepareFS.sh}{36}{subsection.6.41}}
+\newlabel{sec:prepFS4EEG}{{6.41}{36}{do\_EEGprepareFS.sh}{subsection.6.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.42}do\_EEGprepareHeadmodel.sh}{36}{subsection.6.42}}
+\newlabel{sec:prepHM}{{6.42}{36}{do\_EEGprepareHeadmodel.sh}{subsection.6.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.43}do\_EEGprepareHeadmodel.m}{36}{subsection.6.43}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.44}do\_EEGelectrodeRegistration.m}{36}{subsection.6.44}}
+\newlabel{sec:elecReg}{{6.44}{36}{do\_EEGelectrodeRegistration.m}{subsection.6.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Specifications for creating headmodel}}{37}{table.2}}
+\newlabel{tab:BEMFEMprop}{{2}{37}{Specifications for creating headmodel}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.45}do\_EEGprepareSourcemodel.sh}{37}{subsection.6.45}}
+\newlabel{sec:prepSM}{{6.45}{37}{do\_EEGprepareSourcemodel.sh}{subsection.6.45}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.46}do\_EEGprepareSourcemodel.m}{37}{subsection.6.46}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.47}do\_EEGtimelock.sh}{37}{subsection.6.47}}
+\newlabel{sec:timelock}{{6.47}{37}{do\_EEGtimelock.sh}{subsection.6.47}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.48}do\_EEGtimelock.m}{37}{subsection.6.48}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.49}do\_EEGsplitBeamformer.sh}{38}{subsection.6.49}}
+\newlabel{sec:beamf}{{6.49}{38}{do\_EEGsplitBeamformer.sh}{subsection.6.49}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.50}do\_EEGbeamformer.sh}{38}{subsection.6.50}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.51}do\_EEGbeamformer.m}{38}{subsection.6.51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.52}do\_EEGsplitVirtualChannel.sh}{38}{subsection.6.52}}
+\newlabel{sec:virtch}{{6.52}{38}{do\_EEGsplitVirtualChannel.sh}{subsection.6.52}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.53}do\_EEGvirtualChannel.sh}{38}{subsection.6.53}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.54}do\_EEGvirtualChannel.m}{38}{subsection.6.54}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.55}do\_EEGsplitFreqOnVirtChan.sh}{39}{subsection.6.55}}
+\newlabel{sec:freqVirt}{{6.55}{39}{do\_EEGsplitFreqOnVirtChan.sh}{subsection.6.55}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.56}do\_EEGfreqOnVirtChan.sh}{39}{subsection.6.56}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.57}do\_EEGfreqOnVirtChan.m}{39}{subsection.6.57}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.58}do\_EEGfreqChanSelect.sh}{40}{subsection.6.58}}
+\newlabel{sec:selchan}{{6.58}{40}{do\_EEGfreqChanSelect.sh}{subsection.6.58}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.59}do\_EEGfreqChanSelect.m}{40}{subsection.6.59}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.60}EEGvisualizeVirtualChannel.m}{40}{subsection.6.60}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}How to: Selecting visual areas based on pRF mapping}{40}{section.7}}
+\newlabel{sec:GUIprf}{{7}{40}{How to: Selecting visual areas based on pRF mapping}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}How to: EEG electrodes from photogrammetry}{40}{section.8}}
+\newlabel{sec:janus3D}{{8}{40}{How to: EEG electrodes from photogrammetry}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}How to: Pipelines}{41}{section.9}}
+\newlabel{sec:pipelines}{{9}{41}{How to: Pipelines}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Scripts}{41}{subsection.9.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Tommy's Scriptinator 3000 TM}{41}{subsection.9.2}}
+\newlabel{sec:scriptinator}{{9.2}{41}{Tommy's Scriptinator 3000 TM}{subsection.9.2}{}}
 \global\@namedef{scr@dte@section@lastmaxnumwidth}{11.87997pt}
 \global\@namedef{scr@dte@subsection@lastmaxnumwidth}{25.58855pt}
-\global\@namedef{scr@dte@subsubsection@lastmaxnumwidth}{28.8524pt}

@@ -25,10 +25,6 @@
 \end{titlepage}
 \tableofcontents
 \newpage
-\listoffigures
-\newpage
-\listoftables
-\newpage
 \section{About this Document}
 \label{sec:about}
 This documententation accompanies the scripts that I wrote for my MSc thesis on feature specific neuronal oscillations on a cortical laminar level under the supervision of:
@@ -107,8 +103,8 @@ The general folder structure is set up by a call to setupfolders.sh (see also Fi
 \end{itemize}
 
 \subsection{How things work}
-\subsubsection{Bash scripts}
-Parts of the analysis run in Bash scripts. Those should be called from their root directory using:
+\noindent\textbf{Bash scripts}\\
+\noindent Parts of the analysis run in Bash scripts. Those should be called from their root directory using:
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -117,9 +113,11 @@ Parts of the analysis run in Bash scripts. Those should be called from their roo
     sh scriptname.sh
 \end{lstlisting}
 Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines.\\
-\subsubsection{pipelines}
+
+\noindent\textbf{pipelines}\\
 \noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document of \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}} for more information.\\
-\subsubsection{MATLAB wrapper}
+
+\noindent\textbf{MATLAB wrapper}\\
 \noindent Note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension \texttt{.sh} instead of \texttt{.m} Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
 
 \noindent When using such a MATLAB wrapper some MATLAB language specific details and variables are added to the base-file (\texttt{targetScript.m}). In every case the respective absolute folder path is provided. The shell script creates a temporary file and run it. It will be constructed by adding variables to an empty file and afterwards adding the actual base-file like so:
@@ -135,36 +133,40 @@ Each step within the analysis has a different subfolder containing the respectiv
     cat $DIR/targetScript.m>>$DIR/tmp_$nameadd.m
     echo 'matlab2017b -nosplash -r "run('"'"$DIR/tmp_$nameadd.m"'"');"'  | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 \end{lstlisting}
-
-\subsubsection{a note on EEG}
-Files processing EEG data will have the prefix \texttt{do\_EEG} and have a in itself closed workflow. This is mostly due to the fact, that scripts merely run in MATLAB at some point.\\
+\medskip
+\noindent\textbf{a note on EEG}\\
+\noindent Files processing EEG data will have the prefix \texttt{do\_EEG} and have a in itself closed workflow. This is mostly due to the fact, that scripts merely run in MATLAB at some point.\\
 \noindent To keep the data somewhat structured, a new datafile is created after each major processing step, adding a new prefix to the file name. E.g. after the time-frequency analysis \texttt{TF\_} will be added to the current file name making \texttt{my\_data.mat} becoming \texttt{TF\_my\_data.mat}\\
 
 \noindent Within each function it can be defined, which is the prefix of the data to load and which is the prefix that will be added after results were computed. The default will be stated in the respective detailed explaination in Section~\ref{sec:scriptsExplained}. However, after running \texttt{do\_EEGfreqChanSelect.m} all in that file defined prefixes that are found in the EEG folder will be deleted, keeping only essential files like headmodel, sourcemodel, sensors and the results file.\\
 
 \section{Helper files}
-There are several helper files that are needed in order to perform the analysis:
+There are several helper files that are needed in order to perform the analysis:\\
 
-\subsection{acquisition\_parameters.txt}
-indicating the respective acquisition parameters per volume needed in order to perform the distortion correction. One line indicates the respective parameter setting for the respective volume (1st line corresponds to 1st volume, etc.)\\
+\noindent\textbf{acquisition\_parameters.txt}
+
+\noindent indicating the respective acquisition parameters per volume needed in order to perform the distortion correction. One line indicates the respective parameter setting for the respective volume (1st line corresponds to 1st volume, etc.)\\
 
 \noindent e.g.:
 
 \noindent 0 1 0 0.042\\
 \noindent 0 -1 0 0.042\\
 
-The first 3 columns indicate the respective phase coding direction the last column some weird value, that is only important if it changes. Otherwise it's fine to use any value as long as it is the same.
+The first 3 columns indicate the respective phase coding direction the last column some weird value, that is only important if it changes. Otherwise it's fine to use any value as long as it is the same.\\
 
-\subsection{b02b0.cnf}
-Settings for distortion correction.
+\noindent\textbf{b02b0.cnf}
 
-Needed in order to set the parameters for the distortion correction (example provided by FSL). For more information see \href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}}.
+\noindent Settings for distortion correction.
 
-\subsection{params.mat}
-Parameters used for retinotopy scans as obtained from VistaDisp. For more information see \href{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}{\nolinkurl{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}}.
+Needed in order to set the parameters for the distortion correction (example provided by FSL). For more information see \href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide/}}.\\
 
-\subsection{images.mat}
-Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
+\noindent\textbf{params.mat}
+
+\noindent Parameters used for retinotopy scans as obtained from VistaDisp. For more information see \href{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}{\nolinkurl{https://web.stanford.edu/group/vista/cgi-bin/wiki/index.php/Stimulus}}.\\
+
+\noindent\textbf{images.mat}
+
+\noindent Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
 
 \section{qsub}
 Scripts that are flagged with the (Q) can be submitted as a qsub job.
