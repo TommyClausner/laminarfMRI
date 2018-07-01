@@ -107,6 +107,7 @@ The general folder structure is set up by a call to setupfolders.sh (see also Fi
 \end{itemize}
 
 \subsection{How things work}
+\subsubsection{Bash scripts}
 Parts of the analysis run in Bash scripts. Those should be called from their root directory using:
 \begin{lstlisting}[
     language=Shell,
@@ -116,10 +117,10 @@ Parts of the analysis run in Bash scripts. Those should be called from their roo
     sh scriptname.sh
 \end{lstlisting}
 Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines.\\
-
+\subsubsection{pipelines}
 \noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document of \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}} for more information.\\
-
-\noindent Further note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension \texttt{.sh} instead of \texttt{.m} Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
+\subsubsection{MATLAB wrapper}
+\noindent Note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension \texttt{.sh} instead of \texttt{.m} Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
 
 \noindent When using such a MATLAB wrapper some MATLAB language specific details and variables are added to the base-file (\texttt{targetScript.m}). In every case the respective absolute folder path is provided. The shell script creates a temporary file and run it. It will be constructed by adding variables to an empty file and afterwards adding the actual base-file like so:
 \begin{lstlisting}[
@@ -134,6 +135,12 @@ Each step within the analysis has a different subfolder containing the respectiv
     cat $DIR/targetScript.m>>$DIR/tmp_$nameadd.m
     echo 'matlab2017b -nosplash -r "run('"'"$DIR/tmp_$nameadd.m"'"');"'  | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 \end{lstlisting}
+
+\subsubsection{a note on EEG}
+Files processing EEG data will have the prefix \texttt{do\_EEG} and have a in itself closed workflow. This is mostly due to the fact, that scripts merely run in MATLAB at some point.\\
+\noindent To keep the data somewhat structured, a new datafile is created after each major processing step, adding a new prefix to the file name. E.g. after the time-frequency analysis \texttt{TF\_} will be added to the current file name making \texttt{my\_data.mat} becoming \texttt{TF\_my\_data.mat}\\
+
+\noindent Within each function it can be defined, which is the prefix of the data to load and which is the prefix that will be added after results were computed. The default will be stated in the respective detailed explaination in Section~\ref{sec:scriptsExplained}. However, after running \texttt{do\_EEGfreqChanSelect.m} all in that file defined prefixes that are found in the EEG folder will be deleted, keeping only essential files like headmodel, sourcemodel, sensors and the results file.\\
 
 \section{Helper files}
 There are several helper files that are needed in order to perform the analysis:
@@ -750,6 +757,7 @@ Furthermore, the function produces figures saved in C\_miscResults similar to wh
 \FloatBarrier
 
 \section{Scripts explained (support for runonqsub.sh: Q)}
+\label{sec:scriptsExplained}
 \subsection{getToolboxes.sh}
 \label{sec:getTools}
 Downloads all necessary toolboxes into a folder called toolboxes/ or displays a URL where the user has to download the software manually (see Section~\ref{sec:prereq}). That is FSL and SPM have to be downloaded manually due to required user registration. Place them in the same directory as the other toolboxes or install as required.
@@ -773,13 +781,18 @@ Initiates a qsub session and sends it to the cluster. This is necessary, since s
     sh runonqsub.sh 32gb myscript.sh myargument
 \end{lstlisting}
 \noindent Under the hood:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    qsub -l walltime=24:00:00,mem=$1 -F "$DIR $\{@:3\}" $DIR/$2
+\end{lstlisting}
 \begin{itemize}
-\item a qsub session is initiated like so: qsub -l walltime=24:00:00,mem=\$1 -F "\$DIR \$\{@:3\}" \$DIR/\$2
 \item \$DIR is the current absolute path to B\_scripts
-\item \$1 is the amount of memory used (e.g. 32gb)
-\item \$2 is the respective script to run (e.g. myscript.sh)
-\item \$\{@:3\} is all following arguments that are parsed to the script
-\item every time runonqsub.sh is called the absolute path is forwarded to the script (-F \$DIR) in order to keep the relative dependencies clear
+\item \$1 is the amount of memory used (e.g. \texttt{32gb})
+\item \$2 is the respective script to run (e.g. \texttt{myscript.sh})
+\item \$\{@:3\} is all following arguments that are parsed to the script (e.g. \texttt{myargument})
+\item every time \texttt{runonqsub.sh} is called the absolute path is forwarded to the script (\texttt{-F \$DIR}) in order to keep the relative dependencies clear
 \end{itemize}
 
 \subsection{cleanscriptsfolder.sh}
@@ -956,7 +969,7 @@ Simple wrapper function to apply a transformation from one volumetric space to a
 
 \subsection{do\_tseriesinterpolation.sh}
 \label{sec:tseriesinterp}
-Wrapper function for \texttt{do\_tseriesinterpolation.m} Variables used by do\_tseriesinterpolation.m can be defined in the header section of the script.
+Wrapper function for running \texttt{do\_tseriesinterpolation.m} via qsub. Variables used by do\_tseriesinterpolation.m can be defined in the header section of the script.
 
 \noindent Under the hood:
 \begin{itemize}
@@ -983,11 +996,11 @@ Interpolates time series for retinotopy scans to match the number of frames duri
 
 \subsection{do\_split\_analyzePRF.sh}
 \label{sec:splitanalyzePRF.sh}
-Wrapper function to call \texttt{do\_analyzePRF.sh} The function calls a predefined number of instances of \texttt{do\_analyzePRF.sh} to run on the cluster, submitted using qsub. Per default 80~jobs requesting 6~GB of memory each (see Section~\ref{sec:analyzePRF.sh}), will be spawned. This procedure speeds up the population receptive field estimation significantly and would be otherwise impractical on high resolution functional data.\\
+Wrapper function for running \texttt{do\_analyzePRF.sh} in muslitple instances. The function calls a predefined number of instances of \texttt{do\_analyzePRF.sh} to run on the cluster, submitted using qsub. Per default 80~jobs requesting 6~GB of memory each (see Section~\ref{sec:analyzePRF.sh}), will be spawned. This procedure speeds up the population receptive field estimation significantly and would be otherwise impractical on high resolution functional data.\\
 
 \subsection{do\_analyzePRF.sh}
 \label{sec:analyzePRF.sh}
-Wrapper function to call \texttt{do\_analyzePRF.m} Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.
+Wrapper function for running \texttt{do\_analyzePRF.m} via qsub. Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -1016,14 +1029,14 @@ Computes pRF mapping implemeting "analyzePRF" from the analyzePRF toolbox. It ca
 
 \subsection{combine\_split\_PRF\_results.sh}
 \label{sec:combsplt}
-Wrapper function for \texttt{combine\_split\_PRF\_results.m} Combines split results from \texttt{do\_split\_analyzePRF.sh} (see Section~\ref{sec:splitanalyzePRF.sh}). Note that the exact amount of parts that the data was split into must be defined here (default: 80).\\
+Wrapper function for running \texttt{combine\_split\_PRF\_results.m} via qsub. Combines split results from \texttt{do\_split\_analyzePRF.sh} (see Section~\ref{sec:splitanalyzePRF.sh}). Note that the exact amount of parts that the data was split into must be defined here (default: 80).\\
 
 \subsection{combine\_split\_PRF\_results.m}
 Combines split results from do\_split\_analyzePRF.sh (see Section~\ref{sec:splitanalyzePRF.sh}) into a single MATLAB file. Note that given the respective numerical naming of all parts (x\_of\_X) parts will be concatenated along values of x. After this operation split parts will be deleted.
 
 \subsection{make\_PRF\_overlays.sh}
 \label{sec:mkprfO}
-Wrapper function for make\_PRF\_overlays.m
+Wrapper function running \texttt{make\_PRF\_overlays.m} via qsub
 
 \subsection{make\_PRF\_overlays.m}
 Takes result of pRF mapping and creates .nii files for separate parameters (ang, ecc, expt, r2, rfsize, xpos, ypos). The data will be saved in ../4\_retinotopy as parameterName\_map.nii\\
@@ -1045,7 +1058,7 @@ Makes FreeSurfer compatible overlays from NIfTI files. Calls FreeSurfer's \textt
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
-    mri_vol2surf --src \$DIR/4_retinotopy/ang_map.nii  --srcreg \$DIR/2_coregistration/bbregister.dat --hemi ?h --surf pial --out \$DIR/4_retinotopy/?h.ang.mgh --out_type paint
+    mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi ?h --surf pial --out $DIR/4_retinotopy/?h.ang.mgh --out_type paint
 \end{lstlisting}
 \begin{itemize}
 \item --src: NIfTI to be transformed
@@ -1083,14 +1096,14 @@ The full command looks internally like this:
 
 \subsection{expandROIs.sh}
 \label{sec:expROI}
-Wrapper function to call \texttt{expandROIs.m}. In order to perform the correct voxel expansion, the expansion factor (\texttt{ExpandBy}) and mask threshold (\texttt{mskThr}) can be specified. Those settings will be forwarded to \texttt{expandROIs.m}.
+Wrapper function for running \texttt{expandROIs.m} via qsub. In order to perform the correct voxel expansion, the expansion factor (\texttt{ExpandBy}) and mask threshold (\texttt{mskThr}) can be specified. Those settings will be forwarded to \texttt{expandROIs.m}.
 
 \subsection{expandROIs.m}
 Thresholds a given volume utilizing the predefined mask threshold (\texttt{maskthreshold}). Afterwards a cubic box around each voxel will be created, that goes $N$ voxels in each of the 6 directions. Hence a volume containing only a single ROI of size $1\times1\times1$ will be expanded to $9\times9\times9$, if the given expansion factor \texttt{ExpansionFactor = 4}. The actual voxel expansion algorithm was implemented in \texttt{tc\_expandVoxelSelection.m} provided by the tc\_functions script collection (\href{https://github.com/TommyClausner/tc\_functions}{\nolinkurl{https://github.com/TommyClausner/tc\_functions}}).
 
 \subsection{do\_getLayers.sh}
 \label{sec:getLyr}
-Wrapper function to call \texttt{do\_getLayers.m}. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.
+Wrapper function for running \texttt{do\_getLayers.m} via qsub. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.
 
 \subsection{do\_getLayers.m}
 Utilizes the toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) to segment \texttt{numLayers} anatomical layers between the gray and white matter boundaries of the volume \texttt{regvol}.\\
@@ -1132,7 +1145,7 @@ Utilizes the toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/Ope
 
 \subsection{do\_getLayerWeights.sh}
 \label{sec:getLyrW}
-Wrapper function to call \texttt{do\_getLayerWeights.m}.
+Wrapper function for running \texttt{do\_getLayerWeights.m} via qsub
 
 \subsection{do\_getLayerWeights.m}
 Combines masks obtained from retinotopy with layer masks obtained from laminar segmentation. The respective expanded volumes of the pRF mapping are multiplied with the layer mask and yield a layer specific ROI selection masks. As a result a NIfTI file is create having the same shape, space and orientation as the functional data. Thereby the 4th dimension of the volume represents the respective number of layers.
@@ -1142,6 +1155,18 @@ Combines masks obtained from retinotopy with layer masks obtained from laminar s
 Wrapper function for running \texttt{do\_EEGpreprocessing.m} via qsub
 
 \subsection{do\_EEGpreprocessing.m}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    % for trial and channel selection
+    % Selprefix = ''; does not exist
+    Addprefix = 'TCsel_';
+
+    % band pass filtering
+    Selprefix = 'TCsel';
+    Addprefix=['BP' num2str(filterPassBand(1)) '_' num2str(filterPassBand(2)) '_']; % result is e.g. BP2_32_
+\end{lstlisting}
 Does a basic preprocessing to the data. First trigger values will be extracted and trials are defined according to the specifications in the script. Further only EEG channels are selected. The Data is downsampled to $1024~Hz$. This in-between step is stored. Afterwards the data is further split into different sets of band pass filtered data. Note, that the noise structure will be different for high and low frequencies and thus this step is highly recommendable. Per default two band pass filters are chosen ($2-32~Hz$ and $30-100~Hz$). The baseline period will be from $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. For the high frequency case a dft filter to filter line noise is applied. Using the default version of this function will store the computed data using the respective filter settings as a prefix. However if desired trials can / should be excluded in this step as well.\\
 
 \noindent Under the hood (uses the following fieldtrip functions):
@@ -1156,14 +1181,14 @@ Does a basic preprocessing to the data. First trigger values will be extracted a
 
 \subsection{do\_EEGprepareFS.sh}
 \label{sec:prepFS4EEG}
-Prepares FreeSurfer output such that it can be used for the creation of the headmodel / sourcemodel.
+This script was provided by Simon Hom\"olle (DCCN, 2018). Uses Workbench (\href{https://github.com/Washington-University/workbench}{\nolinkurl{https://github.com/Washington-University/workbench}}) to prepare FreeSurfer results for use with the EEG pipeline.
 
 \subsection{do\_EEGprepareHeadmodel.sh}
 \label{sec:prepHM}
-Wrapper function for running \texttt{do\_EEGprepareHeadmodel.m} via qsub
+Wrapper function for running \texttt{do\_EEGprepareHeadmodel.m} via qsub. Changing the variable \texttt{Model} will cause the function to produce a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM}.
 
 \subsection{do\_EEGprepareHeadmodel.m}
-Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz\\
+Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz. If desired the variable \texttt{convertCoordSys} can be set to \texttt{convertCoordSys = 1;} to convert the coordinate system to ctf (otherwise will be ras).\\
 
 Models will have the following properties:
 \begin{table}[h]
@@ -1199,36 +1224,61 @@ This function cannot be run using Qsub or a headless MATLAB instance, since it r
 
 \subsection{do\_EEGprepareSourcemodel.sh}
 \label{sec:prepSM}
-Wrapper function for running \texttt{do\_EEGprepareSourcemodel.m} via qsub
+Wrapper function for running \texttt{do\_EEGprepareSourcemodel.m} via qsub. Changing the variable \texttt{Model} will cause the function to use a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM} (must be in accordance with \texttt{do\_EEGprepareHeadmodel.sh}).
 
 \subsection{do\_EEGprepareSourcemodel.m}
-Sets up sourcemodel (dipole model) for source analysis using the result of \texttt{do\_EEGprepareFS.sh}
+Sets up sourcemodel (dipole model) for source analysis using the result of \texttt{do\_EEGprepareFS.sh}\\
+\noindent It utilizes FieldTrip's \texttt{ft\_prepare\_vol\_sens} to ensure that headmodel and sensors are set up correctly and prepares the source model by reading the Workbench result as a headshape (\texttt{ft\_read\_headshape}).
 
 \subsection{do\_EEGtimelock.sh}
 \label{sec:timelock}
-Wrapper function for running \texttt{do\_EEGtimelock.m} via qsub
+Wrapper function for running \texttt{do\_EEGtimelock.m} via qsub.
 
 \subsection{do\_EEGtimelock.m}
-Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call \texttt{ft\_timelockanalysis} using \texttt{cfg.keeptrials = 'yes'}. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}} for more information.
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    sel_ = {'BP30_100','BP2_32'}; % used in a for loop
+    Selprefix = sel_{n}; % inside for loop
+    Addprefix = 'TL_';
+\end{lstlisting}
+Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call \texttt{ft\_timelockanalysis} using \texttt{cfg.keeptrials = 'yes'}. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}} for more information.\\
+
+\noindent Subsequent processing steps include average referencing and noise covariance estimation based on the variable \textff{noiseEstWin=[-0.5 -0.1];}
 
 \subsection{do\_EEGsplitBeamformer.sh}
 \label{sec:beamf}
-Wrapper function to call \texttt{do\_EEGbeamformer.sh} The function calls a predefined number of instances of \texttt{do\_EEGbeamformer.sh} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
+Wrapper function for running \texttt{do\_EEGbeamformer.sh} in multiple instances. The function calls a predefined number of instances of \texttt{do\_EEGbeamformer.sh} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGbeamformer.sh}
 Wrapper function for running \texttt{do\_EEGbeamformer.m} via qsub
 
 \subsection{do\_EEGbeamformer.m}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix = 'TL';
+    Addprefix='Beamf_centV1_';
+\end{lstlisting}
 Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $\lambda=10\%$
 
 \subsection{do\_EEGsplitVirtualChannel.sh}
 \label{sec:virtch}
-Wrapper function to call \texttt{do\_EEGvirtualChannel.sh} The function calls a predefined number of instances of \texttt{do\_EEGvirtualChannel.sh} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 30~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
+Wrapper function for running \texttt{do\_EEGvirtualChannel.sh} in multiple instances. The function calls a predefined number of instances of \texttt{do\_EEGvirtualChannel.sh} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 30~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGvirtualChannel.sh}
-Wrapper function for running \texttt{do\_EEGvirtualChannel.m} via qsub
+Wrapper function for running \texttt{do\_EEGvirtualChannel.m} via qsub.
 
 \subsection{do\_EEGvirtualChannel.m}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='Beamf_centV1';
+    Addprefix='VirtCh_';
+\end{lstlisting}
 Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.
 
 \subsection{do\_EEGsplitFreqOnVirtChan.sh}
@@ -1236,16 +1286,30 @@ Computes virtual channel time series, by mutliplying the data with the previousl
 Wrapper function to call \texttt{do\_EEGfreqOnVirtChan.sh} The function calls a predefined number of instances of \texttt{do\_EEGfreqOnVirtChan.sh} to run on the cluster, submitted using qsub. Per default 16~jobs requesting 60~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
 
 \subsection{do\_EEGfreqOnVirtChan.sh}
-Wrapper function for running \texttt{do\_EEGfreqOnVirtChan.m} via qsub
+Wrapper function for running \texttt{do\_EEGfreqOnVirtChan.m} via qsub.
 
 \subsection{do\_EEGfreqOnVirtChan.m}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='VirtCh';
+    Addprefix='TF_';
+\end{lstlisting}
 Computes time-frequency analysis for virtual channel data using \texttt{ft\_freqanalysis}. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.
 
 \subsection{do\_EEGfreqChanSelect.sh}
 \label{sec:selchan}
-Wrapper function for running \texttt{do\_EEGfreqChanSelect.m} via qsub
+Wrapper function for running \texttt{do\_EEGfreqChanSelect.m} via qsub.
 
 \subsection{do\_EEGfreqChanSelect.m}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='TF';
+    % Addprefix=''; does not exist
+\end{lstlisting}
 
 \subsection{EEGvisualizeVirtualChannel.m}
 

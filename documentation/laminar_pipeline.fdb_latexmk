@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1530446616 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1530446658
+["pdflatex"] 1530452246 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1530452384
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1480098701 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1480098701 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -189,17 +189,17 @@
   "figures/preproc-pipe.pdf" 1525450695 190630 15c0932046df9ccb4671db50f743f4f2 ""
   "figures/retino-pipe.pdf" 1525450700 187722 ffbae27eb071fc74276cab1e1e350690 ""
   "figures/segment-pipe.pdf" 1525450698 170082 5b60043c579ca5193f71ac43675b0d9c ""
-  "laminar_pipeline.aux" 1530446621 14836 61c0e9f771d899a13a4cace95b5aace4 ""
-  "laminar_pipeline.lof" 1530446621 932 6dbb08b4a05f8e56f67a4786c0a76eab ""
-  "laminar_pipeline.lot" 1530446621 235 3f54ec04477ffd9b98acf220d4afd2b5 ""
-  "laminar_pipeline.out" 1530446621 6057 79f343ac4c8f4b9bd58f7dd5481d92cf ""
-  "laminar_pipeline.tex" 1530446658 72460 f27d013bcf311b6c4424ae84b0b356ff ""
-  "laminar_pipeline.toc" 1530446621 7360 930ccced1b98e22daaa3a443abda3ceb ""
+  "laminar_pipeline.aux" 1530452251 15429 7838f42fe2b4d7ef8a3dbe2f16ae5394 ""
+  "laminar_pipeline.lof" 1530452251 932 698a41855c755b5fc88100c23428af79 ""
+  "laminar_pipeline.lot" 1530452251 235 24553ff809472366b4d2cfde84a07efd ""
+  "laminar_pipeline.out" 1530452251 6345 1a41b1587c599bae1fb557e0ebb4e105 ""
+  "laminar_pipeline.tex" 1530452383 76200 c79dd948000870baab41f678c852a758 ""
+  "laminar_pipeline.toc" 1530452251 7711 4ff1d5b96b3b17af434bcff965918ce7 ""
   (generated)
   "laminar_pipeline.out"
   "laminar_pipeline.log"
-  "laminar_pipeline.pdf"
-  "laminar_pipeline.aux"
   "laminar_pipeline.toc"
-  "laminar_pipeline.lot"
   "laminar_pipeline.lof"
+  "laminar_pipeline.pdf"
+  "laminar_pipeline.lot"
+  "laminar_pipeline.aux"
