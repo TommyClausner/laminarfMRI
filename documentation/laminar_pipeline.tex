@@ -6,6 +6,7 @@
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage{listings}
+
 \graphicspath{{figures/}{../figures/}}
 \renewcommand{\subtitle}[1]{%
   \posttitle{%
@@ -19,6 +20,7 @@
 \date{\small{last updated on \today}}
 
 \begin{document}
+\setcounter{secnumdepth}{1}
 \begin{titlepage}
 \clearpage\maketitle
 \thispagestyle{empty}
@@ -439,7 +441,7 @@ The full preprocessing can also be performed in a single step, by calling the pi
     sh preprocessing.sh
 \end{lstlisting}
 
-\subsection{fMRI - anatomical co-registration and masks}
+\subsection{fMRI anatomical co-registration and masks}
 fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 4 volumes the scanner stoped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
 \noindent Computing the difference between every 4th and 1st volume and averaging, leads to a T1-like contrast, that was used to otimize functional to anatomical registration. A graphical depiction can be found in Figure~\ref{fig:coregdist} top.\\
 
@@ -491,7 +493,7 @@ The full coregistration and creation of functional masks can also be performed i
 \end{center}
 \end{figure}
 
-\subsection{pRF mapping}
+\subsection{fMRI pRF mapping}
 Population receptive field mapping. Estimates retinotopic mapping from screen to cortical locations. This is to be done in order to obtain boundaries for visual areas such as V1, V2 and V3. First the fMRI time series will be interpolated (cubic) to match the numeber of frames presented during the stimulation. Afterwards pRF mapping will be analyzed and paramters will be written to volume files (NIfTI) and surface files for use with FreeSurfer.
 \begin{table}[h]
 %\centering
