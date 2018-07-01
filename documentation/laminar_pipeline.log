@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 JUL 2018 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 JUL 2018 17:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3244,12 +3244,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1394.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1394.
 
 Package rerunfilecheck Info: File `laminar_pipeline.out' has not changed.
-(rerunfilecheck)             Checksum: C6BA353DA09AEB62F4B3409620FCAE47;5659.
+(rerunfilecheck)             Checksum: 0EC12F08D43DF38164DA1C8D223D81BA;5681.
  ) 
 Here is how much of TeX's memory you used:
  42276 strings out of 492995
- 917613 string characters out of 6132704
- 1076705 words of memory out of 5000000
+ 917621 string characters out of 6132704
+ 1076701 words of memory out of 5000000
  44820 multiletter control sequences out of 15000+600000
  11639 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -3273,7 +3273,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
 017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (41 pages, 1609723 bytes).
+Output written on laminar_pipeline.pdf (41 pages, 1609326 bytes).
 PDF statistics:
  1157 PDF objects out of 1200 (max. 8388607)
  1058 compressed objects within 11 object streams

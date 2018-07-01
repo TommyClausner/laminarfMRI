@@ -142,7 +142,7 @@ Each step within the analysis has a different subfolder containing the respectiv
 
 \noindent Within each function it can be defined, which is the prefix of the data to load and which is the prefix that will be added after results were computed. The default will be stated in the respective detailed explaination in Section~\ref{sec:scriptsExplained}. However, after running \texttt{do\_EEGfreqChanSelect.m} all in that file defined prefixes that are found in the EEG folder will be deleted, keeping only essential files like headmodel, sourcemodel, sensors and the results file.\\
 
-\section{Helper files}
+\subsection{Helper files}
 There are several helper files that are needed in order to perform the analysis:\\
 
 \noindent\textbf{acquisition\_parameters.txt}
@@ -170,7 +170,7 @@ Needed in order to set the parameters for the distortion correction (example pro
 
 \noindent Stimuli used for retinotopy scans. Stimuli file must be such that each frame is represented as a binary image. The matrix must be of shape $Y \times X \times T$ where $X$ and $Y$ are the image dimensions in pixel and T is the respective number of frames.
 
-\section{qsub}
+\subsection{qsub}
 Scripts that are flagged with the (Q) can be submitted as a qsub job.
 
 \noindent When running the computation on the cluster use the wrapper function runonqsub.sh like so
