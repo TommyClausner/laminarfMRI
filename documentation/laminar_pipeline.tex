@@ -763,93 +763,82 @@ Furthermore, the function produces figures saved in C\_miscResults similar to wh
 
 \section{Scripts explained (support for runonqsub.sh: Q)}
 \label{sec:scriptsExplained}
-\subsection{getToolboxes.sh}
-\label{sh:getTools}
-Downloads all necessary toolboxes into a folder called toolboxes/ or displays a URL where the user has to download the software manually (see Section~\ref{sec:prereq}). That is FSL and SPM have to be downloaded manually due to required user registration. Place them in the same directory as the other toolboxes or install as required.
-
-\subsection{runonqsub.sh}
-\label{sh:runQsub}
-Initiates a qsub session and sends it to the cluster. This is necessary, since scripts running on the cluster are copied to a different directory, but within scripts all directories are relative. runonqsub.sh must hence be run in a "normal" session not using a non-interactive qsub, giving the respective script that was intended to run as an argument. runonqsub will then set everything up correctly. Further you have to specify the amount of memory needed.
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # example
-    sh runonqsub.sh 32gb myscript.sh
-\end{lstlisting}
-
-\noindent Additional arguments can be passed after the script.\\
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # example with argument
-    sh runonqsub.sh 32gb myscript.sh myargument
-\end{lstlisting}
-\noindent Under the hood:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    qsub -l walltime=24:00:00,mem=$1 -F "$DIR $\{@:3\}" $DIR/$2
-\end{lstlisting}
-\begin{itemize}
-\item \$DIR is the current absolute path to B\_scripts
-\item \$1 is the amount of memory used (e.g. \texttt{32gb})
-\item \$2 is the respective script to run (e.g. \texttt{myscript.sh})
-\item \$\{@:3\} is all following arguments that are parsed to the script (e.g. \texttt{myargument})
-\item every time \texttt{\nameref{sh:runQsub}} is called the absolute path is forwarded to the script (\texttt{-F \$DIR}) in order to keep the relative dependencies clear
-\end{itemize}
-
 \subsection{cleanscriptsfolder.sh}
 \label{sh:clean}
 Since qsub puts a output + error log into /B\_ scripts \texttt{\nameref{sh:clean}} can be used to move all qsub outputs to /B\_scripts/qsuboutput\\
 
-\subsection{liveupdateqsub.sh}
-\label{sh:liveupdate}
-Submits a qstat -u user request every second.
+\subsection{combine\_split\_PRF\_results.m}
+\label{m:combsplt}
+Combines split results from \texttt{\nameref{sh:splitanalyzePRF}} (Section~\ref{sh:splitanalyzePRF}) into a single MATLAB file. Note that given the respective numerical naming of all parts (x\_of\_X) parts will be concatenated along values of x. After this operation split parts will be deleted.\\
+
+\subsection{combine\_split\_PRF\_results.sh}
+\label{sh:combsplt}
+Wrapper function for running \texttt{\nameref{m:combsplt}} via qsub. Combines split results from \texttt{\nameref{sh:splitanalyzePRF}} (see Section~\ref{sh:splitanalyzePRF}). Note that the exact amount of parts that the data was split into must be defined here (default: 80).\\
+
+\subsection{do\_analyzePRF.m}
+\label{m:analyzePRF}
+Computes pRF mapping implemeting "analyzePRF" from the analyzePRF toolbox. It can be decided whether to average across blocks or if the estimates shall be done for each block separately and averaging the results. Note, that running the analysis on separate blocks slows down computation time, but to my experience yields slightly better results.\\
+
+\noindent Under the hood:
+\begin{itemize}
+\item estimates pRFs
+\item computes pRF mapping for part x of X by splitting the list of indices and selecting the corresponding set
+\item set avgdata=1 to average data before the analysis (otherwise it will be averaged afterwards)
+\item result: structure containing pRF parameters of part x of X
+\end{itemize}
+
+\subsection{do\_analyzePRF.sh}
+\label{sh:analyzePRF}
+Wrapper function for running \texttt{\nameref{m:analyzePRF}} via qsub. Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
     breaklines=true]
-    # example
-    sh liveupdateqsub.sh tomcla
+    # example split search space into 5 parts an run the first
+    sh do_analyzePRF.sh 1 5
+\end{lstlisting}
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example not splitting up search space
+    sh do_analyzePRF.sh 1 1
 \end{lstlisting}
 
-\noindent exit command by hitting ctrl+c
-
-\subsection{waitForJobs.sh}
-\label{sh:wait}
-Checks all currently running jobs (\texttt{qstat -u user}) and waits until the last script up until this point has finished.
-
-\subsection{makenewsubject.sh}
-\label{sh:newS}
-executable script (double click to execute)\\
-
-Creates a new subject (S\#) folder structure in order to get all folder dependencies right. It automatically detects folders called "S\textit{$<$number$>$}" and creates a new folder incrementing \textit{$<$number$>$} by one.
-
-\subsection{setupfolders.sh (Q)}
-\label{sh:setDir}
-Sets up the necessary folder structure for the analysis (within a subject folder). This function is automatically called when using \texttt{\nameref{sh:newS}}\\
-
-\subsection{do\_preparefunctionals.sh (Q)}
-\label{sh:prepfct}
-Prepares functional data, i.e. removes the first 4 and the last x volumes of every set of functionals, where x is the number of volumes acquired after the stimulation ended. If files were modified (i.e. if volumes were deleted), the original file will remain in /niftis/functionals/old\\
-
-\subsection{do\_realignment.sh (Q)}
-\label{sh:realign}
-Merges and motion corrects all files in /niftis/functionals using the average volume of all task volumes.\\
-
-\noindent numberofvolumes.txt is written to /A\_helperfiles giving information about which sets had how many volumes. The first column is coresponds to dim4 from \texttt{fslinfo}\\
+\subsection{do\_applysimpledistcorr.sh (Q)}
+\label{sh:applydistcorr}
+Applies distortion correction to all functional data.\\
 
 \noindent Under the hood:
 \begin{itemize}
-\item \texttt{fslmerge} is called to create a combined .nii for all files in niftis/functionals/*sparse* - files are merged allong the 4th dimension
-\item a .txt file is created saving which files were merged and how many volumes were in there
-\item \texttt{mcflirt} is used on the combined data doing the motion correction based on the average volume across all task blocks
-\item all results are stored in /1\_realignment
-\item results have the extension "\_mcf"
+\item distortion correction is applied to the full set of functionals using the \texttt{OUTPUT} of topup (\texttt{topup [$\ldots$] --out=OUTPUT}) as well as acquisition\_parameters.txt (Using \texttt{--method=jac})
+\item all results are stored in /3\_distcorrection
+\item all results have the prefix "corrected\_"
 \end{itemize}
+
+\subsection{do\_coregistration.m}
+\label{m:coreg}
+The script doing the actual co-registration. Uses wrapper functions from OpenFmriAnalysis to evoke FreeSurfers \texttt{bbregister} and computes a recursive boundary based registration.\\
+
+\noindent The results are several files storing the boundaries as a point cloud, and the respective transformation in different formats.
+
+\noindent Under the hood:
+\begin{itemize}
+\item calls \texttt{bbregister}
+\item results are stored in /2\_coregistration
+\item yields boundaries.mat, matrix.mat, bbregister.dat, transmat.txt, transmatinv.txt
+\end{itemize}
+
+\subsection{do\_coregistration.sh}
+\label{sh:coreg}
+Wrapper function for running \texttt{\nameref{m:coreg}}, that in turn will be using FreeSurfer (\texttt{bbregister}) and OpenFmriAnalysis to perform a linear and non-linear boundary registration.  Movie files of the respective co-registration are stored in /C\_miscResults.\\
+
+\subsection{do\_correctavgdiff.sh (Q)}
+\label{sh:corravg}
+Due to the subtraction of the 1st from the 4th volume the area outside the brain has the highest value. In order to correct this the lowest value will be shifted to zero the a certain part of the higher values are cut (e.g. 0.975).\\
+
+\noindent The result should be checked using\\
+\texttt{fsleyes ../2\_coregistration/Inplane/MCTemplateThr*.nii.gz} to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later co-registration.\\
 
 \subsection{do\_distcorr.sh (Q)}
 \label{sh:distcorr}
@@ -871,27 +860,219 @@ Uses the averge volume of the inverted set of images in /niftis/inverted as refe
 \item all results are stored in /3\_distcorrection
 \end{itemize}
 
-\subsection{do\_applysimpledistcorr.sh (Q)}
-\label{sh:applydistcorr}
-Applies distortion correction to all functional data.\\
+\subsection{do\_EEGbeamformer.m}
+\label{m:beamf}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix = 'TL';
+    Addprefix='Beamf_centV1_';
+\end{lstlisting}
+Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $\lambda=10\%$\\
 
-\noindent Under the hood:
+\subsection{do\_EEGbeamformer.sh}
+\label{sh:beamf}
+Wrapper function for running \texttt{\nameref{m:beamf}} via qsub.\\
+
+\subsection{do\_EEGelectrodeRegistration.m}
+\label{m:elecReg}
+This function cannot be run using Qsub or a headless MATLAB instance, since it requires user interaction via a graphical user interface. The script will load the respective data, save and exit (after the user is done). Since this script is just a wrapper function for \texttt{ft\_electroderealign} I will refer to the corresponding FieldTrip documentation: \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}}\\
+
+\subsection{do\_EEGfreqChanSelect.m}
+\label{m:selchan}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='TF';
+    % Addprefix=''; does not exist
+\end{lstlisting}
+Selects virtual channels of interest. Since utilizing high resolution functional data is leading inevitably to an explosion in file size, only important data will remain after calling this function.\\
+
+\noindent First of all it is specified which are the frequency bands of interest in order to make a choise for a respective channel to maximize or minimize within the defined range. Default settings are:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    ROIalpha = [8,12]; % Hz
+    ROIbeta  = [22.5,27.5]; % Hz
+    ROIgamma = [50,70]; % Hz
+
+    timeWinMax = [0.1 1.39]; % in seconds
+\end{lstlisting}
+
+\texttt{timeWinMax} thereby is the time of interest for which to optimize channel selection. Shortly speeking an area within the time frequncy matrix that is enclosed by \texttt{ROI$<$freq$>$} and \texttt{timeWinMax} will be averaged. The 100 maximum (for $\gamma$) and minimum (for $\alpha$ and $\beta$) channels will be selected. It is important to note, that the data will be $\log$ transformed and expressed as relative change to \texttt{BLwin} which is the respective time window of reference relative to stimulus onset.\\
+
+\subsection{do\_EEGfreqChanSelect.sh}
+\label{sh:selchan}
+Wrapper function for running \texttt{\nameref{m:selchan}} via qsub.\\
+
+\subsection{do\_EEGfreqOnVirtChan.m}
+\label{m:freqVirt}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='VirtCh';
+    Addprefix='TF_';
+\end{lstlisting}
+Computes time-frequency analysis for virtual channel data using \texttt{ft\_freqanalysis}. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.\\
+\noindent Per default the frequency of interes (FOI) is set to band pass filter width.The resolution is defined by $\frac{1}{slidW}$ where slidW is the respective size of the sliding window used. Default values are 0.4 for high and 0.8 for low filter bands.\\
+
+\noindent All default settings:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    cfg.output       = 'pow'; % power of frequency spectrum
+    cfg.channel      = 'all';
+    cfg.method       = 'mtmconvol'; % multi-taper-method convolution
+    cfg.taper        = 'dpss'; % discrete prolate spheroidal sequences
+    cfg.foi          = foi; % frequencies of interest
+    cfg.pad          = 3.2; % padding at beginning and end of trial
+    cfg.tapsmofrq    = 10; % frequency smoothing
+    cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter); % slidW
+    cfg.toi          = -1:0.01:2; % time window of interest
+    cfg.keeptrials   = 'yes';
+\end{lstlisting}
+
+\subsection{do\_EEGfreqOnVirtChan.sh}
+\label{sh:freqVirt}
+Wrapper function for running \texttt{\nameref{m:freqVirt}} via qsub.\\
+
+\subsection{do\_EEGprepareFS.sh}
+\label{sh:prepFS4EEG}
+This script was provided by Simon Hom\"olle (DCCN, 2018). Uses Workbench (\href{https://github.com/Washington-University/workbench}{\nolinkurl{https://github.com/Washington-University/workbench}}) to prepare FreeSurfer results for use with the EEG pipeline.\\
+
+\subsection{do\_EEGprepareHeadmodel.m}
+\label{m:prepHM}
+Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz. If desired the variable \texttt{convertCoordSys} can be set to \texttt{convertCoordSys = 1;} to convert the coordinate system to ctf (otherwise will be ras).\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l | l | l}
+\toprule
+Model & Propertiy & Value\\\hline
+  FEM mesh & cfg.output & \{'gray','white','csf','skull','scalp'\}\\\hline
+   & cfg.scalpsmooth & 10\\\hline
+   & cfg.method & 'hexahedral'\\\hline
+   & cfg.shift & 0.3\\\hline
+  FEM & cfg.method & 'simbio'\\\hline
+   & cfg.conductivity & [0.33 0.14 1.79 0.01 0.43]\\\midrule
+ BEM mesh & cfg.output & \{'brain','skull','scalp'\}\\\hline
+  & cfg.method & 'projectmesh'\\\hline
+  & cfg.numvertices & [1000 2000 3000]\\\hline
+ BEM & cfg.method & 'openmeeg'\\\hline
+  & cfg.conductivity & [0.33 0.01 0.43]\\\bottomrule
+\end{tabular}
+\caption[Specifications for creating headmodel]{Specifications for creating headmodel.}
+\label{tab:BEMFEMprop}
+\end{table}
+Underlying FieldTrip functions are:
 \begin{itemize}
-\item distortion correction is applied to the full set of functionals using the \texttt{OUTPUT} of topup (\texttt{topup [$\ldots$] --out=OUTPUT}) as well as acquisition\_parameters.txt (Using \texttt{--method=jac})
-\item all results are stored in /3\_distcorrection
-\item all results have the prefix "corrected\_"
+\item ft\_volumesegment (segments anatomical data into distinct structures (e.g. skull))
+\item ft\_prepare\_mesh (sets up 3D mesh for head model preparation)
+\item ft\_prepare\_headmodel (creates the conductivity model)
 \end{itemize}
 
-\subsection{do\_preparecoregistration.sh (Q)}
-\label{sh:prepcoreg}
-Computes a reference volume (MCTemplate) used as the basis  to co-register with the anatomical image. This image is computed by splitting the entire set of task volumes into chunks of 4. In each chunk the 1st volume is substracted from the 4th. This procedure yields a pseude-T1 contrast. All chunk differences are then averaged to form "MCTemplate"
+\subsection{do\_EEGprepareHeadmodel.sh}
+\label{sh:prepHM}
+Wrapper function for running \texttt{\nameref{m:prepHM}} via qsub. Changing the variable \texttt{Model} will cause the function to produce a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM}.\\
 
-\subsection{do\_correctavgdiff.sh (Q)}
-\label{sh:corravg}
-Due to the subtraction of the 1st from the 4th volume the area outside the brain has the highest value. In order to correct this the lowest value will be shifted to zero the a certain part of the higher values are cut (e.g. 0.975).\\
+\subsection{do\_EEGprepareSourcemodel.m}
+\label{m:prepSM}
+Sets up sourcemodel (dipole model) for source analysis using the result of \texttt{\nameref{sh:prepFS4EEG}}\\
+\noindent It utilizes FieldTrip's \texttt{ft\_prepare\_vol\_sens} to ensure that headmodel and sensors are set up correctly and prepares the source model by reading the Workbench result as a headshape (\texttt{ft\_read\_headshape}).\\
 
-\noindent The result should be checked using\\
-\texttt{fsleyes ../2\_coregistration/Inplane/MCTemplateThr*.nii.gz} to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later co-registration.
+\subsection{do\_EEGprepareSourcemodel.sh}
+\label{sh:prepSM}
+Wrapper function for running \texttt{\nameref{m:prepSM}} via qsub. Changing the variable \texttt{Model} will cause the function to use a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM} (must be in accordance with \texttt{\nameref{sh:prepHM}}).\\
+
+\subsection{do\_EEGpreprocessing.m}
+\label{m:EEGpreproc}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    % for trial and channel selection
+    % Selprefix = ''; does not exist
+    Addprefix = 'TCsel_';
+
+    % band pass filtering
+    Selprefix = 'TCsel';
+    Addprefix=['BP' num2str(filterPassBand(1)) '_' num2str(filterPassBand(2)) '_']; % result is e.g. BP2_32_
+\end{lstlisting}
+Does a basic preprocessing to the data. First trigger values will be extracted and trials are defined according to the specifications in the script. Further only EEG channels are selected. The Data is downsampled to $1024~Hz$. This in-between step is stored. Afterwards the data is further split into different sets of band pass filtered data. Note, that the noise structure will be different for high and low frequencies and thus this step is highly recommendable. Per default two band pass filters are chosen ($2-32~Hz$ and $30-100~Hz$). The baseline period will be from $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. For the high frequency case a dft filter to filter line noise is applied. Using the default version of this function will store the computed data using the respective filter settings as a prefix. However if desired trials can / should be excluded in this step as well.\\
+
+\noindent Under the hood (uses the following fieldtrip functions):
+\begin{itemize}
+\item ft\_definetrial (sets up trial definition according to predefined trigger values in the data)
+\item ft\_preprocessing (selects EEG channel)
+\item ft\_redefinetrial (defines channel and creates trials)
+\item ft\_resampledata (downsampling)
+\item ft\_preprocessing (frequency filters)
+\item (ft\_rejectvisual()) (trial rejection)
+\end{itemize}
+
+\subsection{do\_EEGpreprocessing.sh}
+\label{sh:EEGpreproc}
+Wrapper function for running \texttt{\nameref{m:EEGpreproc}} via qsub.\\
+
+\subsection{do\_EEGsplitBeamformer.sh}
+\label{sh:splitbeamf}
+Wrapper function for running \texttt{\nameref{sh:beamf}} in multiple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:beamf}} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
+
+\subsection{do\_EEGsplitFreqOnVirtChan.sh}
+\label{sh:splitfreqVirt}
+Wrapper function to call \texttt{\nameref{sh:freqVirt}} The function calls a predefined number of instances of \texttt{\nameref{sh:freqVirt}} to run on the cluster, submitted using qsub. Per default 16~jobs requesting 60~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
+
+\subsection{do\_EEGsplitVirtualChannel.sh}
+\label{sh:splitvirtch}
+Wrapper function for running \texttt{\nameref{sh:virtch}} in multiple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:virtch}} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 30~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
+
+\subsection{do\_EEGtimelock.m}
+\label{m:timelock}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    sel_ = {'BP30_100','BP2_32'}; % used in a for loop
+    Selprefix = sel_{n}; % inside for loop
+    Addprefix = 'TL_';
+\end{lstlisting}
+Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call \texttt{ft\_timelockanalysis} using \texttt{cfg.keeptrials = 'yes'}. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}} for more information.\\
+
+\noindent Subsequent processing steps include average referencing and noise covariance estimation based on the variable \textff{noiseEstWin=[-0.5 -0.1];}\\
+
+\subsection{do\_EEGtimelock.sh}
+\label{sh:timelock}
+Wrapper function for running \texttt{\nameref{m:timelock}} via qsub.\\
+
+\subsection{do\_EEGvirtualChannel.m}
+\label{m:virtch}
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    Selprefix='Beamf_centV1';
+    Addprefix='VirtCh_';
+\end{lstlisting}
+Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.\\
+
+\noindent Under the hood:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    virtual_channels = mean(dataSrc.avg.mom{nonEmptyFilterInd},2)'*currentFilter*squeeze(data.trial{trial}(:,:));
+\end{lstlisting}
+
+The data is multiplied with the respective filter, taking the average dipole moment into account.\\
+
+\subsection{do\_EEGvirtualChannel.sh}
+\label{sh:virtch}
+Wrapper function for running \texttt{\nameref{m:virtch}} via qsub.\\
 
 \subsection{do\_fsrecon.sh (Q)}
 \label{sh:fsrecon}
@@ -924,203 +1105,7 @@ Performs segmentation using Freesurfer.\\
     breaklines=true]
     recon-all -i rawData/niftis/t1/* -subjid  0_freesurfer -all OutputVolume.nii.gz
 \end{lstlisting}
-, all results are stored in /0\_freesurfer
-
-\subsection{do\_coregistration.sh}
-\label{sh:coreg}
-Will submit a qsub session using MATLAB, that in turn will be using FreeSurfer (bbregister) and OpenFmriAnalysis to perform a linear and non-linear boundary registration.  Movie files of the respective co-registration are stored in /C\_miscResults
-
-\noindent The file used to execute MATLAB commands is /B\_scripts/do\_coregistration.m Note that it will be modified using the correct folder settings, which yields tmp.m that will be called and removed after MATLAB was closed.\\
-
-\subsection{do\_coregistration.m}
-The script doing the actual co-registration. Uses wrapper functions from OpenFmriAnalysis to evoke FreeSurfers bbregister and computes a recursive boundary based registration.\\
-
-\noindent The results are several files storing the boundaries as a point cloud, and the respective transformation in diferent formats.
-
-\noindent Under the hood:
-\begin{itemize}
-\item calls bbregister
-\item results are stored in /2\_coregistration
-\item yields boundaries.mat, matrix.mat, bbregister.dat, transmat.txt, transmatinv.txt
-\end{itemize}
-
-\subsection{do\_makemasksandlabels.sh (Q)}
-\label{sh:msklbl}
-Uses FreeSurfer reconstruction to create masks for CSF, gray matter and white matter and creates labeled volume for use within retinotopy containing left / right + gray / white matter. All masks will be created as full-brain and partial-brain masks.\\
-
-\noindent If the orientation needs to be changed, parse the respective FreeSurfer compatible orientation parameter (\href{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri_convert.help.xml.html}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri\_convert.help.xml.html}})\\
-
-\noindent Under the hood:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    sh do_movesinglevolume.sh InputVolume.nii.gz transmat.txt OutputVolume.nii.gz
-\end{lstlisting}
-\begin{itemize}
-\item results are stored in /2\_coregistration
-\item coregistered functional masks have the prefix "fct" and the suffix "coreg"
-\end{itemize}
-
-\subsection{do\_movesinglevolume.sh}
-\label{sh:move}
-Simple wrapper function to apply a transformation from one volumetric space to another, given a transformation matrix using FSL's \texttt{flirt} (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT}}).\\
-
-\noindent Under the hood:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    flirt -applyxfm -in $1 -ref $1 -init $2 -out $3
-\end{lstlisting}
-\begin{itemize}
-\item \$1: volume to move
-\item \$2: transformation matrix in form of a .txt file containing a $4\times4$ transformation matrix
-\item \$3: volume to write
-\end{itemize}
-
-\subsection{do\_tseriesinterpolation.sh}
-\label{sh:tseriesinterp}
-Wrapper function for running \texttt{\nameref{m:tseriesinterp}} via qsub. Variables used by do\_tseriesinterpolation.m can be defined in the header section of the script.
-
-\noindent Under the hood:
-\begin{itemize}
-\item submits a MATLAB job using qsub calling \texttt{\nameref{m:tseriesinterp}} using the below settings
-\item default number of blocks: 3
-\item default TR: 2.7s
-\item default Mask Threshold: 0.01
-\item default rescaled stimulus size: 100px
-\end{itemize}
-
-\subsection{do\_tseriesinterpolation.m}
-\label{m:tseriesinterp}
-Interpolates time series for retinotopy scans to match the number of frames during the stimulation (cubic interpolation). The new TR will be $TR_{new}=\frac{TR_{old}N_{volumes}}{N_{imageframes}}$. The function implements "tseriesinterp" from the analyzePRF toolboxe. The data will be normalized to percent signal change.\\
-
-\noindent Furthermore all images will be downsampled to the predefined size (e.g. 100px)\\
-
-\noindent Under the hood:
-\begin{itemize}
-\item interpolates time series of functional data to match the numer of frames during the stimulation
-\item results: tIntData.mat (interpolated time series)
-\item results: mask.mat (volume mask)
-\item results: voxelindices.mat (indices of mask voxels, ratio between $N_{imageframes}$ and $N_{volumes}$, mask threshold)
-\item results: downsampled images
-\end{itemize}
-
-\subsection{do\_split\_analyzePRF.sh}
-\label{sh:splitanalyzePRF}
-Wrapper function for running \texttt{\nameref{sh:analyzePRF}} in muslitple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:analyzePRF}} to run on the cluster, submitted using qsub. Per default 80~jobs requesting 6~GB of memory each (see Section~\ref{sh:analyzePRF}), will be spawned. This procedure speeds up the population receptive field estimation significantly and would be otherwise impractical on high resolution functional data.\\
-
-\subsection{do\_analyzePRF.sh}
-\label{sh:analyzePRF}
-Wrapper function for running \texttt{\nameref{m:analyzePRF}} via qsub. Spawns a qsub job using 6GB of memory (default) and runs a specific part of a set of parts. The first input argument is the part that is to be computed and the second input argument is the sum of all parts.
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # example split search space into 5 parts an run the first
-    sh do_analyzePRF.sh 1 5
-\end{lstlisting}
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # example not splitting up search space
-    sh do_analyzePRF.sh 1 1
-\end{lstlisting}
-
-\subsection{do\_analyzePRF.m}
-\label{m:analyzePRF}
-Computes pRF mapping implemeting "analyzePRF" from the analyzePRF toolbox. It can be decided whether to average across blocks or if the estimates shall be done for each block separately and averaging the results. Note, that running the analysis on separate blocks slows down computation time, but to my experience yields slightly better results.\\
-
-\noindent Under the hood:
-\begin{itemize}
-\item estimates pRFs
-\item computes pRF mapping for part x of X by splitting the list of indices and selecting the corresponding set
-\item set avgdata=1 to average data before the analysis (otherwise it will be averaged afterwards)
-\item result: structure containing pRF parameters of part x of X
-\end{itemize}
-
-\subsection{combine\_split\_PRF\_results.sh}
-\label{sh:combsplt}
-Wrapper function for running \texttt{\nameref{m:combsplt}} via qsub. Combines split results from \texttt{\nameref{sh:splitanalyzePRF}} (see Section~\ref{sh:splitanalyzePRF}). Note that the exact amount of parts that the data was split into must be defined here (default: 80).\\
-
-\subsection{combine\_split\_PRF\_results.m}
-\label{m:combsplt}
-Combines split results from \texttt{\nameref{sh:splitanalyzePRF}} (Section~\ref{sh:splitanalyzePRF}) into a single MATLAB file. Note that given the respective numerical naming of all parts (x\_of\_X) parts will be concatenated along values of x. After this operation split parts will be deleted.
-
-\subsection{make\_PRF\_overlays.sh}
-\label{sh:mkprfO}
-Wrapper function running \texttt{\nameref{m:mkprfO}} via qsub
-
-\subsection{make\_PRF\_overlays.m}
-\label{m:mkprfO}
-Takes result of pRF mapping and creates .nii files for separate parameters (ang, ecc, expt, r2, rfsize, xpos, ypos). The data will be saved in ../4\_retinotopy as parameterName\_map.nii\\
-
-\noindent Under the hood:
-\begin{itemize}
-\item angle ($\theta$) will be devided by 180 and multiplied by $\pi$
-\item eccentricity ($r$) will be devided by the image size (in px) and multiplied by the original value range ($^\circ$ visual angle; default: 7). Only ecc values that have a positive $R^2$ and are smaller than the defined field of view, will be written to file. All other values will be set to $NaN$
-\item X position (xpos) $\cos(\theta)\cdotp r$
-\item Y position (ypos) $\sin(\theta)\cdotp r$
-\end{itemize}
-
-\subsection{makeOverlays.sh (Q)}
-\label{sh:mkOver}
-Makes FreeSurfer compatible overlays from NIfTI files. Calls FreeSurfer's \texttt{mri\_vol2surf} in order to transform a volumetric .nii file into a surface file. This will be done for both hemispheres separately. Parameters transformed to surface files are: ang, ecc, xpos, ypos, r2\\
-
-\noindent Under the hood:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi ?h --surf pial --out $DIR/4_retinotopy/?h.ang.mgh --out_type paint
-\end{lstlisting}
-\begin{itemize}
-\item --src: NIfTI to be transformed
-\item --srcreg: result from \texttt{bbregister} of \texttt{\nameref{sh:coreg}} (default: bbregister.dat)
-\item --hemi: respective hemisphere (lh for left hemisphere or rh for right hemisphere)
-\item --surf: surface used as reference (obtained from FreeSurfer in ../0\_freesurfer/surf/)
-\item --out: output file name
-\item --out\_type: influences how the file is outputted (see \texttt{mri\_vol2surf --help} for more information)
-\end{itemize}
-
-\subsection{GUI2ROIs.sh}
-\label{sh:GUI2ROI}
-This script spawns an instance for \texttt{tksurfer} (FreeSurfer)
-
-\subsection{labels2masks.sh (Q)}
-\label{sh:lbl2msk}
-Converts surface labels defined for ?h, V1,2,3 into a volume. For this purpose FreeSurfer's \texttt{mri\_label2vol} will be called using the following configuration:
-\begin{itemize}
-  \item --label /0\_freesurfer/label/?h.V?.ret.label (the label to be converted)
-  \item --temp /2\_coregistration/refVol (shape template volume)
-  \item --reg /2\_coregistration/bbregister.dat (co-registration file)
-  \item -o /4\_retinotopy/?hV?maks.nii.gz (output volume's file name)
-\end{itemize}
-
-To indicate which hemisphere or visual ROI, the questionmarks must be replace with the respective information (lh, rh; V1, V2, V3).\\
-
-The full command looks internally like this:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    mri_label2vol --label $DIR/0_freesurfer/label/lh.V1.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV1mask.nii.gz
-\end{lstlisting}
-, where \texttt{DIR} is the subject's absolute path.
-
-\subsection{expandROIs.sh}
-\label{sh:expROI}
-Wrapper function for running \texttt{\nameref{m:expROI}} via qsub. In order to perform the correct voxel expansion, the expansion factor (\texttt{ExpandBy}) and mask threshold (\texttt{mskThr}) can be specified. Those settings will be forwarded to \texttt{\nameref{m:expROI}}.
-
-\subsection{expandROIs.m}
-\label{m:expROI}
-Thresholds a given volume utilizing the predefined mask threshold (\texttt{maskthreshold}). Afterwards a cubic box around each voxel will be created, that goes $N$ voxels in each of the 6 directions. Hence a volume containing only a single ROI of size $1\times1\times1$ will be expanded to $9\times9\times9$, if the given expansion factor \texttt{ExpansionFactor = 4}. The actual voxel expansion algorithm was implemented in \texttt{tc\_expandVoxelSelection.m} provided by the tc\_functions script collection (\href{https://github.com/TommyClausner/tc\_functions}{\nolinkurl{https://github.com/TommyClausner/tc\_functions}}).
-
-\subsection{do\_getLayers.sh}
-\label{sh:getLyr}
-Wrapper function for running \texttt{\nameref{sh:getLyrM}} via qsub. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.
+, all results are stored in /0\_freesurfer\\
 
 \subsection{do\_getLayers.m}
 \label{m:getLyr}
@@ -1161,240 +1146,253 @@ Utilizes the toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/Ope
     cfg.o_Layering        = '5_laminar/brain.layers.nii';
 \end{lstlisting}
 
-\subsection{do\_getLayerWeights.sh}
-\label{sh:getLyrW}
-Wrapper function for running \texttt{\nameref{m:getLyrW}} via qsub.
+\subsection{do\_getLayers.sh}
+\label{sh:getLyr}
+Wrapper function for running \texttt{\nameref{sh:getLyrM}} via qsub. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.\\
 
 \subsection{do\_getLayerWeights.m}
 \label{m:getLyrW}
-Combines masks obtained from retinotopy with layer masks obtained from laminar segmentation. The respective expanded volumes of the pRF mapping are multiplied with the layer mask and yield a layer specific ROI selection masks. As a result a NIfTI file is create having the same shape, space and orientation as the functional data. Thereby the 4th dimension of the volume represents the respective number of layers.
+Combines masks obtained from retinotopy with layer masks obtained from laminar segmentation. The respective expanded volumes of the pRF mapping are multiplied with the layer mask and yield a layer specific ROI selection masks. As a result a NIfTI file is create having the same shape, space and orientation as the functional data. Thereby the 4th dimension of the volume represents the respective number of layers.\\
 
-\subsection{makeLayerMovie.sh}
-\label{sh:makeMov}
-Wrapper function for running \texttt{\nameref{m:makeMov}} via qsub.
+\subsection{do\_getLayerWeights.sh}
+\label{sh:getLyrW}
+Wrapper function for running \texttt{\nameref{m:getLyrW}} via qsub.\\
 
-\subsection{makeLayerMovie.m}
-\label{m:makeMov}
-Utilizes the OpenFmriAnalysis toolbox (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) to create a movie file from the results of the laminar segmentation. The movie file will be written to C\_miscResults/Layers.avi
+\subsection{do\_makemasksandlabels.sh (Q)}
+\label{sh:msklbl}
+Uses FreeSurfer reconstruction to create masks for CSF, gray matter and white matter and creates labeled volume for use within retinotopy containing left / right + gray / white matter. All masks will be created as full-brain and partial-brain masks.\\
 
-\subsection{do\_EEGpreprocessing.sh}
-\label{sh:EEGpreproc}
-Wrapper function for running \texttt{\nameref{m:EEGpreproc}} via qsub.
-
-\subsection{do\_EEGpreprocessing.m}
-\label{m:EEGpreproc}
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    % for trial and channel selection
-    % Selprefix = ''; does not exist
-    Addprefix = 'TCsel_';
-
-    % band pass filtering
-    Selprefix = 'TCsel';
-    Addprefix=['BP' num2str(filterPassBand(1)) '_' num2str(filterPassBand(2)) '_']; % result is e.g. BP2_32_
-\end{lstlisting}
-Does a basic preprocessing to the data. First trigger values will be extracted and trials are defined according to the specifications in the script. Further only EEG channels are selected. The Data is downsampled to $1024~Hz$. This in-between step is stored. Afterwards the data is further split into different sets of band pass filtered data. Note, that the noise structure will be different for high and low frequencies and thus this step is highly recommendable. Per default two band pass filters are chosen ($2-32~Hz$ and $30-100~Hz$). The baseline period will be from $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. For the high frequency case a dft filter to filter line noise is applied. Using the default version of this function will store the computed data using the respective filter settings as a prefix. However if desired trials can / should be excluded in this step as well.\\
-
-\noindent Under the hood (uses the following fieldtrip functions):
-\begin{itemize}
-\item ft\_definetrial (sets up trial definition according to predefined trigger values in the data)
-\item ft\_preprocessing (selects EEG channel)
-\item ft\_redefinetrial (defines channel and creates trials)
-\item ft\_resampledata (downsampling)
-\item ft\_preprocessing (frequency filters)
-\item (ft\_rejectvisual()) (trial rejection)
-\end{itemize}
-
-\subsection{do\_EEGprepareFS.sh}
-\label{sh:prepFS4EEG}
-This script was provided by Simon Hom\"olle (DCCN, 2018). Uses Workbench (\href{https://github.com/Washington-University/workbench}{\nolinkurl{https://github.com/Washington-University/workbench}}) to prepare FreeSurfer results for use with the EEG pipeline.
-
-\subsection{do\_EEGprepareHeadmodel.sh}
-\label{sh:prepHM}
-Wrapper function for running \texttt{\nameref{m:prepHM}} via qsub. Changing the variable \texttt{Model} will cause the function to produce a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM}.
-
-\subsection{do\_EEGprepareHeadmodel.m}
-\label{m:prepHM}
-Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz. If desired the variable \texttt{convertCoordSys} can be set to \texttt{convertCoordSys = 1;} to convert the coordinate system to ctf (otherwise will be ras).\\
-
-Models will have the following properties:
-\begin{table}[h]
-\centering
-\begin{tabular}{l | l | l}
-\toprule
-Model & Propertiy & Value\\\hline
-  FEM mesh & cfg.output & \{'gray','white','csf','skull','scalp'\}\\\hline
-   & cfg.scalpsmooth & 10\\\hline
-   & cfg.method & 'hexahedral'\\\hline
-   & cfg.shift & 0.3\\\hline
-  FEM & cfg.method & 'simbio'\\\hline
-   & cfg.conductivity & [0.33 0.14 1.79 0.01 0.43]\\\midrule
- BEM mesh & cfg.output & \{'brain','skull','scalp'\}\\\hline
-  & cfg.method & 'projectmesh'\\\hline
-  & cfg.numvertices & [1000 2000 3000]\\\hline
- BEM & cfg.method & 'openmeeg'\\\hline
-  & cfg.conductivity & [0.33 0.01 0.43]\\\bottomrule
-\end{tabular}
-\caption[Specifications for creating headmodel]{Specifications for creating headmodel.}
-\label{tab:BEMFEMprop}
-\end{table}
-Underlying FieldTrip functions are:
-\begin{itemize}
-\item ft\_volumesegment (segments anatomical data into distinct structures (e.g. skull))
-\item ft\_prepare\_mesh (sets up 3D mesh for head model preparation)
-\item ft\_prepare\_headmodel (creates the conductivity model)
-\end{itemize}
-
-\subsection{do\_EEGelectrodeRegistration.m}
-\label{m:elecReg}
-This function cannot be run using Qsub or a headless MATLAB instance, since it requires user interaction via a graphical user interface. The script will load the respective data, save and exit (after the user is done). Since this script is just a wrapper function for \texttt{ft\_electroderealign} I will refer to the corresponding FieldTrip documentation: \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}}
-
-\subsection{do\_EEGprepareSourcemodel.sh}
-\label{sh:prepSM}
-Wrapper function for running \texttt{\nameref{m:prepSM}} via qsub. Changing the variable \texttt{Model} will cause the function to use a different forward model. Possible options are \texttt{Model=FEM} and \texttt{Model=BEM} (must be in accordance with \texttt{\nameref{sh:prepHM}}).
-
-\subsection{do\_EEGprepareSourcemodel.m}
-\label{m:prepSM}
-Sets up sourcemodel (dipole model) for source analysis using the result of \texttt{\nameref{sh:prepFS4EEG}}\\
-\noindent It utilizes FieldTrip's \texttt{ft\_prepare\_vol\_sens} to ensure that headmodel and sensors are set up correctly and prepares the source model by reading the Workbench result as a headshape (\texttt{ft\_read\_headshape}).
-
-\subsection{do\_EEGtimelock.sh}
-\label{sh:timelock}
-Wrapper function for running \texttt{\nameref{m:timelock}} via qsub.
-
-\subsection{do\_EEGtimelock.m}
-\label{m:timelock}
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    sel_ = {'BP30_100','BP2_32'}; % used in a for loop
-    Selprefix = sel_{n}; % inside for loop
-    Addprefix = 'TL_';
-\end{lstlisting}
-Average (re-) referencing, timelock analysis and noise covariance estimation for the data. Estimates noise between $-0.5~s$ until $-0.1~s$ relative to the stimulus onset. Basically a wrapper function to call \texttt{ft\_timelockanalysis} using \texttt{cfg.keeptrials = 'yes'}. See \href{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_timelockanalysis}} for more information.\\
-
-\noindent Subsequent processing steps include average referencing and noise covariance estimation based on the variable \textff{noiseEstWin=[-0.5 -0.1];}
-
-\subsection{do\_EEGsplitBeamformer.sh}
-\label{sh:splitbeamf}
-Wrapper function for running \texttt{\nameref{sh:beamf}} in multiple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:beamf}} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 62~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
-
-\subsection{do\_EEGbeamformer.sh}
-\label{sh:beamf}
-Wrapper function for running \texttt{\nameref{m:beamf}} via qsub.
-
-\subsection{do\_EEGbeamformer.m}
-\label{m:beamf}
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    Selprefix = 'TL';
-    Addprefix='Beamf_centV1_';
-\end{lstlisting}
-Performing LCMV beamforming on the data. Since the grid size will be scaled to match the functional (high-res) data, scanning the full space would require too much computation time. Hence a ROI mask is used, that is in the present case the white matter voxels in V1, as obtained from retinotopy scans. Noise regularization was set to $\lambda=10\%$
-
-\subsection{do\_EEGsplitVirtualChannel.sh}
-\label{sh:splitvirtch}
-Wrapper function for running \texttt{\nameref{sh:virtch}} in multiple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:virtch}} to run on the cluster, submitted using qsub. Per default 8~jobs requesting 30~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
-
-\subsection{do\_EEGvirtualChannel.sh}
-\label{sh:virtch}
-Wrapper function for running \texttt{\nameref{m:virtch}} via qsub.
-
-\subsection{do\_EEGvirtualChannel.m}
-\label{m:virtch}
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    Selprefix='Beamf_centV1';
-    Addprefix='VirtCh_';
-\end{lstlisting}
-Computes virtual channel time series, by mutliplying the data with the previously computed spatial filters.\\
+\noindent If the orientation needs to be changed, parse the respective FreeSurfer compatible orientation parameter (\href{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri_convert.help.xml.html}{\nolinkurl{https://surfer.nmr.mgh.harvard.edu/pub/docs/html/mri\_convert.help.xml.html}})\\
 
 \noindent Under the hood:
 \begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
+    language=Shell,
+    basicstyle=\ttfamily,
     breaklines=true]
-    virtual_channels = mean(dataSrc.avg.mom{nonEmptyFilterInd},2)'*currentFilter*squeeze(data.trial{trial}(:,:));
+    sh do_movesinglevolume.sh InputVolume.nii.gz transmat.txt OutputVolume.nii.gz
 \end{lstlisting}
+\begin{itemize}
+\item results are stored in /2\_coregistration
+\item coregistered functional masks have the prefix "fct" and the suffix "coreg"
+\end{itemize}
 
-The data is multiplied with the respective filter, taking the average dipole moment into account.
+\subsection{do\_movesinglevolume.sh}
+\label{sh:move}
+Simple wrapper function to apply a transformation from one volumetric space to another, given a transformation matrix using FSL's \texttt{flirt} (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT}}).\\
 
-\subsection{do\_EEGsplitFreqOnVirtChan.sh}
-\label{sh:splitfreqVirt}
-Wrapper function to call \texttt{\nameref{sh:freqVirt}} The function calls a predefined number of instances of \texttt{\nameref{sh:freqVirt}} to run on the cluster, submitted using qsub. Per default 16~jobs requesting 60~GB of memory each, will be spawned. This procedure speeds up the processing significantly and would be otherwise impractical.\\
-
-\subsection{do\_EEGfreqOnVirtChan.sh}
-\label{sh:freqVirt}
-Wrapper function for running \texttt{\nameref{m:freqVirt}} via qsub.
-
-\subsection{do\_EEGfreqOnVirtChan.m}
-\label{m:freqVirt}
+\noindent Under the hood:
 \begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
+    language=Shell,
+    basicstyle=\ttfamily,
     breaklines=true]
-    Selprefix='VirtCh';
-    Addprefix='TF_';
+    flirt -applyxfm -in $1 -ref $1 -init $2 -out $3
 \end{lstlisting}
-Computes time-frequency analysis for virtual channel data using \texttt{ft\_freqanalysis}. For more information see \href{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_freqanalysis}}.\\
-\noindent Per default the frequency of interes (FOI) is set to band pass filter width.The resolution is defined by $\frac{1}{slidW}$ where slidW is the respective size of the sliding window used. Default values are 0.4 for high and 0.8 for low filter bands.\\
+\begin{itemize}
+\item \$1: volume to move
+\item \$2: transformation matrix in form of a .txt file containing a $4\times4$ transformation matrix
+\item \$3: volume to write
+\end{itemize}
 
-\noindent All default settings:
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    cfg.output       = 'pow'; % power of frequency spectrum
-    cfg.channel      = 'all';
-    cfg.method       = 'mtmconvol'; % multi-taper-method convolution
-    cfg.taper        = 'dpss'; % discrete prolate spheroidal sequences
-    cfg.foi          = foi; % frequencies of interest
-    cfg.pad          = 3.2; % padding at beginning and end of trial
-    cfg.tapsmofrq    = 10; % frequency smoothing
-    cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter); % slidW
-    cfg.toi          = -1:0.01:2; % time window of interest
-    cfg.keeptrials   = 'yes';
-\end{lstlisting}
+\subsection{do\_preparecoregistration.sh (Q)}
+\label{sh:prepcoreg}
+Computes a reference volume (MCTemplate) used as the basis  to co-register with the anatomical image. This image is computed by splitting the entire set of task volumes into chunks of 4. In each chunk the 1st volume is substracted from the 4th. This procedure yields a pseude-T1 contrast. All chunk differences are then averaged to form "MCTemplate".\\
 
-\subsection{do\_EEGfreqChanSelect.sh}
-\label{sh:selchan}
-Wrapper function for running \texttt{\nameref{m:selchan}} via qsub.
+\subsection{do\_preparefunctionals.sh (Q)}
+\label{sh:prepfct}
+Prepares functional data, i.e. removes the first 4 and the last x volumes of every set of functionals, where x is the number of volumes acquired after the stimulation ended. If files were modified (i.e. if volumes were deleted), the original file will remain in /niftis/functionals/old\\
 
-\subsection{do\_EEGfreqChanSelect.m}
-\label{m:selchan}
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    Selprefix='TF';
-    % Addprefix=''; does not exist
-\end{lstlisting}
-Selects virtual channels of interest. Since utilizing high resolution functional data is leading inevitably to an explosion in file size, only important data will remain after calling this function.\\
+\subsection{do\_realignment.sh (Q)}
+\label{sh:realign}
+Merges and motion corrects all files in /niftis/functionals using the average volume of all task volumes.\\
 
-\noindent First of all it is specified which are the frequency bands of interest in order to make a choise for a respective channel to maximize or minimize within the defined range. Default settings are:
-\begin{lstlisting}[
-    language=Matlab,
-    basicstyle=\small,
-    breaklines=true]
-    ROIalpha = [8,12]; % Hz
-    ROIbeta  = [22.5,27.5]; % Hz
-    ROIgamma = [50,70]; % Hz
+\noindent numberofvolumes.txt is written to /A\_helperfiles giving information about which sets had how many volumes. The first column is coresponds to dim4 from \texttt{fslinfo}\\
 
-    timeWinMax = [0.1 1.39]; % in seconds
-\end{lstlisting}
+\noindent Under the hood:
+\begin{itemize}
+\item \texttt{fslmerge} is called to create a combined .nii for all files in niftis/functionals/*sparse* - files are merged allong the 4th dimension
+\item a .txt file is created saving which files were merged and how many volumes were in there
+\item \texttt{mcflirt} is used on the combined data doing the motion correction based on the average volume across all task blocks
+\item all results are stored in /1\_realignment
+\item results have the extension "\_mcf"
+\end{itemize}
 
-\texttt{timeWinMax} thereby is the time of interest for which to optimize channel selection. Shortly speeking an area within the time frequncy matrix that is enclosed by \texttt{ROI$<$freq$>$} and \texttt{timeWinMax} will be averaged. The 100 maximum (for $\gamma$) and minimum (for $\alpha$ and $\beta$) channels will be selected. It is important to note, that the data will be $\log$ transformed and expressed as relative change to \texttt{BLwin} which is the respective time window of reference relative to stimulus onset.
+\subsection{do\_split\_analyzePRF.sh}
+\label{sh:splitanalyzePRF}
+Wrapper function for running \texttt{\nameref{sh:analyzePRF}} in muslitple instances. The function calls a predefined number of instances of \texttt{\nameref{sh:analyzePRF}} to run on the cluster, submitted using qsub. Per default 80~jobs requesting 6~GB of memory each (see Section~\ref{sh:analyzePRF}), will be spawned. This procedure speeds up the population receptive field estimation significantly and would be otherwise impractical on high resolution functional data.\\
+
+\subsection{do\_tseriesinterpolation.m}
+\label{m:tseriesinterp}
+Interpolates time series for retinotopy scans to match the number of frames during the stimulation (cubic interpolation). The new TR will be $TR_{new}=\frac{TR_{old}N_{volumes}}{N_{imageframes}}$. The function implements "tseriesinterp" from the analyzePRF toolboxe. The data will be normalized to percent signal change.\\
+
+\noindent Furthermore all images will be downsampled to the predefined size (e.g. 100px)\\
+
+\noindent Under the hood:
+\begin{itemize}
+\item interpolates time series of functional data to match the numer of frames during the stimulation
+\item results: tIntData.mat (interpolated time series)
+\item results: mask.mat (volume mask)
+\item results: voxelindices.mat (indices of mask voxels, ratio between $N_{imageframes}$ and $N_{volumes}$, mask threshold)
+\item results: downsampled images
+\end{itemize}
+
+\subsection{do\_tseriesinterpolation.sh}
+\label{sh:tseriesinterp}
+Wrapper function for running \texttt{\nameref{m:tseriesinterp}} via qsub. Variables used by do\_tseriesinterpolation.m can be defined in the header section of the script.
+
+\noindent Under the hood:
+\begin{itemize}
+\item submits a MATLAB job using qsub calling \texttt{\nameref{m:tseriesinterp}} using the below settings
+\item default number of blocks: 3
+\item default TR: 2.7s
+\item default Mask Threshold: 0.01
+\item default rescaled stimulus size: 100px
+\end{itemize}
 
 \subsection{EEGvisualizeVirtualChannel.m}
 \label{m:visVirtChan}
 A helper script to visualize ROI selection on the source model. Must be used from within an interactive MATLAB session.
+
+\subsection{expandROIs.m}
+\label{m:expROI}
+Thresholds a given volume utilizing the predefined mask threshold (\texttt{maskthreshold}). Afterwards a cubic box around each voxel will be created, that goes $N$ voxels in each of the 6 directions. Hence a volume containing only a single ROI of size $1\times1\times1$ will be expanded to $9\times9\times9$, if the given expansion factor \texttt{ExpansionFactor = 4}. The actual voxel expansion algorithm was implemented in \texttt{tc\_expandVoxelSelection.m} provided by the tc\_functions script collection (\href{https://github.com/TommyClausner/tc\_functions}{\nolinkurl{https://github.com/TommyClausner/tc\_functions}}).\\
+
+\subsection{expandROIs.sh}
+\label{sh:expROI}
+Wrapper function for running \texttt{\nameref{m:expROI}} via qsub. In order to perform the correct voxel expansion, the expansion factor (\texttt{ExpandBy}) and mask threshold (\texttt{mskThr}) can be specified. Those settings will be forwarded to \texttt{\nameref{m:expROI}}.\\
+
+\subsection{getToolboxes.sh}
+\label{sh:getTools}
+Downloads all necessary toolboxes into a folder called toolboxes/ or displays a URL where the user has to download the software manually (see Section~\ref{sec:prereq}). That is FSL and SPM have to be downloaded manually due to required user registration. Place them in the same directory as the other toolboxes or install as required.\\
+
+\subsection{GUI2ROIs.sh}
+\label{sh:GUI2ROI}
+This script spawns an instance for \texttt{tksurfer} (FreeSurfer)\\
+
+\subsection{labels2masks.sh (Q)}
+\label{sh:lbl2msk}
+Converts surface labels defined for ?h, V1,2,3 into a volume. For this purpose FreeSurfer's \texttt{mri\_label2vol} will be called using the following configuration:
+\begin{itemize}
+  \item --label /0\_freesurfer/label/?h.V?.ret.label (the label to be converted)
+  \item --temp /2\_coregistration/refVol (shape template volume)
+  \item --reg /2\_coregistration/bbregister.dat (co-registration file)
+  \item -o /4\_retinotopy/?hV?maks.nii.gz (output volume's file name)
+\end{itemize}
+
+To indicate which hemisphere or visual ROI, the questionmarks must be replace with the respective information (lh, rh; V1, V2, V3).\\
+
+The full command looks internally like this:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    mri_label2vol --label $DIR/0_freesurfer/label/lh.V1.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV1mask.nii.gz
+\end{lstlisting}
+, where \texttt{DIR} is the subject's absolute path.\\
+
+\subsection{liveupdateqsub.sh}
+\label{sh:liveupdate}
+Submits a qstat -u user request every second.
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh liveupdateqsub.sh tomcla
+\end{lstlisting}
+
+\noindent exit command by hitting ctrl+c\\
+
+\subsection{makeLayerMovie.m}
+\label{m:makeMov}
+Utilizes the OpenFmriAnalysis toolbox (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) to create a movie file from the results of the laminar segmentation. The movie file will be written to C\_miscResults/Layers.avi\\
+
+\subsection{makeLayerMovie.sh}
+\label{sh:makeMov}
+Wrapper function for running \texttt{\nameref{m:makeMov}} via qsub.\\
+
+\subsection{makenewsubject.sh}
+\label{sh:newS}
+executable script (double click to execute)\\
+
+Creates a new subject (S\#) folder structure in order to get all folder dependencies right. It automatically detects folders called "S\textit{$<$number$>$}" and creates a new folder incrementing \textit{$<$number$>$} by one.\\
+
+\subsection{makeOverlays.sh (Q)}
+\label{sh:mkOver}
+Makes FreeSurfer compatible overlays from NIfTI files. Calls FreeSurfer's \texttt{mri\_vol2surf} in order to transform a volumetric .nii file into a surface file. This will be done for both hemispheres separately. Parameters transformed to surface files are: ang, ecc, xpos, ypos, r2\\
+
+\noindent Under the hood:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    mri_vol2surf --src $DIR/4_retinotopy/ang_map.nii  --srcreg $DIR/2_coregistration/bbregister.dat --hemi ?h --surf pial --out $DIR/4_retinotopy/?h.ang.mgh --out_type paint
+\end{lstlisting}
+\begin{itemize}
+\item --src: NIfTI to be transformed
+\item --srcreg: result from \texttt{bbregister} of \texttt{\nameref{sh:coreg}} (default: bbregister.dat)
+\item --hemi: respective hemisphere (lh for left hemisphere or rh for right hemisphere)
+\item --surf: surface used as reference (obtained from FreeSurfer in ../0\_freesurfer/surf/)
+\item --out: output file name
+\item --out\_type: influences how the file is outputted (see \texttt{mri\_vol2surf --help} for more information)
+\end{itemize}
+
+\subsection{make\_PRF\_overlays.m}
+\label{m:mkprfO}
+Takes result of pRF mapping and creates .nii files for separate parameters (ang, ecc, expt, r2, rfsize, xpos, ypos). The data will be saved in ../4\_retinotopy as parameterName\_map.nii\\
+
+\noindent Under the hood:
+\begin{itemize}
+\item angle ($\theta$) will be devided by 180 and multiplied by $\pi$
+\item eccentricity ($r$) will be devided by the image size (in px) and multiplied by the original value range ($^\circ$ visual angle; default: 7). Only ecc values that have a positive $R^2$ and are smaller than the defined field of view, will be written to file. All other values will be set to $NaN$
+\item X position (xpos) $\cos(\theta)\cdotp r$
+\item Y position (ypos) $\sin(\theta)\cdotp r$
+\end{itemize}
+
+\subsection{make\_PRF\_overlays.sh}
+\label{sh:mkprfO}
+Wrapper function running \texttt{\nameref{m:mkprfO}} via qsub.\\
+
+\subsection{runonqsub.sh}
+\label{sh:runQsub}
+Initiates a qsub session and sends it to the cluster. This is necessary, since scripts running on the cluster are copied to a different directory, but within scripts all directories are relative. runonqsub.sh must hence be run in a "normal" session not using a non-interactive qsub, giving the respective script that was intended to run as an argument. runonqsub will then set everything up correctly. Further you have to specify the amount of memory needed.
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh runonqsub.sh 32gb myscript.sh
+\end{lstlisting}
+
+\noindent Additional arguments can be passed after the script.\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example with argument
+    sh runonqsub.sh 32gb myscript.sh myargument
+\end{lstlisting}
+\noindent Under the hood:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    qsub -l walltime=24:00:00,mem=$1 -F "$DIR $\{@:3\}" $DIR/$2
+\end{lstlisting}
+\begin{itemize}
+\item \$DIR is the current absolute path to B\_scripts
+\item \$1 is the amount of memory used (e.g. \texttt{32gb})
+\item \$2 is the respective script to run (e.g. \texttt{myscript.sh})
+\item \$\{@:3\} is all following arguments that are parsed to the script (e.g. \texttt{myargument})
+\item every time \texttt{\nameref{sh:runQsub}} is called the absolute path is forwarded to the script (\texttt{-F \$DIR}) in order to keep the relative dependencies clear
+\end{itemize}
+
+\subsection{setupfolders.sh (Q)}
+\label{sh:setDir}
+Sets up the necessary folder structure for the analysis (within a subject folder). This function is automatically called when using \texttt{\nameref{sh:newS}}\\
+
+\subsection{waitForJobs.sh}
+\label{sh:wait}
+Checks all currently running jobs (\texttt{qstat -u user}) and waits until the last script up until this point has finished.\\
 
 \section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}

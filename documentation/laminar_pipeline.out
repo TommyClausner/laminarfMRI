@@ -15,66 +15,66 @@
 \BOOKMARK [2][-]{section*.13}{EEG prepare head and source models}{section.3}% 15
 \BOOKMARK [2][-]{section*.14}{EEG compute virtual channels}{section.3}% 16
 \BOOKMARK [1][-]{section.4}{Scripts explained \(support for runonqsub.sh: Q\)}{}% 17
-\BOOKMARK [2][-]{section*.15}{getToolboxes.sh}{section.4}% 18
-\BOOKMARK [2][-]{section*.16}{runonqsub.sh}{section.4}% 19
-\BOOKMARK [2][-]{section*.17}{cleanscriptsfolder.sh}{section.4}% 20
-\BOOKMARK [2][-]{section*.18}{liveupdateqsub.sh}{section.4}% 21
-\BOOKMARK [2][-]{section*.19}{waitForJobs.sh}{section.4}% 22
-\BOOKMARK [2][-]{section*.20}{makenewsubject.sh}{section.4}% 23
-\BOOKMARK [2][-]{section*.21}{setupfolders.sh \(Q\)}{section.4}% 24
-\BOOKMARK [2][-]{section*.22}{do\137preparefunctionals.sh \(Q\)}{section.4}% 25
-\BOOKMARK [2][-]{section*.23}{do\137realignment.sh \(Q\)}{section.4}% 26
+\BOOKMARK [2][-]{section*.15}{cleanscriptsfolder.sh}{section.4}% 18
+\BOOKMARK [2][-]{section*.16}{combine\137split\137PRF\137results.m}{section.4}% 19
+\BOOKMARK [2][-]{section*.17}{combine\137split\137PRF\137results.sh}{section.4}% 20
+\BOOKMARK [2][-]{section*.18}{do\137analyzePRF.m}{section.4}% 21
+\BOOKMARK [2][-]{section*.19}{do\137analyzePRF.sh}{section.4}% 22
+\BOOKMARK [2][-]{section*.20}{do\137applysimpledistcorr.sh \(Q\)}{section.4}% 23
+\BOOKMARK [2][-]{section*.21}{do\137coregistration.m}{section.4}% 24
+\BOOKMARK [2][-]{section*.22}{do\137coregistration.sh}{section.4}% 25
+\BOOKMARK [2][-]{section*.23}{do\137correctavgdiff.sh \(Q\)}{section.4}% 26
 \BOOKMARK [2][-]{section*.24}{do\137distcorr.sh \(Q\)}{section.4}% 27
-\BOOKMARK [2][-]{section*.25}{do\137applysimpledistcorr.sh \(Q\)}{section.4}% 28
-\BOOKMARK [2][-]{section*.26}{do\137preparecoregistration.sh \(Q\)}{section.4}% 29
-\BOOKMARK [2][-]{section*.27}{do\137correctavgdiff.sh \(Q\)}{section.4}% 30
-\BOOKMARK [2][-]{section*.28}{do\137fsrecon.sh \(Q\)}{section.4}% 31
-\BOOKMARK [2][-]{section*.29}{do\137coregistration.sh}{section.4}% 32
-\BOOKMARK [2][-]{section*.30}{do\137coregistration.m}{section.4}% 33
-\BOOKMARK [2][-]{section*.31}{do\137makemasksandlabels.sh \(Q\)}{section.4}% 34
-\BOOKMARK [2][-]{section*.32}{do\137movesinglevolume.sh}{section.4}% 35
-\BOOKMARK [2][-]{section*.33}{do\137tseriesinterpolation.sh}{section.4}% 36
-\BOOKMARK [2][-]{section*.34}{do\137tseriesinterpolation.m}{section.4}% 37
-\BOOKMARK [2][-]{section*.35}{do\137split\137analyzePRF.sh}{section.4}% 38
-\BOOKMARK [2][-]{section*.36}{do\137analyzePRF.sh}{section.4}% 39
-\BOOKMARK [2][-]{section*.37}{do\137analyzePRF.m}{section.4}% 40
-\BOOKMARK [2][-]{section*.38}{combine\137split\137PRF\137results.sh}{section.4}% 41
-\BOOKMARK [2][-]{section*.39}{combine\137split\137PRF\137results.m}{section.4}% 42
-\BOOKMARK [2][-]{section*.40}{make\137PRF\137overlays.sh}{section.4}% 43
-\BOOKMARK [2][-]{section*.41}{make\137PRF\137overlays.m}{section.4}% 44
-\BOOKMARK [2][-]{section*.42}{makeOverlays.sh \(Q\)}{section.4}% 45
-\BOOKMARK [2][-]{section*.43}{GUI2ROIs.sh}{section.4}% 46
-\BOOKMARK [2][-]{section*.44}{labels2masks.sh \(Q\)}{section.4}% 47
-\BOOKMARK [2][-]{section*.45}{expandROIs.sh}{section.4}% 48
-\BOOKMARK [2][-]{section*.46}{expandROIs.m}{section.4}% 49
-\BOOKMARK [2][-]{section*.47}{do\137getLayers.sh}{section.4}% 50
-\BOOKMARK [2][-]{section*.48}{do\137getLayers.m}{section.4}% 51
-\BOOKMARK [2][-]{section*.49}{do\137getLayerWeights.sh}{section.4}% 52
-\BOOKMARK [2][-]{section*.50}{do\137getLayerWeights.m}{section.4}% 53
-\BOOKMARK [2][-]{section*.51}{makeLayerMovie.sh}{section.4}% 54
-\BOOKMARK [2][-]{section*.52}{makeLayerMovie.m}{section.4}% 55
-\BOOKMARK [2][-]{section*.53}{do\137EEGpreprocessing.sh}{section.4}% 56
-\BOOKMARK [2][-]{section*.54}{do\137EEGpreprocessing.m}{section.4}% 57
-\BOOKMARK [2][-]{section*.55}{do\137EEGprepareFS.sh}{section.4}% 58
-\BOOKMARK [2][-]{section*.56}{do\137EEGprepareHeadmodel.sh}{section.4}% 59
-\BOOKMARK [2][-]{section*.57}{do\137EEGprepareHeadmodel.m}{section.4}% 60
-\BOOKMARK [2][-]{section*.58}{do\137EEGelectrodeRegistration.m}{section.4}% 61
-\BOOKMARK [2][-]{section*.59}{do\137EEGprepareSourcemodel.sh}{section.4}% 62
-\BOOKMARK [2][-]{section*.60}{do\137EEGprepareSourcemodel.m}{section.4}% 63
-\BOOKMARK [2][-]{section*.61}{do\137EEGtimelock.sh}{section.4}% 64
-\BOOKMARK [2][-]{section*.62}{do\137EEGtimelock.m}{section.4}% 65
-\BOOKMARK [2][-]{section*.63}{do\137EEGsplitBeamformer.sh}{section.4}% 66
-\BOOKMARK [2][-]{section*.64}{do\137EEGbeamformer.sh}{section.4}% 67
-\BOOKMARK [2][-]{section*.65}{do\137EEGbeamformer.m}{section.4}% 68
-\BOOKMARK [2][-]{section*.66}{do\137EEGsplitVirtualChannel.sh}{section.4}% 69
-\BOOKMARK [2][-]{section*.67}{do\137EEGvirtualChannel.sh}{section.4}% 70
-\BOOKMARK [2][-]{section*.68}{do\137EEGvirtualChannel.m}{section.4}% 71
-\BOOKMARK [2][-]{section*.69}{do\137EEGsplitFreqOnVirtChan.sh}{section.4}% 72
-\BOOKMARK [2][-]{section*.70}{do\137EEGfreqOnVirtChan.sh}{section.4}% 73
-\BOOKMARK [2][-]{section*.71}{do\137EEGfreqOnVirtChan.m}{section.4}% 74
-\BOOKMARK [2][-]{section*.72}{do\137EEGfreqChanSelect.sh}{section.4}% 75
-\BOOKMARK [2][-]{section*.73}{do\137EEGfreqChanSelect.m}{section.4}% 76
-\BOOKMARK [2][-]{section*.74}{EEGvisualizeVirtualChannel.m}{section.4}% 77
+\BOOKMARK [2][-]{section*.25}{do\137EEGbeamformer.m}{section.4}% 28
+\BOOKMARK [2][-]{section*.26}{do\137EEGbeamformer.sh}{section.4}% 29
+\BOOKMARK [2][-]{section*.27}{do\137EEGelectrodeRegistration.m}{section.4}% 30
+\BOOKMARK [2][-]{section*.28}{do\137EEGfreqChanSelect.m}{section.4}% 31
+\BOOKMARK [2][-]{section*.29}{do\137EEGfreqChanSelect.sh}{section.4}% 32
+\BOOKMARK [2][-]{section*.30}{do\137EEGfreqOnVirtChan.m}{section.4}% 33
+\BOOKMARK [2][-]{section*.31}{do\137EEGfreqOnVirtChan.sh}{section.4}% 34
+\BOOKMARK [2][-]{section*.32}{do\137EEGprepareFS.sh}{section.4}% 35
+\BOOKMARK [2][-]{section*.33}{do\137EEGprepareHeadmodel.m}{section.4}% 36
+\BOOKMARK [2][-]{section*.34}{do\137EEGprepareHeadmodel.sh}{section.4}% 37
+\BOOKMARK [2][-]{section*.35}{do\137EEGprepareSourcemodel.m}{section.4}% 38
+\BOOKMARK [2][-]{section*.36}{do\137EEGprepareSourcemodel.sh}{section.4}% 39
+\BOOKMARK [2][-]{section*.37}{do\137EEGpreprocessing.m}{section.4}% 40
+\BOOKMARK [2][-]{section*.38}{do\137EEGpreprocessing.sh}{section.4}% 41
+\BOOKMARK [2][-]{section*.39}{do\137EEGsplitBeamformer.sh}{section.4}% 42
+\BOOKMARK [2][-]{section*.40}{do\137EEGsplitFreqOnVirtChan.sh}{section.4}% 43
+\BOOKMARK [2][-]{section*.41}{do\137EEGsplitVirtualChannel.sh}{section.4}% 44
+\BOOKMARK [2][-]{section*.42}{do\137EEGtimelock.m}{section.4}% 45
+\BOOKMARK [2][-]{section*.43}{do\137EEGtimelock.sh}{section.4}% 46
+\BOOKMARK [2][-]{section*.44}{do\137EEGvirtualChannel.m}{section.4}% 47
+\BOOKMARK [2][-]{section*.45}{do\137EEGvirtualChannel.sh}{section.4}% 48
+\BOOKMARK [2][-]{section*.46}{do\137fsrecon.sh \(Q\)}{section.4}% 49
+\BOOKMARK [2][-]{section*.47}{do\137getLayers.m}{section.4}% 50
+\BOOKMARK [2][-]{section*.48}{do\137getLayers.sh}{section.4}% 51
+\BOOKMARK [2][-]{section*.49}{do\137getLayerWeights.m}{section.4}% 52
+\BOOKMARK [2][-]{section*.50}{do\137getLayerWeights.sh}{section.4}% 53
+\BOOKMARK [2][-]{section*.51}{do\137makemasksandlabels.sh \(Q\)}{section.4}% 54
+\BOOKMARK [2][-]{section*.52}{do\137movesinglevolume.sh}{section.4}% 55
+\BOOKMARK [2][-]{section*.53}{do\137preparecoregistration.sh \(Q\)}{section.4}% 56
+\BOOKMARK [2][-]{section*.54}{do\137preparefunctionals.sh \(Q\)}{section.4}% 57
+\BOOKMARK [2][-]{section*.55}{do\137realignment.sh \(Q\)}{section.4}% 58
+\BOOKMARK [2][-]{section*.56}{do\137split\137analyzePRF.sh}{section.4}% 59
+\BOOKMARK [2][-]{section*.57}{do\137tseriesinterpolation.m}{section.4}% 60
+\BOOKMARK [2][-]{section*.58}{do\137tseriesinterpolation.sh}{section.4}% 61
+\BOOKMARK [2][-]{section*.59}{EEGvisualizeVirtualChannel.m}{section.4}% 62
+\BOOKMARK [2][-]{section*.60}{expandROIs.m}{section.4}% 63
+\BOOKMARK [2][-]{section*.61}{expandROIs.sh}{section.4}% 64
+\BOOKMARK [2][-]{section*.62}{getToolboxes.sh}{section.4}% 65
+\BOOKMARK [2][-]{section*.63}{GUI2ROIs.sh}{section.4}% 66
+\BOOKMARK [2][-]{section*.64}{labels2masks.sh \(Q\)}{section.4}% 67
+\BOOKMARK [2][-]{section*.65}{liveupdateqsub.sh}{section.4}% 68
+\BOOKMARK [2][-]{section*.66}{makeLayerMovie.m}{section.4}% 69
+\BOOKMARK [2][-]{section*.67}{makeLayerMovie.sh}{section.4}% 70
+\BOOKMARK [2][-]{section*.68}{makenewsubject.sh}{section.4}% 71
+\BOOKMARK [2][-]{section*.69}{makeOverlays.sh \(Q\)}{section.4}% 72
+\BOOKMARK [2][-]{section*.70}{make\137PRF\137overlays.m}{section.4}% 73
+\BOOKMARK [2][-]{section*.71}{make\137PRF\137overlays.sh}{section.4}% 74
+\BOOKMARK [2][-]{section*.72}{runonqsub.sh}{section.4}% 75
+\BOOKMARK [2][-]{section*.73}{setupfolders.sh \(Q\)}{section.4}% 76
+\BOOKMARK [2][-]{section*.74}{waitForJobs.sh}{section.4}% 77
 \BOOKMARK [1][-]{section.5}{How to: Selecting visual areas based on pRF mapping}{}% 78
 \BOOKMARK [1][-]{section.6}{How to: EEG electrodes from photogrammetry}{}% 79
 \BOOKMARK [1][-]{section.7}{How to: Pipelines}{}% 80
