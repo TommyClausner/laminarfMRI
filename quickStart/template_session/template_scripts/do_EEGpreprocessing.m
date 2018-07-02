@@ -35,6 +35,14 @@ for file_ = files
     cfg.channel            = 'eeg';             % define channel type
     
     data                   = ft_preprocessing(cfg); % read raw data
+
+    RejectTrials=0;
+
+    if RejectTrials
+        cfg = [];
+        cfg.trials = 'all';
+        data = ft_selectdata(cfg, data)
+    end
     
     % segment data according to the trial definition
     
@@ -92,6 +100,7 @@ end
 %% visual inspection and trial rejection
 
 VisInspection=0;
+
 
 if VisInspection
     Selprefix='BP40_80';
