@@ -54,18 +54,8 @@ else
 git clone https://github.com/$GHuser/$whichOne
 fi
 
-whichOne=Scriptinator
-GHuser=TommyClausner
-if [ -d "$whichOne" ]
-then
-cd $whichOne
-git pull
-cd ..
-else
-git clone https://github.com/$GHuser/$whichOne
-fi
-
 whichOne=tc_functions
+GHuser=TommyClausner
 if [ -d "$whichOne" ]
 then
 cd $whichOne
