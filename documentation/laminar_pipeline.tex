@@ -73,7 +73,6 @@ The present pipeline makes use of many modern state of the art analysis toolboxe
 \item Pipeline (\href{https://github.com/Washington-University/Pipeline}{\nolinkurl{https://github.com/Washington-University/Pipeline}})
 \item SPM (\href{http://www.fil.ion.ucl.ac.uk/spm/}{\nolinkurl{http://www.fil.ion.ucl.ac.uk/spm/}})
 \item tc\_functions  (\href{https://github.com/TommyClausner/tc\_functions}{\nolinkurl{https://github.com/TommyClausner/tc\_functions}})
-\item Tommy's Scriptinator 3000 TM (optional; \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}})
 \item VistaSoft (\href{https://github.com/vistalab/vistasoft}{\nolinkurl{https://github.com/vistalab/vistasoft}})
 \item Workbench (\href{https://github.com/Washington-University/Workbench}{\nolinkurl{https://github.com/Washington-University/Workbench}})
 \end{itemize}
@@ -115,10 +114,7 @@ The general folder structure is set up by a call to setupfolders.sh (see also Fi
     # run scripts
     sh scriptname.sh
 \end{lstlisting}
-Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles. Note Further, that the entire analysis can be broken down to a few sub-pipelines.\\
-
-\noindent\textbf{pipelines}\\
-\noindent Since most operations can be grouped into bigger chunks or "pipelines", all subsections below are wrapped into pipeline scripts, calling them in the respective order. Addtionally a file having the extension .pipe stores the pipeline information in a format readable with Tommy's Scriptinator 3000 TM. This is a java based tool, that can be used to represent and store scripts and their dependencies including a graphical representation. See Section~\ref{sec:scriptinator} of this document of \href{https://github.com/TommyClausner/Scriptinator}{\nolinkurl{https://github.com/TommyClausner/Scriptinator}} for more information.\\
+Each step within the analysis has a different subfolder containing the respective results of this step. Leading numbers indicate in which logical order the corresponding shell scripts should be executed. Note that all files created by each respective step are stored in the corresponding folder. However files that need to be preset (e.g. config files) must be located in A\_helperfiles.\\
 
 \noindent\textbf{MATLAB wrapper}\\
 \noindent Note, that most EEG related scripts rely on MATLAB and FieldTrip. Those scripts can be run stand-alone inside MATLAB or using the bash-script wrapper that has the exact same name only with the file extension \texttt{.sh} instead of \texttt{.m} Furthermore some MATLAB scipts require significant computation time, for which reason they are set up to be run as parts of a whole. In this case the words \textit{split} is added to the file name. Those scripts call the corresponding shell scripts that call the MATLAB scripts in turn, in a organized manner to be run on the cluster.\\
@@ -185,8 +181,6 @@ Scripts that are flagged with the (Q) can be submitted as a qsub job.
 
 
 \noindent Note that some scripts send a MATLAB script to the qsub cluster. Thus they cannot be run using \texttt{\nameref{sh:runQsub}}, but instead create their own job. However those scripts can also run stand-alone within a interactive MATLAB session.\\
-
-\noindent Some scripts are present as \texttt{scriptnameQsub.sh} Those scripts contain an internal Qsub-wrapper and do the same as sh \texttt{\nameref{sh:runQsub} XXgb scriptname.sh} Those scripts are created when using Pipelines (see Section~\ref{sec:pipelines}).\\
 
 \noindent Table~\ref{tab:hardwarerequirements} gives an overview about requirements on memory and computation time can be expected:
 
@@ -431,14 +425,6 @@ After corrections for motion and field distortion, functional space was register
     sh runonqsub.sh 16gb do_preparecoregistration.sh
     sh do_correctavgdiff.sh
 \end{lstlisting}
-The full preprocessing can also be performed in a single step, by calling the pipeline script:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # using pipeline
-    sh preprocessing.sh
-\end{lstlisting}
 
 \subsection{fMRI anatomical co-registration and masks}
 fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 4 volumes the scanner stoped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
@@ -474,14 +460,6 @@ Gray matter boundaries from the FreeSurfer segmentation will be used to register
     # coregistration and mask creation
     sh do_coregistration.sh
     sh runonqsub.sh 16gb do_makemasksandlabels.sh
-\end{lstlisting}
-The full coregistration and creation of functional masks can also be performed in a single step, by calling the pipeline script:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # using pipeline
-    sh CoregistrationAndAnatMasks.sh
 \end{lstlisting}
 
 \begin{figure}
@@ -536,14 +514,6 @@ After for each voxel certain parameters like circular coordinates mapping to scr
     sh make_PRF_overlays.sh
     sh runonqsub.sh 16gb makeOverlays.sh
 \end{lstlisting}
-The retinotopy can also be performed in a single step, by calling the pipeline script:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # using pipeline
-    sh retinotopy.sh
-\end{lstlisting}
 
 \subsection{fMRI layer segmentation}
 Gray matter boundaries will be used to compute cortical layer separation. First tksurfer is used to "draw" occipital ROIs based on the retinotopic mapping. Those regions will be transformed into gray matter masks such that an individual masks for V1, V2, V3 for each hemisphere exists. Cortical layer separation yields a probability map for each voxel to lay within a specifcially spaced area between gray matter boundaries. Thus a layer specific ROI specific map is created for each ROI by multiplying the ROI map with each of the layer probability maps. The results are 4D mask volumes separating the layer probabilies in the 4th dimension.
@@ -594,14 +564,6 @@ Once this is done gray matter volumes are split into corical layers. This is imp
     # performing laminar separation
     sh do_getLayers.sh
     sh do_getLayerWeights.sh
-\end{lstlisting}
-The layer segmentation process can also be performed in a single step, by calling the pipeline script:
-\begin{lstlisting}[
-    language=Shell,
-    basicstyle=\ttfamily,
-    breaklines=true]
-    # using pipeline
-    sh laminar.sh
 \end{lstlisting}
 
 After the data was computed it is optional to call \texttt{sh \nameref{sh:makeMov}} to create a movie file in C\_miscResults slicing through the volume overlayed with the layer boundaries.
@@ -949,26 +911,39 @@ This script was provided by Simon Hom\"olle (DCCN, 2018). Uses Workbench (\href{
 \label{m:prepHM}
 Creates volume conduction model either as finite-element model (FEM) or boundary element model (BEM). Per default all scripts are set up to use a FEM model. The respective MRI file to use will be 0\_freesurfer/mri/orig\_nu.mgz. If desired the variable \texttt{convertCoordSys} can be set to \texttt{convertCoordSys = 1;} to convert the coordinate system to ctf (otherwise will be ras).\\
 
-\begin{table}[h]
-\centering
-\begin{tabular}{l | l | l}
-\toprule
-Model & Propertiy & Value\\\hline
-  FEM mesh & cfg.output & \{'gray','white','csf','skull','scalp'\}\\\hline
-   & cfg.scalpsmooth & 10\\\hline
-   & cfg.method & 'hexahedral'\\\hline
-   & cfg.shift & 0.3\\\hline
-  FEM & cfg.method & 'simbio'\\\hline
-   & cfg.conductivity & [0.33 0.14 1.79 0.01 0.43]\\\midrule
- BEM mesh & cfg.output & \{'brain','skull','scalp'\}\\\hline
-  & cfg.method & 'projectmesh'\\\hline
-  & cfg.numvertices & [1000 2000 3000]\\\hline
- BEM & cfg.method & 'openmeeg'\\\hline
-  & cfg.conductivity & [0.33 0.01 0.43]\\\bottomrule
-\end{tabular}
-\caption[Specifications for creating headmodel]{Specifications for creating headmodel.}
-\label{tab:BEMFEMprop}
-\end{table}
+Model specific parameters are:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\small,
+    breaklines=true]
+    case 'FEM'
+        % segmentation parameters
+        cfg.output    = {'gray','white','csf','skull','scalp'};
+        cfg.scalpsmooth = 10;
+
+        % mesh parameters
+        cfg.method = 'hexahedral';
+        cfg.shift  = 0.3; % <0.5, is needed so elements are still convex
+
+        % headmodel parameters
+        cfg.method = 'simbio';
+        cfg.conductivity = [0.33 0.14 1.79 0.01 0.43];
+
+    case 'BEM'
+        % segmentation parameters
+        cfg.output    = {'brain','skull','scalp'};
+        cfg.scalpsmooth = 10;
+
+        % mesh parameters
+        cfg.tissue={'brain','skull','scalp'};
+        cfg.method = 'projectmesh';
+        cfg.numvertices = [1000 2000 3000];
+
+        % headmodel parameters
+        cfg.method = 'openmeeg';
+        cfg.conductivity = [0.33 0.01 0.43];
+\end{lstlisting}
+
 Underlying FieldTrip functions are:
 \begin{itemize}
 \item ft\_volumesegment (segments anatomical data into distinct structures (e.g. skull))
@@ -1398,22 +1373,102 @@ Checks all currently running jobs (\texttt{qstat -u user}) and waits until the l
 \label{sec:GUIprf}
 
 \section{How to: EEG electrodes from photogrammetry}
-\label{sec:janus3D}
+\subsection{Agisoft PhotoScan}
+Agisoft PhotoScan is commercial 3D reconstruction software that uses photogrammetry to obtain 3D information from 2-dimensional images. It can be purchased from \href{http://www.agisoft.com/}{http://www.agisoft.com/} and is available for 'Microsoft Windows', 'Apple OSX', and 'Linux'. To my very best knowledge there is no other photogrammetry-based 3D reconstruction software that works on the same level of performance in terms of accuracy, time consumption and practical demands. It exploits image features based on SURF algorithms to enable Structure-from-Motion (SfM) 3D reconstruction. Due to the commercial distribution the exact algorithms remain unknown.
+Nevertheless PhotoScan is able to perform an extraction of depth information without any need for prior camera calibration. However prior calibration can enhance the final reconstruction performance in critical cases (e.g. if the image quality is low or too few images were captured). For this purpose it ships with a tool called 'Lens'. Lens can be used to obtain camera calibration parameters, based on a defined set of images priorly captured. It therefore displays a checkerboard, of what a few photos are taken used to estimate focal length distortion, radial distortion, tangential distortion and other calibration parameters. Those can be imported into PhotoScan before the actual alignment takes place. Detailed information about 'Lens' can be found in the Agisoft Lens users manual accessible via \href{http://downloads.agisoft.ru/lens/doc/en/lens.pdf}{http://downloads.agisoft.ru/lens/doc/en/lens.pdf}.
+Since PhotoScan uses almost all resources dedicated by the operating system, it is highly recommendable to restrict those. This avoids system crashes that might occur when doing parallel tasks, while PhotoScan is processing. Per default preferences are set to use the highest available amount of resources. To my experience allowing to use only 60-80\% of all available CPU cores and, if possible, letting one GPU un-dedicated to PhotoScan works as a balanced trade-off. An example of settings that turned out to work as described, can be found in figure~\ref{fig:photoscansetup}. Note that processing time and resource management might vary across operating system and hardware specifications.
+
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-setup}
+
+  \caption{PhotoScan example preference settings}
+
+  \label{fig:photoscansetup}
+\end{figure}
+
+Agisoft PhotoScan is able to detect image features, without prior camera calibration or object definition. However it is recommendable to provide a calibration file if available. The calibration can be done via [Tools] $\rightarrow$ [Camera Calibration\dots] If Desired performance of the later reconstruction can be enhanced by using image masks, This increases the likelihood of a successful model reconstruction, but also affects the time consumption, by reducing the feature space. Image masks can be created inside PhotoScan employing framing tools, known from various image-processing applications. As there are a rectangular selection, 'intelligent scissors' (mostly a form of free selection), 'intelligent paint' (also known as 'lasso' selection) and the 'magic wand' (also known as 'magic pen'). In fact these build-in mask creation tools work less efficient than those known from other applications. When using a "green screen" ,it is recommendable to create the masks outside the program and import them later.
+Binary masks were coupled after the original images are imported into PhotoScan.
+
+\subsubsection{Import Photos}
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-importimages}
+  \caption{PhotoScan import images}
+    \smallskip
+\footnotesize
+\begin{changemargin}{0.5cm}{0.5cm}
+\centering{The red circle indicates the respective import button.}
+\end{changemargin}
+  \label{fig:photoscanimpimg}
+\end{figure}
+Importing pictures can be done by clicking the colored button that was indicated by a red circle in figure~\ref{fig:photoscanimpimg}. After importing all images, the EXIF metadata will be read and used for image alignment if no prior camera calibration took place.
+If binary masks are used to define regions of interest, they can be imported via [Tools] $\rightarrow$ [Import] $\rightarrow$ [Import Masks\dots]. Choosing 'From File' will cause an open-dialog to show up in which the folder will be selected where the masks are stored. They will be read according to the name specification prescribed in the editing box. Exemplified the import mask procedure is depicted in figure~\ref{fig:photoscanimpmask}, showing all relevant settings. It is possible to check whether the respective masks were imported correctly, by double clicking one of the thumbnail images located in the lower section of the PhotoScan window, which will display the image with its respective mask overlay.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-importmasks}
+  \caption{PhotoScan import masks}
+  \label{fig:photoscanimpmask}
+\end{figure}
+\FloatBarrier
+\subsubsection{Align Photos}
+Followed by this procedure, the actual reconstruction can take place. The first step will be to estimate the camera positions based on inherent image features. This can be executed, by selecting [Workflow] $\rightarrow$ [align Photos\dots]. A small setup menu will appear. Actually it remains widely unclear what the exact changes the parameters cause to the processing pipeline, but based on my experience I will give some advices in the following. PhotoScan compares salient image features and tests whether this features match features on another image. If enough features were detected, the camera positions can be estimated. Hence the accuracy value presumably influences the feature detection on the 2D images. An increased accuracy will result in more points that are detected as features yielding a better reconstruction performance. At the same time the processing time and the amount of points that are detected as matching increase, regardless of whether they are. Those false positive points can be limited by selecting a generic 'Pair pre-selection', which reduces the amount of points, based on a certainty measure. At the same time this reduces the processing time tremendously, for what reason I would recommend this option to be set as default. However in some cases (e.g. if image quality is low or too few images were captured), this setting interferes with proper matching point detection and therefore should be disable, in case the first reconstruction attempt failed. Within the 'Advanced' section limitations for the number of points that are going to be detected can be set. Setting those values to 0 will set the limit to infinite. The 'constrain features by mask' option will be available only if masks were imported priorly and does exactly what it is supposed to.
+Figure~\ref{fig:photoscanalign}, shows the 'align Photos' step including exemplified settings, depicting also a possible result, that will be called matching point cloud (MPC) from now on.
+The next step will be the creation of the dense point cloud (DPC). This step is optional, since the 3D mesh could also be reconstructed employing the MPC, but is crucial for getting high-resolution models.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-align}
+  \caption{PhotoScan align photos}
+  \label{fig:photoscanalign}
+\end{figure}
+
+\subsubsection{Build Dense Cloud}
+PhotoScan uses the basic information of the estimated camera positions, as well as the detected matching points, to reconstruct the depth for image points that lie 'between' the detected features. The final density of the DPC reconstruction depends on the actual resolution of the camera sensor and cannot be compensated by the number of images used.
+Figure~\ref{fig:photoscandense} depicts this step including the recommended options. The 'quality' setting affects the density of the final DPC. Setting this to 'High' yields a high-resolution DPC, but keeps the actual processing time relatively short. When this point was set to 'Ultra High' the processing time might increase to several hours, depending on the MPC density, image count and resolution. Within the section 'Advanced' the 'Depth filtering' option can be set. This parameter is used to decide, whether a point is considered as inlier or outlier regarding a reasonable point cloud construction, which therefore affects the smoothness of the DPC. 'Aggressive' depth filtering is recommended, because it keeps the number of irregular mesh extensions on a minimum level.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-dense}
+  \caption{PhotoScan build dense cloud}
+  \label{fig:photoscandense}
+\end{figure}
+
+\subsubsection{Build Mesh}
+As mentioned before, the 3D mesh reconstruction can be based on the MPC or the DPC. Mesh reconstruction in that sense means, that a prior defined point cloud is used as the basis for creating a polygonal triangulated structure. Each face then has a set of 3 corresponding vertex points. Creating the 3D mesh, as shown in figure~\ref{fig:photoscanmesh}, is done by selecting [Workflow] $\rightarrow$ [Build Mesh\dots]. For high-resolution models the source data should be set to 'Dense cloud'. When reconstructing 3D meshes of objects that are not 'relief-like' but instead form a closed 3-dimensional structure (e.g. a human head), the 'Surface type' has to be set to 'Arbitrary'. Because complex meshes like human heads are likely to show lightly uncovered parts on the surface, the vertex point interpolation should be set to 'Enable'.  If the final mesh is used as a 'waterproof' model (e.g. for 3D printing), then it is advisable to set this option to 'Extrapolate', which causes the algorithm to close not only small parts, but instead forcing it to close each part of the mesh.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-mesh}
+  \caption{PhotoScan build mesh}
+  \label{fig:photoscanmesh}
+\end{figure}
+After this step a 3D model out of 2D images was created. Nevertheless it is un-textured so far.
+
+\subsubsection{Build Texture}
+Creating the associated texture file can be done by selecting [Workflow] $\rightarrow$ [Build Texture\dots]. Possible settings are shown in figure~\ref{fig:photoscantex}. Depending on the performance of the actual reconstruction those parameters have different influences on the final model. Setting the 'Blending mode' to 'Mosaic' requires all cameras positions to be obtained properly, because it linearly projects color information onto the meshes surface. If one or more camera positions are obtained wrong either smeared or displaced texture parts that overlap the 'true' one can be observed. In that case it is recommendable to set the blending to 'Average', which causes PhotoScan to add the texture by averaging color information of the related camera positions instead of summing them up. Per default the texture file will be split into 25 parts, which, depending on the 3D software used for later processing, can be problematic. For example janus3D can only read one single texture file associated to the model. So when using the textured model as input file for janus3D the texture count should be set to 1.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-texture}
+  \caption{PhotoScan build texture}
+  \label{fig:photoscantex}
+\end{figure}
+
+\subsubsection{Export Model}
+After inspecting the textured model, mesh extensions and parts that will not be used for later processing should be removed. Various selection tools PhotoScan provides can do this. For the purpose of removing mesh extensions the 'free-form selection' yields proper results. The final model can be exported be choosing [File] $\rightarrow$ [Export Model\dots] as shown in figure~\ref{fig:photoscanexport}. Depending on the desired file format export options can vary. Because janus3D can only import objects stored in *.obj (Wavefront OBJ) file format, this was chosen to exemplify this step. It is important to note that for compatibility issues due to the specific requirements of janus3D, only the texture formats *.jpg should be chosen. Furthermore janus3D was not designed to read vertex normals, for what reason this option has to remain unchecked.
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{PhotoScan-export}
+  \caption{PhotoScan export model}
+  \label{fig:photoscanexport}
+\end{figure}
+
+\FloatBarrier
+
+
+\subsection{janus3D}
+janus3D is a MATLAB toolbox for co-registration and electrode detection and labeling for 3D models obtained from subjects wearing an EEG cap. The software registers the 3D model and a projection of the anatomical MRI, finds electrodes based on the texture or manually, and labels electrodes based on a template or mamually.\\
+The toolbox can be downloaded via:\\
+
+\href{https://github.com/janus3D/janus3D_toolbox}{\nolinkurl{https://github.com/janus3D/janus3D_toolbox}} or using the command:\\
+
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\small,
+    breaklines=true]
+    git clone https://github.com/janus3D/janus3D_toolbox
+\end{lstlisting}
+
+Afterwards add the toolbox to the MATLAB search path. One major issue is that the software runs in MatLabR2015a only.\\
 Please find the respective information within the janus3D documentation (\href{https://github.com/janus3D/janus3D_toolbox/blob/master/janus3D_users_manual.pdf}{\nolinkurl{https://github.com/janus3D/janus3D_toolbox/blob/master/janus3D_users_manual.pdf}})
-
-\section{How to: Pipelines}
-\label{sec:pipelines}
-\subsection{Scripts}
-\subsection{Tommy's Scriptinator 3000 TM}
-\label{sec:scriptinator}
-Tommy's Scriptinator 3000 TM is a graphical user interface that allows drag and drop based arrangements of scripts on a canvas. The code of the script as well as defined variables can directly be viewed by double clicking one of the icons representing a script (examples below). This way analysis pipelines can easily be comprehended and shared. Tommy's Scriptinator 3000 TM can be downloaded from:\\
-
-\href{https://github.com/TommyClausner/Scriptinator/}{\nolinkurl{https://github.com/TommyClausner/Scriptinator/}}\\
-
-\noindent It requires at least JDK9 or newer to be installed:\\
-
-\href{http://www.oracle.com/technetwork/java/javase/downloads/}{\nolinkurl{http://www.oracle.com/technetwork/java/javase/downloads/}}\\
-
-\noindent After downloading the repository from GitHub, one can start the program by double clicking Scriptinator.jar. All further help will be provided from there.
 
 \end{document}
