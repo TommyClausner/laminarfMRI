@@ -987,7 +987,7 @@ Does a basic preprocessing to the data. First trigger values will be extracted a
 \item ft\_redefinetrial (defines channel and creates trials)
 \item ft\_resampledata (downsampling)
 \item ft\_preprocessing (frequency filters)
-\item (ft\_rejectvisual()) (trial rejection)
+\item $[$ft\_rejectvisual (trial rejection)$]$ see also Section~\ref{sec:eye}
 \end{itemize}
 
 \subsection{do\_EEGpreprocessing.sh}
@@ -1368,6 +1368,34 @@ Sets up the necessary folder structure for the analysis (within a subject folder
 \subsection{waitForJobs.sh}
 \label{sh:wait}
 Checks all currently running jobs (\texttt{qstat -u user}) and waits until the last script up until this point has finished.\\
+
+\section{How to: Rejecting trials based on eye tracking}
+\label{sec:eye}
+This HowTo relies on eye tracking data collect with an EyeLink eye tracker. After the data was collected, navigate to the software package that was provided by the eye tracker company. In our case the folder was called "SR Research". Within this folder a subfolder can be found called "edfconverter" containing edfconverterW.exe\\
+
+\noindent This program allows for converting the raw data from the eye tracker into a non-proprietary file type (.asc).\\
+
+From the "tc\_functions" collection (\href{https://github.com/TommyClausner/tc_functions}{\nolinkurl{https://github.com/TommyClausner/tc_functions}}) use the function \texttt{tc\_EyeChecker.m} from within an interactive MATLAB session like this:
+\begin{lstlisting}[
+    language=Matlab,
+    basicstyle=\ttfamily,
+    breaklines=true]
+
+    [~,data] = tc_EyeChecker % is is also possible to provide a filename via tc_EyeChecker('myFile.asc')
+\end{lstlisting}
+If no filename is provided, the function will spawn a file selection dialog, asking the user to select the respective converted eye tracker file. Trigger values different to the default values (1,2) can be defined, by providing a second argument, listing all trigger values to look for (\texttt{tc\_EyeChecker($[$'myFile.asc'$]$, $[1,2,3,4]$)})\\
+
+The first output argument, is a summary of the occurance of each defined value (can be used to sanity check during experiments like so \texttt{occurance = tc\_EyeChecker}). When providing a second output argument, a summary of the data is provided. The resulting structure includes \texttt{BlinkTrialsTable}, a matrix having the columns:\\
+\begin{center}
+  Trial number | sample point start | sample point end | condition | blink in trial
+\end{center}
+Furthermore the structure includes \texttt{BlinkRegTable}, a matrix having the columns:\\
+\begin{center}
+  Trial number | onset of Blink | offset of Blink
+\end{center}
+, in ms relative to trial onset. Note that this field includes only trials where a blink occured. The last field \texttt{TargetTriggerOccurance} basically provides the output of the first output argument.\\
+
+\noindent From this output the 5th column of \texttt{results.BlinkTrialsTable} is the most interesting. Each value can either be zero or one, corresponding to the respective trial, whether a blink occured in a predifined interval or not. Hence, it can be used to exclude trials. Please change to corresponding settings in \nameref{m:EEGpreproc} by inputting a vector of zeros and ones of length number of trials, to indicate whether to include a trial as an option of \texttt{ft\_selectdata(cfg, data)} - Permanent changes in the pipeline should be accompainied by setting \texttt{RejectTrials = 1;}
 
 \section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}

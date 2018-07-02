@@ -75,13 +75,14 @@
 \contentsline {subsection}{\nonumberline runonqsub.sh}{40}{section*.72}
 \contentsline {subsection}{\nonumberline setupfolders.sh (Q)}{40}{section*.73}
 \contentsline {subsection}{\nonumberline waitForJobs.sh}{40}{section*.74}
-\contentsline {section}{\numberline {5}How to: Selecting visual areas based on pRF mapping}{41}{section.5}
-\contentsline {section}{\numberline {6}How to: EEG electrodes from photogrammetry}{41}{section.6}
-\contentsline {subsection}{\nonumberline Agisoft PhotoScan}{41}{section*.75}
-\contentsline {subsubsection}{\nonumberline Import Photos}{42}{section*.76}
-\contentsline {subsubsection}{\nonumberline Align Photos}{43}{section*.77}
-\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{44}{section*.78}
-\contentsline {subsubsection}{\nonumberline Build Mesh}{45}{section*.79}
-\contentsline {subsubsection}{\nonumberline Build Texture}{46}{section*.80}
-\contentsline {subsubsection}{\nonumberline Export Model}{47}{section*.81}
-\contentsline {subsection}{\nonumberline janus3D}{48}{section*.82}
+\contentsline {section}{\numberline {5}How to: Rejecting trials based on eye tracking}{41}{section.5}
+\contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{42}{section.6}
+\contentsline {section}{\numberline {7}How to: EEG electrodes from photogrammetry}{42}{section.7}
+\contentsline {subsection}{\nonumberline Agisoft PhotoScan}{42}{section*.75}
+\contentsline {subsubsection}{\nonumberline Import Photos}{43}{section*.76}
+\contentsline {subsubsection}{\nonumberline Align Photos}{44}{section*.77}
+\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{45}{section*.78}
+\contentsline {subsubsection}{\nonumberline Build Mesh}{46}{section*.79}
+\contentsline {subsubsection}{\nonumberline Build Texture}{47}{section*.80}
+\contentsline {subsubsection}{\nonumberline Export Model}{48}{section*.81}
+\contentsline {subsection}{\nonumberline janus3D}{49}{section*.82}
