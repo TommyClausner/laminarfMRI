@@ -33,7 +33,7 @@ allLaminarROIs.img=zeros(size_);
 allLaminarROIs.hdr.dime.dim([1,5])=[3,1];
 
 CSFwhiteVol=LayerVolume;
-CSFwhiteVol.hdr.dime.dim([1,5])=[3,1];
+CSFwhiteVol.hdr.dime.dim([1,5])=[3,2];
 CSFwhiteVol.img=CSFwhite;
 
 indexValuesAreas = 0:4:20;
