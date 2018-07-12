@@ -13,6 +13,7 @@ disp('loading layers file...')
 filetouse=[mainpath filesep '..' filesep '5_laminar' filesep 'brain.layers.nii'];
 LayerVolume = load_untouch_nii(filetouse);
 Layers=double(LayerVolume.img(:,:,:,2:4));
+CSFwhite = double(LayerVolume.img(:,:,:,[1,5]));
 disp('done.')
 
 areas={'lhV1mask',...
@@ -30,6 +31,10 @@ size_=size(allLaminarROIs.img);
 size_=size_(1:3);
 allLaminarROIs.img=zeros(size_);
 allLaminarROIs.hdr.dime.dim([1,5])=[3,1];
+
+CSFwhiteVol=LayerVolume;
+CSFwhiteVol.hdr.dime.dim([1,5])=[3,1];
+CSFwhiteVol.img=CSFwhite;
 
 indexValuesAreas = 0:4:20;
 
@@ -55,6 +60,10 @@ for n=1:numel(ROIvolumes)
     save_untouch_nii(ROIvolumes{n},[mainpath filesep '..' filesep '5_laminar' filesep areas{n} '_layers.nii']);
 end
 save_untouch_nii(allLaminarROIs,[mainpath filesep '..' filesep '5_laminar' filesep 'allLaminarROIs.nii']);
+disp('done.')
+
+disp('saving CSFwhiteVol...')
+save_untouch_nii(CSFwhiteVol,[mainpath filesep '..' filesep '5_laminar' filesep 'CSFwhiteVol_lay.nii']);
 disp('done.')
 
 %%
