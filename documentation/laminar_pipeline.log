@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  2 JUL 2018 19:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  14 JUL 2018 19:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2806,10 +2806,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
  []
 
 [32]
-
-LaTeX Warning: Reference `sh:getLyrM' on page 33 undefined on input line 1126.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
 
  []
@@ -3288,108 +3284,203 @@ Underfull \hbox (badness 10000) in paragraph at lines 1396--1397
 
  []
 
-[41] <figures/PhotoScan-setup.pdf, id=1143, 597.51233pt x 298.27234pt>
+./laminar_pipeline.tex:1404: Undefined control sequence.
+l.1404 ...ore it is advisable to maybe use \txettt
+                                                  {freeview} (\href{http://f...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./laminar_pipeline.tex:1404: Illegal parameter number in definition of \Hy@temp
+a.
+<to be read again> 
+                   F
+l.1404 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
+                                                  ) or \texttt{fsleyes} (\hr...
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./laminar_pipeline.tex:1404: Illegal parameter number in definition of \Hy@temp
+a.
+<to be read again> 
+                   F
+l.1404 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
+                                                  ) or \texttt{fsleyes} (\hr...
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1402--1405
+
+ []
+
+[41] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+
+./laminar_pipeline.tex:1410: Package Listings Error: Couldn't load requested la
+nguage.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1410     breaklines=true]
+                           
+The following languages weren't loadable:
+    ,shell$
+This may cause errors in the sequel.
+
+
+./laminar_pipeline.tex:1410: Package Listings Error: language shell undefined.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1410     breaklines=true]
+                           
+The language is not loadable. Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1416
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1417--1418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1421--1422
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1425--1426
+
+ []
+
+[42] <figures/GUI2ROI.pdf, id=1160, 1284.8pt x 1027.84pt>
+File: figures/GUI2ROI.pdf Graphic file (type pdf)
+
+<use figures/GUI2ROI.pdf>
+Package pdftex.def Info: figures/GUI2ROI.pdf used on input line 1430.
+(pdftex.def)             Requested size: 448.13095pt x 358.4947pt.
+ [43 <./figures/GUI2ROI.pdf>]
+<figures/PhotoScan-setup.pdf, id=1237, 597.51233pt x 298.27234pt>
 File: figures/PhotoScan-setup.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-setup.pdf>
-Package pdftex.def Info: figures/PhotoScan-setup.pdf used on input line 1410.
+Package pdftex.def Info: figures/PhotoScan-setup.pdf used on input line 1444.
 (pdftex.def)             Requested size: 448.13095pt x 223.7037pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[42] <figures/PhotoScan-importimages.pdf, id=1149, 597.51233pt x 73.35606pt>
+ [44 <./figures/PhotoScan-setup.pdf>]
+<figures/PhotoScan-importimages.pdf, id=1446, 597.51233pt x 73.35606pt>
 File: figures/PhotoScan-importimages.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-importimages.pdf>
 Package pdftex.def Info: figures/PhotoScan-importimages.pdf used on input line 
-1422.
+1456.
 (pdftex.def)             Requested size: 448.13095pt x 55.01689pt.
 
 
-./laminar_pipeline.tex:1426: LaTeX Error: Environment changemargin undefined.
+./laminar_pipeline.tex:1460: LaTeX Error: Environment changemargin undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1426 \begin{changemargin}
+l.1460 \begin{changemargin}
                            {0.5cm}{0.5cm}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./laminar_pipeline.tex:1428: LaTeX Error: \begin{figure} on input line 1421 end
+./laminar_pipeline.tex:1462: LaTeX Error: \begin{figure} on input line 1455 end
 ed by \end{changemargin}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1428 \end{changemargin}
+l.1462 \end{changemargin}
                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-<figures/PhotoScan-importmasks.pdf, id=1152, 597.51233pt x 460.69617pt>
+<figures/PhotoScan-importmasks.pdf, id=1449, 597.51233pt x 460.69617pt>
 File: figures/PhotoScan-importmasks.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-importmasks.pdf>
 Package pdftex.def Info: figures/PhotoScan-importmasks.pdf used on input line 1
-434.
+468.
 (pdftex.def)             Requested size: 448.13095pt x 345.52127pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[43 <./figures/PhotoScan-setup.pdf> <./figures/PhotoScan-importimages.pdf
-
-pdfTeX warning: pdflatex (file ./figures/PhotoScan-importimages.pdf): PDF inclu
-sion: multiple pdfs with page group included in a single page
->] <figures/PhotoScan-align.pdf, id=1732, 1027.84pt x 770.88pt>
+[45 <./figures/PhotoScan-importimages.pdf>]
+<figures/PhotoScan-align.pdf, id=1826, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-align.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-align.pdf>
-Package pdftex.def Info: figures/PhotoScan-align.pdf used on input line 1444.
+Package pdftex.def Info: figures/PhotoScan-align.pdf used on input line 1478.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
- [44 <./figures/PhotoScan-importmasks.pdf>]
-<figures/PhotoScan-dense.pdf, id=2041, 1027.84pt x 770.88pt>
+ [46 <./figures/PhotoScan-importmasks.pdf>]
+<figures/PhotoScan-dense.pdf, id=2135, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-dense.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-dense.pdf>
-Package pdftex.def Info: figures/PhotoScan-dense.pdf used on input line 1453.
+Package pdftex.def Info: figures/PhotoScan-dense.pdf used on input line 1487.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
- [45 <./figures/PhotoScan-align.pdf>]
-<figures/PhotoScan-mesh.pdf, id=2070, 1027.84pt x 770.88pt>
+ [47 <./figures/PhotoScan-align.pdf>]
+<figures/PhotoScan-mesh.pdf, id=2164, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-mesh.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-mesh.pdf>
-Package pdftex.def Info: figures/PhotoScan-mesh.pdf used on input line 1461.
+Package pdftex.def Info: figures/PhotoScan-mesh.pdf used on input line 1495.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
- [46 <./figures/PhotoScan-dense.pdf>]
-<figures/PhotoScan-texture.pdf, id=2101, 1027.84pt x 770.88pt>
+ [48 <./figures/PhotoScan-dense.pdf>]
+<figures/PhotoScan-texture.pdf, id=2194, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-texture.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-texture.pdf>
-Package pdftex.def Info: figures/PhotoScan-texture.pdf used on input line 1470.
+Package pdftex.def Info: figures/PhotoScan-texture.pdf used on input line 1504.
 
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
- [47 <./figures/PhotoScan-mesh.pdf>]
-<figures/PhotoScan-export.pdf, id=2130, 1027.84pt x 770.88pt>
+ [49 <./figures/PhotoScan-mesh.pdf>]
+<figures/PhotoScan-export.pdf, id=2225, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-export.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-export.pdf>
-Package pdftex.def Info: figures/PhotoScan-export.pdf used on input line 1478.
+Package pdftex.def Info: figures/PhotoScan-export.pdf used on input line 1512.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
- [48 <./figures/PhotoScan-texture.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1487--1489
+ [50 <./figures/PhotoScan-texture.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 1521--1523
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1490--1491
+Underfull \hbox (badness 10000) in paragraph at lines 1524--1525
 
  []
 
@@ -3403,50 +3494,46 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1495: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1529: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1495     breaklines=true]
+l.1529     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1495: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1529: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1495     breaklines=true]
+l.1529     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-[49 <./figures/PhotoScan-export.pdf>] [50]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1502.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1502.
+[51 <./figures/PhotoScan-export.pdf>] [52]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1536.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1536.
  (./laminar_pipeline.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1502.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1502.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1536.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1536.
 
 Package rerunfilecheck Info: File `laminar_pipeline.out' has not changed.
 (rerunfilecheck)             Checksum: EDBA050B42D2227B30B96F10A7B3B071;6070.
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 42522 strings out of 492995
- 920941 string characters out of 6132704
- 1077431 words of memory out of 5000000
- 45017 multiletter control sequences out of 15000+600000
+ 42542 strings out of 492995
+ 921547 string characters out of 6132704
+ 1077675 words of memory out of 5000000
+ 45024 multiletter control sequences out of 15000+600000
  11807 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  175i,11n,206p,10389b,6603s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3471,10 +3558,10 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (50 pages, 12138620 bytes).
+Output written on laminar_pipeline.pdf (52 pages, 19414760 bytes).
 PDF statistics:
- 2347 PDF objects out of 2487 (max. 8388607)
- 1340 compressed objects within 14 object streams
- 395 named destinations out of 1000 (max. 500000)
- 777 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2443 PDF objects out of 2487 (max. 8388607)
+ 1406 compressed objects within 15 object streams
+ 401 named destinations out of 1000 (max. 500000)
+ 782 words of extra memory for PDF output out of 10000 (max. 10000000)
 

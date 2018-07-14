@@ -547,6 +547,15 @@ INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
+INPUT /usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
+INPUT figures/GUI2ROI.pdf
+INPUT ./figures/GUI2ROI.pdf
+INPUT ./figures/GUI2ROI.pdf
 INPUT figures/PhotoScan-setup.pdf
 INPUT ./figures/PhotoScan-setup.pdf
 INPUT ./figures/PhotoScan-setup.pdf

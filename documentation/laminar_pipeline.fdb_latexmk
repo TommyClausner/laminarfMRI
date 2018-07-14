@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1530551569 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1530551574
+["pdflatex"] 1531588672 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1531588776
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1480098701 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1480098701 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -189,6 +189,7 @@
   "/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1495593472 2350277 a699055bee05bf8a40b0504752487295 ""
   "/usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1495593487 4129592 0e6cfee100d68e6d96b92c0258f2ff73 ""
   "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
+  "figures/GUI2ROI.pdf" 1531586154 7273523 924cc1047f416a07c71056a74478b09a ""
   "figures/PhotoScan-align.pdf" 1515861456 855342 a0c82ab829a45062c9dc0ef462195c91 ""
   "figures/PhotoScan-dense.pdf" 1515861460 1307538 007656837dc4c2453498a4e058560264 ""
   "figures/PhotoScan-export.pdf" 1515861472 1381614 d450cf7a2d24e8b109bf416d32bacf86 ""
@@ -201,15 +202,15 @@
   "figures/coregdist.pdf" 1525439241 16000 2b46990ba063782337a8ff8701f60e98 ""
   "figures/exampleGamma.pdf" 1529842738 104891 02d3939624598988237f48aee698d40d ""
   "figures/exampleSourcemodel.pdf" 1529842964 273028 7b8fcd3dcd7c33458cb2c34739d64e8d ""
-  "laminar_pipeline.aux" 1530551573 17176 29029b1e1273d93ffc4d528f1cf474c6 ""
-  "laminar_pipeline.out" 1530551573 6070 edba050b42d2227b30b96f10a7b3b071 ""
-  "laminar_pipeline.tex" 1530551574 91780 405ba51ceb18424ba0d116e4115a5f59 ""
-  "laminar_pipeline.toc" 1530551573 7143 4133742ec68b163fdd5a5d9b85373d2a ""
+  "laminar_pipeline.aux" 1531588675 17750 fb00b0015bbbe5035d7df3294a65138d ""
+  "laminar_pipeline.out" 1531588675 6070 edba050b42d2227b30b96f10a7b3b071 ""
+  "laminar_pipeline.tex" 1531588776 95549 263ed38a2fcf9eca01c975a0d1af4828 ""
+  "laminar_pipeline.toc" 1531588675 7143 81d1feafad3bbd7bbb4b142b070a50e9 ""
   (generated)
-  "laminar_pipeline.out"
+  "laminar_pipeline.lof"
   "laminar_pipeline.log"
   "laminar_pipeline.pdf"
   "laminar_pipeline.aux"
-  "laminar_pipeline.lot"
-  "laminar_pipeline.lof"
   "laminar_pipeline.toc"
+  "laminar_pipeline.out"
+  "laminar_pipeline.lot"

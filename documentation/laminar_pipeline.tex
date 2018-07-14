@@ -1123,7 +1123,7 @@ Utilizes the toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/Ope
 
 \subsection{do\_getLayers.sh}
 \label{sh:getLyr}
-Wrapper function for running \texttt{\nameref{sh:getLyrM}} via qsub. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.\\
+Wrapper function for running \texttt{\nameref{m:getLyr}} via qsub. Using the variable \texttt{registerTo} the volume to perform the layer segmentation on is defined and by setting \texttt{Nlayers}, the number of layers in which to split the data.\\
 
 \subsection{do\_getLayerWeights.m}
 \label{m:getLyrW}
@@ -1399,6 +1399,40 @@ Furthermore the structure includes \texttt{BlinkRegTable}, a matrix having the c
 
 \section{How to: Selecting visual areas based on pRF mapping}
 \label{sec:GUIprf}
+This section shortly demonstrates how to use \texttt{tksurfer} to obtained functional pRF masks from retinotopy data. Note, that \texttt{tksurfer} makes it
+really easy to select vertices and create anatomical label masks, however the
+layout of the GUI and the limited functionality makes it somewhat annoying to use. Therefore it is advisable to maybe use \txettt{freeview} (\href{http://freesurfer.net/fswiki/ToolsTutorial#Freeview}{\nolinkurl{http://freesurfer.net/fswiki/ToolsTutorial#Freeview}}) or \texttt{fsleyes} (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes}}) in order get a better graphical representation. Figure~\ref{fig:GUI2ROI} depicts the full workflow in \texttt{tksurfer}, whereas Figure~\ref{fig:ROIpRF} examplifies a graphically more pleasing representation in \texttt{freeview}.\\
+
+\noindent The first step is to call \texttt{sh GUI2ROI.sh}
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # launch TkSurfer
+    sh GUI2ROI.sh
+\end{lstlisting}
+This will spawn an instance of \texttt{tksurfer} already setup with the correct overlay.\\
+\noindent We first smooth the functional overlay in order to get a better representation of the data. For this select [Tools] $\rightarrow$ [Surface] $\rightarrow$ [Smooth Overlay\dots] and select a smoothing factor of e.g. 5 as shown in Figure~\ref{fig:GUI2ROI}(A). Afterwards, select vertices along the lines where the color changes most to define a region of interest as shown in Figure~\ref{fig:GUI2ROI}(B). It should be possible to identify V1,2,3 based on those lines (also see Figure~\ref{fig:ROIpRF}). After selecting a few vertices click the close path tool as shown in Figure~\ref{fig:GUI2ROI}(C). In order to fill the area we first have to click somewhere inside the area enclosed by the path before we can fill it. Now we fill the selection using the custom fill tool like in Figure~\ref{fig:GUI2ROI}(D) and tick the "up to and including paths" box. After filling you can click the filled icon in the top tools panel almost at the right. By default the path view is selected. Switching to filled view will show the filled area. This area can now be converted into a label by clicking the corresponding button like in Figure~\ref{fig:GUI2ROI}(E). Now the new label is created from that area and can be exported by selecting [File] $\rightarrow$ [Label] $\rightarrow$ [Save Selected Label\dots] as in Figure~\ref{fig:GUI2ROI}(F).\\
+
+\noindent Note that if multiple labels were created, always the one that was clicked last, will be the "active label" and hence the one being manipulated. Selecting a different label works by just clicking it.\\
+
+\noindent Creating multiple labels (e.g. V1,2) works the exact same way, except that if a label is surrounding another label, the "up to other label" box inside the filling dialog should be checked. This will cause the area to be filled that is included by paths up to other labels.\\
+
+\noindent In order to enable other functions to work properly with the created labels, it is necessary to use a certain naming scheme to store the obtained labels:\\
+\begin{center}
+  $<$hemi$>$h.V$<$ROI$>$.ret.label
+\end{center}
+\noindent With hemi being "l" or "r" and ROI being "1", "2" or "3". Furthermore it is important to store the respective label files in:\\
+\begin{center}
+  S$<$number$>$/0\_freesurfer/label/
+\end{center}
+\begin{figure}[!h]
+  \includegraphics[width=1\textwidth]{GUI2ROI}
+
+  \caption{Example workflow of ROI selection from retinotopy data. A) smoothing the overlay, B) selecting vertices, C) converting selection to closed path, D) filling the selection, E) creating a new label, F) exporting the label}
+
+  \label{fig:GUI2ROI}
+\end{figure}
 
 \section{How to: EEG electrodes from photogrammetry}
 \subsection{Agisoft PhotoScan}
