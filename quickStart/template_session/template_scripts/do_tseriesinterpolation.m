@@ -5,7 +5,8 @@ if ~exist('mainpath','var')
 end
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'analyzePRF']))
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'knkutils']))
-
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+tvm_installOpenFmriAnalysisToolbox
 %%
 cd([mainpath '/../4_retinotopy'])
 
@@ -13,8 +14,22 @@ disp('loading stimuli...')
 load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'images.mat']);
 disp('done.')
 
+with_blanks=1;
+
+rearrange=1;
+
 % select non-empty screens and binarize stimuli
-stims=images(:,:,squeeze(sum(sum(images==128)))~=(numel(images)./(size(images,3))))~=128;
+stims=images(:,:,1:640)~=128;
+
+% ensure blanks
+if with_blanks
+    stims(:,:,241:320)=zeros;
+    stims(:,:,561:640)=zeros;
+end
+
+if rearrange
+    stims=cat(3,stims(:,:,1:2:end),stims(:,:,2:2:end));
+end
 
 % remove equal frames
 % tmp=stims(:,:,1);
@@ -43,6 +58,18 @@ if exist(filetouse,'file')==0
 end
 mask = load_untouch_nii(filetouse);
 disp('done.')
+
+if ~exist('mask_threshold', 'var')
+    mask_threshold=0;
+end
+
+if ~exist('numblocks', 'var')
+    numblocks=3;
+end
+
+if ~exist('size_stims_new', 'var')
+    size_stims_new=100;
+end
 
 ind=mask.img>mask_threshold;
 
