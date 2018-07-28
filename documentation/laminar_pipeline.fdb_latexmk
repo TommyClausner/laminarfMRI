@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1532773309 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1532773314
+["pdflatex"] 1532796083 "laminar_pipeline.tex" "laminar_pipeline.pdf" "laminar_pipeline" 1532796087
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1480098701 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1480098701 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -202,15 +202,15 @@
   "figures/coregdist.pdf" 1525439241 16000 2b46990ba063782337a8ff8701f60e98 ""
   "figures/exampleGamma.pdf" 1529842738 104891 02d3939624598988237f48aee698d40d ""
   "figures/exampleSourcemodel.pdf" 1529842964 273028 7b8fcd3dcd7c33458cb2c34739d64e8d ""
-  "laminar_pipeline.aux" 1532773312 17897 88ab8f858ecd14b4bcce859fdfe3786e ""
-  "laminar_pipeline.out" 1532773312 6070 edba050b42d2227b30b96f10a7b3b071 ""
-  "laminar_pipeline.tex" 1532773314 96420 f17ba0e7cd99d09dabdb59affc9339b7 ""
-  "laminar_pipeline.toc" 1532773312 7143 2004726e20efaa70225a76b2f726e25d ""
+  "laminar_pipeline.aux" 1532796086 17985 187d2103f8bdab236b5afd696dc048d3 ""
+  "laminar_pipeline.out" 1532796086 6127 d0d103ab9a25a0b49297aa7ed4e3e2b2 ""
+  "laminar_pipeline.tex" 1532796087 97731 22ecd37e63c172ee29dc666db6f43968 ""
+  "laminar_pipeline.toc" 1532796086 7213 eb012d4458fe626c554bab197d74a597 ""
   (generated)
-  "laminar_pipeline.toc"
-  "laminar_pipeline.out"
   "laminar_pipeline.log"
-  "laminar_pipeline.lof"
   "laminar_pipeline.lot"
-  "laminar_pipeline.aux"
+  "laminar_pipeline.lof"
   "laminar_pipeline.pdf"
+  "laminar_pipeline.out"
+  "laminar_pipeline.aux"
+  "laminar_pipeline.toc"

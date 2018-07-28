@@ -304,6 +304,7 @@ script & memory required & time required\\\hline
         [polhemus/]
       ]
       [eyetrackerfiles/]
+      [retinotopy/]
     ]
 ]
 [template\_session/
@@ -482,8 +483,8 @@ maximum memory required & approx time required\\\toprule
 \end{tabular}
 \end{table}
 \FloatBarrier
-\noindent Interpolate time series of volumes to match the number of presented frames during stimulation, by resampling the TR to match the "stimulation-frame-rate". The function below calls submits the corresponding MATLAB script as a qsub job.\\
-The data will furthermore be transformed into percent change relative to the mean.\\
+\noindent Interpolate time series of volumes to match the number of presented frames during stimulation, by resampling the TR to match the "stimulation-frame-rate". Which means the change rate of the stimlus and eventual blank frames. The function below submits the corresponding MATLAB script as a qsub job.\\
+The data will furthermore be transformed into percent change relative to the mean. If the new TR (relative to "stimulation-frame-rate") is eqial to the original TR, no interpolation will be applied.\\
 
 \noindent Results can be found in 4\_retinotopy/\\
 \begin{lstlisting}[
@@ -724,6 +725,37 @@ Furthermore, the function produces figures saved in C\_miscResults similar to wh
 \label{fig:exampleGamma}
 \end{center}
 \end{figure}
+
+\subsection{Ultra lazy}
+It is quite nocticable, that large chunks can be grouped together. For this purpose some meta-scripts are included as well, that are not documented, because it is not recommended going that way. It's better to call the scripts squentially in order to spot probable errors as early in the pipeline as possible. However, once everything is set up, an entire single subject (after preparation) can be run using the following scripts:
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # prepare fMRI data
+    sh runonqsub.sh 32gb do_preparefunctionals.sh
+
+    # prepare FreeSurfer
+    sh runonqsub.sh 16gb do_fsrecon.sh
+    sh do_EEGprepareFS.sh
+
+    # process EEG (& to not wait for completion)
+    sh EEG_preprocessing.sh &
+
+    # MRI preprocessing part 1
+    sh MRI_preprocessing_part1of2.sh
+
+    # check if MCTemplateThrCont.nii looks good using e.g. fsleyes
+
+    # MRI preprocessing part 2
+    sh MRI_preprocessing_part2of2.sh
+
+    # define V1,2,3
+    sh GUI2ROIs.sh
+
+    # MRI layer segmentation
+    sh MRI_postprocessROIs.sh
+\end{lstlisting}
 \FloatBarrier
 
 \section{Scripts explained (support for runonqsub.sh: Q)}
