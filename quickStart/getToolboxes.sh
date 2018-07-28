@@ -107,6 +107,17 @@ cd ..
 else
 git clone https://github.com/$GHuser/$whichOne
 fi
+
+whichOne=Psychtoolbox-3
+GHuser=Psychtoolbox-3
+if [ -d "$whichOne" ]
+then
+cd $whichOne
+git pull
+cd ..
+else
+git clone https://github.com/$GHuser/$whichOne
+fi
 echo Please goto the following websites and download the software manually:
 echo http://www.fil.ion.ucl.ac.uk/spm/software/download/
 echo https://fsl.fmrib.ox.ac.uk/fsldownloads_registration

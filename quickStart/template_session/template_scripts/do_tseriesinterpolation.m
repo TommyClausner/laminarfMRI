@@ -5,6 +5,7 @@ if ~exist('mainpath','var')
 end
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'analyzePRF']))
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'knkutils']))
+addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions']))
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
 tvm_installOpenFmriAnalysisToolbox
 %%
@@ -12,44 +13,8 @@ cd([mainpath '/../4_retinotopy'])
 
 disp('loading stimuli...')
 load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'images.mat']);
+load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'params.mat']);
 disp('done.')
-
-with_blanks=1;
-
-rearrange=1;
-
-% select non-empty screens and binarize stimuli
-stims=images(:,:,1:640)~=128;
-
-% ensure blanks
-if with_blanks
-    stims(:,:,241:320)=zeros;
-    stims(:,:,561:640)=zeros;
-end
-
-if rearrange
-    stims=cat(3,stims(:,:,1:2:end),stims(:,:,2:2:end));
-end
-
-% remove equal frames
-% tmp=stims(:,:,1);
-% for n=2:size(stims,3)
-%     if ~isequal(tmp(:,:,end),stims(:,:,n))     
-%         tmp=cat(3,tmp,stims(:,:,n));
-%     end
-% end
-% 
-% stims=tmp;
-% 
-% %   in here I "extrapolate" the number of different stimuli (64)
-% %   to fit the retinotopy volumes per Block (128), hence for all different
-% %   binarized stimulus two volumes were collected for each Block. This was
-% %   done in order to replace the interpolation of the volume time series.
-% tmp=zeros(size(stims,1),size(stims,2),size(stims,3).*2);
-% tmp(:,:,1:2:end)=stims;
-% tmp(:,:,2:2:end)=stims;
-% 
-% stims=tmp;
 
 disp('loading gray matter mask...')
 filetouse=[mainpath filesep '..' filesep '2_coregistration' filesep 'fctgraymattercoreg.nii'];
@@ -73,6 +38,18 @@ end
 
 ind=mask.img>mask_threshold;
 
+stims=cell(numblocks,1);
+
+disp('loading and preparing retinotopy results...')
+fcont=dir([mainpath filesep '..' filesep 'rawData' filesep 'retinotopy' filesep '*.mat']);
+
+for block=1:numblocks
+    load([fcont(block).folder filesep fcont(block).name])
+    % reslice stimuli
+    stims{block}=tc_reslice_vistadisp_stimuli(images,params,stimulus.seq);
+end
+disp('done.')
+
 disp('loading functionals...')
 datatmp=cell(numblocks,1);
 stimsin=cell(numblocks,1);
@@ -87,13 +64,13 @@ for n=[1:numblocks]-1
     data_use=reshape(data.img,[],size(data.img,4));
     data_use=data_use(ind,:);
     
-    downsamplingfactor=floor(size(stims,1)/size_stims_new);
+    downsamplingfactor=floor(size(stims{n+1},1)/size_stims_new);
     num_input_volumes_per_block=size(data.img,4);
-    num_stims_per_block=size(stims,3);
+    num_stims_per_block=size(stims{n+1},3);
     mult=floor(num_stims_per_block/num_input_volumes_per_block);
     stim_range=num_input_volumes_per_block*mult;
     
-    stimsin{n+1}=double(stims(1:downsamplingfactor:end,1:downsamplingfactor:end,1:stim_range));
+    stimsin{n+1}=double(stims{n+1}(1:downsamplingfactor:end,1:downsamplingfactor:end,1:stim_range));
     datatmp{n+1}=double(data_use);
 end
 
@@ -108,7 +85,11 @@ clear datatmp
 %%
 tic
 disp('resampling functionals...')
-data_int = tseriesinterp(data_use,TR,TR/mult,2);
+data_int=data_use;
+TR=params.framePeriod;
+if mult ~=1
+data_int = tseriesinterp(data_int,TR,TR/mult,2);
+end
 disp(['done after ' num2str(round(toc)) ' seconds.']);
 %% normalize data
 disp('normalizing functionals...');
@@ -122,7 +103,7 @@ ind=find(ind);
 disp('saving data...');
 save([mainpath filesep '..' filesep '4_retinotopy' filesep 'interpolatedTseries.mat'],'tIntData','-v7.3')
 save([mainpath filesep '..' filesep '4_retinotopy' filesep 'mask.mat'],'mask','-v7.3')
-save([mainpath filesep '..' filesep '4_retinotopy' filesep 'voxelindices.mat'],'ind','mult','mask_threshold','-v7.3')
+save([mainpath filesep '..' filesep '4_retinotopy' filesep 'voxelindices.mat'],'TR','ind','mult','mask_threshold','-v7.3')
 save([mainpath filesep '..' filesep '4_retinotopy' filesep 'images_downsampled.mat'],'images','-v7.3')
 disp('done.')
 %%

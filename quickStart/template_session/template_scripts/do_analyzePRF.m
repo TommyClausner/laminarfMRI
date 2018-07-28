@@ -8,8 +8,13 @@ addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 
 
 
 %%
-%parts=5;
-%partnum=5;
+if ~exist('partnum', 'var')
+    partnum=1;
+end
+
+if ~exist('parts', 'var')
+    parts=1;
+end
 
 disp('setting up environment...')
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes']))
@@ -25,7 +30,7 @@ load([mainpath filesep '..' filesep '4_retinotopy' filesep 'interpolatedTseries.
 disp('done.')
 %
 disp('doing pRF analysis...')
-TR=2.7;
+
 ana_add_string='';
 
 if partnum==parts

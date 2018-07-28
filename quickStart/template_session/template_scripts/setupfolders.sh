@@ -47,3 +47,4 @@ mkdir rawData/niftis/t1
 mkdir rawData/niftis/inverted
 mkdir rawData/niftis/pd
 mkdir rawData/niftis/pdinverted
+mkdir rawData/retinotopy
