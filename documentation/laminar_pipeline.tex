@@ -638,7 +638,7 @@ Loading and segmenting anatomical MRI data is done using ft\_volumesegment (\hre
 \end{lstlisting}
 Once the headmodel is prepare, sensor locations need to be coregistered. This is achieved by starting an interactive MATLAB session and opening the script \texttt{\nameref{m:elecReg}}. The FieldTrip function \texttt{ft\_electroderealign} is used to interactively coregister sensor locations to anatomical MR data. See \href{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}{\nolinkurl{http://www.fieldtriptoolbox.org/reference/ft\_electroderealign}} for more information.\\
 
-\noindent Alternatively electrodes can be obtained differently (e.g. using photogrammetry and \texttt{\nameref{sec:janus3D}}). See Section~\nameref{sec:HTphotogr} for more information on that. If using alternative EEG electrode locations, the respective line in \texttt{\nameref{m:elecReg}} must be changed.
+\noindent Alternatively electrodes can be obtained differently (e.g. using photogrammetry and \texttt{\nameref{sec:janus3D}}). See Section~\nameref{sec:HTphotogr} for more information on that. If using alternative EEG electrode locations, the respective line in \texttt{\nameref{m:elecReg}} must be changed. In case janus3D electrodes are used the step below can also be skipped, if the respective electrode file is already in the correct location.
 
 \begin{lstlisting}[
     language=Shell,
@@ -996,6 +996,8 @@ Wrapper function for running \texttt{\nameref{m:prepHM}} via qsub. Changing the 
 \label{m:prepSM}
 Sets up sourcemodel (dipole model) for source analysis using the result of \texttt{\nameref{sh:prepFS4EEG}}\\
 \noindent It utilizes FieldTrip's \texttt{ft\_prepare\_vol\_sens} to ensure that headmodel and sensors are set up correctly and prepares the source model by reading the Workbench result as a headshape (\texttt{ft\_read\_headshape}).\\
+
+\noindent Note, that if no sensor file was found, but instead a janus3D result, it will be converted into a sensor file and used. The function will error if neither a sens file, nor a electrode file was provided. See \nameref{m:elecReg} for how to create a sensor file and \nameref{sec:janus3D} for more information on this.
 
 \subsection{do\_EEGprepareSourcemodel.sh}
 \label{sh:prepSM}

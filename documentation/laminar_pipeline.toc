@@ -42,11 +42,11 @@
 \contentsline {subsection}{\nonumberline do\_EEGpreprocessing.sh}{31}{section*.39}
 \contentsline {subsection}{\nonumberline do\_EEGsplitBeamformer.sh}{31}{section*.40}
 \contentsline {subsection}{\nonumberline do\_EEGsplitFreqOnVirtChan.sh}{31}{section*.41}
-\contentsline {subsection}{\nonumberline do\_EEGsplitVirtualChannel.sh}{31}{section*.42}
+\contentsline {subsection}{\nonumberline do\_EEGsplitVirtualChannel.sh}{32}{section*.42}
 \contentsline {subsection}{\nonumberline do\_EEGtimelock.m}{32}{section*.43}
 \contentsline {subsection}{\nonumberline do\_EEGtimelock.sh}{32}{section*.44}
 \contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.m}{32}{section*.45}
-\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.sh}{32}{section*.46}
+\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.sh}{33}{section*.46}
 \contentsline {subsection}{\nonumberline do\_fsrecon.sh (Q)}{33}{section*.47}
 \contentsline {subsection}{\nonumberline do\_getLayers.m}{33}{section*.48}
 \contentsline {subsection}{\nonumberline do\_getLayers.sh}{34}{section*.49}
@@ -55,18 +55,18 @@
 \contentsline {subsection}{\nonumberline do\_makemasksandlabels.sh (Q)}{34}{section*.52}
 \contentsline {subsection}{\nonumberline do\_movesinglevolume.sh}{35}{section*.53}
 \contentsline {subsection}{\nonumberline do\_preparecoregistration.sh (Q)}{35}{section*.54}
-\contentsline {subsection}{\nonumberline do\_preparefunctionals.sh (Q)}{35}{section*.55}
+\contentsline {subsection}{\nonumberline do\_preparefunctionals.sh (Q)}{36}{section*.55}
 \contentsline {subsection}{\nonumberline do\_realignment.sh (Q)}{36}{section*.56}
 \contentsline {subsection}{\nonumberline do\_split\_analyzePRF.sh}{36}{section*.57}
 \contentsline {subsection}{\nonumberline do\_tseriesinterpolation.m}{36}{section*.58}
 \contentsline {subsection}{\nonumberline do\_tseriesinterpolation.sh}{37}{section*.59}
 \contentsline {subsection}{\nonumberline EEGvisualizeVirtualChannel.m}{37}{section*.60}
 \contentsline {subsection}{\nonumberline expandROIs.m}{37}{section*.61}
-\contentsline {subsection}{\nonumberline expandROIs.sh}{37}{section*.62}
+\contentsline {subsection}{\nonumberline expandROIs.sh}{38}{section*.62}
 \contentsline {subsection}{\nonumberline getToolboxes.sh}{38}{section*.63}
 \contentsline {subsection}{\nonumberline GUI2ROIs.sh}{38}{section*.64}
 \contentsline {subsection}{\nonumberline labels2masks.sh (Q)}{38}{section*.65}
-\contentsline {subsection}{\nonumberline liveupdateqsub.sh}{38}{section*.66}
+\contentsline {subsection}{\nonumberline liveupdateqsub.sh}{39}{section*.66}
 \contentsline {subsection}{\nonumberline makeLayerMovie.m}{39}{section*.67}
 \contentsline {subsection}{\nonumberline makeLayerMovie.sh}{39}{section*.68}
 \contentsline {subsection}{\nonumberline makenewsubject.sh}{39}{section*.69}
@@ -80,10 +80,10 @@
 \contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{42}{section.6}
 \contentsline {section}{\numberline {7}How to: EEG electrodes from photogrammetry}{43}{section.7}
 \contentsline {subsection}{\nonumberline Agisoft PhotoScan}{43}{section*.76}
-\contentsline {subsubsection}{\nonumberline Import Photos}{45}{section*.77}
-\contentsline {subsubsection}{\nonumberline Align Photos}{46}{section*.78}
-\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{47}{section*.79}
-\contentsline {subsubsection}{\nonumberline Build Mesh}{48}{section*.80}
-\contentsline {subsubsection}{\nonumberline Build Texture}{49}{section*.81}
-\contentsline {subsubsection}{\nonumberline Export Model}{50}{section*.82}
-\contentsline {subsection}{\nonumberline janus3D}{53}{section*.83}
+\contentsline {subsubsection}{\nonumberline Import Photos}{46}{section*.77}
+\contentsline {subsubsection}{\nonumberline Align Photos}{47}{section*.78}
+\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{48}{section*.79}
+\contentsline {subsubsection}{\nonumberline Build Mesh}{49}{section*.80}
+\contentsline {subsubsection}{\nonumberline Build Texture}{50}{section*.81}
+\contentsline {subsubsection}{\nonumberline Export Model}{51}{section*.82}
+\contentsline {subsection}{\nonumberline janus3D}{52}{section*.83}
