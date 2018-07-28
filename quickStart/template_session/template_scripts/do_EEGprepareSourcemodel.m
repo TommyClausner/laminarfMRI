@@ -11,6 +11,23 @@ if ~exist('conductModel','var')
     conductModel='FEM';
 end
 cfg = [];
+filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 'photogrammetry' filesep 'electrodes.mat'];
+
+% if janus3D was used the below can be executed, saving manual registration
+% of EEG electrodes
+if ~exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2 &&...
+        exist(filetouse,'file')==2
+    sens=tc_janus3D2sens(filetouse,1:63);
+
+    disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
+    save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens','-v7.3')
+    disp('done.')
+elseif ~exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2 &&...
+       ~exist(filetouse,'file')==2
+   error('neither sens.mat nor electrodes.mat found')
+   exit
+end
+
 load([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
 load([mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' conductModel '.mat']);
 

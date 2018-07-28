@@ -100,6 +100,7 @@ disp('done.');
 %%
 tIntData=data_int_corr';
 ind=find(ind);
+
 disp('saving data...');
 save([mainpath filesep '..' filesep '4_retinotopy' filesep 'interpolatedTseries.mat'],'tIntData','-v7.3')
 save([mainpath filesep '..' filesep '4_retinotopy' filesep 'mask.mat'],'mask','-v7.3')

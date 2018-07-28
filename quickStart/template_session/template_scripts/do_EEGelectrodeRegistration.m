@@ -1,27 +1,20 @@
 %%
 if ~exist('mainpath','var')
-    mainpath='/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts';
+    mainpath=[filesep 'project' filesep '3018037.01' filesep 'Experiment3.2_ERC' filesep 'tommys_folder' filesep 'fMRI_pipeline' filesep 'P312' filesep 'B_scripts'];
     cd(mainpath)
 end
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'fieldtrip'])
+addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions']))
 ft_defaults
 
 %% Electrode registration
 
-custom_elecs = 0;
+janus3D_elecs = 1;
 
-if custom_elecs
+if janus3D_elecs
     
     filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 'photogrammetry' filesep 'electrodes.mat'];
-    load(filetouse)
-    
-    sens=[]
-    sens.chanpos = Electrodes.MRI.points;
-    sens.chantype = arrayfun(@(x) {'eeg'}, 1:size(Electrodes.MRI.points,1))';
-    sens.chanunit = arrayfun(@(x) {'V'}, 1:size(Electrodes.MRI.points,1))';
-    sens.elecpos = Electrodes.MRI.points;
-    sens.label = Electrodes.MRI.label';
-    sens.unit = 'mm'
+    sens=tc_janus3D2sens(filetouse,1:63);
     
     disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
     save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens','-v7.3')
