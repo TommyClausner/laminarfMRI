@@ -216,8 +216,8 @@ for filter=filters
     end
 end
 
-disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'EEGprocessed.mat'])
-save([mainpath filesep '..' filesep '6_EEG' filesep 'EEGprocessed.mat'],'VirtChanData','-v7.3')
+disp(['saving data to ' mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'])
+save([mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'],'VirtChanData','-v7.3')
 disp('done.')
 
 
