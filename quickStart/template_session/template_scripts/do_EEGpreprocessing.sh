@@ -13,7 +13,7 @@
 ### Script ###
 
 # Input Variables and Paths #
-InputVarName=none
+RejectTrials=0
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -31,7 +31,7 @@ MiscVarName=none
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
-echo "mainpath=" "'$DIR';">$DIR/tmp_$nameadd.m
+echo "mainpath=" "'$DIR';RejectTrials=$RejectTrials;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGpreprocessing.m>>$DIR/tmp_$nameadd.m
 echo 'matlab2017a -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)

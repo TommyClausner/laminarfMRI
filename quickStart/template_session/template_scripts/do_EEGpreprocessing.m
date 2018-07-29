@@ -4,6 +4,7 @@ if ~exist('mainpath','var')
     cd(mainpath)
 end
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'fieldtrip'])
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
 ft_defaults
 
 %% convert raw data to MATLAB and select trials and EEG channels
@@ -19,8 +20,23 @@ TriggerType='Stimulus';
 
 Addprefix='TCsel_';
 
+if ~exist('RejectTrials','var')
+   RejectTrials=0; 
+end
+
+if RejectTrials
+        
+        filetouse=dir([mainpath filesep '..' filesep 'rawData' filesep 'eyetrackerfiles' filesep '*.asc']);
+        filetouse=[filetouse(1).folder filesep filetouse(1).name];
+        [~,fullData] = tc_EyeChecker(filetouse);
+        
+        blockinds=ones(size(fullData.BlinkTrialsTable,1)/size(files,2),size(files,2))*diag(1:size(files,2));
+        blockinds=blockinds(:);
+        counter=0;
+end
+
 for file_ = files
-    
+       
     % Read events
     cfg                    = [];
     cfg.trialdef.prestim   = TrialPreStim;                   % in seconds
@@ -36,12 +52,11 @@ for file_ = files
     
     data                   = ft_preprocessing(cfg); % read raw data
 
-    RejectTrials=0;
-
-    if RejectTrials
+    if RejectTrials     
+        counter=counter+1;
         cfg = [];
-        cfg.trials = 'all';
-        data = ft_selectdata(cfg, data)
+        cfg.trials = fullData.BlinkTrialsTable(blockinds==counter,5);
+        data = ft_selectdata(cfg, data);
     end
     
     % segment data according to the trial definition
