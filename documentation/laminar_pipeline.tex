@@ -431,7 +431,7 @@ After corrections for motion and field distortion, functional space was register
 \end{lstlisting}
 
 \subsection{fMRI anatomical co-registration and masks}
-fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 3 volumes the scanner stoped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
+fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 3 volumes the scanner stopped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
 \noindent Computing the difference between every 3rd and 1st volume and averaging, leads to a T1-like contrast, that was used to otimize functional to anatomical registration. A graphical depiction can be found in Figure~\ref{fig:coregdist} top.\\
 
 \noindent Results can be found in 3\_coregistration/\\
