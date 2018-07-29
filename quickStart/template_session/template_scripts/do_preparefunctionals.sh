@@ -38,7 +38,7 @@ fi
 
 cd $DIR
 
-FILES=$DIR/*sparse*
+FILES=$DIR/*silent*
 for f in $FILES
 do
 size_curr=$(fslval $f dim4)
@@ -53,7 +53,7 @@ echo number of volumes must be greater than 182
 fi
 done
 
-FILES=$DIR/*retino*
+FILES=$DIR/*Retino*
 for f in $FILES
 do
 size_curr=$(fslval $f dim4)

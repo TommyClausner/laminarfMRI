@@ -47,6 +47,6 @@ mkdir rawData/niftis/functionals
 mkdir rawData/niftis/functionals/old
 mkdir rawData/niftis/t1
 mkdir rawData/niftis/inverted
-mkdir rawData/niftis/pd
-mkdir rawData/niftis/pdinverted
+mkdir rawData/niftis/wholeBrainEPI3D
+mkdir rawData/niftis/wholeBrainEPI3Dinverted
 mkdir rawData/retinotopy

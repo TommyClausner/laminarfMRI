@@ -48,20 +48,20 @@ name_=${name_%a[0-9]*}
 echo "$(echo $(fslinfo $scan | grep -w dim4) | cut -f2 -d' ') $name_" >> $DIR/../A_helperfiles/numberofvolumes.txt
 done
 echo merging volumes...
-fslmerge -t all_functionals_stacked $DIR/../rawData/niftis/functionals/*sparse*
+fslmerge -t all_functionals_stacked $DIR/../rawData/niftis/functionals/*silent*
 fslmaths all_functionals_stacked -Tmean $DIR/meanvol
 echo done.
 rm -r $DIR/*all_functionals_stacked*
 echo doing motion correction...
 i=0
-for f in $DIR/../rawData/niftis/functionals/*retino*
+for f in $DIR/../rawData/niftis/functionals/*Retino*
 do
 cp $f $DIR/ret$i.nii.gz
 mcflirt -in $f -reffile $DIR/meanvol -mats -out $DIR/ret_mcf$i
 i=$(($i+1))
 done
 i=0
-for f in $DIR/../rawData/niftis/functionals/*sparse*
+for f in $DIR/../rawData/niftis/functionals/*silent*
 do
 cp $f $DIR/task$i.nii.gz
 mcflirt -in $f -reffile $DIR/meanvol -mats -out $DIR/task_mcf$i
