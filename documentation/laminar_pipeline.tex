@@ -572,6 +572,20 @@ Once this is done gray matter volumes are split into corical layers. This is imp
 
 After the data was computed it is optional to call \texttt{sh \nameref{sh:makeMov}} to create a movie file in C\_miscResults slicing through the volume overlayed with the layer boundaries.
 \FloatBarrier
+
+\subsection{fMRI last steps}
+The last step is to combine all previously computed results into a single MATLAB file for later staistical analyses using \texttt{\nameref{sh:fMRI}}.\\
+
+\noindent Results can be found in 7\_results/\\
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # finalize results
+    sh do_finalizeMRIprocessing.sh
+\end{lstlisting}
+
+
 \subsection{EEG pre-processing}
 The raw EEG signal will be transformed into virtual channel data by applying a LCMV beamformer. Frequencies of interest ($\alpha$, $\beta$, $\gamma$) are defined that $8~Hz \leq \alpha \leq 12~Hz$; $18~Hz \leq \beta \leq 28~Hz$; $60~Hz \leq \gamma \leq 80~Hz$. Since the covariance matrices of the noise will differ significantly for lower and higher frequencies, the data will be band pass filtered for low and high frequencies separately. This will be achieved by using pass bands of $2-32~Hz$ and $30-100~Hz$ respectively.\\
 A FEM forward model will be used as well as a anatomical constraint source model (see Figure~\ref{fig:exampleSourcemodel} for a graphical depiction).\\
@@ -712,7 +726,7 @@ $8-12~Hz$ & $22-28~Hz$ & $50-70~Hz$ \\\bottomrule
 \end{table}\\
 Furthermore, the function produces figures saved in C\_miscResults similar to what is shown in Figure~\ref{fig:exampleGamma}.\\
 
-\noindent Results can be found in 6\_EEG/\\
+\noindent Results can be found in 7\_results/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -757,6 +771,9 @@ It is quite nocticable, that large chunks can be grouped together. For this purp
 
     # MRI layer segmentation
     sh MRI_postprocessROIs.sh
+
+    # finilize processing
+    sh do_finalizeMRIprocessing.sh
 \end{lstlisting}
 \FloatBarrier
 
@@ -904,6 +921,70 @@ Selects virtual channels of interest. Since utilizing high resolution functional
 \end{lstlisting}
 
 \texttt{timeWinMax} thereby is the time of interest for which to optimize channel selection. Shortly speeking an area within the time frequncy matrix that is enclosed by \texttt{ROI$<$freq$>$} and \texttt{timeWinMax} will be averaged. The 100 maximum (for $\gamma$) and minimum (for $\alpha$ and $\beta$) channels will be selected. It is important to note, that the data will be $\log$ transformed and expressed as relative change to \texttt{BLwin} which is the respective time window of reference relative to stimulus onset.\\
+
+\noindent The final MATLAB structure loos like this:
+
+\begin{figure}[h]
+\caption{Result of EEG analysis as a MATLAB structure}
+\vspace{10pt}
+{\scriptsize
+\begin{forest}
+  for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    text height=0.01cm,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+      \noexpand\path [draw, \forestoption{edge}]
+      (!u.south west) +(12pt,0pt) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+      if n=1
+        {insert before={[,phantom]}}
+        {}
+    },
+    fit=band,
+    before computing xy={l=20pt},
+  }
+  [VirtChanData
+    [ROI (hemisphere and visual ROI)
+    ]
+    [pos (voxel coordinates)
+    ]
+    [freqROI (frequencies of interest)
+    ]
+    [freqROIfreq (frequencies of freqROI)
+    ]
+    [filterBand (marginal frequencies of band pass filter)
+    ]
+    [baselineWin (marginal samples of baseline window)
+    ]
+    [tROI (time of interest)
+    ]
+    [ft\_freqanalysis (fieldtrip result structure)
+    ]
+    [results
+      [trial (descending ranked channels $N_{channel} \times N_{freqs} \times N_{timebins} \times N_{blocks}$
+      ]
+      [dimord (order of above)
+      ]
+      [label (EEG channel labels)
+      ]
+      [sortAll (sorting indices)
+      ]
+      [sortord (sorting order)
+      ]
+      [beamformerWeights (filter weights)
+      ]
+    ]
+  ]
+\end{forest}
+}
+\label{tree:resEEG}
+\end{figure}
 
 \subsection{do\_EEGfreqChanSelect.sh}
 \label{sh:selchan}
@@ -1089,6 +1170,72 @@ The data is multiplied with the respective filter, taking the average dipole mom
 \subsection{do\_EEGvirtualChannel.sh}
 \label{sh:virtch}
 Wrapper function for running \texttt{\nameref{m:virtch}} via qsub.\\
+
+\subsection{do\_finalizeMRIprocessing.m}
+\label{m:fMRI}
+Combines all relevant results of the fMRI analysis into a single MATLAB file of the following structure:\\
+
+\begin{figure}[h]
+\caption{Result of fMRI analysis as a MATLAB structure}
+\vspace{10pt}
+{\scriptsize
+\begin{forest}
+  for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    text height=0.01cm,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+      \noexpand\path [draw, \forestoption{edge}]
+      (!u.south west) +(12pt,0pt) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+      if n=1
+        {insert before={[,phantom]}}
+        {}
+    },
+    fit=band,
+    before computing xy={l=20pt},
+  }
+  [data
+[data (fMRI data $N_{voxel} \times N_{volumes} \times N_{blocks}$)
+]
+[maskgray (gray matter mask $N_{voxel} \times 1$)
+]
+[maskwhite (white matter mask $N_{voxel} \times 1$)
+]
+[maskecc (eccentricity mask $N_{voxel} \times 1$)
+]
+[transmats (realignment as matrices $4 \times 4$ for all $N_{volumes}$ and $N_{blocks}$)
+]
+[transvecs (realignment as vectors $1 \times 6$ for all $N_{volumes}$ and $N_{blocks}$)
+]
+[layerROIs
+  [lh
+    [V1 (layer weights $N_{voxel} \times N_{layer}$)]
+    [V2 (layer weights $N_{voxel} \times N_{layer}$)]
+    [V3 (layer weights $N_{voxel} \times N_{layer}$)]
+  ]
+  [rh
+    [V1 (layer weights $N_{voxel} \times N_{layer}$)]
+    [V2 (layer weights $N_{voxel} \times N_{layer}$)]
+    [V3 (layer weights $N_{voxel} \times N_{layer}$)]
+  ]
+]
+[CSFwhite (weights for CSF(1) and white matter(2) $N_{voxel} \times 2$)
+]
+]
+\end{forest}
+}
+\label{tree:resMRI}
+\end{figure}
+
+\subsection{do\_finalizeMRIprocessing.sh}
+\label{sh:fMRI}
+Wrapper function for running \texttt{\nameref{m:fMRI}} via qsub.\\
 
 \subsection{do\_fsrecon.sh (Q)}
 \label{sh:fsrecon}

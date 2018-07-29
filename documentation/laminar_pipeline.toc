@@ -11,79 +11,82 @@
 \contentsline {subsection}{\nonumberline fMRI anatomical co-registration and masks}{14}{section*.9}
 \contentsline {subsection}{\nonumberline fMRI pRF mapping}{16}{section*.10}
 \contentsline {subsection}{\nonumberline fMRI layer segmentation}{17}{section*.11}
-\contentsline {subsection}{\nonumberline EEG pre-processing}{19}{section*.12}
-\contentsline {subsection}{\nonumberline EEG prepare head and source models}{20}{section*.13}
-\contentsline {subsection}{\nonumberline EEG compute virtual channels}{21}{section*.14}
-\contentsline {subsection}{\nonumberline Ultra lazy}{23}{section*.15}
+\contentsline {subsection}{\nonumberline fMRI last steps}{19}{section*.12}
+\contentsline {subsection}{\nonumberline EEG pre-processing}{19}{section*.13}
+\contentsline {subsection}{\nonumberline EEG prepare head and source models}{20}{section*.14}
+\contentsline {subsection}{\nonumberline EEG compute virtual channels}{22}{section*.15}
+\contentsline {subsection}{\nonumberline Ultra lazy}{23}{section*.16}
 \contentsline {section}{\numberline {4}Scripts explained (support for runonqsub.sh: Q)}{24}{section.4}
-\contentsline {subsection}{\nonumberline cleanscriptsfolder.sh}{24}{section*.16}
-\contentsline {subsection}{\nonumberline combine\_split\_PRF\_results.m}{24}{section*.17}
-\contentsline {subsection}{\nonumberline combine\_split\_PRF\_results.sh}{24}{section*.18}
-\contentsline {subsection}{\nonumberline do\_analyzePRF.m}{24}{section*.19}
-\contentsline {subsection}{\nonumberline do\_analyzePRF.sh}{25}{section*.20}
-\contentsline {subsection}{\nonumberline do\_applysimpledistcorr.sh (Q)}{25}{section*.21}
-\contentsline {subsection}{\nonumberline do\_coregistration.m}{25}{section*.22}
-\contentsline {subsection}{\nonumberline do\_coregistration.sh}{26}{section*.23}
-\contentsline {subsection}{\nonumberline do\_correctavgdiff.sh (Q)}{26}{section*.24}
-\contentsline {subsection}{\nonumberline do\_distcorr.sh (Q)}{26}{section*.25}
-\contentsline {subsection}{\nonumberline do\_EEGbeamformer.m}{27}{section*.26}
-\contentsline {subsection}{\nonumberline do\_EEGbeamformer.sh}{27}{section*.27}
-\contentsline {subsection}{\nonumberline do\_EEGelectrodeRegistration.m}{27}{section*.28}
-\contentsline {subsection}{\nonumberline do\_EEGfreqChanSelect.m}{27}{section*.29}
-\contentsline {subsection}{\nonumberline do\_EEGfreqChanSelect.sh}{28}{section*.30}
-\contentsline {subsection}{\nonumberline do\_EEGfreqOnVirtChan.m}{28}{section*.31}
-\contentsline {subsection}{\nonumberline do\_EEGfreqOnVirtChan.sh}{28}{section*.32}
-\contentsline {subsection}{\nonumberline do\_EEGprepareFS.sh}{29}{section*.33}
-\contentsline {subsection}{\nonumberline do\_EEGprepareHeadmodel.m}{29}{section*.34}
-\contentsline {subsection}{\nonumberline do\_EEGprepareHeadmodel.sh}{30}{section*.35}
-\contentsline {subsection}{\nonumberline do\_EEGprepareSourcemodel.m}{30}{section*.36}
-\contentsline {subsection}{\nonumberline do\_EEGprepareSourcemodel.sh}{30}{section*.37}
-\contentsline {subsection}{\nonumberline do\_EEGpreprocessing.m}{30}{section*.38}
-\contentsline {subsection}{\nonumberline do\_EEGpreprocessing.sh}{31}{section*.39}
-\contentsline {subsection}{\nonumberline do\_EEGsplitBeamformer.sh}{31}{section*.40}
-\contentsline {subsection}{\nonumberline do\_EEGsplitFreqOnVirtChan.sh}{31}{section*.41}
-\contentsline {subsection}{\nonumberline do\_EEGsplitVirtualChannel.sh}{32}{section*.42}
-\contentsline {subsection}{\nonumberline do\_EEGtimelock.m}{32}{section*.43}
-\contentsline {subsection}{\nonumberline do\_EEGtimelock.sh}{32}{section*.44}
-\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.m}{32}{section*.45}
-\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.sh}{33}{section*.46}
-\contentsline {subsection}{\nonumberline do\_fsrecon.sh (Q)}{33}{section*.47}
-\contentsline {subsection}{\nonumberline do\_getLayers.m}{33}{section*.48}
-\contentsline {subsection}{\nonumberline do\_getLayers.sh}{34}{section*.49}
-\contentsline {subsection}{\nonumberline do\_getLayerWeights.m}{34}{section*.50}
-\contentsline {subsection}{\nonumberline do\_getLayerWeights.sh}{34}{section*.51}
-\contentsline {subsection}{\nonumberline do\_makemasksandlabels.sh (Q)}{34}{section*.52}
-\contentsline {subsection}{\nonumberline do\_movesinglevolume.sh}{35}{section*.53}
-\contentsline {subsection}{\nonumberline do\_preparecoregistration.sh (Q)}{35}{section*.54}
-\contentsline {subsection}{\nonumberline do\_preparefunctionals.sh (Q)}{36}{section*.55}
-\contentsline {subsection}{\nonumberline do\_realignment.sh (Q)}{36}{section*.56}
-\contentsline {subsection}{\nonumberline do\_split\_analyzePRF.sh}{36}{section*.57}
-\contentsline {subsection}{\nonumberline do\_tseriesinterpolation.m}{36}{section*.58}
-\contentsline {subsection}{\nonumberline do\_tseriesinterpolation.sh}{37}{section*.59}
-\contentsline {subsection}{\nonumberline EEGvisualizeVirtualChannel.m}{37}{section*.60}
-\contentsline {subsection}{\nonumberline expandROIs.m}{37}{section*.61}
-\contentsline {subsection}{\nonumberline expandROIs.sh}{38}{section*.62}
-\contentsline {subsection}{\nonumberline getToolboxes.sh}{38}{section*.63}
-\contentsline {subsection}{\nonumberline GUI2ROIs.sh}{38}{section*.64}
-\contentsline {subsection}{\nonumberline labels2masks.sh (Q)}{38}{section*.65}
-\contentsline {subsection}{\nonumberline liveupdateqsub.sh}{39}{section*.66}
-\contentsline {subsection}{\nonumberline makeLayerMovie.m}{39}{section*.67}
-\contentsline {subsection}{\nonumberline makeLayerMovie.sh}{39}{section*.68}
-\contentsline {subsection}{\nonumberline makenewsubject.sh}{39}{section*.69}
-\contentsline {subsection}{\nonumberline makeOverlays.sh (Q)}{39}{section*.70}
-\contentsline {subsection}{\nonumberline make\_PRF\_overlays.m}{40}{section*.71}
-\contentsline {subsection}{\nonumberline make\_PRF\_overlays.sh}{40}{section*.72}
-\contentsline {subsection}{\nonumberline runonqsub.sh}{40}{section*.73}
-\contentsline {subsection}{\nonumberline setupfolders.sh (Q)}{41}{section*.74}
-\contentsline {subsection}{\nonumberline waitForJobs.sh}{41}{section*.75}
-\contentsline {section}{\numberline {5}How to: Rejecting trials based on eye tracking}{41}{section.5}
-\contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{42}{section.6}
-\contentsline {section}{\numberline {7}How to: EEG electrodes from photogrammetry}{43}{section.7}
-\contentsline {subsection}{\nonumberline Agisoft PhotoScan}{43}{section*.76}
-\contentsline {subsubsection}{\nonumberline Import Photos}{46}{section*.77}
-\contentsline {subsubsection}{\nonumberline Align Photos}{47}{section*.78}
-\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{48}{section*.79}
-\contentsline {subsubsection}{\nonumberline Build Mesh}{49}{section*.80}
-\contentsline {subsubsection}{\nonumberline Build Texture}{50}{section*.81}
-\contentsline {subsubsection}{\nonumberline Export Model}{51}{section*.82}
-\contentsline {subsection}{\nonumberline janus3D}{52}{section*.83}
+\contentsline {subsection}{\nonumberline cleanscriptsfolder.sh}{24}{section*.17}
+\contentsline {subsection}{\nonumberline combine\_split\_PRF\_results.m}{24}{section*.18}
+\contentsline {subsection}{\nonumberline combine\_split\_PRF\_results.sh}{24}{section*.19}
+\contentsline {subsection}{\nonumberline do\_analyzePRF.m}{25}{section*.20}
+\contentsline {subsection}{\nonumberline do\_analyzePRF.sh}{25}{section*.21}
+\contentsline {subsection}{\nonumberline do\_applysimpledistcorr.sh (Q)}{25}{section*.22}
+\contentsline {subsection}{\nonumberline do\_coregistration.m}{26}{section*.23}
+\contentsline {subsection}{\nonumberline do\_coregistration.sh}{26}{section*.24}
+\contentsline {subsection}{\nonumberline do\_correctavgdiff.sh (Q)}{26}{section*.25}
+\contentsline {subsection}{\nonumberline do\_distcorr.sh (Q)}{26}{section*.26}
+\contentsline {subsection}{\nonumberline do\_EEGbeamformer.m}{27}{section*.27}
+\contentsline {subsection}{\nonumberline do\_EEGbeamformer.sh}{27}{section*.28}
+\contentsline {subsection}{\nonumberline do\_EEGelectrodeRegistration.m}{27}{section*.29}
+\contentsline {subsection}{\nonumberline do\_EEGfreqChanSelect.m}{28}{section*.30}
+\contentsline {subsection}{\nonumberline do\_EEGfreqChanSelect.sh}{29}{section*.31}
+\contentsline {subsection}{\nonumberline do\_EEGfreqOnVirtChan.m}{29}{section*.32}
+\contentsline {subsection}{\nonumberline do\_EEGfreqOnVirtChan.sh}{29}{section*.33}
+\contentsline {subsection}{\nonumberline do\_EEGprepareFS.sh}{29}{section*.34}
+\contentsline {subsection}{\nonumberline do\_EEGprepareHeadmodel.m}{29}{section*.35}
+\contentsline {subsection}{\nonumberline do\_EEGprepareHeadmodel.sh}{30}{section*.36}
+\contentsline {subsection}{\nonumberline do\_EEGprepareSourcemodel.m}{31}{section*.37}
+\contentsline {subsection}{\nonumberline do\_EEGprepareSourcemodel.sh}{31}{section*.38}
+\contentsline {subsection}{\nonumberline do\_EEGpreprocessing.m}{31}{section*.39}
+\contentsline {subsection}{\nonumberline do\_EEGpreprocessing.sh}{32}{section*.40}
+\contentsline {subsection}{\nonumberline do\_EEGsplitBeamformer.sh}{32}{section*.41}
+\contentsline {subsection}{\nonumberline do\_EEGsplitFreqOnVirtChan.sh}{32}{section*.42}
+\contentsline {subsection}{\nonumberline do\_EEGsplitVirtualChannel.sh}{32}{section*.43}
+\contentsline {subsection}{\nonumberline do\_EEGtimelock.m}{32}{section*.44}
+\contentsline {subsection}{\nonumberline do\_EEGtimelock.sh}{33}{section*.45}
+\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.m}{33}{section*.46}
+\contentsline {subsection}{\nonumberline do\_EEGvirtualChannel.sh}{33}{section*.47}
+\contentsline {subsection}{\nonumberline do\_finalizeMRIprocessing.m}{33}{section*.48}
+\contentsline {subsection}{\nonumberline do\_finalizeMRIprocessing.sh}{34}{section*.49}
+\contentsline {subsection}{\nonumberline do\_fsrecon.sh (Q)}{34}{section*.50}
+\contentsline {subsection}{\nonumberline do\_getLayers.m}{35}{section*.51}
+\contentsline {subsection}{\nonumberline do\_getLayers.sh}{35}{section*.52}
+\contentsline {subsection}{\nonumberline do\_getLayerWeights.m}{36}{section*.53}
+\contentsline {subsection}{\nonumberline do\_getLayerWeights.sh}{36}{section*.54}
+\contentsline {subsection}{\nonumberline do\_makemasksandlabels.sh (Q)}{36}{section*.55}
+\contentsline {subsection}{\nonumberline do\_movesinglevolume.sh}{36}{section*.56}
+\contentsline {subsection}{\nonumberline do\_preparecoregistration.sh (Q)}{37}{section*.57}
+\contentsline {subsection}{\nonumberline do\_preparefunctionals.sh (Q)}{37}{section*.58}
+\contentsline {subsection}{\nonumberline do\_realignment.sh (Q)}{37}{section*.59}
+\contentsline {subsection}{\nonumberline do\_split\_analyzePRF.sh}{38}{section*.60}
+\contentsline {subsection}{\nonumberline do\_tseriesinterpolation.m}{38}{section*.61}
+\contentsline {subsection}{\nonumberline do\_tseriesinterpolation.sh}{38}{section*.62}
+\contentsline {subsection}{\nonumberline EEGvisualizeVirtualChannel.m}{39}{section*.63}
+\contentsline {subsection}{\nonumberline expandROIs.m}{39}{section*.64}
+\contentsline {subsection}{\nonumberline expandROIs.sh}{39}{section*.65}
+\contentsline {subsection}{\nonumberline getToolboxes.sh}{39}{section*.66}
+\contentsline {subsection}{\nonumberline GUI2ROIs.sh}{39}{section*.67}
+\contentsline {subsection}{\nonumberline labels2masks.sh (Q)}{39}{section*.68}
+\contentsline {subsection}{\nonumberline liveupdateqsub.sh}{40}{section*.69}
+\contentsline {subsection}{\nonumberline makeLayerMovie.m}{40}{section*.70}
+\contentsline {subsection}{\nonumberline makeLayerMovie.sh}{40}{section*.71}
+\contentsline {subsection}{\nonumberline makenewsubject.sh}{40}{section*.72}
+\contentsline {subsection}{\nonumberline makeOverlays.sh (Q)}{41}{section*.73}
+\contentsline {subsection}{\nonumberline make\_PRF\_overlays.m}{41}{section*.74}
+\contentsline {subsection}{\nonumberline make\_PRF\_overlays.sh}{42}{section*.75}
+\contentsline {subsection}{\nonumberline runonqsub.sh}{42}{section*.76}
+\contentsline {subsection}{\nonumberline setupfolders.sh (Q)}{42}{section*.77}
+\contentsline {subsection}{\nonumberline waitForJobs.sh}{42}{section*.78}
+\contentsline {section}{\numberline {5}How to: Rejecting trials based on eye tracking}{43}{section.5}
+\contentsline {section}{\numberline {6}How to: Selecting visual areas based on pRF mapping}{44}{section.6}
+\contentsline {section}{\numberline {7}How to: EEG electrodes from photogrammetry}{45}{section.7}
+\contentsline {subsection}{\nonumberline Agisoft PhotoScan}{45}{section*.79}
+\contentsline {subsubsection}{\nonumberline Import Photos}{47}{section*.80}
+\contentsline {subsubsection}{\nonumberline Align Photos}{48}{section*.81}
+\contentsline {subsubsection}{\nonumberline Build Dense Cloud}{49}{section*.82}
+\contentsline {subsubsection}{\nonumberline Build Mesh}{50}{section*.83}
+\contentsline {subsubsection}{\nonumberline Build Texture}{51}{section*.84}
+\contentsline {subsubsection}{\nonumberline Export Model}{52}{section*.85}
+\contentsline {subsection}{\nonumberline janus3D}{53}{section*.86}
