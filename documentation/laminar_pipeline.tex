@@ -191,7 +191,7 @@ Scripts that are flagged with the (Q) can be submitted as a qsub job.
 \toprule
 script & memory required & time required\\\hline
   \nameref{sh:combsplt} & 64GB & $\approx 10min$ \\\hline
-  \nameref{sh:analyzePRF} & 6GB & $\approx 7h$ \\\hline
+  \nameref{sh:analyzePRF} & 6GB & $\approx 4h$ \\\hline
   \nameref{sh:applydistcorr} & 32GB & $\approx 30min$ \\\hline
   \nameref{sh:coreg} & 16GB & $\approx 30min$ \\\hline
   \nameref{sh:corravg} & 4GB & $\approx 3sec$ \\\hline
@@ -215,7 +215,7 @@ script & memory required & time required\\\hline
   \nameref{sh:prepcoreg} & 16GB & $\approx 4.5h$ \\\hline
   \nameref{sh:prepfct} & 32GB & $\approx 10min$ \\\hline
   \nameref{sh:realign} & 32GB & $\approx 30min$ \\\hline
-  \nameref{sh:splitanalyzePRF} & 480GB & $\approx 7h$ \\\hline
+  \nameref{sh:splitanalyzePRF} & 480GB & $\approx 4h$ \\\hline
   \nameref{sh:tseriesinterp} & 64GB & $\approx 20min$ \\\hline
   \nameref{sh:GUI2ROI} & 8GB & user dependent \\\hline
   \nameref{sh:lbl2msk} & 8GB & $\approx 10s$ \\\hline
@@ -261,9 +261,9 @@ script & memory required & time required\\\hline
   ]
   [1\_realignment/
   ]
-  [2\_coregistration/
+  [2\_distcorrection/
   ]
-  [3\_distcorrection/
+  [3\_coregistration/
   ]
   [4\_retinotopy/
   ]
@@ -403,7 +403,7 @@ b0=\frac{\sum_{i=0}^{N_{inv}-1}V_{(N-4i)}}{N_{inv}}
 \end{equation}
 \noindent, where $V$ is the set of all volumes within the last task block, $N_{inv}$ is the number of volumes recorded with reversed phase-encoding blips and $N$ is the number of volumes in $V$. $b0_{inv}$ is the respective time series average of all $N_{inv}$ inverted volumes. A graphical depiction can be found in Figure~\ref{fig:coregdist} bottom. Once those two averages are created, the actual field distortion estimation is performed using FSL's \texttt{topup} (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup}}) and applies it to the motion corrected data.\\
 
-\noindent Results can be found in 3\_distcorrection/\\
+\noindent Results can be found in 2\_distcorrection/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -418,7 +418,7 @@ After corrections for motion and field distortion, functional space was register
 \end{equation}
 \noindent, where $V$ is the set of all task volumes across all four blocks and $N$ is the size of $V$. Figure~\ref{fig:coregdist} top illustrates the procedures of volume selection and averaging.\\
 
-\noindent Results can be found in 2\_coregistration/\\
+\noindent Results can be found in 3\_coregistration/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -432,7 +432,7 @@ After corrections for motion and field distortion, functional space was register
 fMRI data will be co-registered to the anatomical T1 scan based on the gray and white matter boundaries obtained from FreeSurfer. Furthermore partial and full brain masks will be created, including gray and white matter and brain. Co-registration exploits the fact, that due regular interuptions of the sequence in order to obtain a clean EEG signal, the amplitude drops off. In fact every 4 volumes the scanner stoped in our experiment and EEG data was collected. For the field to reach a steady state, the signal will always drop off similarly.\\
 \noindent Computing the difference between every 4th and 1st volume and averaging, leads to a T1-like contrast, that was used to otimize functional to anatomical registration. A graphical depiction can be found in Figure~\ref{fig:coregdist} top.\\
 
-\noindent Results can be found in 2\_coregistration/\\
+\noindent Results can be found in 3\_coregistration/\\
 \begin{table}[h]
 %\centering
 \begin{tabular}{l | r}
@@ -454,7 +454,7 @@ maximum memory required & approx time required\\\toprule
 \end{lstlisting}
 Gray matter boundaries from the FreeSurfer segmentation will be used to register the partial fMRI volumes to the anatomical space. This is done using FreeSurfer's \texttt{bbregister} function. The toolbox OpenFmriAnalysis (\href{https://github.com/TimVanMourik/OpenFmriAnalysis}{\nolinkurl{https://github.com/TimVanMourik/OpenFmriAnalysis}}) is used to perform this step and output a registration movie to C\_miscResults. Furthermore gray and white matter masks are transformed into the functional space.\\
 
-\noindent Results can be found in 2\_coregistration/\\
+\noindent Results can be found in 3\_coregistration/\\
 \begin{lstlisting}[
     language=Shell,
     basicstyle=\ttfamily,
@@ -809,7 +809,7 @@ Applies distortion correction to all functional data.\\
 \noindent Under the hood:
 \begin{itemize}
 \item distortion correction is applied to the full set of functionals using the \texttt{OUTPUT} of topup (\texttt{topup [$\ldots$] --out=OUTPUT}) as well as acquisition\_parameters.txt (Using \texttt{--method=jac})
-\item all results are stored in /3\_distcorrection
+\item all results are stored in /2\_distcorrection
 \item all results have the prefix "corrected\_"
 \end{itemize}
 
@@ -822,7 +822,7 @@ The script doing the actual co-registration. Uses wrapper functions from OpenFmr
 \noindent Under the hood:
 \begin{itemize}
 \item calls \texttt{bbregister}
-\item results are stored in /2\_coregistration
+\item results are stored in /3\_coregistration
 \item yields boundaries.mat, matrix.mat, bbregister.dat, transmat.txt, transmatinv.txt
 \end{itemize}
 
@@ -835,7 +835,7 @@ Wrapper function for running \texttt{\nameref{m:coreg}}, that in turn will be us
 Due to the subtraction of the 1st from the 4th volume the area outside the brain has the highest value. In order to correct this the lowest value will be shifted to zero the a certain part of the higher values are cut (e.g. 0.975).\\
 
 \noindent The result should be checked using\\
-\texttt{fsleyes ../2\_coregistration/Inplane/MCTemplateThr*.nii.gz} to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later co-registration.\\
+\texttt{fsleyes ../3\_coregistration/Inplane/MCTemplateThr*.nii.gz} to ensure that the area outside the brain is nulled. Note that it can happen that some areas within the brain are nulled as well. If they are not too wide spread they do not affect later co-registration.\\
 
 \subsection{do\_distcorr.sh (Q)}
 \label{sh:distcorr}
@@ -852,9 +852,9 @@ Uses the averge volume of the inverted set of images in /niftis/inverted as refe
 \noindent Under the hood:
 \begin{itemize}
 \item reference volumes (normal + inverted) are selected in order to do the field distortion estimate (selection: see above).
-\item selected reference volumes are merged into a single file (/3\_distcorrection/all\_b0.nii.gz)
+\item selected reference volumes are merged into a single file (/2\_distcorrection/all\_b0.nii.gz)
 \item topup is called using the merged (normal + inverted) .nii and performs field mapping accoriding to the specifications in /A\_helperfiles/b02b0.cnf using the acquisition parameters specified in acquisition\_parameters.txt
-\item all results are stored in /3\_distcorrection
+\item all results are stored in /2\_distcorrection
 \end{itemize}
 
 \subsection{do\_EEGbeamformer.m}
@@ -1186,7 +1186,7 @@ Uses FreeSurfer reconstruction to create masks for CSF, gray matter and white ma
     sh do_movesinglevolume.sh InputVolume.nii.gz transmat.txt OutputVolume.nii.gz
 \end{lstlisting}
 \begin{itemize}
-\item results are stored in /2\_coregistration
+\item results are stored in /3\_coregistration
 \item coregistered functional masks have the prefix "fct" and the suffix "coreg"
 \end{itemize}
 
@@ -1257,7 +1257,6 @@ Wrapper function for running \texttt{\nameref{m:tseriesinterp}} via qsub. Variab
 \begin{itemize}
 \item submits a MATLAB job using qsub calling \texttt{\nameref{m:tseriesinterp}} using the below settings
 \item default number of blocks: 3
-\item default TR: 2.7s
 \item default Mask Threshold: 0.01
 \item default rescaled stimulus size: 100px
 \end{itemize}
@@ -1287,8 +1286,8 @@ This script spawns an instance for \texttt{tksurfer} (FreeSurfer)\\
 Converts surface labels defined for ?h, V1,2,3 into a volume. For this purpose FreeSurfer's \texttt{mri\_label2vol} will be called using the following configuration:
 \begin{itemize}
   \item --label /0\_freesurfer/label/?h.V?.ret.label (the label to be converted)
-  \item --temp /2\_coregistration/refVol (shape template volume)
-  \item --reg /2\_coregistration/bbregister.dat (co-registration file)
+  \item --temp /3\_coregistration/refVol (shape template volume)
+  \item --reg /3\_coregistration/bbregister.dat (co-registration file)
   \item -o /4\_retinotopy/?hV?maks.nii.gz (output volume's file name)
 \end{itemize}
 
