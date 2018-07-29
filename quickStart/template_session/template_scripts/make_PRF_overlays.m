@@ -24,13 +24,13 @@ ang_=resultsall.ang./180.*pi;
 ang_map.img(resultsall.options.vxs)=ang_;
 save_untouch_nii(ang_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'ang_map.nii']);
 %% Ecc
-degvisdeg=7;
+degvisdeg=10;
 ecc_map=nii;
 ecc_=resultsall.ecc.*degvisdeg/size(images{1},2);
 
 ecc_map.img(resultsall.options.vxs)=ecc_;
 ecc_map.img(resultsall.R2<=0)=NaN;
-ecc_map.img(ecc_map.img>degvisdeg)=NaN;
+ecc_map.img(ecc_map.img>degvisdeg & ecc_map.img<0.5)=NaN;
 save_untouch_nii(ecc_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'ecc_map.nii']);
 %% Expt
 expt_map=nii;
@@ -45,7 +45,7 @@ r2_map=nii;
 r2_map.img(resultsall.options.vxs)=resultsall.R2;
 save_untouch_nii(r2_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'r2_map.nii']);
 %% Xpos Ypos
-degvisdeg=7;
+degvisdeg=10;
 cfactor = degvisdeg/size(images{1},2);
 
 xpos = ecc_ .* cos(resultsall.ang./180.*pi) .* cfactor;
