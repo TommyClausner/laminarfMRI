@@ -58,7 +58,7 @@ export PATH=$FREESURFER_HOME/bin:$PATH
 LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltktixblt/lib/:$LD_LIBRARY_PATH
 fi
 export SUBJECTS_DIR=$DIR
-DIR=$DIR/2_coregistration
+DIR=$DIR/3_coregistration
 cd $DIR
 max_=$(fslstats MCTemplate.nii.gz -R | awk '{print $2}')
 min_=$(fslstats MCTemplate.nii.gz -R | awk '{print $1}')

@@ -6,7 +6,7 @@
 
 # General information #
 # label=GUI2ROIs
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/GUI2ROIs.sh
+# file=GUI2ROIs.sh
 # useqsub=false
 # shortLabel=GUI2La
 
@@ -57,8 +57,8 @@ export PATH=$FREESURFER_HOME/bin:$PATH
 LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltkt$
 fi
 export SUBJECTS_DIR=$DIR/
-tksurfer $SubjectFolder lh inflated -curv -overlay $DIR/4_retinotopy/lh.ang.mgh -overlay-reg $DIR/2_coregistration/bbregister.dat -fminmax 0.01 3.14
-tksurfer $SubjectFolder rh inflated -curv -overlay $DIR/4_retinotopy/rh.ang.mgh -overlay-reg $DIR/2_coregistration/bbregister.dat -fminmax 0.01 3.14
+tksurfer $SubjectFolder lh inflated -curv -overlay $DIR/4_retinotopy/lh.ang.mgh -overlay-reg $DIR/3_coregistration/bbregister.dat -fminmax 0.01 3.14
+tksurfer $SubjectFolder rh inflated -curv -overlay $DIR/4_retinotopy/rh.ang.mgh -overlay-reg $DIR/3_coregistration/bbregister.dat -fminmax 0.01 3.14
 
 
 

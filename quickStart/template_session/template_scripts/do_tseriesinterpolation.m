@@ -17,7 +17,7 @@ load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'params.mat']);
 disp('done.')
 
 disp('loading gray matter mask...')
-filetouse=[mainpath filesep '..' filesep '2_coregistration' filesep 'fctgraymattercoreg.nii'];
+filetouse=[mainpath filesep '..' filesep '3_coregistration' filesep 'fctgraymattercoreg.nii'];
 if exist(filetouse,'file')==0
     unix(['gunzip -f -c ' filetouse '.gz >' filetouse]);
 end
@@ -55,7 +55,7 @@ datatmp=cell(numblocks,1);
 stimsin=cell(numblocks,1);
 for n=[1:numblocks]-1
     
-    filetouse=[mainpath filesep '..' filesep '3_distcorrection' filesep 'corrected_test_ret_mcf' num2str(n) '.nii'];
+    filetouse=[mainpath filesep '..' filesep '2_distcorrection' filesep 'corrected_test_ret_mcf' num2str(n) '.nii'];
     if exist(filetouse,'file')==0
         unix(['gunzip -f -c ' filetouse '.gz >' filetouse]);
     end

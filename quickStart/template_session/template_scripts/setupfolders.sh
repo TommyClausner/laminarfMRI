@@ -19,10 +19,10 @@ mkdir 0_freesurfer
 
 mkdir 1_realignment
 
-mkdir 2_coregistration
+mkdir 2_distcorrection
+mkdir 2_distcorrection/refvolumes
 
-mkdir 3_distcorrection
-mkdir 3_distcorrection/refvolumes
+mkdir 3_coregistration
 
 mkdir 4_retinotopy
 

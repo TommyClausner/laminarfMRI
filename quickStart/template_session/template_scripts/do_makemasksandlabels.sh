@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_makemasksandlabels
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_makemasksandlabels.sh
+# file=do_makemasksandlabels.sh
 # useqsub=false
 # shortLabel=masks
 
@@ -59,7 +59,7 @@ export PATH=$FREESURFER_HOME/bin:$PATH
 LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltktixblt/lib/:$LD_LIBRARY_PATH
 fi
 export SUBJECTS_DIR=$DIR
-DIR=$DIR/2_coregistration
+DIR=$DIR/3_coregistration
 cd $DIR
 #optional --out_orientation PSL or RAS or you name it
 mri_convert $orient -rt nearest --reslice_like $DIR/../rawData/niftis/t1/* $DIR/../0_freesurfer/mri/orig.mgz t1.nii.gz

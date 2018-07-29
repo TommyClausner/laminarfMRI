@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_distcorr
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_distcorr.sh
+# file=do_distcorr.sh
 # useqsub=true
 # shortLabel=DisC
 
@@ -30,9 +30,9 @@ MiscVarName=none
 
 if [[ $(hostname -s) == *"dccn"* ]]
 then
-DIR=$1/../3_distcorrection
+DIR=$1/../2_distcorrection
 else
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../3_distcorrection"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../2_distcorrection"
 fi
 cd $DIR
 mkdir refvolumes
@@ -61,7 +61,7 @@ echo done.
 fslmerge -t $DIR/all_b0 $DIR/refvolumes/*.nii.gz
 if [[ include_coreg -eq 1 ]]
 then
-flirt -applyxfm -in $DIR/all_b0.nii.gz -ref $DIR/all_b0.nii.gz -init $DIR/../2_coregistration/transmatconv.txt -out all_b0.nii.gz
+flirt -applyxfm -in $DIR/all_b0.nii.gz -ref $DIR/all_b0.nii.gz -init $DIR/../3_coregistration/transmatconv.txt -out all_b0.nii.gz
 fi
 echo estimating field distortion...
 topup --imain=$DIR/all_b0.nii.gz --datain=$DIR/../A_helperfiles/acquisition_parameters.txt --config=$DIR/../A_helperfiles/b02b0.cnf --out=$DIR/topup_results_out --fout=$DIR/topup_field_out --iout=$DIR/topup_unwarped_images_out

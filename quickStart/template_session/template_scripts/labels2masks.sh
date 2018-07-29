@@ -57,12 +57,12 @@ export PATH=$FREESURFER_HOME/bin:$PATH
 LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltkt$
 fi
 export SUBJECTS_DIR=$DIR
-mri_label2vol --label $DIR/0_freesurfer/label/lh.V1.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV1mask.nii.gz
-mri_label2vol --label $DIR/0_freesurfer/label/rh.V1.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV1mask.nii.gz
-mri_label2vol --label $DIR/0_freesurfer/label/lh.V2.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV2mask.nii.gz
-mri_label2vol --label $DIR/0_freesurfer/label/rh.V2.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV2mask.nii.gz
-mri_label2vol --label $DIR/0_freesurfer/label/lh.V3.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV3mask.nii.gz
-mri_label2vol --label $DIR/0_freesurfer/label/rh.V3.ret.label --temp $DIR/2_coregistration/$refVol --reg $DIR/2_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV3mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/lh.V1.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV1mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/rh.V1.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV1mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/lh.V2.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV2mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/rh.V2.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV2mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/lh.V3.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/lhV3mask.nii.gz
+mri_label2vol --label $DIR/0_freesurfer/label/rh.V3.ret.label --temp $DIR/3_coregistration/$refVol --reg $DIR/3_coregistration/bbregister.dat --o $DIR/4_retinotopy/rhV3mask.nii.gz
 
 
 

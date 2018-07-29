@@ -15,7 +15,7 @@ load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'images.mat']);
 disp('done.')
 
 disp('loading gray matter mask...')
-filetouse=[mainpath filesep '..' filesep '2_coregistration' filesep 'fctgraymattercoreg.nii'];
+filetouse=[mainpath filesep '..' filesep '3_coregistration' filesep 'fctgraymattercoreg.nii'];
 if exist(filetouse,'file')==0
     unix(['gunzip -f -c ' filetouse '.gz >' filetouse]);
 end

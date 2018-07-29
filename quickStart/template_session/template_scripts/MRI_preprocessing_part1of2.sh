@@ -15,5 +15,5 @@ echo prepare coregistration...
 sh runonqsub.sh 16gb do_preparecoregistration.sh
 sh do_correctavgdiff.sh
 echo done.
-echo "CHECK RESULT $DIR/../2_coregistration/MCTemplateThrCont.nii AND CONTINUE WITH PART 2"
+echo "CHECK RESULT $DIR/../3_coregistration/MCTemplateThrCont.nii AND CONTINUE WITH PART 2"
 

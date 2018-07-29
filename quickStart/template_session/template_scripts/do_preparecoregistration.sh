@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_preparecoregistration
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_preparecoregistration.sh
+# file=do_preparecoregistration.sh
 # useqsub=true
 # shortLabel=prCo
 
@@ -30,13 +30,13 @@ MiscVarName=none
 
 if [[ $(hostname -s) == *"dccn"* ]]
 then
-DIR=$1/../2_coregistration
+DIR=$1/../3_coregistration
 else
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../2_coregistration"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../3_coregistration"
 fi
 cd $DIR
 
-fslmerge -t $DIR/MCTemplatepre $DIR/../3_distcorrection/*corrected_task*.nii*
+fslmerge -t $DIR/MCTemplatepre $DIR/../2_distcorrection/*corrected_task*.nii*
 
 mkdir $DIR/tmp
 numvols=$(fslval $DIR/MCTemplatepre.nii.gz dim4)

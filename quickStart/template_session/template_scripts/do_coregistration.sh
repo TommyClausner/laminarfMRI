@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_coregistration
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_coregistration.sh
+# file=do_coregistration.sh
 # useqsub=false
 # shortLabel=Coreg
 
@@ -30,8 +30,8 @@ MiscVarName=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-cp $DIR/../2_coregistration/$registerTo $DIR/../2_coregistration/old$registerTo
-gunzip $DIR/../2_coregistration/$registerTo
+cp $DIR/../3_coregistration/$registerTo $DIR/../3_coregistration/old$registerTo
+gunzip $DIR/../3_coregistration/$registerTo
 nameadd=$(date +"%m%d%Y%H%M%S")
 echo "mainpath=" "'$DIR';regvol='`basename $registerTo .gz`'">$DIR/tmp_$nameadd.m
 cat $DIR/do_coregistration.m>>$DIR/tmp_$nameadd.m

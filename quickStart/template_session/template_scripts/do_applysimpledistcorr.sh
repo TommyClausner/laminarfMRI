@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_applysimpledistcorr
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_applysimpledistcorr.sh
+# file=do_applysimpledistcorr.sh
 # useqsub=true
 # shortLabel=aDC
 
@@ -30,9 +30,9 @@ MiscVarName=none
 
 if [[ $(hostname -s) == *"dccn"* ]]
 then
-DIR=$1/../3_distcorrection
+DIR=$1/../2_distcorrection
 else
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../3_distcorrection"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../2_distcorrection"
 fi
 cd $DIR
 echo applying distortion correction...
