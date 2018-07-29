@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 JUL 2018 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 JUL 2018 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1255,10 +1255,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [9]
 
-LaTeX Warning: Float too large for page by 59.38681pt on input line 331.
+LaTeX Warning: Float too large for page by 72.0701pt on input line 333.
 
 [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
+Underfull \hbox (badness 10000) in paragraph at lines 338--339
 
  []
 
@@ -1272,27 +1272,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:351: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:353: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.351     breaklines=true]
+l.353     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:351: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:353: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.351     breaklines=true]
+l.353     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1307,27 +1307,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:362: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:364: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.362     breaklines=true]
+l.364     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:362: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:364: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.362     breaklines=true]
+l.364     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1342,27 +1342,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:372: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:374: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.372     breaklines=true]
+l.374     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:372: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:374: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.372     breaklines=true]
+l.374     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -1370,14 +1370,14 @@ If that doesn't work, type  X <return>  to quit.
 [12
 
 ]
-Overfull \hbox (1.08194pt too wide) in paragraph at lines 389--390
+Overfull \hbox (1.08194pt too wide) in paragraph at lines 391--392
 \OT1/cmr/m/n/12 Motion cor-rec-tion (re-align-ment) will be per-formed us-ing F
 SL's \OT1/cmtt/m/n/12 mcflirt \OT1/cmr/m/n/12 func-tion ([]$\OT1/cmtt/m/n/12 ht
 tps :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 
  []
 
@@ -1391,38 +1391,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:395: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:397: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.395     breaklines=true]
+l.397     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:395: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:397: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.395     breaklines=true]
+l.397     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--395
+Underfull \hbox (badness 10000) in paragraph at lines 393--397
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 403--405
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
 
  []
 
@@ -1436,38 +1436,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:410: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:412: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.410     breaklines=true]
+l.412     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:410: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:412: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.410     breaklines=true]
+l.412     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--410
+Underfull \hbox (badness 10000) in paragraph at lines 408--412
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 418--420
+Underfull \hbox (badness 10000) in paragraph at lines 420--422
 
  []
 
@@ -1481,43 +1481,43 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:425: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:427: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.425     breaklines=true]
+l.427     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:425: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:427: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.425     breaklines=true]
+l.427     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--425
+Underfull \hbox (badness 10000) in paragraph at lines 423--427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--434
+Underfull \hbox (badness 10000) in paragraph at lines 434--436
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 447--448
 
  []
 
@@ -1531,44 +1531,44 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:451: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:453: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.451     breaklines=true]
+l.453     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:451: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:453: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.451     breaklines=true]
+l.453     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--451
+Underfull \hbox (badness 10000) in paragraph at lines 449--453
 
  []
 
 [14]
-Overfull \hbox (31.38171pt too wide) in paragraph at lines 455--456
+Overfull \hbox (31.38171pt too wide) in paragraph at lines 457--458
 \OT1/cmtt/m/n/12 bbregister \OT1/cmr/m/n/12 func-tion. The tool-box OpenFm-ri-A
 nal-y-sis ([]$\OT1/cmtt/m/n/12 https : / / github . com / TimVanMourik /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 455--456
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
 
@@ -1582,33 +1582,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:461: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:463: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.461     breaklines=true]
+l.463     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:461: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:463: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.461     breaklines=true]
+l.463     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 457--461
+Underfull \hbox (badness 10000) in paragraph at lines 459--463
 
  []
 
@@ -1616,10 +1616,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 457--461
 File: figures/coregdist.pdf Graphic file (type pdf)
 
 <use figures/coregdist.pdf>
-Package pdftex.def Info: figures/coregdist.pdf used on input line 469.
+Package pdftex.def Info: figures/coregdist.pdf used on input line 471.
 (pdftex.def)             Requested size: 358.50612pt x 268.8828pt.
  [15 <./figures/coregdist.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 486--488
+Underfull \hbox (badness 10000) in paragraph at lines 488--490
 
  []
 
@@ -1633,38 +1633,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:493: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:495: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.493     breaklines=true]
+l.495     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:493: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:495: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.493     breaklines=true]
+l.495     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--493
+Underfull \hbox (badness 10000) in paragraph at lines 491--495
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--498
+Underfull \hbox (badness 10000) in paragraph at lines 499--500
 
  []
 
@@ -1678,38 +1678,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:503: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:505: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.503     breaklines=true]
+l.505     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:503: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:505: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.503     breaklines=true]
+l.505     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 499--503
+Underfull \hbox (badness 10000) in paragraph at lines 501--505
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
 
  []
 
@@ -1723,33 +1723,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:514: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:516: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.514     breaklines=true]
+l.516     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:514: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:516: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.514     breaklines=true]
+l.516     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 510--514
+Underfull \hbox (badness 10000) in paragraph at lines 512--516
 
  []
 
@@ -1763,38 +1763,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:535: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:537: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.535     breaklines=true]
+l.537     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:535: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:537: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.535     breaklines=true]
+l.537     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--535
+Underfull \hbox (badness 10000) in paragraph at lines 533--537
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--540
+Underfull \hbox (badness 10000) in paragraph at lines 541--542
 
  []
 
@@ -1808,33 +1808,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:545: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:547: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.545     breaklines=true]
+l.547     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:545: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:547: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.545     breaklines=true]
+l.547     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 541--545
+Underfull \hbox (badness 10000) in paragraph at lines 543--547
 
  []
 
@@ -1842,16 +1842,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 541--545
 File: figures/ROIselpRF.pdf Graphic file (type pdf)
 
 <use figures/ROIselpRF.pdf>
-Package pdftex.def Info: figures/ROIselpRF.pdf used on input line 553.
+Package pdftex.def Info: figures/ROIselpRF.pdf used on input line 555.
 (pdftex.def)             Requested size: 448.13095pt x 207.16292pt.
 
-Overfull \hbox (11.82315pt too wide) in paragraph at lines 558--560
+Overfull \hbox (11.82315pt too wide) in paragraph at lines 560--562
 \OT1/cmr/m/n/12 Note that us-ing FreeSurfer's free-view yields bet-ter plot-tin
 g func-tion-al-ity, how-ever \OT1/cmtt/m/n/12 tksurfer
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 558--560
+Underfull \hbox (badness 10000) in paragraph at lines 560--562
 
  []
 
@@ -1865,38 +1865,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:565: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:567: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.565     breaklines=true]
+l.567     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:565: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:567: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.565     breaklines=true]
+l.567     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 561--565
+Underfull \hbox (badness 10000) in paragraph at lines 563--567
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--587
+Underfull \hbox (badness 10000) in paragraph at lines 576--589
 
  []
 
@@ -1911,38 +1911,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:592: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:594: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.592     breaklines=true]
+l.594     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:592: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:594: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.592     breaklines=true]
+l.594     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 588--592
+Underfull \hbox (badness 10000) in paragraph at lines 590--594
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--597
+Underfull \hbox (badness 10000) in paragraph at lines 598--599
 
  []
 
@@ -1956,44 +1956,44 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:602: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:604: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.602     breaklines=true]
+l.604     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:602: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:604: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.602     breaklines=true]
+l.604     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--602
+Underfull \hbox (badness 10000) in paragraph at lines 600--604
 
  []
 
 
-Overfull \hbox (41.50377pt too wide) in paragraph at lines 606--607
+Overfull \hbox (41.50377pt too wide) in paragraph at lines 608--609
 \OT1/cmr/m/n/12 as source model. For this pur-pose Work-bench ([]$\OT1/cmtt/m/n
 /12 https : / / github . com / Washington-[]University /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--607
+Underfull \hbox (badness 10000) in paragraph at lines 608--609
 
  []
 
@@ -2007,38 +2007,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:612: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:614: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.612     breaklines=true]
+l.614     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:612: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:614: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.612     breaklines=true]
+l.614     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 608--612
+Underfull \hbox (badness 10000) in paragraph at lines 610--614
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 619--630
+Underfull \hbox (badness 10000) in paragraph at lines 621--632
 
  []
 
@@ -2052,50 +2052,50 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:635: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:637: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.635     breaklines=true]
+l.637     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:635: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:637: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.635     breaklines=true]
+l.637     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--635
+Underfull \hbox (badness 10000) in paragraph at lines 633--637
 
  []
 
 
-Overfull \hbox (67.65895pt too wide) in paragraph at lines 639--640
+Overfull \hbox (67.65895pt too wide) in paragraph at lines 641--642
 \OT1/cmr/m/n/12 by start-ing an in-ter-ac-tive MAT-LAB ses-sion and open-ing th
 e script []\OT1/cmtt/m/n/12 do[]EEGelectrodeRegistration.m[]\OT1/cmr/m/n/12 .
  []
 
 
-Overfull \hbox (3.57237pt too wide) in paragraph at lines 639--640
+Overfull \hbox (3.57237pt too wide) in paragraph at lines 641--642
 \OT1/cmr/m/n/12 lo-ca-tions to anatom-i-cal MR data. See []$\OT1/cmtt/m/n/12 ht
 tp : / / www . fieldtriptoolbox . org / reference /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 639--640
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
 
  []
 
@@ -2109,33 +2109,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:646: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:648: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.646     breaklines=true]
+l.648     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:646: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:648: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.646     breaklines=true]
+l.648     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 650--651
+Underfull \hbox (badness 10000) in paragraph at lines 652--653
 
  []
 
@@ -2149,33 +2149,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:656: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:658: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.656     breaklines=true]
+l.658     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:656: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:658: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.656     breaklines=true]
+l.658     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 652--656
+Underfull \hbox (badness 10000) in paragraph at lines 654--658
 
  []
 
@@ -2183,23 +2183,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 652--656
 File: figures/exampleSourcemodel.pdf Graphic file (type pdf)
 
 <use figures/exampleSourcemodel.pdf>
-Package pdftex.def Info: figures/exampleSourcemodel.pdf used on input line 662.
+Package pdftex.def Info: figures/exampleSourcemodel.pdf used on input line 664.
 
 (pdftex.def)             Requested size: 358.50612pt x 268.8828pt.
 
-Underfull \hbox (badness 1194) in paragraph at lines 663--663
+Underfull \hbox (badness 1194) in paragraph at lines 665--665
 [][][]\OT1/cmr/m/n/12 Example source model in-clud-ing vi-sual ROIs. Note that 
 for demon-
  []
 
 
-Underfull \hbox (badness 1092) in paragraph at lines 663--663
+Underfull \hbox (badness 1092) in paragraph at lines 665--665
 \OT1/cmr/m/n/12 V1 for both hemi-spheres will be used. This plot was cre-ated u
 s-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 678--680
+Underfull \hbox (badness 10000) in paragraph at lines 680--682
 
  []
 
@@ -2214,44 +2214,44 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:685: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:687: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.685     breaklines=true]
+l.687     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:685: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:687: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.685     breaklines=true]
+l.687     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 681--685
+Underfull \hbox (badness 10000) in paragraph at lines 683--687
 
  []
 
 
-Overfull \hbox (3.6519pt too wide) in paragraph at lines 690--691
+Overfull \hbox (3.6519pt too wide) in paragraph at lines 692--693
 \OT1/cmr/m/n/12 Afterwards a time fre-quency anal-y-sis ([]$\OT1/cmtt/m/n/12 ht
 tp : / / www . fieldtriptoolbox . org / reference /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 690--691
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
 
  []
 
@@ -2265,43 +2265,43 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:696: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:698: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696     breaklines=true]
+l.698     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:696: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:698: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696     breaklines=true]
+l.698     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 692--696
+Underfull \hbox (badness 10000) in paragraph at lines 694--698
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 700--701
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 702--712
+Underfull \hbox (badness 10000) in paragraph at lines 704--714
 
  []
 
@@ -2315,33 +2315,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:717: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:719: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.717     breaklines=true]
+l.719     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:717: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:719: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.717     breaklines=true]
+l.719     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 713--717
+Underfull \hbox (badness 10000) in paragraph at lines 715--719
 
  []
 
@@ -2349,7 +2349,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 713--717
 File: figures/exampleGamma.pdf Graphic file (type pdf)
 
 <use figures/exampleGamma.pdf>
-Package pdftex.def Info: figures/exampleGamma.pdf used on input line 723.
+Package pdftex.def Info: figures/exampleGamma.pdf used on input line 725.
 (pdftex.def)             Requested size: 448.13095pt x 207.16292pt.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -2362,48 +2362,48 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:734: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:736: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.734     breaklines=true]
+l.736     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:734: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:736: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.734     breaklines=true]
+l.736     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [22] [23 <./figures/exampleGamma.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 767--768
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 769--770
+Underfull \hbox (badness 10000) in paragraph at lines 771--772
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 773--774
+Underfull \hbox (badness 10000) in paragraph at lines 775--776
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 777--778
+Underfull \hbox (badness 10000) in paragraph at lines 779--780
 
  []
 
@@ -2417,27 +2417,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:793: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:795: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.793     breaklines=true]
+l.795     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:793: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:795: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.793     breaklines=true]
+l.795     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2452,64 +2452,59 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:800: Package Listings Error: Couldn't load requested lan
+./laminar_pipeline.tex:802: Package Listings Error: Couldn't load requested lan
 guage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.800     breaklines=true]
+l.802     breaklines=true]
                           
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:800: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:802: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.800     breaklines=true]
+l.802     breaklines=true]
                           
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 807--808
+Underfull \hbox (badness 10000) in paragraph at lines 809--810
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 818--819
+Underfull \hbox (badness 10000) in paragraph at lines 820--821
 
  []
 
 
-Overfull \hbox (3.96231pt too wide) in paragraph at lines 831--832
+Overfull \hbox (3.96231pt too wide) in paragraph at lines 833--834
 \OT1/cmr/m/n/12 Wrapper func-tion for run-ning []\OT1/cmtt/m/n/12 do[]coregistr
 ation.m[]\OT1/cmr/m/n/12 , that in turn will be us-ing FreeSurfer
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 831--832
+Underfull \hbox (badness 10000) in paragraph at lines 833--834
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 835--836
+Underfull \hbox (badness 10000) in paragraph at lines 837--838
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 837--839
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 842--843
+Underfull \hbox (badness 10000) in paragraph at lines 839--841
 
  []
 
@@ -2534,7 +2529,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 850--851
  []
 
 
-Overfull \hbox (14.2659pt too wide) in paragraph at lines 855--856
+Underfull \hbox (badness 10000) in paragraph at lines 852--853
+
+ []
+
+
+Overfull \hbox (14.2659pt too wide) in paragraph at lines 857--858
 []\OT1/cmr/m/n/12 selected ref-er-ence vol-umes are merged into a sin-gle file 
 (/2[]distcorrection/all[]b0.nii.gz) 
  []
@@ -2542,132 +2542,132 @@ Overfull \hbox (14.2659pt too wide) in paragraph at lines 855--856
 [26] (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-Underfull \hbox (badness 10000) in paragraph at lines 869--870
+Underfull \hbox (badness 10000) in paragraph at lines 871--872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 873--874
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 877--878
+Underfull \hbox (badness 10000) in paragraph at lines 879--880
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 890--891
+Underfull \hbox (badness 10000) in paragraph at lines 892--893
 
  []
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 904--905
+Underfull \hbox (badness 10000) in paragraph at lines 906--907
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 908--909
+Underfull \hbox (badness 10000) in paragraph at lines 910--911
 
  []
 
 
-Overfull \hbox (15.20695pt too wide) in paragraph at lines 919--921
+Overfull \hbox (15.20695pt too wide) in paragraph at lines 921--923
 \OT1/cmr/m/n/12 more in-for-ma-tion see []$\OT1/cmtt/m/n/12 http : / / www . fi
 eldtriptoolbox . org / reference / ft _ freqanalysis$[]\OT1/cmr/m/n/12 . 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 919--921
+Underfull \hbox (badness 10000) in paragraph at lines 921--923
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 929.
+(Font)              <10.95> on input line 931.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 934.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 936.
 
-Underfull \hbox (badness 10000) in paragraph at lines 941--942
+Underfull \hbox (badness 10000) in paragraph at lines 943--944
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 945--946
+Underfull \hbox (badness 10000) in paragraph at lines 947--948
 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 949--950
+Underfull \hbox (badness 10000) in paragraph at lines 951--952
 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 963.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 965.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/it' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 963.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 965.
  [29]
-Underfull \hbox (badness 10000) in paragraph at lines 993--994
+Underfull \hbox (badness 10000) in paragraph at lines 995--996
 
  []
 
 
-Overfull \hbox (29.44113pt too wide) in paragraph at lines 997--999
+Overfull \hbox (29.44113pt too wide) in paragraph at lines 999--1001
 \OT1/cmr/m/n/12 Sets up source-model (dipole model) for source anal-y-sis us-in
 g the re-sult of []\OT1/cmtt/m/n/12 do[]EEGprepareFS.sh[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 997--999
+Underfull \hbox (badness 10000) in paragraph at lines 999--1001
 
  []
 
 
-Overfull \hbox (12.21193pt too wide) in paragraph at lines 1004--1005
+Overfull \hbox (12.21193pt too wide) in paragraph at lines 1006--1007
 \OT1/cmr/m/n/12 are \OT1/cmtt/m/n/12 Model=FEM \OT1/cmr/m/n/12 and \OT1/cmtt/m/
 n/12 Model=BEM \OT1/cmr/m/n/12 (must be in ac-cor-dance with []\OT1/cmtt/m/n/12
  do[]EEGprepareHeadmodel.sh[]\OT1/cmr/m/n/12 ). 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1004--1005
+Underfull \hbox (badness 10000) in paragraph at lines 1006--1007
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1020--1021
+Underfull \hbox (badness 10000) in paragraph at lines 1022--1023
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
+Underfull \hbox (badness 10000) in paragraph at lines 1036--1037
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+Underfull \hbox (badness 10000) in paragraph at lines 1040--1041
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1042--1043
+Underfull \hbox (badness 10000) in paragraph at lines 1044--1045
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1047
+Underfull \hbox (badness 10000) in paragraph at lines 1048--1049
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 1058--1059
+Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
 
  []
 
-./laminar_pipeline.tex:1060: Undefined control sequence.
-l.1060 ...estimation based on the variable \textff
+./laminar_pipeline.tex:1062: Undefined control sequence.
+l.1062 ...estimation based on the variable \textff
                                                   {noiseEstWin=[-0.5 -0.1];}\\
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2676,32 +2676,32 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1061
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1063
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
+Underfull \hbox (badness 10000) in paragraph at lines 1066--1067
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1075--1076
+Underfull \hbox (badness 10000) in paragraph at lines 1077--1078
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1085--1086
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1090
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1092
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1093--1094
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1096
 
  []
 
@@ -2715,27 +2715,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1099: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1101: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1099     breaklines=true]
+l.1101     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1099: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1101: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1099     breaklines=true]
+l.1101     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2750,38 +2750,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1108: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1110: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1108     breaklines=true]
+l.1110     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1108: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1110: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1108     breaklines=true]
+l.1110     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1104--1108
+Underfull \hbox (badness 10000) in paragraph at lines 1106--1110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1114
+Underfull \hbox (badness 10000) in paragraph at lines 1115--1116
 
  []
 
@@ -2795,110 +2795,70 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1119: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1121: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1119     breaklines=true]
+l.1121     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1119: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1121: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1119     breaklines=true]
+l.1121     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1122--1123
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1125
 
  []
 
 
-Overfull \hbox (57.17815pt too wide) in paragraph at lines 1126--1127
+Overfull \hbox (57.17815pt too wide) in paragraph at lines 1128--1129
 \OT1/cmr/m/n/12 Utilizes the tool-box OpenFm-ri-Anal-y-sis ([]$\OT1/cmtt/m/n/12
  https : / / github . com / TimVanMourik / OpenFmriAnalysis$[]\OT1/cmr/m/n/12 )
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1126--1127
+Underfull \hbox (badness 10000) in paragraph at lines 1128--1129
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1166
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1168
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1169--1170
+Underfull \hbox (badness 10000) in paragraph at lines 1171--1172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1173--1174
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1177--1178
-
- []
-
-[34]
 Underfull \hbox (badness 10000) in paragraph at lines 1179--1180
 
  []
 
-(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2015/06/04 1.6 listings language file
-)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2015/06/04 1.6 listings language file
-)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2015/06/04 1.6 listings language file
-)
-
-./laminar_pipeline.tex:1185: Package Listings Error: Couldn't load requested la
-nguage.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1185     breaklines=true]
-                           
-The following languages weren't loadable:
-    ,shell$
-This may cause errors in the sequel.
-
-
-./laminar_pipeline.tex:1185: Package Listings Error: language shell undefined.
-
-See the Listings package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1185     breaklines=true]
-                           
-The language is not loadable. Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1195--1196
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 1181--1182
 
  []
 
@@ -2912,64 +2872,99 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1201: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1187: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1201     breaklines=true]
+l.1187     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1201: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1187: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1201     breaklines=true]
+l.1187     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1212--1213
+Underfull \hbox (badness 10000) in paragraph at lines 1197--1198
+
+ []
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+)
+
+./laminar_pipeline.tex:1203: Package Listings Error: Couldn't load requested la
+nguage.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1203     breaklines=true]
+                           
+The following languages weren't loadable:
+    ,shell$
+This may cause errors in the sequel.
+
+
+./laminar_pipeline.tex:1203: Package Listings Error: language shell undefined.
+
+See the Listings package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1203     breaklines=true]
+                           
+The language is not loadable. Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1216--1217
+Underfull \hbox (badness 10000) in paragraph at lines 1218--1219
 
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 1220--1221
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1222--1223
 
  []
 
 
-Overfull \hbox (3.76767pt too wide) in paragraph at lines 1226--1227
+Underfull \hbox (badness 10000) in paragraph at lines 1224--1225
+
+ []
+
+
+Overfull \hbox (3.76767pt too wide) in paragraph at lines 1228--1229
 []\OT1/cmtt/m/n/12 fslmerge \OT1/cmr/m/n/12 is called to cre-ate a com-bined .n
 ii for all files in niftis/-func-tion-als/*sparse*
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1235--1236
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1239--1240
+Underfull \hbox (badness 10000) in paragraph at lines 1237--1238
 
  []
 
@@ -2978,28 +2973,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 1241--1242
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1244
+
+ []
+
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 1270--1271
+Underfull \hbox (badness 10000) in paragraph at lines 1272--1273
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1274--1275
+Underfull \hbox (badness 10000) in paragraph at lines 1276--1277
 
  []
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 1278--1279
+Underfull \hbox (badness 10000) in paragraph at lines 1280--1281
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1282--1283
+Underfull \hbox (badness 10000) in paragraph at lines 1284--1285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1294--1295
+Underfull \hbox (badness 10000) in paragraph at lines 1296--1297
 
  []
 
@@ -3013,33 +3013,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1300: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1302: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1300     breaklines=true]
+l.1302     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1300: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1302: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1300     breaklines=true]
+l.1302     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1303--1304
+Underfull \hbox (badness 10000) in paragraph at lines 1305--1306
 
  []
 
@@ -3053,55 +3053,50 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1311: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1313: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1311     breaklines=true]
+l.1313     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1311: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1313: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1311     breaklines=true]
+l.1313     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 1316--1317
+Underfull \hbox (badness 10000) in paragraph at lines 1318--1319
 
  []
 
 
-Overfull \hbox (57.17815pt too wide) in paragraph at lines 1320--1321
+Overfull \hbox (57.17815pt too wide) in paragraph at lines 1322--1323
 \OT1/cmr/m/n/12 Utilizes the OpenFm-ri-Anal-y-sis tool-box ([]$\OT1/cmtt/m/n/12
  https : / / github . com / TimVanMourik / OpenFmriAnalysis$[]\OT1/cmr/m/n/12 )
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1320--1321
+Underfull \hbox (badness 10000) in paragraph at lines 1322--1323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1324--1325
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1328--1329
+Underfull \hbox (badness 10000) in paragraph at lines 1326--1327
 
  []
 
@@ -3111,7 +3106,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1330--1331
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1334--1335
+Underfull \hbox (badness 10000) in paragraph at lines 1332--1333
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1336--1337
 
  []
 
@@ -3125,38 +3125,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1340: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1342: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1340     breaklines=true]
+l.1342     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1340: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1342: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1340     breaklines=true]
+l.1342     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
+Underfull \hbox (badness 10000) in paragraph at lines 1356--1357
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
+Underfull \hbox (badness 10000) in paragraph at lines 1368--1369
 
  []
 
@@ -3170,27 +3170,27 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1374: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1376: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1374     breaklines=true]
+l.1376     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1374: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1376: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1374     breaklines=true]
+l.1376     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -3205,33 +3205,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1383: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1385: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1383     breaklines=true]
+l.1385     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1383: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1385: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1383     breaklines=true]
+l.1385     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1379--1383
+Underfull \hbox (badness 10000) in paragraph at lines 1381--1385
 
  []
 
@@ -3245,43 +3245,38 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1391: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1393: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1391     breaklines=true]
+l.1393     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1391: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1393: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1391     breaklines=true]
+l.1393     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1404--1405
+Underfull \hbox (badness 10000) in paragraph at lines 1406--1407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1408--1409
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
+Underfull \hbox (badness 10000) in paragraph at lines 1410--1411
 
  []
 
@@ -3291,33 +3286,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
  []
 
 
-Overfull \hbox (25.13605pt too wide) in paragraph at lines 1416--1420
+Underfull \hbox (badness 10000) in paragraph at lines 1416--1417
+
+ []
+
+
+Overfull \hbox (25.13605pt too wide) in paragraph at lines 1418--1422
 []\OT1/cmr/m/n/12 From the "tc[]functions" col-lec-tion ([]$\OT1/cmtt/m/n/12 ht
 tps : / / github . com / TommyClausner / tc _ functions$[]\OT1/cmr/m/n/12 )
  []
 
 [41]
-Underfull \hbox (badness 10000) in paragraph at lines 1424--1425
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1426--1427
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1430--1431
+Underfull \hbox (badness 10000) in paragraph at lines 1428--1429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1434--1435
+Underfull \hbox (badness 10000) in paragraph at lines 1432--1433
 
  []
 
-./laminar_pipeline.tex:1442: Undefined control sequence.
-l.1442 ...ore it is advisable to maybe use \txettt
+
+Underfull \hbox (badness 10000) in paragraph at lines 1436--1437
+
+ []
+
+./laminar_pipeline.tex:1444: Undefined control sequence.
+l.1444 ...ore it is advisable to maybe use \txettt
                                                   {freeview} (\href{http://f...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -3325,28 +3325,28 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./laminar_pipeline.tex:1442: Illegal parameter number in definition of \Hy@temp
+./laminar_pipeline.tex:1444: Illegal parameter number in definition of \Hy@temp
 a.
 <to be read again> 
                    F
-l.1442 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
+l.1444 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
                                                   ) or \texttt{fsleyes} (\hr...
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
-./laminar_pipeline.tex:1442: Illegal parameter number in definition of \Hy@temp
+./laminar_pipeline.tex:1444: Illegal parameter number in definition of \Hy@temp
 a.
 <to be read again> 
                    F
-l.1442 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
+l.1444 ...rfer.net/fswiki/ToolsTutorial#Freeview}}
                                                   ) or \texttt{fsleyes} (\hr...
 You meant to type ## instead of #, right?
 Or maybe a } was forgotten somewhere earlier, and things
 are all screwed up? I'm going to assume that you meant ##.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1440--1443
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1445
 
  []
 
@@ -3360,38 +3360,33 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1448: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1450: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1448     breaklines=true]
+l.1450     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1448: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1450: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1448     breaklines=true]
+l.1450     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1454
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1455--1456
+Underfull \hbox (badness 10000) in paragraph at lines 1454--1456
 
  []
 
@@ -3406,14 +3401,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1459--1460
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1463--1464
+Underfull \hbox (badness 10000) in paragraph at lines 1461--1462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1465--1466
 
  []
 
 <figures/GUI2ROI.pdf, id=1195, 1284.8pt x 1027.84pt>
 File: figures/GUI2ROI.pdf Graphic file (type pdf)
  <use figures/GUI2ROI.pdf>
-Package pdftex.def Info: figures/GUI2ROI.pdf used on input line 1468.
+Package pdftex.def Info: figures/GUI2ROI.pdf used on input line 1470.
 (pdftex.def)             Requested size: 448.13095pt x 358.4947pt.
 
 
@@ -3424,7 +3424,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figures/PhotoScan-setup.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-setup.pdf>
-Package pdftex.def Info: figures/PhotoScan-setup.pdf used on input line 1483.
+Package pdftex.def Info: figures/PhotoScan-setup.pdf used on input line 1485.
 (pdftex.def)             Requested size: 448.13095pt x 223.7037pt.
 
 <figures/PhotoScan-importimages.pdf, id=1281, 597.51233pt x 73.35606pt>
@@ -3432,31 +3432,31 @@ File: figures/PhotoScan-importimages.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-importimages.pdf>
 Package pdftex.def Info: figures/PhotoScan-importimages.pdf used on input line 
-1495.
+1497.
 (pdftex.def)             Requested size: 448.13095pt x 55.01689pt.
 
 
-./laminar_pipeline.tex:1499: LaTeX Error: Environment changemargin undefined.
+./laminar_pipeline.tex:1501: LaTeX Error: Environment changemargin undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1499 \begin{changemargin}
+l.1501 \begin{changemargin}
                            {0.5cm}{0.5cm}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./laminar_pipeline.tex:1501: LaTeX Error: \begin{figure} on input line 1494 end
+./laminar_pipeline.tex:1503: LaTeX Error: \begin{figure} on input line 1496 end
 ed by \end{changemargin}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1501 \end{changemargin}
+l.1503 \end{changemargin}
                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -3468,7 +3468,7 @@ File: figures/PhotoScan-importmasks.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-importmasks.pdf>
 Package pdftex.def Info: figures/PhotoScan-importmasks.pdf used on input line 1
-507.
+509.
 (pdftex.def)             Requested size: 448.13095pt x 345.52127pt.
 
 
@@ -3479,28 +3479,28 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figures/PhotoScan-align.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-align.pdf>
-Package pdftex.def Info: figures/PhotoScan-align.pdf used on input line 1517.
+Package pdftex.def Info: figures/PhotoScan-align.pdf used on input line 1519.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
  [47 <./figures/PhotoScan-importmasks.pdf>]
 <figures/PhotoScan-dense.pdf, id=2177, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-dense.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-dense.pdf>
-Package pdftex.def Info: figures/PhotoScan-dense.pdf used on input line 1526.
+Package pdftex.def Info: figures/PhotoScan-dense.pdf used on input line 1528.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
  [48 <./figures/PhotoScan-align.pdf>]
 <figures/PhotoScan-mesh.pdf, id=2207, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-mesh.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-mesh.pdf>
-Package pdftex.def Info: figures/PhotoScan-mesh.pdf used on input line 1534.
+Package pdftex.def Info: figures/PhotoScan-mesh.pdf used on input line 1536.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
  [49 <./figures/PhotoScan-dense.pdf>]
 <figures/PhotoScan-texture.pdf, id=2238, 1027.84pt x 770.88pt>
 File: figures/PhotoScan-texture.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-texture.pdf>
-Package pdftex.def Info: figures/PhotoScan-texture.pdf used on input line 1543.
+Package pdftex.def Info: figures/PhotoScan-texture.pdf used on input line 1545.
 
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
  [50 <./figures/PhotoScan-mesh.pdf>]
@@ -3508,15 +3508,15 @@ Package pdftex.def Info: figures/PhotoScan-texture.pdf used on input line 1543.
 File: figures/PhotoScan-export.pdf Graphic file (type pdf)
 
 <use figures/PhotoScan-export.pdf>
-Package pdftex.def Info: figures/PhotoScan-export.pdf used on input line 1551.
+Package pdftex.def Info: figures/PhotoScan-export.pdf used on input line 1553.
 (pdftex.def)             Requested size: 448.13095pt x 336.09467pt.
  [51 <./figures/PhotoScan-texture.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1561--1563
+Underfull \hbox (badness 10000) in paragraph at lines 1563--1565
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1564--1565
+Underfull \hbox (badness 10000) in paragraph at lines 1566--1567
 
  []
 
@@ -3530,59 +3530,59 @@ File: lstlang2.sty 2015/06/04 1.6 listings language file
 File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 
-./laminar_pipeline.tex:1569: Package Listings Error: Couldn't load requested la
+./laminar_pipeline.tex:1571: Package Listings Error: Couldn't load requested la
 nguage.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1569     breaklines=true]
+l.1571     breaklines=true]
                            
 The following languages weren't loadable:
     ,shell$
 This may cause errors in the sequel.
 
 
-./laminar_pipeline.tex:1569: Package Listings Error: language shell undefined.
+./laminar_pipeline.tex:1571: Package Listings Error: language shell undefined.
 
 See the Listings package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1569     breaklines=true]
+l.1571     breaklines=true]
                            
 The language is not loadable. Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 [52 <./figures/PhotoScan-export.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1573--1575
+Underfull \hbox (badness 10000) in paragraph at lines 1575--1577
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1576--1577
+Underfull \hbox (badness 10000) in paragraph at lines 1578--1579
 
  []
 
 [53]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1581.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1581.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1583.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1583.
  (./laminar_pipeline.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1581.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1581.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1583.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1583.
 
 Package rerunfilecheck Info: File `laminar_pipeline.out' has not changed.
 (rerunfilecheck)             Checksum: D0D103AB9A25A0B49297AA7ED4E3E2B2;6127.
  ) 
 Here is how much of TeX's memory you used:
- 42657 strings out of 492995
- 923863 string characters out of 6132704
- 1049840 words of memory out of 5000000
- 45107 multiletter control sequences out of 15000+600000
+ 42737 strings out of 492995
+ 925351 string characters out of 6132704
+ 1050880 words of memory out of 5000000
+ 45187 multiletter control sequences out of 15000+600000
  11807 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 175i,11n,206p,10389b,6693s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 175i,11n,206p,10389b,6783s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -3604,7 +3604,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (53 pages, 19418976 bytes).
+Output written on laminar_pipeline.pdf (53 pages, 19419203 bytes).
 PDF statistics:
  2490 PDF objects out of 2984 (max. 8388607)
  1452 compressed objects within 15 object streams
