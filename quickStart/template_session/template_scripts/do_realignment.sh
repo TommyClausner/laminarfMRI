@@ -41,9 +41,9 @@ rm $DIR/../A_helperfiles/numberofvolumes.txt
 touch $DIR/../A_helperfiles/numberofvolumes.txt
 for scan in $DIR/../rawData/niftis/functionals/*.nii*
 do
-a=${a#*ep2d}
+a=${a#*ep3d}
 name_="$scan"
-name_=${name_#*ep2d}
+name_=${name_#*ep3d}
 name_=${name_%a[0-9]*}
 echo "$(echo $(fslinfo $scan | grep -w dim4) | cut -f2 -d' ') $name_" >> $DIR/../A_helperfiles/numberofvolumes.txt
 done
