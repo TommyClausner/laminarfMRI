@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_tseriesinterpolation
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_tseriesinterpolation.sh
+# file=do_tseriesinterpolation.sh
 # useqsub=false
 # shortLabel=Tsint
 

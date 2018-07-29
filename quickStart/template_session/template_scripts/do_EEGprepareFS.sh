@@ -1,4 +1,34 @@
 #!/bin/bash
+#!/bin/bash
+
+### BEGIN HEADER ###
+
+### Scriptinator ###
+
+# General information #
+# label=do_EEGprepareFS
+# file=do_EEGprepareFS.sh
+# useqsub=false
+# shortLabel=prepFS
+
+### Script ###
+
+# Input Variables and Paths #
+InputVarName=none
+
+# Output Variables and Paths #
+OutputVarName=none
+
+# Qsub information #
+jobtype=batch
+walltime="12:00:00"
+memory=32gb
+
+# Misc Variables #
+MiscVarName=none
+
+### END HEADER ###
+
 module load hcp-workbench
 set -e
 echo -e "\n START: FS2CaretConvertRegisterNonlinear"

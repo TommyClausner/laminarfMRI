@@ -13,7 +13,7 @@
 ### Script ###
 
 # Input Variables and Paths #
-InputVarName=none
+VolsBlock=3
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -43,13 +43,13 @@ for f in $FILES
 do
 size_curr=$(fslval $f dim4)
 filename=$(echo $f |rev | cut -d '/' -f1 | rev)
-if (($size_curr > 243))
+if (($size_curr > 182))
 then
 echo selecting ROI for $f...
 mv $f $DIR/old/$filename
-fslroi $DIR/old/$filename $f 0 -1 0 -1 0 -1 4 240
+fslroi $DIR/old/$filename $f 0 -1 0 -1 0 -1 $VolsBlock 180
 else
-echo number of volumes must be greater than 243
+echo number of volumes must be greater than 182
 fi
 done
 
@@ -58,13 +58,13 @@ for f in $FILES
 do
 size_curr=$(fslval $f dim4)
 filename=$(echo $f |rev | cut -d '/' -f1 | rev)
-if (($size_curr > 131))
+if (($size_curr > 127))
 then
 echo selecting ROI for $f...
 mv $f $DIR/old/$filename
-fslroi $DIR/old/$filename $f 0 -1 0 -1 0 -1 4 128
+fslroi $DIR/old/$filename $f 0 -1 0 -1 0 -1 0 128
 else
-echo number of volumes must be greater than 131
+echo number of volumes must be greater than 127
 fi
 done
 

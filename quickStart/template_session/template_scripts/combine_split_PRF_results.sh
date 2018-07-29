@@ -6,7 +6,7 @@
 
 # General information #
 # label=combine_split_PRF_results
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/combine_split_PRF_results.sh
+# file=combine_split_PRF_results.sh
 # useqsub=false
 # shortLabel=combR
 

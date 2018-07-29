@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_EEGfreqChanSelect
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_EEGfreqChanSelect.sh
+# file=do_EEGfreqChanSelect.sh
 # useqsub=false
 # shortLabel=EEGfrChS
 

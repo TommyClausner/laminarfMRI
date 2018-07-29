@@ -1,5 +1,33 @@
 #!/bin/bash
 
+### BEGIN HEADER ###
+
+### Scriptinator ###
+
+# General information #
+# label=do_analyzePRF
+# file=do_analyzePRF.sh
+# useqsub=false
+# shortLabel=anPRF
+
+### Script ###
+
+# Input Variables and Paths #
+InputVarName=none
+
+# Output Variables and Paths #
+OutputVarName=none
+
+# Qsub information #
+jobtype=matlab
+walltime="24:00:00"
+memory=64gb
+
+# Misc Variables #
+MiscVarName=none
+
+### END HEADER ###
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd $DIR

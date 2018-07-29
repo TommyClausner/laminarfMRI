@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_realignment
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_realignment.sh
+# file=do_realignment.sh
 # useqsub=true
 # shortLabel=Real
 

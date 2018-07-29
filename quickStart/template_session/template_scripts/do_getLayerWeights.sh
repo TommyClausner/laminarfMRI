@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_getLayerWeights
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_getLayerWeights.sh
+# file=do_getLayerWeights.sh
 # useqsub=false
 # shortLabel=WLa
 

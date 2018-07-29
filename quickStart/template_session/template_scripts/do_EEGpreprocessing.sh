@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_EEGpreprocessing
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_EEGpreprocessing.sh
+# file=do_EEGpreprocessing.sh
 # useqsub=false
 # shortLabel=EEGprPr
 

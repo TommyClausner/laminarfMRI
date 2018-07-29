@@ -13,7 +13,7 @@
 ### Script ###
 
 # Input Variables and Paths #
-InputVarName=none
+VolsBlock=3
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -41,12 +41,12 @@ fslmerge -t $DIR/MCTemplatepre $DIR/../2_distcorrection/*corrected_task*.nii*
 mkdir $DIR/tmp
 numvols=$(fslval $DIR/MCTemplatepre.nii.gz dim4)
 numvols=$(expr $numvols - 1)
-for i in `seq 0 4 $numvols`
+for i in `seq 0 $VolsBlock $numvols`
 do
-j=$(expr $i + 3)
+j=$(expr $i + $VolsBlock - 1)
 fslroi $DIR/MCTemplatepre.nii.gz $DIR/tmp/first $i 1
-fslroi $DIR/MCTemplatepre.nii.gz $DIR/tmp/fourth $j 1
-fslmaths $DIR/tmp/fourth -sub $DIR/tmp/first $DIR/tmp/diff$i
+fslroi $DIR/MCTemplatepre.nii.gz $DIR/tmp/third $j 1
+fslmaths $DIR/tmp/third -sub $DIR/tmp/first $DIR/tmp/diff$i
 done
 rm $DIR/MCTemplatepre.nii.gz
 fslmerge -t $DIR/MCTemplateprediff $DIR/tmp/*diff*

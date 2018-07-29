@@ -14,6 +14,7 @@
 
 # Input Variables and Paths #
 include_coreg=0
+VolsBlock=3
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -35,6 +36,7 @@ else
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../2_distcorrection"
 fi
 cd $DIR
+
 mkdir refvolumes
 echo selecting inverted images...
 inverted_=$(ls $DIR/../1_realignment/inverted_mcf0.nii.gz)
@@ -45,7 +47,7 @@ echo done.
 echo selecting normal images...
 stacked_fcnls=$(ls $DIR/../1_realignment/*task_mcf*.nii.gz | tail -1)
 num_vols_norm=$(fslval $stacked_fcnls dim4)
-sel_slices=$(seq $(($num_vols_norm-1)) -4 $(($(($num_vols_norm-1))-4*($num_vols_inv-1))))
+sel_slices=$(seq $(($num_vols_norm-1)) -$VolsBlock $(($(($num_vols_norm-1))-$VolsBlock*($num_vols_inv-1))))
 mkdir $DIR/tmp
 for i in `seq 1 $num_vols_inv`
 do

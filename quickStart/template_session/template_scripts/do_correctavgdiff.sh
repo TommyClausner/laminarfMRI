@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_correctavgdiff
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_correctavgdiff.sh
+# file=do_correctavgdiff.sh
 # useqsub=false
 # shortLabel=cAvD
 

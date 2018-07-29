@@ -6,7 +6,7 @@
 
 # General information #
 # label=make_PRF_overlays
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/make_PRF_overlays.sh
+# file=make_PRF_overlays.sh
 # useqsub=false
 # shortLabel=Ovrly
 

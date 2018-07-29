@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_split_analyzePRF
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_split_analyzePRF.sh
+# file=do_split_analyzePRF.sh
 # useqsub=false
 # shortLabel=saPRF
 

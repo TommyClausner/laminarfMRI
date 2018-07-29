@@ -6,7 +6,7 @@
 
 # General information #
 # label=makeOverlays
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/makeOverlays.sh
+# file=makeOverlays.sh
 # useqsub=true
 # shortLabel=OvlyMp
 

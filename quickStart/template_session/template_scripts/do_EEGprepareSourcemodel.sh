@@ -6,7 +6,7 @@
 
 # General information #
 # label=do_EEGprepareSourcemodel
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/do_EEGprepareSourcemodel.sh
+# file=do_EEGprepareSourcemodel.sh
 # useqsub=false
 # shortLabel=EEGprSM
 

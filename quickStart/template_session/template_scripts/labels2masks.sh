@@ -6,7 +6,7 @@
 
 # General information #
 # label=labels2masks
-# file=/project/3018037.01/Experiment3.2_ERC/tommys_folder/fMRI_pipeline/P312/B_scripts/labels2masks.sh
+# file=labels2masks.sh
 # useqsub=false
 # shortLabel=La2msk
 
