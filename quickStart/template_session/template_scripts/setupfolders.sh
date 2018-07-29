@@ -30,6 +30,8 @@ mkdir 5_laminar
 
 mkdir 6_EEG
 
+mkdir 7_results
+
 mkdir rawData
 mkdir rawData/eegfiles
 mkdir rawData/eyetrackerfiles
