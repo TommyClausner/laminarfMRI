@@ -1,6 +1,6 @@
 %%
 if ~exist('mainpath','var')
-    mainpath=[filesep 'project' filesep '3018037.01' filesep 'Experiment3.2_ERC' filesep 'tommys_folder' filesep 'fMRI_pipeline' filesep 'P312' filesep 'B_scripts'];
+    mainpath='~/subjects/SXX/B_scripts';    
     cd(mainpath)
 end
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'fieldtrip'])
