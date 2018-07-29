@@ -1556,6 +1556,21 @@ Sets up the necessary folder structure for the analysis (within a subject folder
 \label{sh:wait}
 Checks all currently running jobs (\texttt{qstat -u user}) and waits until the last script up until this point has finished.\\
 
+\subsection{waitForQsubPID.sh}
+\label{sh:wait}
+Waits for the qsub process ID (PID) given as argument.\\
+
+\begin{lstlisting}[
+    language=Shell,
+    basicstyle=\ttfamily,
+    breaklines=true]
+    # example
+    sh waitForQsubPID.sh 17145701.dccn-l029
+
+    # example wait for last PID
+    sh waitForQsubPID.sh $(qstat | awk -F' ' '{print $1}' | tail -1)
+\end{lstlisting}
+
 \section{How to: Rejecting trials based on eye tracking}
 \label{sec:eye}
 This HowTo relies on eye tracking data collect with an EyeLink eye tracker. After the data was collected, navigate to the software package that was provided by the eye tracker company. In our case the folder was called "SR Research". Within this folder a subfolder can be found called "edfconverter" containing edfconverterW.exe\\

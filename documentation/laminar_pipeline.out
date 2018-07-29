@@ -79,14 +79,15 @@
 \BOOKMARK [2][-]{section*.76}{runonqsub.sh}{section.4}% 79
 \BOOKMARK [2][-]{section*.77}{setupfolders.sh \(Q\)}{section.4}% 80
 \BOOKMARK [2][-]{section*.78}{waitForJobs.sh}{section.4}% 81
-\BOOKMARK [1][-]{section.5}{How to: Rejecting trials based on eye tracking}{}% 82
-\BOOKMARK [1][-]{section.6}{How to: Selecting visual areas based on pRF mapping}{}% 83
-\BOOKMARK [1][-]{section.7}{How to: EEG electrodes from photogrammetry}{}% 84
-\BOOKMARK [2][-]{section*.79}{Agisoft PhotoScan}{section.7}% 85
-\BOOKMARK [3][-]{section*.80}{Import Photos}{section*.79}% 86
-\BOOKMARK [3][-]{section*.81}{Align Photos}{section*.79}% 87
-\BOOKMARK [3][-]{section*.82}{Build Dense Cloud}{section*.79}% 88
-\BOOKMARK [3][-]{section*.83}{Build Mesh}{section*.79}% 89
-\BOOKMARK [3][-]{section*.84}{Build Texture}{section*.79}% 90
-\BOOKMARK [3][-]{section*.85}{Export Model}{section*.79}% 91
-\BOOKMARK [2][-]{section*.86}{janus3D}{section.7}% 92
+\BOOKMARK [2][-]{section*.79}{waitForQsubPID.sh}{section.4}% 82
+\BOOKMARK [1][-]{section.5}{How to: Rejecting trials based on eye tracking}{}% 83
+\BOOKMARK [1][-]{section.6}{How to: Selecting visual areas based on pRF mapping}{}% 84
+\BOOKMARK [1][-]{section.7}{How to: EEG electrodes from photogrammetry}{}% 85
+\BOOKMARK [2][-]{section*.80}{Agisoft PhotoScan}{section.7}% 86
+\BOOKMARK [3][-]{section*.81}{Import Photos}{section*.80}% 87
+\BOOKMARK [3][-]{section*.82}{Align Photos}{section*.80}% 88
+\BOOKMARK [3][-]{section*.83}{Build Dense Cloud}{section*.80}% 89
+\BOOKMARK [3][-]{section*.84}{Build Mesh}{section*.80}% 90
+\BOOKMARK [3][-]{section*.85}{Build Texture}{section*.80}% 91
+\BOOKMARK [3][-]{section*.86}{Export Model}{section*.80}% 92
+\BOOKMARK [2][-]{section*.87}{janus3D}{section.7}% 93
