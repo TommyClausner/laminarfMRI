@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 JUL 2018 18:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 JUL 2018 19:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3029,12 +3029,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 1371--1372
  []
 
 
-Overfull \hbox (3.76767pt too wide) in paragraph at lines 1375--1376
-[]\OT1/cmtt/m/n/12 fslmerge \OT1/cmr/m/n/12 is called to cre-ate a com-bined .n
-ii for all files in niftis/-func-tion-als/*sparse*
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 1384--1385
 
  []
@@ -3671,7 +3665,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (54 pages, 19427771 bytes).
+Output written on laminar_pipeline.pdf (54 pages, 19427882 bytes).
 PDF statistics:
  2521 PDF objects out of 2984 (max. 8388607)
  1482 compressed objects within 15 object streams

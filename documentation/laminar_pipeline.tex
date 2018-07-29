@@ -388,7 +388,7 @@ maximum memory required & approx time required\\\toprule
 \end{tabular}
 \end{table}
 \FloatBarrier
-\noindent Motion correction (realignment) will be performed using FSL's \texttt{mcflirt} function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}}). Before the data will be split into two parts: \textit{retino} and  \textit{sparse}, based on their raw basename string. As a reference volume the average of all \textit{sparse} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
+\noindent Motion correction (realignment) will be performed using FSL's \texttt{mcflirt} function (\href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}{\nolinkurl{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT}}). Before the data will be split into two parts: \textit{Retino} and  \textit{silent}, based on their raw basename string. As a reference volume the average of all \textit{silent} volumes is used. Furthermore the inverted scans will be corrected using the same volume as well.\\
 
 \noindent Results can be found in 1\_realignment/\\
 \begin{lstlisting}[
@@ -1372,7 +1372,7 @@ Merges and motion corrects all files in /niftis/functionals using the average vo
 
 \noindent Under the hood:
 \begin{itemize}
-\item \texttt{fslmerge} is called to create a combined .nii for all files in niftis/functionals/*sparse* - files are merged allong the 4th dimension
+\item \texttt{fslmerge} is called to create a combined .nii for all files in niftis/functionals/*silent* - files are merged allong the 4th dimension
 \item a .txt file is created saving which files were merged and how many volumes were in there
 \item \texttt{mcflirt} is used on the combined data doing the motion correction based on the average volume across all task blocks
 \item all results are stored in /1\_realignment
