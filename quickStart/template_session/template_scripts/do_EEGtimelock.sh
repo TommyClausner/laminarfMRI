@@ -33,7 +33,7 @@ cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
 echo "mainpath=" "'$DIR';">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGtimelock.m>>$DIR/tmp_$nameadd.m
-echo 'matlab2017a -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
+echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 while [ "$statusqsub" != "C" ]
