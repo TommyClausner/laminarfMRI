@@ -10,15 +10,18 @@ ft_defaults
 if ~exist('conductModel','var')
     conductModel='FEM';
 end
+
+chansel=1:63;
+
 cfg = [];
 filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 'photogrammetry' filesep 'electrodes.mat'];
 
 % if janus3D was used the below can be executed, saving manual registration
 % of EEG electrodes
-if ~(exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file'))==2 &&...
+if ~(exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2) &&...
         exist(filetouse,'file')==2
     addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
-    sens=tc_janus3D2sens(filetouse,1:63);
+    sens=tc_janus3D2sens(filetouse,chansel);
 
     disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
     save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens','-v7.3')
@@ -27,20 +30,21 @@ elseif ~exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')
        ~exist(filetouse,'file')==2
    error('neither sens.mat nor electrodes.mat found')
    exit
+
+else
+    load([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
+    sens.chanpos=sens.chanpos(chansel,:);
+    sens.chantype=sens.chantype(chansel,:);
+    sens.chanunit=sens.chanunit(chansel,:);
+    sens.elecpos=sens.elecpos(chansel,:);
+    sens.label=sens.label(chansel,:);
+    if isfield(sens,'tra')
+        sens.tra=sens.tra(chansel,:);
+        sens.tra=sens.tra(:,chansel);
+    end
 end
 
-load([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
 load([mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' conductModel '.mat']);
-
-chansel=1:63;
-
-sens.chanpos=sens.chanpos(chansel,:);
-sens.chantype=sens.chantype(chansel,:);
-sens.chanunit=sens.chanunit(chansel,:);
-sens.elecpos=sens.elecpos(chansel,:);
-sens.label=sens.label(chansel,:);
-sens.tra=sens.tra(chansel,:);
-sens.tra=sens.tra(:,chansel);
 
 [headmodel,sens] = ft_prepare_vol_sens(headmodel,sens);
 
