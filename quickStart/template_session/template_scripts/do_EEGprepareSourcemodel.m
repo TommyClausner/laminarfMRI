@@ -17,6 +17,7 @@ filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 
 % of EEG electrodes
 if ~exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2 &&...
         exist(filetouse,'file')==2
+    addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
     sens=tc_janus3D2sens(filetouse,1:63);
 
     disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])

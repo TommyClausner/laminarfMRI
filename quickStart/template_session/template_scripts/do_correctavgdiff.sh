@@ -13,7 +13,7 @@
 ### Script ###
 
 # Input Variables and Paths #
-threshold=0.975
+threshold=0.9
 dev_range=2
 
 # Output Variables and Paths #

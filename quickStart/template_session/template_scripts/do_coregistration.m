@@ -5,6 +5,7 @@ if ~exist('mainpath','var')
 end
 
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'spm12'])
 tvm_installOpenFmriAnalysisToolbox;
 
 %%
