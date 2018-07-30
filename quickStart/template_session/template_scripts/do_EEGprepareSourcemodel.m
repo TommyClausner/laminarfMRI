@@ -15,7 +15,7 @@ filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 
 
 % if janus3D was used the below can be executed, saving manual registration
 % of EEG electrodes
-if ~exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2 &&...
+if ~(exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file'))==2 &&...
         exist(filetouse,'file')==2
     addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
     sens=tc_janus3D2sens(filetouse,1:63);
