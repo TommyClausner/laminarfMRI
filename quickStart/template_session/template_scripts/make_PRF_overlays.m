@@ -7,6 +7,8 @@ addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmr
 tvm_installOpenFmriAnalysisToolbox
 %%
 
+load([mainpath filesep '..' filesep 'A_helperfiles' filesep 'params.mat']);
+
 disp('loading data...')
 filetouse=[mainpath filesep '..' filesep '3_coregistration' filesep 'fctgraymattercoreg.nii'];
 if exist(filetouse,'file')==0
@@ -24,7 +26,7 @@ ang_=resultsall.ang./180.*pi;
 ang_map.img(resultsall.options.vxs)=ang_;
 save_untouch_nii(ang_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'ang_map.nii']);
 %% Ecc
-degvisdeg=10;
+degvisdeg=params.radius*2;
 ecc_map=nii;
 ecc_=resultsall.ecc.*degvisdeg/size(images{1},2);
 
@@ -45,7 +47,7 @@ r2_map=nii;
 r2_map.img(resultsall.options.vxs)=resultsall.R2;
 save_untouch_nii(r2_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'r2_map.nii']);
 %% Xpos Ypos
-degvisdeg=10;
+degvisdeg=params.radius*2;
 cfactor = degvisdeg/size(images{1},2);
 
 xpos = ecc_ .* cos(resultsall.ang./180.*pi) .* cfactor;
