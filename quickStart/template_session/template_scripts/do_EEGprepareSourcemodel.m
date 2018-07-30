@@ -21,7 +21,7 @@ filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 
 if ~(exist([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'file')==2) &&...
         exist(filetouse,'file')==2
     addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
-    sens=tc_janus3D2sens(filetouse,chansel);
+    sens=ft_datatype_sens(tc_janus3D2sens(filetouse,chansel));
 
     disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
     save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens','-v7.3')
@@ -38,10 +38,8 @@ else
     sens.chanunit=sens.chanunit(chansel,:);
     sens.elecpos=sens.elecpos(chansel,:);
     sens.label=sens.label(chansel,:);
-    if isfield(sens,'tra')
-        sens.tra=sens.tra(chansel,:);
-        sens.tra=sens.tra(:,chansel);
-    end
+    sens.tra=sens.tra(chansel,:);
+    sens.tra=sens.tra(:,chansel);
 end
 
 load([mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' conductModel '.mat']);

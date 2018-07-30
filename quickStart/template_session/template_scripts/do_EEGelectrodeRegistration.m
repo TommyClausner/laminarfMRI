@@ -14,7 +14,7 @@ janus3D_elecs = 1;
 if janus3D_elecs
     
     filetouse=[mainpath filesep '..' filesep 'rawData' filesep 'electrodes' filesep 'photogrammetry' filesep 'electrodes.mat'];
-    sens=tc_janus3D2sens(filetouse,1:63);
+    sens=ft_datatype_sens(tc_janus3D2sens(filetouse));
     
     disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'])
     save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens','-v7.3')
