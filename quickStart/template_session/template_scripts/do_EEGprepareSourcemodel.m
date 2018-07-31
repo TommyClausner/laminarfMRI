@@ -52,7 +52,7 @@ datapath = fullfile(pathname,subjname,[filesep 'workbench']);
 filename = fullfile(datapath,[subjname,'.L.midthickness.32k_fs_LR.surf.gii']);
 sourcemodel = ft_read_headshape({filename, strrep(filename, '.L.', '.R.')});
 
-disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' headmodelType '.mat'])
+disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' conductModel '.mat'])
 save([mainpath filesep '..' filesep '6_EEG' filesep 'headmodel_' conductModel '.mat'],'mri','mesh','headmodel','sourcemodel','-v7.3')
 save([mainpath filesep '..' filesep '6_EEG' filesep 'sens.mat'],'sens')
 disp('done.')
