@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  30 JUL 2018 21:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  31 JUL 2018 17:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3693,7 +3693,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  42869 strings out of 492995
  928999 string characters out of 6132704
- 1081229 words of memory out of 5000000
+ 1081227 words of memory out of 5000000
  45288 multiletter control sequences out of 15000+600000
  11807 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -3719,7 +3719,7 @@ e/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 17/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on laminar_pipeline.pdf (54 pages, 19429122 bytes).
+Output written on laminar_pipeline.pdf (54 pages, 19429118 bytes).
 PDF statistics:
  2533 PDF objects out of 2984 (max. 8388607)
  1494 compressed objects within 15 object streams
