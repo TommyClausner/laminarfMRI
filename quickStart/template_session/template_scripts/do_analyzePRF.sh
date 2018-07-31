@@ -34,7 +34,7 @@ cd $DIR
 
 nameadd=$(date +"%m%d%Y%H%M%S")
 
-echo "mainpath=" "'$DIR';parts=$2;partnum=$1;avgdata=0;">$DIR/tmp_$nameadd.m
+echo "mainpath=" "'$DIR';parts=$2;partnum=$1;avgdata=1;">$DIR/tmp_$nameadd.m
 cat $DIR/do_analyzePRF.m>>$DIR/tmp_$nameadd.m
 echo 'matlab2013a -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q matlab -l walltime=48:00:00,mem=6gb
 

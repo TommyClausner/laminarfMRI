@@ -47,7 +47,7 @@ for n=1:size(tIntData,1)
     tIntData{n}=tIntData{n}(ind_sel,:);
 end
 
-seedmode=struct('seedmode',[0 1 2],'typicalgain',100);
+seedmode=struct('seedmode',[0 1 2]);
 if exist('avgdata','var')>0
     if avgdata
         tIntData={mean(cat(numel(size(tIntData{1}))+1,tIntData{:}),numel(size(tIntData{1}))+1)};

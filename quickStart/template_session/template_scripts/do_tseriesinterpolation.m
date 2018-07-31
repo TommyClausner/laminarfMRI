@@ -87,9 +87,9 @@ tic
 disp('resampling functionals...')
 data_int=data_use;
 TR=params.framePeriod;
-if mult ~=1
+
 data_int = tseriesinterp(data_int,TR,TR/mult,2);
-end
+
 disp(['done after ' num2str(round(toc)) ' seconds.']);
 %% normalize data
 disp('normalizing functionals...');
