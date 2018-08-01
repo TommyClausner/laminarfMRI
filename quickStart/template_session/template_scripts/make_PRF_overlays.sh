@@ -19,7 +19,7 @@ OutputVarName=none
 jobtype=matlab
 
 # Qsub information #
-walltime="24:00:00"
+walltime="01:00:00"
 memory=32gb
 
 # Misc Variables #

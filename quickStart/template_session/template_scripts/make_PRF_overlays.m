@@ -23,35 +23,40 @@ disp('done.')
 %% Ang
 ang_map=nii;
 ang_=resultsall.ang./180.*pi;
+ang_(ang_>(2*pi) | ang_<0)=0;
 ang_map.img(resultsall.options.vxs)=ang_;
+ang_map.img(~resultsall.options.vxs)=0;
 save_untouch_nii(ang_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'ang_map.nii']);
 %% Ecc
-degvisdeg=params.radius*2;
+degvisdeg=params.radius;
+cfactor=2*degvisdeg/size(images{1},2);
 ecc_map=nii;
-ecc_=resultsall.ecc.*degvisdeg/size(images{1},2);
-
+ecc_=resultsall.ecc.*cfactor
+ecc_(ecc_>degvisdeg | ecc_<0)=0;
 ecc_map.img(resultsall.options.vxs)=ecc_;
-ecc_map.img(resultsall.R2<=0)=NaN;
-ecc_map.img(ecc_map.img>degvisdeg & ecc_map.img<0.5)=NaN;
+ecc_map.img(~resultsall.options.vxs)=0;
 save_untouch_nii(ecc_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'ecc_map.nii']);
 %% Expt
 expt_map=nii;
 expt_map.img(resultsall.options.vxs)=resultsall.expt;
+expt_map.img(~resultsall.options.vxs)=0;
 save_untouch_nii(expt_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'expt_map.nii']);
 %% rfsize
 rfsize_map=nii;
-rfsize_map.img(resultsall.options.vxs)=resultsall.rfsize;
+rfsize_map.img(resultsall.options.vxs)=resultsall.rfsize.*cfactor;
+rfsize_map.img(rfsize_map.img>(2*degvisdeg) | rfsize_map.img<0)=0;
+rfsize_map.img(~resultsall.options.vxs)=0;
 save_untouch_nii(rfsize_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'rfsize_map.nii']);
 %% R2
 r2_map=nii;
 r2_map.img(resultsall.options.vxs)=resultsall.R2;
+r2_map.img(r2_map.img>100 | r2_map.img<0)=0;
+r2_map.img(~resultsall.options.vxs)=0;
 save_untouch_nii(r2_map,[mainpath filesep '..' filesep '4_retinotopy' filesep 'r2_map.nii']);
 %% Xpos Ypos
-degvisdeg=params.radius*2;
-cfactor = degvisdeg/size(images{1},2);
 
-xpos = ecc_ .* cos(resultsall.ang./180.*pi) .* cfactor;
-ypos = ecc_ .* sin(resultsall.ang./180.*pi) .* cfactor;
+xpos = ecc_ .* cos(ang_)
+ypos = ecc_ .* sin(ang_);
 
 xpos_map=nii;
 xpos_map.img(resultsall.options.vxs)=xpos;
