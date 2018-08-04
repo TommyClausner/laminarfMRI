@@ -4,6 +4,8 @@ if ~exist('mainpath','var')
     cd(mainpath)
 end
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'spm12'])
+
 tvm_installOpenFmriAnalysisToolbox
 
 %%
@@ -14,11 +16,9 @@ if ~exist('regvol','var')
     regvol='MCTemplateThrCont';
 end
 
-mainpath = [mainpath filesep '..'];
-
 numberOfLayers = numLayers;
 configuration = [];
-configuration.i_SubjectDirectory    = mainpath;
+configuration.i_SubjectDirectory    = [mainpath filesep '..'];
 
 configuration.i_Boundaries      = '3_coregistration/boundaries.mat';
 configuration.o_ObjWhite        = '5_laminar/?h.white.reg.obj';

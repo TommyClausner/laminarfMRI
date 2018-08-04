@@ -31,7 +31,7 @@ save_untouch_nii(ang_map,[mainpath filesep '..' filesep '4_retinotopy' filesep '
 degvisdeg=params.radius;
 cfactor=2*degvisdeg/size(images{1},2);
 ecc_map=nii;
-ecc_=resultsall.ecc.*cfactor % in degree visual angle
+ecc_=resultsall.ecc.*cfactor; % in degree visual angle
 ecc_(ecc_>degvisdeg | ecc_<0)=NaN;
 ecc_map.img(resultsall.options.vxs)=ecc_;
 ecc_map.img(~resultsall.options.vxs)=NaN;

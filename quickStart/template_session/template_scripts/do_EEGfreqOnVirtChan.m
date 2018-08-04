@@ -53,6 +53,7 @@ for block=BlockSel
             
             for fileNum=1:size(files,2)
                 
+                disp(['processing block ' num2str(block) ' ' filter{1} ' ' nameROI '...'])
                 file_=files(fileNum);
                 fileEEG_=filesEEG(fileNum);
                 load(file_{1})
@@ -71,7 +72,13 @@ for block=BlockSel
                 cfg.taper        = 'dpss';
                 cfg.foi          = foi;
                 cfg.pad          = 3.2;
-                cfg.tapsmofrq    = 10;     % analysis 2 to 30 Hz in steps of 2 Hz
+                
+                if find(cellfun(@(x) strcmp(filter{1},x), possibleFilters))==2
+                    cfg.tapsmofrq  = 0.3125 *foi;
+                else
+                    cfg.tapsmofrq    = 10;
+                end
+                     % analysis 2 to 30 Hz in steps of 2 Hz
                 cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter);   % length of time window = 0.5 sec
                 cfg.toi          = -1:0.01:2;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
                 cfg.keeptrials   = 'yes';
@@ -81,10 +88,13 @@ for block=BlockSel
                 saveFileName=strsplit(saveFileName{1},filesep);
                 saveFileName=saveFileName{end};
                 
+                disp('done.')
+                
                 disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
                 save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'dataTFR','-v7.3')
                 disp('done.')
-                
+                dataTFR=[];
+                clearvars dataTFR
             end
         end
     end

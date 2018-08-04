@@ -8,8 +8,11 @@ addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'knkutils'])
 addpath(genpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'vistasoft-master']))
 addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'tc_functions'])
-
+addpath([mainpath filesep '..' filesep '..' filesep 'toolboxes' filesep 'OpenFmriAnalysis'])
+tvm_installOpenFmriAnalysisToolbox
 disp('done.')
+
+%%
 data=struct('data',[],'maskgray',[],'maskwhite',[],'maskecc',[],'transmats',[],'transvecs',[],...
     'layerROIs',struct('lh',struct('V1',[],'V2',[],'V3',[]),'rh',struct('V1',[],'V2',[],'V3',[])),'CSFwhite',[]);
 
@@ -34,7 +37,8 @@ disp('done.')
 disp('loading functional data...')
 for n=[0,1,2,3]
     
-    filetouse=[mainpath filesep '..' filesep '2_distcorrection' filesep '*corrected_test_task_mcf' num2str(n) '.nii'];
+    filetouse=[mainpath filesep '..' filesep '2_distcorrection' filesep 'corrected_task_mcf' num2str(n) '.nii'];
+    
     if exist(filetouse,'file')==0
         unix(['gunzip -f -c ' filetouse '.gz >' filetouse]);
     end
