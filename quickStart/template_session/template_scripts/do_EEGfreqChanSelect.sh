@@ -21,10 +21,10 @@ OutputVarName=none
 # Qsub information #
 jobtype=matlab
 walltime="11:59:59"
-memory=256gb
+memory=120gb
 
 # Misc Variables #
-deleteOldFiles=1
+deleteOldFiles=0
 
 ### END HEADER ###
 

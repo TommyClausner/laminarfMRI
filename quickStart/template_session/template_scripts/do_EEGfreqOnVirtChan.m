@@ -32,15 +32,16 @@ end
 possibleFilters={'BP30_100','BP2_32'};
 
 for block=BlockSel
-    counter=0;
+    
     for filter_tmp=FiltSel
+        
         filter=possibleFilters(filter_tmp);
         
         filterNum=cellfun(@(x) strsplit(x,'BP'),strsplit(filter{1},'_'),'unif',0);
-        counter=counter+1;
+
         filterNum=str2double([filterNum{1}{2},filterNum{2}]);
         
-        foi=filterNum(1):1/slidW(counter):filterNum(2);
+        foi=filterNum(1):1/slidW(filter_tmp):filterNum(2);
         
         for ROI_tmp=ROISel
             ROI=ROIs(ROI_tmp);
@@ -59,11 +60,11 @@ for block=BlockSel
                 load(file_{1})
                 load(fileEEG_{1})
                 
-                data4TFA=[];
-                data4TFA.label=strsplit(num2str(1:size(virtChannels,1)));
-                data4TFA.trial=permute(virtChannels,[3,1,2]);
-                data4TFA.time=data.time{1};
-                data4TFA.dimord='rpt_chan_time';
+                dataTFR=[];
+                dataTFR.label=strsplit(num2str(1:size(virtChannels,1)));
+                dataTFR.trial=permute(virtChannels,[3,1,2]);
+                dataTFR.time=data.time{1};
+                dataTFR.dimord='rpt_chan_time';
                 
                 cfg              = [];
                 cfg.output       = 'pow';
@@ -71,18 +72,18 @@ for block=BlockSel
                 cfg.method       = 'mtmconvol';
                 cfg.taper        = 'dpss';
                 cfg.foi          = foi;
-                cfg.pad          = 3.2;
+                cfg.pad          = 4;
                 
                 if find(cellfun(@(x) strcmp(filter{1},x), possibleFilters))==2
-                    cfg.tapsmofrq  = 0.3125 *foi;
+                    cfg.tapsmofrq  = linspace(0.5/(slidW(filter_tmp)/foi(1)),5,length(foi));
                 else
                     cfg.tapsmofrq    = 10;
                 end
                      % analysis 2 to 30 Hz in steps of 2 Hz
-                cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(counter);   % length of time window = 0.5 sec
-                cfg.toi          = -1:0.01:2;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
+                cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(filter_tmp);   % length of time window = 0.5 sec
+                cfg.toi          = -1.4:0.01:2.4;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
                 cfg.keeptrials   = 'yes';
-                dataTFR = ft_freqanalysis(cfg, data4TFA);
+                dataTFR = ft_freqanalysis(cfg, dataTFR);
                 
                 saveFileName=strsplit(file_{1},'.mat');
                 saveFileName=strsplit(saveFileName{1},filesep);

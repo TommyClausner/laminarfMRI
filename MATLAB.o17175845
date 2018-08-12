@@ -1,0 +1,26 @@
+----------------------------------------
+Begin PBS Prologue Sat Aug  4 16:21:33 CEST 2018 1533392493
+Job ID:		   17175845.dccn-l029.dccn.nl
+Username:	   tomcla
+Group:		   predatt
+Asked resources:   mem=64gb,ncpus=1,neednodes=1,nodes=1,walltime=04:00:00
+Queue:		   interactive
+Nodes:		   dccn-c046.dccn.nl
+End PBS Prologue Sat Aug  4 16:21:33 CEST 2018 1533392493
+----------------------------------------
+New Walltime: 04:02:25
+Job info started...
+MATLAB is selecting SOFTWARE OPENGL rendering.
+----------------------------------------
+Begin PBS Epilogue Sat Aug  4 16:24:50 CEST 2018 1533392690
+Job ID:		   17175845.dccn-l029.dccn.nl
+Username:	   tomcla
+Group:		   predatt
+Job Name:	   MATLAB
+Session:	   59946
+Asked resources:   mem=64gb,ncpus=1,neednodes=1,nodes=1,walltime=04:00:00
+Used resources:	   cput=00:01:08,mem=866852kb,vmem=10974988kb,walltime=00:03:12
+Queue:		   interactive
+Nodes:		   dccn-c046.dccn.nl
+End PBS Epilogue Sat Aug  4 16:24:50 CEST 2018 1533392690
+----------------------------------------
