@@ -114,7 +114,7 @@ for block=1:num_blocks
     eval(['task_convL = task_conv.L.b' num2str(block) '.task;']);
     eval(['task_convR = task_conv.R.b' num2str(block) '.task;']);
     R = cat(3,R, [task_convL, task_convR, CF]);
-    save([mainpath filesep '..' filesep '6_EEG' filesep 'DM_regs_B' num2str(block) '.mat'], 'R')
+    save([mainpath filesep '..' filesep '7_results' filesep 'DM_regs_B' num2str(block) '.mat'], 'R')
 end
 
 %%

@@ -61,18 +61,18 @@ for filter=filters
             dataTemplate.freqROI=freqROIs{3};
             freqInt=ROIgamma;
             sorting='descend';
-            BLwin = [-0.3 -0.2];
+            BLwin = [-0.3 -0.1];
             
         case 'BP2_32'
             dataTemplate.freqROI=freqROIs{1};
             freqInt=ROIalpha;
             sorting='ascend';
-            BLwin = [-0.1 0];
+            BLwin = [-0.6 -0.1];
         case 'BP2_32beta'
             dataTemplate.freqROI=freqROIs{2};
             freqInt=ROIbeta;
             sorting='ascend';
-            BLwin = [-0.1 0];
+            BLwin = [-0.6 -0.1];
     end
     
     linecoordsY=[freqInt;freqInt];
