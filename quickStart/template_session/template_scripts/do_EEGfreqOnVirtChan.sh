@@ -20,7 +20,7 @@ OutputVarName=none
 
 # Qsub information #
 jobtype=matlab
-walltime="11:00:00"
+walltime="24:00:00"
 memory=60gb
 
 # Misc Variables #
@@ -43,7 +43,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
 echo "compute virtual channels for block $blocks, filter $filt, roi $roi"
-echo "mainpath=" "'$DIR';BlockSel=$blocks;FiltSel=$filt;ROISel=$roi;">$DIR/tmp_$nameadd.m
+#echo "mainpath=" "'$DIR';BlockSel=$blocks;FiltSel=$filt;ROISel=$roi;">$DIR/tmp_$nameadd.m
+echo "mainpath=" "'$DIR';BlockSel=$blocks;FiltSel=$filt;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGfreqOnVirtChan.m>>$DIR/tmp_$nameadd.m
 echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)

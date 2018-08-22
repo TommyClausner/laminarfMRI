@@ -18,7 +18,7 @@ end
 
 possibleFilters={'BP30_100','BP2_32'};
 Addprefix='VirtCh_';
-Selprefix='Beamf_centV1';
+Selprefix='Beamf_centV1_lh';
 
 for block=BlockSel
     
@@ -26,7 +26,7 @@ for block=BlockSel
         filter=possibleFilters{filt};
         EEGDataFiles=dir([mainpath filesep '..' filesep '6_EEG' filesep Selprefix '*_FEM_TL_' filter '*' num2str(block) '.mat']);
         files=cellfun(@(x) [EEGDataFiles(1).folder filesep x],{EEGDataFiles.name},'unif',0);
-        
+        disp([filter ' ' num2str(block)])
         for file_=files
             load(file_{1})
             
@@ -45,7 +45,7 @@ for block=BlockSel
             saveFileName=strsplit(saveFileName{1},filesep);
             saveFileName=saveFileName{end};
             disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
-            save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'virtChannels','-v7.3')
+            save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '3.mat'],'virtChannels','-v7.3')
             disp('done.')
         end
     end

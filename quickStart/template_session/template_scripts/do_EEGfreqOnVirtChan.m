@@ -63,8 +63,13 @@ for block=BlockSel
                 dataTFR=[];
                 dataTFR.label=strsplit(num2str(1:size(virtChannels,1)));
                 dataTFR.trial=permute(virtChannels,[3,1,2]);
-                dataTFR.time=data.time{1};
-                dataTFR.dimord='rpt_chan_time';
+                
+                % manual padding becaue fieldtrip sucks and doesn't do it
+                dataTFR.trial = arrayfun(@(x) {squeeze(dataTFR.trial(x,:,:))},1:size(dataTFR.trial,1));
+                dataTFR.time= arrayfun(@(x) {data.time{1}},1:length(dataTFR.trial));
+                
+                dataTFR.dimord='chan_time';
+                dataTFR.trialinfo = data.trialinfo(1);
                 
                 cfg              = [];
                 cfg.output       = 'pow';
@@ -75,13 +80,13 @@ for block=BlockSel
                 cfg.pad          = 4;
                 
                 if find(cellfun(@(x) strcmp(filter{1},x), possibleFilters))==2
-                    cfg.tapsmofrq  = linspace(0.5/(slidW(filter_tmp)/foi(1)),5,length(foi));
+                    cfg.tapsmofrq  = 2.5;
                 else
                     cfg.tapsmofrq    = 10;
                 end
                      % analysis 2 to 30 Hz in steps of 2 Hz
                 cfg.t_ftimwin    = ones(length(cfg.foi),1).*slidW(filter_tmp);   % length of time window = 0.5 sec
-                cfg.toi          = -1.4:0.01:2.4;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
+                cfg.toi          = -1:0.02:2;                  % time window "slides" from -0.5 to 1.5 sec in steps of 0.05 sec (50 ms)
                 cfg.keeptrials   = 'yes';
                 dataTFR = ft_freqanalysis(cfg, dataTFR);
                 
@@ -92,7 +97,7 @@ for block=BlockSel
                 disp('done.')
                 
                 disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
-                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'dataTFR','-v7.3')
+                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '2.mat'],'dataTFR','-v7.3')
                 disp('done.')
                 dataTFR=[];
                 clearvars dataTFR

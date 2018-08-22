@@ -20,7 +20,7 @@ clean_prefixes={'TCsel', 'BP', 'TL', 'Beamf', 'VirtCh', 'TF'};
 if ~exist('clean_EEG_folder','var')
     clean_EEG_folder=0;
 end
-timeWinMax = [0.1 1.39]; % in s
+timeWinMax = [0.1 1.4]; % in s
 
 freqROIs={'alpha','beta', 'gamma'};
 
@@ -67,12 +67,12 @@ for filter=filters
             dataTemplate.freqROI=freqROIs{1};
             freqInt=ROIalpha;
             sorting='ascend';
-            BLwin = [-0.6 -0.1];
+            BLwin = [-0.3 -0.1];
         case 'BP2_32beta'
             dataTemplate.freqROI=freqROIs{2};
             freqInt=ROIbeta;
             sorting='ascend';
-            BLwin = [-0.6 -0.1];
+            BLwin = [-0.3 -0.1];
     end
     
     linecoordsY=[freqInt;freqInt];
@@ -204,7 +204,7 @@ for filter=filters
             cfg.channel      = chanSel;
             cfg.interactive  = 'no';
             cfg.zlim         = 'maxabs';
-            cfg.xlim         = [BLwin(1) timeWinMax(2)];
+            cfg.xlim         = [-0.3 1.6];
             tfig
             set(gcf,'Position',[0 0 1 0.25])
             ft_singleplotTFR(cfg, dataTFR);
@@ -224,7 +224,7 @@ for filter=filters
             else
                 add_string = ['_Bavg_bestNumChan_' num2str(bestNumchan)];
             end
-            saveas(gcf,[mainpath filesep '..' filesep 'C_miscResults' filesep tmp{2} '_' filter{1} add_string '.jpg'])
+            saveas(gcf,[mainpath filesep '..' filesep 'C_miscResults' filesep tmp{2} '_' filter{1} add_string '2.jpg'])
             close all
         end
         
@@ -234,9 +234,9 @@ for filter=filters
         VirtChanData=cat(1,VirtChanData,dataTemplate);
     end
 end
-%%
+%
 disp(['saving data to ' mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'])
-save([mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'],'VirtChanData','-v7.3')
+save([mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed2.mat'],'VirtChanData','-v7.3')
 disp('done.')
 %%
 

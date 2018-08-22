@@ -11,8 +11,8 @@ ft_defaults
 
 EEGDataFiles=dir([mainpath filesep '..' filesep 'rawData' filesep 'eegfiles' filesep '*.eeg']);
 files=cellfun(@(x) [EEGDataFiles(1).folder filesep x],{EEGDataFiles.name},'unif',0);
-TrialPreStim=0.5;
-TrialPostStim=1.6;
+TrialPreStim=1;
+TrialPostStim=2;
 %TriggerValues={'S  1','S  2','S 11','S 12','S 13','S 14','S 21','S 22','S 23','S 24'};
 TriggerValues={'S  1','S  2'};
 
