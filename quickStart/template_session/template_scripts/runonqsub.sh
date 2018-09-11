@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-if [ $# -ge 2 ]
+if [ $# -ge 3 ]
 then
 wt=$1
 mem=$2

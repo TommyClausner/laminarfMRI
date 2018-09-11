@@ -6,12 +6,12 @@ dataDir=$1
 
 dcm2nii $dataDir
 
-cp $dataDir/*Retino*.nii* $DIR/functionals/
-cp $dataDir/*silent*.nii* $DIR/functionals/
+mv $dataDir/*Retino*.nii* $DIR/functionals/
+mv $dataDir/*silent*.nii* $DIR/functionals/
 
-cp $dataDir/*t1*.nii* $DIR/t1/
+mv $dataDir/[0-9]*t1*.nii* $DIR/t1/
 
-cp $dataDir/*retino*inverted*.nii* $DIR/inverted/
+mv $DIR/functionals/*inverted*.nii* $DIR/inverted/
 
-cp $dataDir/*3D*whole*.nii* $DIR/wholeBrainEPI3D/
-cp $dataDir/*3D*whole*INVERTED*.nii* $DIR/wholeBrainEPI3Dinverted/
+mv $dataDir/*3dWhole*.nii* $DIR/wholeBrainEPI3D/
+mv $DIR/wholeBrainEPI3D/*INVERTED*.nii* $DIR/wholeBrainEPI3Dinverted/
