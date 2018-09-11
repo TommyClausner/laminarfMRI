@@ -22,7 +22,7 @@ OutputVarName=none
 
 # Qsub information #
 jobtype=batch
-walltime="24:00:00"
+walltime="4:00:00"
 memory=32gb
 
 # Misc Variables #
