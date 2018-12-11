@@ -43,7 +43,7 @@ statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 
 while [ "$statusqsub" != "C" ]
 do
-sleep 1s
+sleep 60s
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 
 done
