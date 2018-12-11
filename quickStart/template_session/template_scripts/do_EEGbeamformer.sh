@@ -20,7 +20,7 @@ OutputVarName=none
 
 # Qsub information #
 jobtype=matlab
-walltime="11:59:59"
+walltime="23:59:59"
 memory=62gb
 
 # Misc Variables #
@@ -48,7 +48,7 @@ PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 while [ "$statusqsub" != "C" ]
 do
-sleep 1s
+sleep 60s
 statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
 done
 rm $DIR/tmp_$nameadd.m

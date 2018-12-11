@@ -46,6 +46,6 @@ PIDend=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
 while [[ $(qstat -u tomcla | grep -o [R,Q] | wc -l) -gt 2 ]] 
 #because two header lines
 do 
-sleep 2s
+sleep 60s
 done
 sh $DIR/do_EEGsplitVirtualChannel.sh
