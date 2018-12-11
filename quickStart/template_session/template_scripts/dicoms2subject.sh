@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load mricron
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/../rawData/niftis"
 
 dataDir=$1
