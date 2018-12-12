@@ -57,7 +57,7 @@ export PATH=$FREESURFER_HOME/bin:$PATH
 LD_LIBRARY_PATH=$FREESURFER_HOME/lib/gsl/lib/:$FREESURFER_HOME/lib/tcltktixblt/lib/:$LD_LIBRARY_PATH
 fi
 export SUBJECTS_DIR=$DIR
-rm -r $DIR/0_freesurfer
+rm -r $DIR/0_freesurfer/*
 recon-all -i $DIR/rawData/niftis/t1/* -subjid 0_freesurfer -all
 
 
