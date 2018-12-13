@@ -30,22 +30,21 @@ NewMiscVar0=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
+for l in `seq 1 2`
+do
 for k in `seq 1 2`
 do
 for i in `seq 1 $splitparts`
 do
-$DIR/do_EEGbeamformer.sh $i $k &
+$DIR/do_EEGbeamformer.sh $i $k $l &
 sleep 2s
-if [[ $i -eq 1 ]]
-then
-PIDstart=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
-fi
 done
 done
-PIDend=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
-while [[ $(qstat -u tomcla | grep -o [R,Q] | wc -l) -gt 2 ]] 
-#because two header lines
-do 
-sleep 60s
+done
+
+while [[ $(ls $DIR | grep tmp_ | wc -l) -gt 0 ]]
+do
+sleep 61s
 done
 sh $DIR/do_EEGsplitVirtualChannel.sh
+

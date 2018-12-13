@@ -21,27 +21,29 @@ OutputVarName=none
 # Qsub information #
 jobtype=matlab
 walltime="23:59:59"
-memory=62gb
+memory=31gb
 
 # Misc Variables #
 MiscVarName=none
 
 ### END HEADER ###
 
-if [ "$#" -ne 2 ]
+if [ "$#" -ne 3 ]
 then
 blocks="[1,2,3,4]"
-filt=1
+filt="[1,2]"
+roi="[1,2]"
 else
 blocks=$1
 filt=$2
+roi=$3
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
-echo "start beamformer for block $blocks, filter $filt"
-echo "mainpath=" "'$DIR';headmodelType='$Model';BlockSel=$blocks;FiltSel=$filt;">$DIR/tmp_$nameadd.m
+echo "start beamformer for block $blocks, filter $filt, ROI $roi"
+echo "mainpath=" "'$DIR';headmodelType='$Model';BlockSel=$blocks;FiltSel=$filt;ROISel=$roi;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGbeamformer.m>>$DIR/tmp_$nameadd.m
 echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
 PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
