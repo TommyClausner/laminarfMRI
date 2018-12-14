@@ -35,10 +35,10 @@ do
 
 if [[ $i -eq 1 ]]
 then
-PIDstart=$($DIR/do_analyzePRF.sh $i $splitparts &)
+PIDstart=$($DIR/do_analyzePRF.sh $i $splitparts &) &
 elif [[ $i -eq $splitparts ]]
 then
-PIDend=$($DIR/do_analyzePRF.sh $i $splitparts &)
+PIDend=$($DIR/do_analyzePRF.sh $i $splitparts &) &
 else
 $DIR/do_analyzePRF.sh $i $splitparts &
 fi
