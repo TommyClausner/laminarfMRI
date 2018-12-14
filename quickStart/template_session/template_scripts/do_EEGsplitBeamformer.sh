@@ -42,9 +42,3 @@ done
 done
 done
 
-while [[ $(ls $DIR | grep tmp_ | wc -l) -gt 0 ]]
-do
-sleep 61s
-done
-sh $DIR/do_EEGsplitVirtualChannel.sh
-

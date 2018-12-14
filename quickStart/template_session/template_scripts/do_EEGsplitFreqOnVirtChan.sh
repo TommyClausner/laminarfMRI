@@ -30,7 +30,7 @@ NewMiscVar0=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-for k in `seq 1 1`
+for k in `seq 1 2`
 do
 for j in `seq 1 2`
 do

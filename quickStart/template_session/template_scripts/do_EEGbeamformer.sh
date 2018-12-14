@@ -20,7 +20,7 @@ OutputVarName=none
 
 # Qsub information #
 jobtype=matlab
-walltime="23:59:59"
+walltime="48:00:00"
 memory=31gb
 
 # Misc Variables #
@@ -45,14 +45,10 @@ nameadd=$(date +"%m%d%Y%H%M%S")
 echo "start beamformer for block $blocks, filter $filt, ROI $roi"
 echo "mainpath=" "'$DIR';headmodelType='$Model';BlockSel=$blocks;FiltSel=$filt;ROISel=$roi;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGbeamformer.m>>$DIR/tmp_$nameadd.m
-echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory
-PIDqsub=$(qstat | awk -F' ' '{print $1}' | tail -1)
-statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
-while [ "$statusqsub" != "C" ]
-do
-sleep 60s
-statusqsub=$(qstat $PIDqsub | awk -F' ' '{print $5}' | tail -1)
-done
+PIDqsub=$(echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m"'"');"' | qsub -q $jobtype -l walltime=$walltime,mem=$memory)
+
+sh waitForQsubPID.sh $PIDqsub
+
 rm $DIR/tmp_$nameadd.m
 
 

@@ -33,8 +33,8 @@ stillRunning=1
 fi
 counter=$(( $counter + 1 ))
 done
-sleep 1s
-timer_output=$(( $timer_output + 1 ))
+sleep 60s
+timer_output=$(( $timer_output + 60 ))
 if [[ $timer_output -gt $refreshrate ]]
 then
 timer_output=0

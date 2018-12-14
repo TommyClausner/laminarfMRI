@@ -32,14 +32,19 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 for i in `seq 1 $splitparts`
 do
-$DIR/do_analyzePRF.sh $i $splitparts &
-sleep 2s
+
 if [[ $i -eq 1 ]]
 then
-PIDstart=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
+PIDstart=$($DIR/do_analyzePRF.sh $i $splitparts &)
+elif [[ $i -eq $splitparts ]]
+then
+PIDend=$($DIR/do_analyzePRF.sh $i $splitparts &)
+else
+$DIR/do_analyzePRF.sh $i $splitparts &
 fi
+sleep 2s
 done
-PIDend=$(qstat | awk -F' ' '{print $1}' | tail -1 | cut -d"." -f1)
+
 sh $DIR/waitForJobs.sh $PIDstart $PIDend
 
 

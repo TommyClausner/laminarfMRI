@@ -3,5 +3,5 @@
 while true
 do
 echo "$(qstat -u $1)"
-sleep 1s
+sleep 60s
 done
