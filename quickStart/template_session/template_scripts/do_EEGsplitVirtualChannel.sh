@@ -13,7 +13,7 @@
 ### Script ###
 
 # Input Variables and Paths #
-splitparts=4
+blocks=4
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -30,12 +30,15 @@ NewMiscVar0=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
+for k in `seq 1 2`
+do
 for j in `seq 1 2`
 do
-for i in `seq 1 $splitparts`
+for i in `seq 1 $blocks`
 do
-$DIR/do_EEGvirtualChannel.sh $i $j &
+$DIR/do_EEGvirtualChannel.sh $i $j $k &
 sleep 2s
+done
 done
 done
 
