@@ -51,6 +51,3 @@ PIDqsub=$(echo 'matlab2017b -nosplash -nodesktop -r "run('"'"$DIR/tmp_$nameadd.m
 sh waitForQsubPID.sh $PIDqsub
 
 rm $DIR/tmp_$nameadd.m
-
-
-

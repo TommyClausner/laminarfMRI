@@ -13,7 +13,9 @@
 ### Script ###
 
 # Input Variables and Paths #
-splitparts=4
+blocks=4
+filters=2
+rois=2
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -24,20 +26,22 @@ walltime="24:00:00"
 memory=32gb
 
 # Misc Variables #
-NewMiscVar0=none
+MiscVarName=none
 
 ### END HEADER ###
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-for k in `seq 1 2`
+for roi in `seq 1 $rois`
 do
-for j in `seq 1 2`
+for filter in `seq 1 $filters`
 do
-for i in `seq 1 $splitparts`
+for block in `seq 1 $blocks`
 do
-$DIR/do_EEGfreqOnVirtChan.sh $i $j $k &
+
+$DIR/do_EEGfreqOnVirtChan.sh $block $filter $roi &
 sleep 2s
+
 done
 done
 done

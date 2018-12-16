@@ -14,6 +14,8 @@
 
 # Input Variables and Paths #
 blocks=4
+filters=2
+rois=2
 
 # Output Variables and Paths #
 OutputVarName=none
@@ -30,13 +32,13 @@ NewMiscVar0=none
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
-for k in `seq 1 2`
+for roi in `seq 1 $rois`
 do
-for j in `seq 1 2`
+for filter in `seq 1 $filters`
 do
-for i in `seq 1 $blocks`
+for block in `seq 1 $blocks`
 do
-$DIR/do_EEGvirtualChannel.sh $i $j $k &
+$DIR/do_EEGvirtualChannel.sh $block $filter $roi &
 sleep 2s
 done
 done
