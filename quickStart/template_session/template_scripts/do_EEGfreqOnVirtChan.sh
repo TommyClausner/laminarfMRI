@@ -42,7 +42,7 @@ fi
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
 nameadd=$(date +"%m%d%Y%H%M%S")
-echo "compute virtual channels for block $blocks, filter $filt, roi $roi"
+echo "compute frequencies on virtual channels for block $blocks, filter $filt, roi $roi"
 #echo "mainpath=" "'$DIR';BlockSel=$blocks;FiltSel=$filt;ROISel=$roi;">$DIR/tmp_$nameadd.m
 echo "mainpath=" "'$DIR';BlockSel=$blocks;FiltSel=$filt;">$DIR/tmp_$nameadd.m
 cat $DIR/do_EEGfreqOnVirtChan.m>>$DIR/tmp_$nameadd.m
