@@ -224,7 +224,7 @@ for filter=filters
             else
                 add_string = ['_Bavg_bestNumChan_' num2str(bestNumchan)];
             end
-            saveas(gcf,[mainpath filesep '..' filesep 'C_miscResults' filesep tmp{2} '_' filter{1} add_string '2.jpg'])
+            saveas(gcf,[mainpath filesep '..' filesep 'C_miscResults' filesep tmp{2} '_' filter{1} add_string '.jpg'])
             close all
         end
         
@@ -236,7 +236,7 @@ for filter=filters
 end
 %
 disp(['saving data to ' mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'])
-save([mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed2.mat'],'VirtChanData','-v7.3')
+save([mainpath filesep '..' filesep '7_results' filesep 'EEGprocessed.mat'],'VirtChanData','-v7.3')
 disp('done.')
 %%
 
