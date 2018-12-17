@@ -97,7 +97,7 @@ for block=BlockSel
                 disp('done.')
                 
                 disp(['saving data to ' mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'])
-                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '2.mat'],'dataTFR','-v7.3')
+                save([mainpath filesep '..' filesep '6_EEG' filesep Addprefix saveFileName '.mat'],'dataTFR','-v7.3')
                 disp('done.')
                 dataTFR=[];
                 clearvars dataTFR
