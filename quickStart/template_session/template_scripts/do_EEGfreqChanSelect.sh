@@ -24,7 +24,7 @@ walltime="11:59:59"
 memory=120gb
 
 # Misc Variables #
-deleteOldFiles=0
+deleteOldFiles=1
 
 ### END HEADER ###
 

@@ -15,7 +15,7 @@ filters={'BP30_100','BP2_32','BP2_32beta'};
 
 ROIs={'centV1_lhV1','centV1_rhV1'};
 
-clean_prefixes={'TCsel', 'BP', 'TL', 'Beamf', 'VirtCh', 'TF'};
+clean_prefixes={'TCsel', 'BP', 'TL', 'Beamf', 'VirtCh'}; % , 'TF'
 
 if ~exist('clean_EEG_folder','var')
     clean_EEG_folder=0;
